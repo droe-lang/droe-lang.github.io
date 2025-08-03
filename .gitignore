@@ -1,0 +1,15 @@
+# Ignore output folder
+_site/
+
+# Dependency folders
+node_modules/
+
+# Optional: local dev files
+.DS_Store
+.env
+*.log
+*.local
+
+# Optional: VSCode and editor settings
+.vscode/
+.idea/
