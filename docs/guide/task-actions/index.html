@@ -165,17 +165,75 @@
       <!-- Content -->
       <div class="prose prose-lg max-w-none">
         <p>Task actions in Roe provide a specialized way to define and execute discrete units of work or automation tasks. They're designed for workflow automation, process management, and building executable task sequences.</p>
+<h2>Tasks vs Actions</h2>
+<p>Roe has two different constructs for executable code:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Tasks</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parameters</strong></td>
+<td>❌ No parameters</td>
+<td>✅ Support parameters</td>
+</tr>
+<tr>
+<td><strong>Return Values</strong></td>
+<td>❌ No return values</td>
+<td>✅ Return typed values</td>
+</tr>
+<tr>
+<td><strong>Syntax</strong></td>
+<td><code>task name</code> ... <code>end</code></td>
+<td><code>action name with params gives type</code> ... <code>end action</code></td>
+</tr>
+<tr>
+<td><strong>Execution</strong></td>
+<td><code>run task_name</code></td>
+<td><code>run module.action with params</code></td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Automation workflows, void procedures</td>
+<td>Reusable functions, data processing</td>
+</tr>
+<tr>
+<td><strong>Module Scope</strong></td>
+<td>Standalone or in modules</td>
+<td>Must be in modules</td>
+</tr>
+</tbody>
+</table>
+<p><strong>When to use Tasks:</strong></p>
+<ul>
+<li>Automation workflows and processes</li>
+<li>System maintenance operations</li>
+<li>Sequential execution of steps</li>
+<li>No need for parameters or return values</li>
+</ul>
+<p><strong>When to use Actions:</strong></p>
+<ul>
+<li>Reusable functions with parameters</li>
+<li>Data transformation and calculations</li>
+<li>Functions that return computed values</li>
+<li>Cross-module code sharing</li>
+</ul>
 <h2>Basic Task Syntax</h2>
 <h3>Simple Task Declaration</h3>
 <pre><code class="language-roe">task task_name
   // Task implementation
-end
+end task
 </code></pre>
+<p><strong>Note:</strong> Tasks support both <code>end</code> and <code>end task</code> for closing the block.</p>
 <h3>Task with Implementation</h3>
 <pre><code class="language-roe">task send_notification
   display &quot;Sending notification...&quot;
   display &quot;Notification sent successfully!&quot;
-end
+end task
 
 // Execute the task
 run send_notification
@@ -185,19 +243,19 @@ run send_notification
 <h3>Basic Task Actions</h3>
 <pre><code class="language-roe">task send_reminder
   display &quot;Don't forget to log in&quot;
-end
+end task
 
 task greet_user
   display &quot;Hello! Welcome to Roe&quot;
   display &quot;Hope you enjoy using task actions!&quot;
-end
+end task
 
 task process_data
   set count to 5
   display &quot;Processing data...&quot;
   display count
   display &quot;Processing complete!&quot;
-end
+end task
 
 display &quot;Running send_reminder task:&quot;
 run send_reminder
@@ -221,14 +279,14 @@ display &quot;Task actions demonstration complete!&quot;
   display &quot;Found 15 temporary files&quot;
   display &quot;Removing old files...&quot;
   display &quot;Cleanup completed successfully!&quot;
-end
+end task
 
 task backup_database
   display &quot;💾 Starting database backup...&quot;
   set timestamp which is text to &quot;2024-01-15-10-30&quot;
   display &quot;Creating backup: backup_[timestamp].sql&quot;
   display &quot;Backup completed successfully!&quot;
-end
+end task
 
 task check_system_health
   display &quot;🔍 Checking system health...&quot;
@@ -237,7 +295,7 @@ task check_system_health
   display &quot;✅ Disk space: Available&quot;
   display &quot;✅ Network: Connected&quot;
   display &quot;System health check completed!&quot;
-end
+end task
 
 display &quot;=== System Maintenance Tasks ===&quot;
 run cleanup_temp_files

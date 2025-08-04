@@ -16,6 +16,31 @@ next:
 
 Actions are functions within modules that accept parameters and return values. They enable code reuse, encapsulation, and clean separation of concerns in Roe programs.
 
+## Actions vs Tasks
+
+Roe has two different constructs for executable code:
+
+| Feature | Actions | Tasks |
+|---------|---------|-------|
+| **Parameters** | ✅ Support parameters | ❌ No parameters |
+| **Return Values** | ✅ Return typed values | ❌ No return values |
+| **Syntax** | `action name with params gives type` ... `end action` | `task name` ... `end task` |
+| **Execution** | `run module.action with params` or `module.action` | `run task_name` |
+| **Use Case** | Reusable functions, data processing | Automation workflows, void procedures |
+| **Module Scope** | Must be in modules | Standalone or in modules |
+
+**When to use Actions:**
+- Reusable functions with parameters
+- Data transformation and calculations
+- Functions that return computed values
+- Cross-module code sharing
+
+**When to use Tasks:**
+- Automation workflows and processes
+- System maintenance operations
+- Sequential execution of steps
+- No need for parameters or return values
+
 ## Action Syntax
 
 ### Basic Action Structure
@@ -571,7 +596,7 @@ end module
 Now that you understand actions in Roe:
 
 - **[Data Structures](/guide/data-structures/)** - Use actions with custom data types
-- **[Task Actions](/guide/task-actions/)** - Learn about task-specific actions
+- **[Task Actions](/guide/task-actions/)** - Learn about task procedures without parameters or return values
 - **[CLI Reference](/guide/cli/)** - Compile and test modules with actions
 - **[WebAssembly](/guide/webassembly/)** - Understand how actions compile to WASM
 

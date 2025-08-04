@@ -16,6 +16,31 @@ next:
 
 Task actions in Roe provide a specialized way to define and execute discrete units of work or automation tasks. They're designed for workflow automation, process management, and building executable task sequences.
 
+## Tasks vs Actions
+
+Roe has two different constructs for executable code:
+
+| Feature | Tasks | Actions |
+|---------|-------|----------|
+| **Parameters** | ❌ No parameters | ✅ Support parameters |
+| **Return Values** | ❌ No return values | ✅ Return typed values |
+| **Syntax** | `task name` ... `end` | `action name with params gives type` ... `end action` |
+| **Execution** | `run task_name` | `run module.action with params` |
+| **Use Case** | Automation workflows, void procedures | Reusable functions, data processing |
+| **Module Scope** | Standalone or in modules | Must be in modules |
+
+**When to use Tasks:**
+- Automation workflows and processes
+- System maintenance operations
+- Sequential execution of steps
+- No need for parameters or return values
+
+**When to use Actions:**
+- Reusable functions with parameters
+- Data transformation and calculations
+- Functions that return computed values
+- Cross-module code sharing
+
 ## Basic Task Syntax
 
 ### Simple Task Declaration
@@ -23,8 +48,10 @@ Task actions in Roe provide a specialized way to define and execute discrete uni
 ```roe
 task task_name
   // Task implementation
-end
+end task
 ```
+
+**Note:** Tasks support both `end` and `end task` for closing the block.
 
 ### Task with Implementation
 
@@ -32,7 +59,7 @@ end
 task send_notification
   display "Sending notification..."
   display "Notification sent successfully!"
-end
+end task
 
 // Execute the task
 run send_notification
@@ -47,19 +74,19 @@ Based on the Roe examples, here are working task patterns:
 ```roe
 task send_reminder
   display "Don't forget to log in"
-end
+end task
 
 task greet_user
   display "Hello! Welcome to Roe"
   display "Hope you enjoy using task actions!"
-end
+end task
 
 task process_data
   set count to 5
   display "Processing data..."
   display count
   display "Processing complete!"
-end
+end task
 
 display "Running send_reminder task:"
 run send_reminder
@@ -87,14 +114,14 @@ task cleanup_temp_files
   display "Found 15 temporary files"
   display "Removing old files..."
   display "Cleanup completed successfully!"
-end
+end task
 
 task backup_database
   display "💾 Starting database backup..."
   set timestamp which is text to "2024-01-15-10-30"
   display "Creating backup: backup_[timestamp].sql"
   display "Backup completed successfully!"
-end
+end task
 
 task check_system_health
   display "🔍 Checking system health..."
@@ -103,7 +130,7 @@ task check_system_health
   display "✅ Disk space: Available"
   display "✅ Network: Connected"
   display "System health check completed!"
-end
+end task
 
 display "=== System Maintenance Tasks ==="
 run cleanup_temp_files

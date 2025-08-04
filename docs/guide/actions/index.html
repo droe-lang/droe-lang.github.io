@@ -165,6 +165,63 @@
       <!-- Content -->
       <div class="prose prose-lg max-w-none">
         <p>Actions are functions within modules that accept parameters and return values. They enable code reuse, encapsulation, and clean separation of concerns in Roe programs.</p>
+<h2>Actions vs Tasks</h2>
+<p>Roe has two different constructs for executable code:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Actions</th>
+<th>Tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parameters</strong></td>
+<td>✅ Support parameters</td>
+<td>❌ No parameters</td>
+</tr>
+<tr>
+<td><strong>Return Values</strong></td>
+<td>✅ Return typed values</td>
+<td>❌ No return values</td>
+</tr>
+<tr>
+<td><strong>Syntax</strong></td>
+<td><code>action name with params gives type</code> ... <code>end action</code></td>
+<td><code>task name</code> ... <code>end task</code></td>
+</tr>
+<tr>
+<td><strong>Execution</strong></td>
+<td><code>run module.action with params</code> or <code>module.action</code></td>
+<td><code>run task_name</code></td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Reusable functions, data processing</td>
+<td>Automation workflows, void procedures</td>
+</tr>
+<tr>
+<td><strong>Module Scope</strong></td>
+<td>Must be in modules</td>
+<td>Standalone or in modules</td>
+</tr>
+</tbody>
+</table>
+<p><strong>When to use Actions:</strong></p>
+<ul>
+<li>Reusable functions with parameters</li>
+<li>Data transformation and calculations</li>
+<li>Functions that return computed values</li>
+<li>Cross-module code sharing</li>
+</ul>
+<p><strong>When to use Tasks:</strong></p>
+<ul>
+<li>Automation workflows and processes</li>
+<li>System maintenance operations</li>
+<li>Sequential execution of steps</li>
+<li>No need for parameters or return values</li>
+</ul>
 <h2>Action Syntax</h2>
 <h3>Basic Action Structure</h3>
 <pre><code class="language-roe">module module_name
@@ -657,7 +714,7 @@ end module
 <p>Now that you understand actions in Roe:</p>
 <ul>
 <li><strong><a href="/guide/data-structures/">Data Structures</a></strong> - Use actions with custom data types</li>
-<li><strong><a href="/guide/task-actions/">Task Actions</a></strong> - Learn about task-specific actions</li>
+<li><strong><a href="/guide/task-actions/">Task Actions</a></strong> - Learn about task procedures without parameters or return values</li>
 <li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Compile and test modules with actions</li>
 <li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Understand how actions compile to WASM</li>
 </ul>
