@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Structures | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Create custom data types and structures to organize complex data in Roelang.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Data Structures | Roelang">
+  <meta property="og:description" content="Create custom data types and structures to organize complex data in Roelang.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/data-structures/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Data Structures | Roelang">
+  <meta name="twitter:description" content="Create custom data types and structures to organize complex data in Roelang.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Data Structures</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Data Structures</h1>
+        
+        <p class="text-xl text-gray-600">Create custom data types and structures to organize complex data in Roelang.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Data structures allow you to create custom types that group related data together, making your programs more organized and easier to understand. Roelang provides a simple yet powerful <code>data</code> construct for defining custom data types.</p>
+<h2>Basic Data Structure Syntax</h2>
+<h3>Simple Data Declaration</h3>
+<pre><code class="language-roe">data Person
+  name is text
+  age is int
+  active is flag
+end data
+</code></pre>
+<h3>Using Data Structures</h3>
+<pre><code class="language-roe">data User
+  username is text
+  email is text
+  age is int
+  is_admin is flag
+end data
+
+// Note: In current Roelang implementation, data structures are primarily 
+// used for documentation and future language features
+// For now, use individual variables to represent structured data
+
+set user_username which is text to &quot;alice&quot;
+set user_email which is text to &quot;alice@example.com&quot;
+set user_age which is int to 28
+set user_is_admin which is flag to false
+
+display &quot;User: [user_username] ([user_email])&quot;
+display &quot;Age: [user_age], Admin: [user_is_admin]&quot;
+</code></pre>
+<h2>Common Data Structure Patterns</h2>
+<h3>User Management</h3>
+<pre><code class="language-roe">data UserProfile
+  first_name is text
+  last_name is text
+  email is text
+  phone is text
+  birth_year is int
+  account_type is text
+  is_verified is flag
+end data
+
+// Working with user data using individual variables
+set profile_first_name which is text to &quot;Alice&quot;
+set profile_last_name which is text to &quot;Johnson&quot;
+set profile_email which is text to &quot;alice.johnson@example.com&quot;
+set profile_phone which is text to &quot;555-0123&quot;
+set profile_birth_year which is int to 1995
+set profile_account_type which is text to &quot;premium&quot;
+set profile_is_verified which is flag to true
+
+module user_operations
+  action format_full_name with first which is text, last which is text gives text
+    give first + &quot; &quot; + last
+  end action
+  
+  action calculate_age with birth_year which is int, current_year which is int gives int
+    give current_year - birth_year
+  end action
+  
+  action format_user_summary with first which is text, last which is text, email which is text, age which is int gives text
+    set full_name from run user_operations.format_full_name with first, last
+    give &quot;User: [full_name] ([email]) - Age: [age]&quot;
+  end action
+end module
+
+set current_year which is int to 2024
+set user_age from run user_operations.calculate_age with profile_birth_year, current_year
+set user_summary from run user_operations.format_user_summary with profile_first_name, profile_last_name, profile_email, user_age
+
+display user_summary
+</code></pre>
+<h3>Product Catalog</h3>
+<pre><code class="language-roe">data Product
+  id is int
+  name is text
+  description is text
+  price is decimal
+  category is text
+  in_stock is flag
+  stock_quantity is int
+end data
+
+// Product data using individual variables
+set product_id which is int to 12345
+set product_name which is text to &quot;Wireless Headphones&quot;
+set product_description which is text to &quot;High-quality wireless headphones with noise cancellation&quot;
+set product_price which is decimal to 199.99
+set product_category which is text to &quot;Electronics&quot;
+set product_in_stock which is flag to true
+set product_stock_quantity which is int to 25
+
+module product_operations
+  action format_product_listing with name which is text, price which is decimal, category which is text gives text
+    give &quot;[name] - $[price] ([category])&quot;
+  end action
+  
+  action check_availability with in_stock which is flag, quantity which is int gives text
+    when in_stock and quantity is greater than 0 then
+      give &quot;Available ([quantity] in stock)&quot;
+    otherwise
+      give &quot;Out of stock&quot;
+    end when
+  end action
+  
+  action calculate_total_value with price which is decimal, quantity which is int gives decimal
+    give price * quantity
+  end action
+end module
+
+set product_listing from run product_operations.format_product_listing with product_name, product_price, product_category
+set availability_status from run product_operations.check_availability with product_in_stock, product_stock_quantity
+set inventory_value from run product_operations.calculate_total_value with product_price, product_stock_quantity
+
+display &quot;Product: [product_listing]&quot;
+display &quot;Status: [availability_status]&quot;
+display &quot;Inventory Value: $[inventory_value]&quot;
+</code></pre>
+<h3>Order Processing</h3>
+<pre><code class="language-roe">data Order
+  order_id is int
+  customer_email is text
+  order_date is text
+  status is text
+  subtotal is decimal
+  tax_amount is decimal
+  shipping_cost is decimal
+  total_amount is decimal
+end data
+
+data OrderItem
+  product_id is int
+  product_name is text
+  quantity is int
+  unit_price is decimal
+  line_total is decimal
+end data
+
+// Order processing using individual variables
+set order_id which is int to 67890
+set customer_email which is text to &quot;customer@example.com&quot;
+set order_date which is text to &quot;2024-01-15&quot;
+set order_status which is text to &quot;processing&quot;
+set order_subtotal which is decimal to 299.99
+set tax_rate which is decimal to 0.08
+set shipping_cost which is decimal to 15.00
+
+module order_operations
+  action calculate_tax with subtotal which is decimal, rate which is decimal gives decimal
+    give subtotal * rate
+  end action
+  
+  action calculate_order_total with subtotal which is decimal, tax which is decimal, shipping which is decimal gives decimal
+    give subtotal + tax + shipping
+  end action
+  
+  action format_order_summary with order_id which is int, email which is text, total which is decimal gives text
+    give &quot;Order #[order_id] for [email] - Total: $[total]&quot;
+  end action
+  
+  action get_status_message with status which is text gives text
+    when status is equal to &quot;pending&quot; then
+      give &quot;⏳ Order received and pending processing&quot;
+    end when
+    
+    when status is equal to &quot;processing&quot; then
+      give &quot;📦 Order is being processed&quot;
+    end when
+    
+    when status is equal to &quot;shipped&quot; then
+      give &quot;🚚 Order has been shipped&quot;
+    end when
+    
+    when status is equal to &quot;delivered&quot; then
+      give &quot;✅ Order delivered successfully&quot;
+    end when
+    
+    give &quot;❓ Unknown status: [status]&quot;
+  end action
+end module
+
+set tax_amount from run order_operations.calculate_tax with order_subtotal, tax_rate
+set total_amount from run order_operations.calculate_order_total with order_subtotal, tax_amount, shipping_cost
+set order_summary from run order_operations.format_order_summary with order_id, customer_email, total_amount
+set status_message from run order_operations.get_status_message with order_status
+
+display &quot;Order Processing:&quot;
+display order_summary
+display status_message
+display &quot;Subtotal: $[order_subtotal]&quot;
+display &quot;Tax: $[tax_amount]&quot;
+display &quot;Shipping: $[shipping_cost]&quot;
+display &quot;Total: $[total_amount]&quot;
+</code></pre>
+<h2>Working with Collections of Structured Data</h2>
+<h3>Managing Multiple Records</h3>
+<pre><code class="language-roe">data Employee
+  employee_id is int
+  name is text
+  department is text
+  salary is decimal
+  start_date is text
+  is_active is flag
+end data
+
+// Employee data using collections
+set employee_ids which are list of int to [1001, 1002, 1003]
+set employee_names which are list of text to [&quot;Alice Johnson&quot;, &quot;Bob Smith&quot;, &quot;Carol Davis&quot;]
+set employee_departments which are list of text to [&quot;Engineering&quot;, &quot;Sales&quot;, &quot;Marketing&quot;]
+set employee_salaries which are list of decimal to [85000.00, 65000.00, 70000.00]
+
+module employee_operations
+  action calculate_total_payroll with salaries which are list of decimal gives decimal
+    set total which is decimal to 0.0
+    for each salary in salaries
+      set total to total + salary
+    end for
+    give total
+  end action
+  
+  action count_by_department with departments which are list of text, target_dept which is text gives int
+    set count which is int to 0
+    for each dept in departments
+      when dept is equal to target_dept then
+        set count to count + 1
+      end when
+    end for
+    give count
+  end action
+  
+  action format_employee_list with names which are list of text, departments which are list of text
+    set index which is int to 0
+    display &quot;Employee Directory:&quot;
+    display &quot;==================&quot;
+    for each name in names
+      set index to index + 1
+      // In real implementation, would access corresponding department by index
+      display &quot;[index]. [name]&quot;
+    end for
+  end action
+end module
+
+set total_payroll from run employee_operations.calculate_total_payroll with employee_salaries
+set engineering_count from run employee_operations.count_by_department with employee_departments, &quot;Engineering&quot;
+
+run employee_operations.format_employee_list with employee_names, employee_departments
+
+display &quot;&quot;
+display &quot;Payroll Summary:&quot;
+display &quot;Total Payroll: $[total_payroll]&quot;
+display &quot;Engineering Employees: [engineering_count]&quot;
+</code></pre>
+<h3>Inventory Management</h3>
+<pre><code class="language-roe">data InventoryItem
+  sku is text
+  name is text
+  category is text
+  current_stock is int
+  reorder_point is int
+  unit_cost is decimal
+  last_updated is text
+end data
+
+// Inventory data
+set item_skus which are list of text to [&quot;SKU001&quot;, &quot;SKU002&quot;, &quot;SKU003&quot;, &quot;SKU004&quot;]
+set item_names which are list of text to [&quot;Laptop&quot;, &quot;Mouse&quot;, &quot;Keyboard&quot;, &quot;Monitor&quot;]
+set item_categories which are list of text to [&quot;Computers&quot;, &quot;Accessories&quot;, &quot;Accessories&quot;, &quot;Displays&quot;]
+set current_stocks which are list of int to [15, 45, 28, 8]
+set reorder_points which are list of int to [10, 20, 15, 5]
+set unit_costs which are list of decimal to [899.99, 29.99, 79.99, 299.99]
+
+module inventory_operations
+  action check_reorder_needed with current which is int, reorder_point which is int gives flag
+    give current &lt;= reorder_point
+  end action
+  
+  action calculate_inventory_value with stocks which are list of int, costs which are list of decimal gives decimal
+    set total_value which is decimal to 0.0
+    set index which is int to 0
+    
+    for each stock in stocks
+      set index to index + 1
+      // In real implementation, would access corresponding cost by index
+      // For now, we'll use a simplified calculation
+      set total_value to total_value + 100.0  // Placeholder
+    end for
+    
+    give total_value
+  end action
+  
+  action generate_reorder_report with skus which are list of text, stocks which are list of int, reorder_points which are list of int
+    display &quot;Reorder Report:&quot;
+    display &quot;===============&quot;
+    set index which is int to 0
+    set items_needing_reorder which is int to 0
+    
+    for each stock in stocks
+      set index to index + 1
+      set corresponding_reorder_point which is int to 10  // Simplified - would access by index
+      
+      set needs_reorder from run inventory_operations.check_reorder_needed with stock, corresponding_reorder_point
+      
+      when needs_reorder then
+        set items_needing_reorder to items_needing_reorder + 1
+        display &quot;⚠️  Item [index]: Stock [stock] &lt;= Reorder point [corresponding_reorder_point]&quot;
+      otherwise
+        display &quot;✅ Item [index]: Stock [stock] (OK)&quot;
+      end when
+    end for
+    
+    display &quot;&quot;
+    display &quot;Items needing reorder: [items_needing_reorder]&quot;
+  end action
+end module
+
+set inventory_value from run inventory_operations.calculate_inventory_value with current_stocks, unit_costs
+
+display &quot;Inventory Management System&quot;
+display &quot;==========================&quot;
+display &quot;Total Inventory Value: $[inventory_value]&quot;
+display &quot;&quot;
+
+run inventory_operations.generate_reorder_report with item_skus, current_stocks, reorder_points
+</code></pre>
+<h2>Data Validation Patterns</h2>
+<h3>Input Validation with Structured Data</h3>
+<pre><code class="language-roe">data UserRegistration
+  username is text
+  email is text
+  password is text
+  age is int
+  terms_accepted is flag
+end data
+
+module registration_validation
+  action validate_username with username which is text gives flag
+    when username is equal to &quot;&quot; then
+      give false
+    otherwise
+      // Username length check (simplified)
+      give true
+    end when
+  end action
+  
+  action validate_email with email which is text gives flag
+    when email is equal to &quot;&quot; then
+      give false
+    otherwise
+      // Email format check (simplified)
+      give true
+    end when
+  end action
+  
+  action validate_password with password which is text gives flag
+    when password is equal to &quot;&quot; then
+      give false
+    otherwise
+      // Password strength check (simplified)
+      give true
+    end when
+  end action
+  
+  action validate_age with age which is int gives flag
+    when age is less than 13 or age is greater than 120 then
+      give false
+    otherwise
+      give true
+    end when
+  end action
+  
+  action validate_registration with username which is text, email which is text, password which is text, age which is int, terms which is flag gives text
+    set username_valid from run registration_validation.validate_username with username
+    set email_valid from run registration_validation.validate_email with email
+    set password_valid from run registration_validation.validate_password with password
+    set age_valid from run registration_validation.validate_age with age
+    
+    when not username_valid then
+      give &quot;Invalid username: must not be empty&quot;
+    end when
+    
+    when not email_valid then
+      give &quot;Invalid email format&quot;
+    end when
+    
+    when not password_valid then
+      give &quot;Invalid password: must not be empty&quot;
+    end when
+    
+    when not age_valid then
+      give &quot;Invalid age: must be between 13 and 120&quot;
+    end when
+    
+    when not terms then
+      give &quot;Terms and conditions must be accepted&quot;
+    end when
+    
+    when username_valid and email_valid and password_valid and age_valid and terms then
+      give &quot;Registration data is valid&quot;
+    otherwise
+      give &quot;Registration validation failed&quot;
+    end when
+  end action
+end module
+
+// Test registration data
+set reg_username which is text to &quot;alice_smith&quot;
+set reg_email which is text to &quot;alice@example.com&quot;
+set reg_password which is text to &quot;securePass123&quot;
+set reg_age which is int to 28
+set reg_terms which is flag to true
+
+set validation_result from run registration_validation.validate_registration with reg_username, reg_email, reg_password, reg_age, reg_terms
+
+display &quot;Registration Validation:&quot;
+display validation_result
+</code></pre>
+<h2>Best Practices for Data Structures</h2>
+<h3>1. Clear Naming Conventions</h3>
+<pre><code class="language-roe">// Good: Descriptive data structure names
+data CustomerOrder
+  customer_id is int
+  order_date is text
+  delivery_address is text
+  payment_method is text
+  order_status is text
+end data
+
+data ProductReview
+  product_id is int
+  reviewer_name is text
+  rating is int
+  review_text is text
+  review_date is text
+end data
+</code></pre>
+<h3>2. Logical Grouping</h3>
+<pre><code class="language-roe">// Good: Related fields grouped together
+data ShippingAddress
+  street_address is text
+  city is text
+  state is text
+  postal_code is text
+  country is text
+end data
+
+data BillingInfo
+  cardholder_name is text
+  card_number is text
+  expiry_date is text
+  billing_address is text
+end data
+</code></pre>
+<h3>3. Consistent Field Types</h3>
+<pre><code class="language-roe">// Good: Consistent use of appropriate types
+data EventLog
+  event_id is int
+  event_type is text
+  event_timestamp is text
+  user_id is int
+  event_data is text
+  severity_level is int
+end data
+</code></pre>
+<h3>4. Documentation with Comments</h3>
+<pre><code class="language-roe">data Configuration
+  // Database settings
+  database_host is text
+  database_port is int
+  database_name is text
+  
+  // Security settings
+  session_timeout is int      // Timeout in seconds
+  max_login_attempts is int   // Maximum failed login attempts
+  
+  // Feature flags
+  debug_mode is flag          // Enable debug logging
+  maintenance_mode is flag    // Enable maintenance mode
+end data
+</code></pre>
+<h2>Future Data Structure Features</h2>
+<p>While current Roelang primarily uses data structures for documentation and planning, future versions may include:</p>
+<ul>
+<li><strong>Object instantiation</strong>: Creating instances of data structures</li>
+<li><strong>Property access</strong>: Accessing fields with dot notation</li>
+<li><strong>Method binding</strong>: Attaching actions to data structures</li>
+<li><strong>Inheritance</strong>: Extending data structures</li>
+<li><strong>Serialization</strong>: Converting data structures to/from storage formats</li>
+</ul>
+<h2>Working Around Current Limitations</h2>
+<p>Until full data structure support is implemented, use these patterns:</p>
+<h3>Prefixed Variables</h3>
+<pre><code class="language-roe">// User data with consistent prefixes
+set user_id which is int to 12345
+set user_name which is text to &quot;Alice Johnson&quot;
+set user_email which is text to &quot;alice@example.com&quot;
+set user_active which is flag to true
+
+// Order data with consistent prefixes
+set order_id which is int to 67890
+set order_customer_id which is int to 12345
+set order_date which is text to &quot;2024-01-15&quot;
+set order_total which is decimal to 299.99
+</code></pre>
+<h3>Module-based Operations</h3>
+<pre><code class="language-roe">module user_data
+  action create_user_summary with id which is int, name which is text, email which is text gives text
+    give &quot;User #[id]: [name] ([email])&quot;
+  end action
+  
+  action validate_user_data with name which is text, email which is text gives flag
+    when name is equal to &quot;&quot; or email is equal to &quot;&quot; then
+      give false
+    otherwise
+      give true
+    end when
+  end action
+end module
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand data structures in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/task-actions/">Task Actions</a></strong> - Learn about specialized task automation</li>
+<li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Command-line tools for development</li>
+<li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Understanding compilation to WASM</li>
+<li><strong><a href="/guide/modules/">Modules</a></strong> - Review module organization patterns</li>
+</ul>
+<p>Data structures provide a foundation for organizing complex data in your Roelang applications. Use them to plan your data architecture and create maintainable, well-structured code.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/actions/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Actions</span>
+        </a>
+        
+        
+        
+        <a href="/guide/task-actions/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Task Actions</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

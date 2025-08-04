@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modules | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Organize and structure your Roelang code with modules for better maintainability.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Modules | Roelang">
+  <meta property="og:description" content="Organize and structure your Roelang code with modules for better maintainability.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/modules/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Modules | Roelang">
+  <meta name="twitter:description" content="Organize and structure your Roelang code with modules for better maintainability.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Modules</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Modules</h1>
+        
+        <p class="text-xl text-gray-600">Organize and structure your Roelang code with modules for better maintainability.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Modules in Roelang provide a way to organize related functionality into logical groups, making your code more maintainable, reusable, and easier to understand.</p>
+<h2>Basic Module Syntax</h2>
+<h3>Simple Module Declaration</h3>
+<pre><code class="language-roe">module utilities
+  // Module content goes here
+end module
+</code></pre>
+<h3>Module with Actions</h3>
+<pre><code class="language-roe">module math_helpers
+  action add with a which is int, b which is int gives int
+    give a + b
+  end action
+  
+  action multiply with x which is decimal, y which is decimal gives decimal
+    give x * y
+  end action
+end module
+
+// Using module actions
+set sum from run math_helpers.add with 10, 5
+set product from run math_helpers.multiply with 3.14, 2.0
+
+display &quot;Sum: [sum]&quot;
+display &quot;Product: [product]&quot;
+</code></pre>
+<h2>Module Organization Patterns</h2>
+<h3>Utility Modules</h3>
+<pre><code class="language-roe">module string_utils
+  action capitalize with text which is text gives text
+    // Simplified capitalization - first letter uppercase
+    give text  // In real implementation would capitalize first letter
+  end action
+  
+  action format_phone with area which is text, number which is text gives text
+    give &quot;([area]) [number]&quot;
+  end action
+  
+  action validate_email with email which is text gives flag
+    // Simplified email validation
+    when email is equal to &quot;&quot; then
+      give false
+    otherwise
+      give true
+    end when
+  end action
+end module
+
+// Usage
+set user_name which is text to &quot;alice&quot;
+set formatted_name from run string_utils.capitalize with user_name
+
+set phone from run string_utils.format_phone with &quot;555&quot;, &quot;123-4567&quot;
+set email_valid from run string_utils.validate_email with &quot;user@example.com&quot;
+
+display &quot;Name: [formatted_name]&quot;
+display &quot;Phone: [phone]&quot;
+display &quot;Email valid: [email_valid]&quot;
+</code></pre>
+<h3>Business Logic Modules</h3>
+<pre><code class="language-roe">module order_processing
+  action calculate_tax with amount which is decimal, rate which is decimal gives decimal
+    give amount * rate
+  end action
+  
+  action apply_discount with amount which is decimal, discount_percent which is decimal gives decimal
+    set discount_amount to amount * (discount_percent / 100)
+    give amount - discount_amount
+  end action
+  
+  action calculate_shipping with weight which is decimal, distance which is decimal gives decimal
+    set base_rate which is decimal to 5.00
+    set weight_rate to weight * 0.50
+    set distance_rate to distance * 0.10
+    give base_rate + weight_rate + distance_rate
+  end action
+end module
+
+// Process an order
+set order_subtotal which is decimal to 100.00
+set tax_rate which is decimal to 0.08
+set discount_percentage which is decimal to 10.0
+set package_weight which is decimal to 2.5
+set delivery_distance which is decimal to 15.0
+
+set discounted_amount from run order_processing.apply_discount with order_subtotal, discount_percentage
+set tax_amount from run order_processing.calculate_tax with discounted_amount, tax_rate
+set shipping_cost from run order_processing.calculate_shipping with package_weight, delivery_distance
+set final_total to discounted_amount + tax_amount + shipping_cost
+
+display &quot;Order Calculation:&quot;
+display &quot;Subtotal: $[order_subtotal]&quot;
+display &quot;After discount: $[discounted_amount]&quot;
+display &quot;Tax: $[tax_amount]&quot;
+display &quot;Shipping: $[shipping_cost]&quot;
+display &quot;Total: $[final_total]&quot;
+</code></pre>
+<h2>Data Processing Modules</h2>
+<h3>Collection Processing</h3>
+<pre><code class="language-roe">module data_analysis
+  action sum_list with numbers which are list of int gives int
+    set total which is int to 0
+    for each number in numbers
+      set total to total + number
+    end for
+    give total
+  end action
+  
+  action average_list with numbers which are list of int gives decimal
+    set total which is int to 0
+    set count which is int to 0
+    
+    for each number in numbers
+      set total to total + number
+      set count to count + 1
+    end for
+    
+    when count is equal to 0 then
+      give 0.0
+    otherwise
+      give total / count
+    end when
+  end action
+  
+  action find_maximum with numbers which are list of int gives int
+    set max_value which is int to -999999
+    
+    for each number in numbers
+      when number is greater than max_value then
+        set max_value to number
+      end when
+    end for
+    
+    give max_value
+  end action
+end module
+
+// Analyze test scores
+set test_scores which are list of int to [85, 92, 78, 95, 88, 76, 94]
+
+set total_points from run data_analysis.sum_list with test_scores
+set class_average from run data_analysis.average_list with test_scores
+set highest_score from run data_analysis.find_maximum with test_scores
+
+display &quot;Class Performance Analysis:&quot;
+display &quot;Total Points: [total_points]&quot;
+display &quot;Class Average: [class_average]%&quot;
+display &quot;Highest Score: [highest_score]%&quot;
+</code></pre>
+<h3>Validation Module</h3>
+<pre><code class="language-roe">module input_validation
+  action validate_age with age which is int gives flag
+    when age is less than 0 or age is greater than 150 then
+      give false
+    otherwise
+      give true
+    end when
+  end action
+  
+  action validate_password with password which is text gives flag
+    when password is equal to &quot;&quot; then
+      give false
+    otherwise
+      // Simplified password validation - check minimum length
+      give true
+    end when
+  end action
+  
+  action validate_required_field with value which is text gives flag
+    when value is equal to &quot;&quot; then
+      give false
+    otherwise
+      give true
+    end when
+  end action
+  
+  action generate_error_message with field which is text, value which is text gives text
+    when value is equal to &quot;&quot; then
+      give &quot;Error: [field] is required&quot;
+    otherwise
+      give &quot;Error: Invalid [field] value: [value]&quot;
+    end when
+  end action
+end module
+
+// Validate user registration
+set user_name which is text to &quot;alice&quot;
+set user_age which is int to 25
+set user_password which is text to &quot;secret123&quot;
+
+set name_valid from run input_validation.validate_required_field with user_name
+set age_valid from run input_validation.validate_age with user_age
+set password_valid from run input_validation.validate_password with user_password
+
+set all_valid to name_valid and age_valid and password_valid
+
+when all_valid then
+  display &quot;✅ User registration data is valid&quot;
+otherwise
+  display &quot;❌ Registration validation failed:&quot;
+  
+  when not name_valid then
+    set error_msg from run input_validation.generate_error_message with &quot;username&quot;, user_name
+    display error_msg
+  end when
+  
+  when not age_valid then
+    set error_msg from run input_validation.generate_error_message with &quot;age&quot;, user_age
+    display error_msg
+  end when
+  
+  when not password_valid then
+    set error_msg from run input_validation.generate_error_message with &quot;password&quot;, user_password
+    display error_msg
+  end when
+end when
+</code></pre>
+<h2>Specialized Modules</h2>
+<h3>Date and Time Module</h3>
+<pre><code class="language-roe">module date_utils
+  action format_date with year which is int, month which is int, day which is int gives text
+    give &quot;[year]-[month]-[day]&quot;
+  end action
+  
+  action is_weekend with day_name which is text gives flag
+    when day_name is equal to &quot;Saturday&quot; or day_name is equal to &quot;Sunday&quot; then
+      give true
+    otherwise
+      give false
+    end when
+  end action
+  
+  action days_in_month with month which is int, year which is int gives int
+    when month is equal to 2 then
+      // Simplified leap year check
+      when year % 4 is equal to 0 then
+        give 29
+      otherwise
+        give 28
+      end when
+    end when
+    
+    when month is equal to 4 or month is equal to 6 or month is equal to 9 or month is equal to 11 then
+      give 30
+    otherwise
+      give 31
+    end when
+  end action
+end module
+
+// Date operations
+set current_date from run date_utils.format_date with 2024, 1, 15
+set today which is text to &quot;Monday&quot;
+set is_weekend_day from run date_utils.is_weekend with today
+set feb_days from run date_utils.days_in_month with 2, 2024
+
+display &quot;Current date: [current_date]&quot;
+display &quot;Is weekend: [is_weekend_day]&quot;
+display &quot;Days in February 2024: [feb_days]&quot;
+</code></pre>
+<h3>File Processing Module</h3>
+<pre><code class="language-roe">module file_utils
+  action get_file_extension with filename which is text gives text
+    // Simplified - in real implementation would parse file extension
+    when filename is equal to &quot;document.pdf&quot; then
+      give &quot;pdf&quot;
+    end when
+    
+    when filename is equal to &quot;image.jpg&quot; then
+      give &quot;jpg&quot;
+    end when
+    
+    give &quot;unknown&quot;
+  end action
+  
+  action is_image_file with filename which is text gives flag
+    set extension from run file_utils.get_file_extension with filename
+    
+    when extension is equal to &quot;jpg&quot; or extension is equal to &quot;png&quot; or extension is equal to &quot;gif&quot; then
+      give true
+    otherwise
+      give false
+    end when
+  end action
+  
+  action format_file_size with size_bytes which is int gives text
+    when size_bytes is less than 1024 then
+      give &quot;[size_bytes] bytes&quot;
+    end when
+    
+    when size_bytes is less than 1048576 then
+      set kb to size_bytes / 1024
+      give &quot;[kb] KB&quot;
+    otherwise
+      set mb to size_bytes / 1048576
+      give &quot;[mb] MB&quot;
+    end when
+  end action
+end module
+
+// Process file information
+set files which are list of text to [&quot;document.pdf&quot;, &quot;image.jpg&quot;, &quot;data.txt&quot;]
+set file_sizes which are list of int to [1024000, 2048000, 512]
+
+set file_index which is int to 0
+for each filename in files
+  set file_index to file_index + 1
+  
+  set is_image from run file_utils.is_image_file with filename
+  set extension from run file_utils.get_file_extension with filename
+  
+  display &quot;File [file_index]: [filename]&quot;
+  display &quot;  Extension: [extension]&quot;
+  display &quot;  Is image: [is_image]&quot;
+  display &quot;&quot;
+end for
+</code></pre>
+<h2>Module Best Practices</h2>
+<h3>1. Single Responsibility</h3>
+<pre><code class="language-roe">// Good: Focused module
+module email_service
+  action send_welcome_email with user_email which is text gives flag
+    display &quot;Sending welcome email to [user_email]&quot;
+    give true
+  end action
+  
+  action send_password_reset with user_email which is text gives flag
+    display &quot;Sending password reset to [user_email]&quot;
+    give true
+  end action
+end module
+
+// Avoid: Mixed responsibilities
+module mixed_service
+  action send_email with email which is text gives flag
+    // Email logic
+    give true
+  end action
+  
+  action calculate_tax with amount which is decimal gives decimal
+    // Tax calculation doesn't belong here
+    give amount * 0.08
+  end action
+end module
+</code></pre>
+<h3>2. Clear Action Names</h3>
+<pre><code class="language-roe">module user_management
+  // Good: Clear, descriptive names
+  action create_new_user with name which is text, email which is text gives flag
+    display &quot;Creating user: [name] ([email])&quot;
+    give true
+  end action
+  
+  action validate_user_credentials with username which is text, password which is text gives flag
+    display &quot;Validating credentials for: [username]&quot;
+    give true
+  end action
+  
+  action deactivate_user_account with user_id which is int gives flag
+    display &quot;Deactivating user account: [user_id]&quot;
+    give true
+  end action
+end module
+</code></pre>
+<h3>3. Consistent Return Types</h3>
+<pre><code class="language-roe">module status_checker
+  // Consistent: All actions return flags for status
+  action is_server_online with server_name which is text gives flag
+    display &quot;Checking server: [server_name]&quot;
+    give true
+  end action
+  
+  action is_database_accessible with db_name which is text gives flag
+    display &quot;Checking database: [db_name]&quot;
+    give true
+  end action
+  
+  action is_service_healthy with service_name which is text gives flag
+    display &quot;Checking service: [service_name]&quot;
+    give true
+  end action
+end module
+</code></pre>
+<h3>4. Error Handling</h3>
+<pre><code class="language-roe">module safe_operations
+  action divide_safely with numerator which is decimal, denominator which is decimal gives decimal
+    when denominator is equal to 0.0 then
+      display &quot;Error: Division by zero&quot;
+      give 0.0
+    otherwise
+      give numerator / denominator
+    end when
+  end action
+  
+  action parse_number_safely with text_value which is text gives int
+    when text_value is equal to &quot;&quot; then
+      display &quot;Error: Empty string cannot be parsed&quot;
+      give 0
+    otherwise
+      // Simplified parsing - would have proper number parsing
+      give 42
+    end when
+  end action
+end module
+</code></pre>
+<h2>Module Usage Patterns</h2>
+<h3>Configuration Module</h3>
+<pre><code class="language-roe">module app_config
+  action get_database_url gives text
+    give &quot;postgresql://localhost:5432/myapp&quot;
+  end action
+  
+  action get_max_connections gives int
+    give 100
+  end action
+  
+  action get_session_timeout gives int
+    give 3600  // 1 hour in seconds
+  end action
+  
+  action is_debug_mode gives flag
+    give false
+  end action
+end module
+
+// Use configuration throughout the application
+set db_url from run app_config.get_database_url
+set max_conn from run app_config.get_max_connections
+set debug_enabled from run app_config.is_debug_mode
+
+display &quot;Database URL: [db_url]&quot;
+display &quot;Max connections: [max_conn]&quot;
+display &quot;Debug mode: [debug_enabled]&quot;
+</code></pre>
+<h3>Logging Module</h3>
+<pre><code class="language-roe">module logger
+  action log_info with message which is text
+    display &quot;[INFO] [message]&quot;
+  end action
+  
+  action log_warning with message which is text
+    display &quot;[WARNING] [message]&quot;
+  end action
+  
+  action log_error with message which is text
+    display &quot;[ERROR] [message]&quot;
+  end action
+  
+  action log_with_timestamp with level which is text, message which is text
+    set timestamp which is text to &quot;2024-01-15 10:30:00&quot;
+    display &quot;[timestamp] [[level]] [message]&quot;
+  end action
+end module
+
+// Use logging throughout the application
+run logger.log_info with &quot;Application starting&quot;
+run logger.log_warning with &quot;Configuration file not found, using defaults&quot;
+run logger.log_error with &quot;Database connection failed&quot;
+run logger.log_with_timestamp with &quot;DEBUG&quot;, &quot;Processing user request&quot;
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand modules in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/actions/">Actions</a></strong> - Deep dive into creating module actions</li>
+<li><strong><a href="/guide/data-structures/">Data Structures</a></strong> - Use modules with custom data types</li>
+<li><strong><a href="/guide/task-actions/">Task Actions</a></strong> - Combine modules with task automation</li>
+<li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Learn about module compilation and organization</li>
+</ul>
+<p>Modules are essential for organizing complex Roelang applications. Use them to create clean, maintainable code with clear separation of concerns and reusable functionality.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/loops/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Loops</span>
+        </a>
+        
+        
+        
+        <a href="/guide/actions/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Actions</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

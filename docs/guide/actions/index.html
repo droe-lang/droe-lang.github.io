@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actions | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Create reusable functions with parameters and return values in Roelang modules.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Actions | Roelang">
+  <meta property="og:description" content="Create reusable functions with parameters and return values in Roelang modules.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/actions/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Actions | Roelang">
+  <meta name="twitter:description" content="Create reusable functions with parameters and return values in Roelang modules.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Actions</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Actions</h1>
+        
+        <p class="text-xl text-gray-600">Create reusable functions with parameters and return values in Roelang modules.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Actions are functions within modules that accept parameters and return values. They enable code reuse, encapsulation, and clean separation of concerns in Roelang programs.</p>
+<h2>Action Syntax</h2>
+<h3>Basic Action Structure</h3>
+<pre><code class="language-roe">module module_name
+  action action_name with parameter1 which is type1, parameter2 which is type2 gives return_type
+    // Action body
+    give return_value
+  end action
+end module
+</code></pre>
+<h3>Simple Example</h3>
+<pre><code class="language-roe">module calculator
+  action add with a which is int, b which is int gives int
+    give a + b
+  end action
+end module
+
+// Using the action
+set result from run calculator.add with 10, 5
+display &quot;Result: [result]&quot;  // Displays: Result: 15
+</code></pre>
+<h2>Parameter Types</h2>
+<h3>Single Parameter Actions</h3>
+<pre><code class="language-roe">module formatter
+  action capitalize with text which is text gives text
+    // Simplified capitalization
+    give text  // In real implementation, would capitalize first letter
+  end action
+  
+  action double_value with number which is int gives int
+    give number * 2
+  end action
+  
+  action is_positive with value which is decimal gives flag
+    give value &gt; 0
+  end action
+end module
+
+set name which is text to &quot;alice&quot;
+set count which is int to 7
+set price which is decimal to -5.50
+
+set formatted_name from run formatter.capitalize with name
+set doubled_count from run formatter.double_value with count
+set is_positive_price from run formatter.is_positive with price
+
+display &quot;Formatted: [formatted_name]&quot;
+display &quot;Doubled: [doubled_count]&quot;
+display &quot;Is positive: [is_positive_price]&quot;
+</code></pre>
+<h3>Multiple Parameter Actions</h3>
+<pre><code class="language-roe">module geometry
+  action rectangle_area with width which is decimal, height which is decimal gives decimal
+    give width * height
+  end action
+  
+  action circle_area with radius which is decimal gives decimal
+    set pi which is decimal to 3.14159
+    give pi * radius * radius
+  end action
+  
+  action distance with x1 which is decimal, y1 which is decimal, x2 which is decimal, y2 which is decimal gives decimal
+    set dx to x2 - x1
+    set dy to y2 - y1
+    // Simplified - would use proper square root
+    give dx + dy  // Placeholder for actual distance calculation
+  end action
+end module
+
+set room_area from run geometry.rectangle_area with 12.5, 8.0
+set garden_area from run geometry.circle_area with 3.0
+set point_distance from run geometry.distance with 0.0, 0.0, 3.0, 4.0
+
+display &quot;Room area: [room_area] sq ft&quot;
+display &quot;Garden area: [garden_area] sq ft&quot;
+display &quot;Distance: [point_distance] units&quot;
+</code></pre>
+<h2>Return Types</h2>
+<h3>Returning Different Data Types</h3>
+<pre><code class="language-roe">module converters
+  // Returns text
+  action number_to_text with number which is int gives text
+    // Simplified conversion
+    when number is equal to 1 then give &quot;one&quot; end when
+    when number is equal to 2 then give &quot;two&quot; end when
+    give &quot;other&quot;
+  end action
+  
+  // Returns decimal
+  action fahrenheit_to_celsius with fahrenheit which is decimal gives decimal
+    give (fahrenheit - 32) * 5 / 9
+  end action
+  
+  // Returns flag
+  action is_even with number which is int gives flag
+    give number % 2 is equal to 0
+  end action
+  
+  // Returns list
+  action create_range with start which is int, end which is int gives list of int
+    // Simplified - would create actual range
+    give [1, 2, 3, 4, 5]
+  end action
+end module
+
+set text_number from run converters.number_to_text with 2
+set celsius_temp from run converters.fahrenheit_to_celsius with 32.0
+set is_even_number from run converters.is_even with 7
+set number_range from run converters.create_range with 1, 5
+
+display &quot;Number as text: [text_number]&quot;
+display &quot;Temperature: [celsius_temp]°C&quot;
+display &quot;Is even: [is_even_number]&quot;
+display &quot;Range: [number_range]&quot;
+</code></pre>
+<h2>Working with Collections</h2>
+<h3>Actions that Process Lists</h3>
+<pre><code class="language-roe">module list_operations
+  action sum_integers with numbers which are list of int gives int
+    set total which is int to 0
+    for each number in numbers
+      set total to total + number
+    end for
+    give total
+  end action
+  
+  action count_items with items which are list of text gives int
+    set count which is int to 0
+    for each item in items
+      set count to count + 1
+    end for
+    give count
+  end action
+  
+  action find_maximum with values which are list of decimal gives decimal
+    set max_value which is decimal to -999999.0
+    for each value in values
+      when value is greater than max_value then
+        set max_value to value
+      end when
+    end for
+    give max_value
+  end action
+  
+  action contains_item with items which are list of text, search_item which is text gives flag
+    for each item in items
+      when item is equal to search_item then
+        give true
+      end when
+    end for
+    give false
+  end action
+end module
+
+set scores which are list of int to [85, 92, 78, 95, 88]
+set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
+set prices which are list of decimal to [19.99, 29.50, 15.75, 45.00]
+
+set total_score from run list_operations.sum_integers with scores
+set name_count from run list_operations.count_items with names
+set highest_price from run list_operations.find_maximum with prices
+set has_alice from run list_operations.contains_item with names, &quot;Alice&quot;
+
+display &quot;Total score: [total_score]&quot;
+display &quot;Number of names: [name_count]&quot;
+display &quot;Highest price: $[highest_price]&quot;
+display &quot;Contains Alice: [has_alice]&quot;
+</code></pre>
+<h3>Actions that Return Collections</h3>
+<pre><code class="language-roe">module collection_builders
+  action create_number_sequence with start which is int, count which is int gives list of int
+    // Simplified - would create actual sequence
+    give [1, 2, 3, 4, 5]
+  end action
+  
+  action filter_positive with numbers which are list of int gives list of int
+    // Simplified - would filter actual positive numbers
+    give [1, 2, 3]
+  end action
+  
+  action split_text with text which is text, delimiter which is text gives list of text
+    // Simplified text splitting
+    when delimiter is equal to &quot;,&quot; then
+      give [&quot;part1&quot;, &quot;part2&quot;, &quot;part3&quot;]
+    otherwise
+      give [text]
+    end when
+  end action
+end module
+
+set sequence from run collection_builders.create_number_sequence with 1, 5
+set positive_nums from run collection_builders.filter_positive with [-2, -1, 0, 1, 2]
+set text_parts from run collection_builders.split_text with &quot;a,b,c&quot;, &quot;,&quot;
+
+display &quot;Sequence: [sequence]&quot;
+display &quot;Positive numbers: [positive_nums]&quot;
+display &quot;Text parts: [text_parts]&quot;
+</code></pre>
+<h2>Business Logic Actions</h2>
+<h3>Validation Actions</h3>
+<pre><code class="language-roe">module validation_service
+  action validate_email with email which is text gives flag
+    when email is equal to &quot;&quot; then
+      give false
+    end when
+    
+    // Simplified email validation
+    when email is equal to &quot;user@example.com&quot; then
+      give true
+    otherwise
+      give false
+    end when
+  end action
+  
+  action validate_password with password which is text gives flag
+    when password is equal to &quot;&quot; then
+      give false
+    end when
+    
+    // Check minimum length (simplified)
+    give true
+  end action
+  
+  action validate_age with age which is int gives flag
+    when age is less than 0 or age is greater than 150 then
+      give false
+    otherwise
+      give true
+    end when
+  end action
+  
+  action create_validation_report with email which is text, password which is text, age which is int gives text
+    set email_valid from run validation_service.validate_email with email
+    set password_valid from run validation_service.validate_password with password
+    set age_valid from run validation_service.validate_age with age
+    
+    when email_valid and password_valid and age_valid then
+      give &quot;All fields are valid&quot;
+    otherwise
+      give &quot;Validation failed - please check your inputs&quot;
+    end when
+  end action
+end module
+
+set user_email which is text to &quot;user@example.com&quot;
+set user_password which is text to &quot;secret123&quot;
+set user_age which is int to 25
+
+set validation_report from run validation_service.create_validation_report with user_email, user_password, user_age
+display validation_report
+</code></pre>
+<h3>Calculation Actions</h3>
+<pre><code class="language-roe">module financial_calculator
+  action calculate_simple_interest with principal which is decimal, rate which is decimal, time which is decimal gives decimal
+    give principal * rate * time / 100
+  end action
+  
+  action calculate_compound_interest with principal which is decimal, rate which is decimal, time which is decimal, compounds_per_year which is int gives decimal
+    // Simplified compound interest calculation
+    set compound_factor to 1 + (rate / 100)
+    give principal * compound_factor
+  end action
+  
+  action calculate_loan_payment with loan_amount which is decimal, annual_rate which is decimal, years which is int gives decimal
+    set monthly_rate to annual_rate / 12 / 100
+    set num_payments to years * 12
+    
+    // Simplified payment calculation
+    give loan_amount / num_payments
+  end action
+  
+  action apply_tax with amount which is decimal, tax_rate which is decimal gives decimal
+    give amount * (1 + tax_rate / 100)
+  end action
+end module
+
+set investment_principal which is decimal to 10000.00
+set interest_rate which is decimal to 5.0
+set investment_years which is decimal to 3.0
+
+set simple_interest from run financial_calculator.calculate_simple_interest with investment_principal, interest_rate, investment_years
+set compound_interest from run financial_calculator.calculate_compound_interest with investment_principal, interest_rate, investment_years, 12
+
+set loan_amount which is decimal to 250000.00
+set loan_rate which is decimal to 4.5
+set loan_years which is int to 30
+set monthly_payment from run financial_calculator.calculate_loan_payment with loan_amount, loan_rate, loan_years
+
+display &quot;Simple Interest: $[simple_interest]&quot;
+display &quot;Compound Interest: $[compound_interest]&quot;
+display &quot;Monthly Payment: $[monthly_payment]&quot;
+</code></pre>
+<h2>Utility Actions</h2>
+<h3>String Processing Actions</h3>
+<pre><code class="language-roe">module text_processor
+  action format_name with first_name which is text, last_name which is text gives text
+    give last_name + &quot;, &quot; + first_name
+  end action
+  
+  action create_username with first_name which is text, last_name which is text gives text
+    give first_name + &quot;.&quot; + last_name
+  end action
+  
+  action format_currency with amount which is decimal, currency which is text gives text
+    give &quot;[currency][amount]&quot;
+  end action
+  
+  action truncate_text with text which is text, max_length which is int gives text
+    // Simplified truncation
+    when max_length is less than 10 then
+      give text + &quot;...&quot;
+    otherwise
+      give text
+    end when
+  end action
+end module
+
+
+set person_first which is text to &quot;Alice&quot;
+set person_last which is text to &quot;Johnson&quot;
+set salary which is decimal to 75000.00
+
+set formatted_name from run text_processor.format_name with person_first, person_last
+set username from run text_processor.create_username with person_first, person_last
+set formatted_salary from run text_processor.format_currency with salary, &quot;$&quot;
+
+display &quot;Name: [formatted_name]&quot;
+display &quot;Username: [username]&quot;
+display &quot;Salary: [formatted_salary]&quot;
+</code></pre>
+<h3>Date and Time Actions</h3>
+<pre><code class="language-roe">module date_helper
+  action format_date with year which is int, month which is int, day which is int gives text
+    give &quot;[year]-[month]-[day]&quot;
+  end action
+  
+  action calculate_age with birth_year which is int, current_year which is int gives int
+    give current_year - birth_year
+  end action
+  
+  action is_leap_year with year which is int gives flag
+    when year % 4 is equal to 0 then
+      give true
+    otherwise
+      give false
+    end when
+  end action
+  
+  action days_until_birthday with current_day which is int, birthday_day which is int gives int
+    when birthday_day is greater than current_day then
+      give birthday_day - current_day
+    otherwise
+      give (365 - current_day) + birthday_day
+    end when
+  end action
+end module
+
+set birth_year which is int to 1995
+set current_year which is int to 2024
+set today_day which is int to 100
+set birthday_day which is int to 150
+
+set formatted_date from run date_helper.format_date with 2024, 1, 15
+set person_age from run date_helper.calculate_age with birth_year, current_year
+set is_leap from run date_helper.is_leap_year with 2024
+set days_to_birthday from run date_helper.days_until_birthday with today_day, birthday_day
+
+display &quot;Date: [formatted_date]&quot;
+display &quot;Age: [person_age] years&quot;
+display &quot;Is leap year: [is_leap]&quot;
+display &quot;Days until birthday: [days_to_birthday]&quot;
+</code></pre>
+<h2>Action Best Practices</h2>
+<h3>1. Single Responsibility</h3>
+<pre><code class="language-roe">// Good: Each action has one clear purpose
+module user_service
+  action create_user with name which is text, email which is text gives flag
+    display &quot;Creating user: [name]&quot;
+    give true
+  end action
+  
+  action validate_user_email with email which is text gives flag
+    // Email validation logic only
+    give true
+  end action
+  
+  action send_welcome_email with email which is text gives flag
+    display &quot;Sending welcome email to [email]&quot;
+    give true
+  end action
+end module
+
+// Avoid: Action doing too many things
+module bad_user_service
+  action create_and_welcome_user with name which is text, email which is text gives flag
+    // Creates user, validates email, sends email, logs activity...
+    // Too many responsibilities in one action
+    give true
+  end action
+end module
+</code></pre>
+<h3>2. Clear Parameter Names</h3>
+<pre><code class="language-roe">module order_calculator
+  // Good: Descriptive parameter names
+  action calculate_total_with_tax with subtotal which is decimal, tax_rate which is decimal gives decimal
+    give subtotal * (1 + tax_rate)
+  end action
+  
+  action apply_discount_percentage with original_price which is decimal, discount_percent which is decimal gives decimal
+    give original_price * (1 - discount_percent / 100)
+  end action
+end module
+</code></pre>
+<h3>3. Consistent Return Types</h3>
+<pre><code class="language-roe">module status_service
+  // Good: All status checks return flags
+  action is_user_active with user_id which is int gives flag
+    give true
+  end action
+  
+  action is_payment_valid with payment_id which is int gives flag
+    give true
+  end action
+  
+  action is_order_complete with order_id which is int gives flag
+    give true
+  end action
+end module
+</code></pre>
+<h3>4. Error Handling</h3>
+<pre><code class="language-roe">module safe_calculator
+  action divide_safely with numerator which is decimal, denominator which is decimal gives decimal
+    when denominator is equal to 0.0 then
+      display &quot;Warning: Division by zero, returning 0&quot;
+      give 0.0
+    otherwise
+      give numerator / denominator
+    end when
+  end action
+  
+  action get_percentage with part which is decimal, total which is decimal gives decimal
+    when total is equal to 0.0 then
+      display &quot;Warning: Cannot calculate percentage of zero total&quot;
+      give 0.0
+    otherwise
+      give (part / total) * 100
+    end when
+  end action
+end module
+</code></pre>
+<h2>Advanced Action Patterns</h2>
+<h3>Factory Actions</h3>
+<pre><code class="language-roe">module object_factory
+  action create_user_profile with name which is text, age which is int, email which is text gives text
+    give &quot;User: [name], Age: [age], Email: [email]&quot;
+  end action
+  
+  action create_product_listing with name which is text, price which is decimal, category which is text gives text
+    give &quot;Product: [name] - $[price] in [category]&quot;
+  end action
+end module
+</code></pre>
+<h3>Transformer Actions</h3>
+<pre><code class="language-roe">module data_transformer
+  action normalize_score with raw_score which is int, max_possible which is int gives decimal
+    give (raw_score * 100) / max_possible
+  end action
+  
+  action convert_temperature with celsius which is decimal gives decimal
+    give (celsius * 9 / 5) + 32
+  end action
+end module
+</code></pre>
+<h3>Aggregator Actions</h3>
+<pre><code class="language-roe">module report_generator
+  action summarize_sales with sales_data which are list of decimal gives text
+    set total which is decimal to 0.0
+    set count which is int to 0
+    
+    for each sale in sales_data
+      set total to total + sale
+      set count to count + 1
+    end for
+    
+    set average to total / count
+    give &quot;Total: $[total], Average: $[average], Count: [count]&quot;
+  end action
+end module
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand actions in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/data-structures/">Data Structures</a></strong> - Use actions with custom data types</li>
+<li><strong><a href="/guide/task-actions/">Task Actions</a></strong> - Learn about task-specific actions</li>
+<li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Compile and test modules with actions</li>
+<li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Understand how actions compile to WASM</li>
+</ul>
+<p>Actions are the building blocks of reusable functionality in Roelang. Use them to create clean, testable, and maintainable code that can be easily shared across your applications.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/modules/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Modules</span>
+        </a>
+        
+        
+        
+        <a href="/guide/data-structures/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Data Structures</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Syntax | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Learn the fundamental syntax and structure of the Roelang programming language.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Basic Syntax | Roelang">
+  <meta property="og:description" content="Learn the fundamental syntax and structure of the Roelang programming language.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/basics/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Basic Syntax | Roelang">
+  <meta name="twitter:description" content="Learn the fundamental syntax and structure of the Roelang programming language.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Basic Syntax</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Basic Syntax</h1>
+        
+        <p class="text-xl text-gray-600">Learn the fundamental syntax and structure of the Roelang programming language.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Roelang's syntax is designed to be readable and expressive, using natural language constructs that make code easy to understand and maintain.</p>
+<h2>Comments</h2>
+<p>Roelang supports both single-line and multi-line comments:</p>
+<pre><code class="language-roe">// This is a single-line comment
+
+/* This is a
+   multi-line comment
+   that spans several lines */
+
+display &quot;Hello, World!&quot;  // Inline comment
+</code></pre>
+<p>Comments are ignored by the compiler and are used to document your code.</p>
+<h2>Display Statements</h2>
+<p>The most basic operation in Roelang is displaying output:</p>
+<pre><code class="language-roe">display &quot;Hello, World!&quot;
+display &quot;&quot;                    // Empty line
+display &quot;Welcome to Roelang&quot;
+</code></pre>
+<p>You can display variables and expressions:</p>
+<pre><code class="language-roe">set name which is text to &quot;Alice&quot;
+display name
+display &quot;Hello, &quot; + name      // String concatenation
+display &quot;Name: [name]&quot;        // String interpolation
+</code></pre>
+<h2>Keywords and Identifiers</h2>
+<h3>Reserved Keywords</h3>
+<p>Roelang uses natural language keywords:</p>
+<pre><code class="language-roe">// Variable declaration
+set name which is text to &quot;value&quot;
+
+// Conditionals  
+when condition then
+  // code
+end when
+
+// Loops
+for each item in collection
+  // code
+end for
+
+// Modules and actions
+module name
+  action name with params gives type
+    give result
+  end action
+end module
+</code></pre>
+<h3>Identifiers</h3>
+<p>Variable and module names follow these rules:</p>
+<ul>
+<li>Must start with a letter (a-z, A-Z)</li>
+<li>Can contain letters, numbers, and underscores</li>
+<li>Case-sensitive</li>
+<li>Cannot be reserved keywords</li>
+</ul>
+<pre><code class="language-roe">// Valid identifiers
+set user_name which is text to &quot;Alice&quot;
+set firstName which is text to &quot;Bob&quot;
+set counter1 which is int to 0
+set isActive which is flag to true
+
+// Invalid identifiers
+set 123name which is text to &quot;Error&quot;    // Cannot start with number
+set for which is text to &quot;Error&quot;        // 'for' is reserved
+set user-name which is text to &quot;Error&quot;  // Hyphens not allowed
+</code></pre>
+<h2>Statements and Expressions</h2>
+<h3>Statements</h3>
+<p>Statements perform actions and don't return values:</p>
+<pre><code class="language-roe">// Display statement
+display &quot;Hello&quot;
+
+// Variable assignment
+set count which is int to 5
+
+// Control flow
+when count is greater than 0 then
+  display &quot;Positive&quot;
+end when
+</code></pre>
+<h3>Expressions</h3>
+<p>Expressions evaluate to values:</p>
+<pre><code class="language-roe">// Arithmetic expressions
+set sum to 10 + 5
+set product to width * height
+set average to total / count
+
+// String expressions
+set greeting to &quot;Hello, &quot; + name
+set message to &quot;Welcome [name] to our system!&quot;
+
+// Boolean expressions
+set is_adult to age &gt;= 18
+set can_vote to age &gt;= 18 and is_citizen
+</code></pre>
+<h2>Operators</h2>
+<h3>Arithmetic Operators</h3>
+<pre><code class="language-roe">set a which is int to 10
+set b which is int to 3
+
+set sum to a + b          // Addition: 13
+set difference to a - b   // Subtraction: 7
+set product to a * b      // Multiplication: 30
+set quotient to a / b     // Division: 3.33...
+set remainder to a % b    // Modulo: 1
+</code></pre>
+<h3>Comparison Operators</h3>
+<p>Roelang uses natural language for comparisons:</p>
+<pre><code class="language-roe">set x which is int to 10
+set y which is int to 5
+
+// Equality
+when x is equal to y then display &quot;Equal&quot; end when
+when x is not equal to y then display &quot;Not equal&quot; end when
+
+// Magnitude comparisons
+when x is greater than y then display &quot;x &gt; y&quot; end when
+when x is less than y then display &quot;x &lt; y&quot; end when
+when x is greater than or equal to y then display &quot;x &gt;= y&quot; end when
+when x is less than or equal to y then display &quot;x &lt;= y&quot; end when
+</code></pre>
+<h3>Logical Operators</h3>
+<pre><code class="language-roe">set is_adult which is flag to age &gt;= 18
+set has_license which is flag to true
+
+// AND
+when is_adult and has_license then
+  display &quot;Can drive&quot;
+end when
+
+// OR
+when is_adult or has_permission then
+  display &quot;Can enter&quot;
+end when
+
+// NOT
+when not is_busy then
+  display &quot;Available&quot;
+end when
+</code></pre>
+<h3>String Operators</h3>
+<pre><code class="language-roe">set first_name which is text to &quot;John&quot;
+set last_name which is text to &quot;Doe&quot;
+
+// Concatenation
+set full_name to first_name + &quot; &quot; + last_name
+
+// Interpolation
+set greeting to &quot;Hello, [first_name]!&quot;
+set info to &quot;Name: [full_name], Age: [age]&quot;
+</code></pre>
+<h2>Block Structure</h2>
+<p>Roelang uses explicit <code>end</code> keywords to terminate blocks:</p>
+<pre><code class="language-roe">// Conditional blocks
+when condition then
+  // statements
+end when
+
+// Loop blocks
+for each item in collection
+  // statements
+end for
+
+// Module blocks
+module utilities
+  // module content
+end module
+
+// Action blocks
+action calculate with param which is int gives int
+  // statements
+  give result
+end action
+</code></pre>
+<h2>Whitespace and Formatting</h2>
+<p>Roelang is flexible with whitespace:</p>
+<pre><code class="language-roe">// Compact style
+set name which is text to &quot;Alice&quot;
+when age is greater than 18 then display &quot;Adult&quot; end when
+
+// Expanded style
+set name which is text to &quot;Alice&quot;
+
+when age is greater than 18 then
+  display &quot;Adult&quot;
+end when
+
+// Mixed style (recommended)
+set name which is text to &quot;Alice&quot;
+set age which is int to 25
+
+when age is greater than 18 then display &quot;Adult&quot; end when
+</code></pre>
+<h2>Line Breaks and Semicolons</h2>
+<ul>
+<li>Statements are typically one per line</li>
+<li>No semicolons required</li>
+<li>Long statements can be broken across lines</li>
+</ul>
+<pre><code class="language-roe">// Single line (preferred)
+set total to price * quantity + tax
+
+// Multi-line for readability
+set total to price * quantity 
+  + tax 
+  + shipping_cost
+
+// Natural line breaks in conditionals
+when user_age is greater than or equal to 18 
+  and has_valid_id 
+  and account_is_active then
+  display &quot;Access granted&quot;
+end when
+</code></pre>
+<h2>Case Sensitivity</h2>
+<p>Roelang is case-sensitive:</p>
+<pre><code class="language-roe">set userName which is text to &quot;Alice&quot;
+set username which is text to &quot;Bob&quot;    // Different variable
+set UserName which is text to &quot;Carol&quot;  // Also different
+
+// Keywords must be lowercase
+set count which is int to 5    // Correct
+SET count WHICH IS int to 5    // Error
+</code></pre>
+<h2>String Literals</h2>
+<h3>Basic Strings</h3>
+<pre><code class="language-roe">set message which is text to &quot;Hello, World!&quot;
+set empty which is text to &quot;&quot;
+set with_quotes which is text to &quot;She said \&quot;Hello\&quot;&quot;
+</code></pre>
+<h3>Escape Sequences</h3>
+<pre><code class="language-roe">set with_newline which is text to &quot;Line 1\nLine 2&quot;
+set with_tab which is text to &quot;Name:\tValue&quot;
+set with_backslash which is text to &quot;Path: C:\\Users\\Name&quot;
+</code></pre>
+<h3>Multi-line Strings</h3>
+<pre><code class="language-roe">set long_text which is text to &quot;This is a very long string 
+that spans multiple lines 
+for better readability&quot;
+</code></pre>
+<h2>Numeric Literals</h2>
+<pre><code class="language-roe">// Integers
+set count which is int to 42
+set negative which is int to -10
+set zero which is int to 0
+
+// Decimals
+set price which is decimal to 19.99
+set negative_decimal which is decimal to -5.5
+set scientific which is decimal to 1.23e10
+</code></pre>
+<h2>Boolean Literals</h2>
+<pre><code class="language-roe">set is_active which is flag to true
+set is_hidden which is flag to false
+</code></pre>
+<h2>Collections</h2>
+<pre><code class="language-roe">// Lists (arrays)
+set numbers which are list of int to [1, 2, 3, 4, 5]
+set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
+set flags which are list of flag to [true, false, true]
+
+// Empty collections
+set empty_list which are list of text to []
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Use Descriptive Names</h3>
+<pre><code class="language-roe">// Good
+set user_age which is int to 25
+set total_price which is decimal to 199.99
+set is_authenticated which is flag to true
+
+// Avoid
+set x which is int to 25
+set temp which is decimal to 199.99
+set flag1 which is flag to true
+</code></pre>
+<h3>2. Consistent Formatting</h3>
+<pre><code class="language-roe">// Consistent spacing around operators
+set total to price + tax
+set is_valid to age &gt;= 18 and has_license
+
+// Consistent indentation in blocks
+when is_authenticated then
+  display &quot;Welcome back!&quot;
+  set last_login to current_time
+end when
+</code></pre>
+<h3>3. Group Related Code</h3>
+<pre><code class="language-roe">// User information
+set user_name which is text to &quot;Alice&quot;
+set user_age which is int to 28
+set user_email which is text to &quot;alice@example.com&quot;
+
+// Calculations
+set subtotal to price * quantity
+set tax_amount to subtotal * tax_rate
+set total to subtotal + tax_amount
+</code></pre>
+<h3>4. Use Comments Wisely</h3>
+<pre><code class="language-roe">// Calculate monthly payment for loan
+set monthly_rate to annual_rate / 12
+set num_payments to years * 12
+set payment to principal * monthly_rate / (1 - (1 + monthly_rate)^(-num_payments))
+
+display &quot;Monthly payment: $[payment]&quot;
+</code></pre>
+<h2>Common Patterns</h2>
+<h3>Input Validation</h3>
+<pre><code class="language-roe">when age is less than 0 or age is greater than 150 then
+  display &quot;Invalid age&quot;
+otherwise
+  display &quot;Age is valid: [age]&quot;
+end when
+</code></pre>
+<h3>Calculations with Formatting</h3>
+<pre><code class="language-roe">set price which is decimal to 29.99
+set quantity which is int to 3
+set total to price * quantity
+
+display &quot;Price: $[price]&quot;
+display &quot;Quantity: [quantity]&quot;
+display &quot;Total: $[total]&quot;
+</code></pre>
+<h3>Error Handling Patterns</h3>
+<pre><code class="language-roe">when file_exists then
+  display &quot;Processing file...&quot;
+  // Process file
+otherwise
+  display &quot;Error: File not found&quot;
+end when
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand Roelang's basic syntax, explore these topics:</p>
+<ul>
+<li><strong><a href="/guide/types/">Type System</a></strong> - Learn about Roelang's strong typing</li>
+<li><strong><a href="/guide/variables/">Variables</a></strong> - Variable declaration and scope</li>
+<li><strong><a href="/guide/strings/">Strings</a></strong> - String interpolation and manipulation</li>
+<li><strong><a href="/guide/collections/">Collections</a></strong> - Working with lists and arrays</li>
+<li><strong><a href="/guide/conditionals/">Conditionals</a></strong> - Control flow with when/then</li>
+<li><strong><a href="/guide/loops/">Loops</a></strong> - Iteration with for-each loops</li>
+</ul>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/project-structure/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Project Structure</span>
+        </a>
+        
+        
+        
+        <a href="/guide/types/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Type System</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

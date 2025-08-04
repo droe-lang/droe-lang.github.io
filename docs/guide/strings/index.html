@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strings &amp; Interpolation | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Master string manipulation, interpolation, and text processing in Roelang.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Strings &amp; Interpolation | Roelang">
+  <meta property="og:description" content="Master string manipulation, interpolation, and text processing in Roelang.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/strings/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Strings &amp; Interpolation | Roelang">
+  <meta name="twitter:description" content="Master string manipulation, interpolation, and text processing in Roelang.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Strings &amp; Interpolation</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Strings &amp; Interpolation</h1>
+        
+        <p class="text-xl text-gray-600">Master string manipulation, interpolation, and text processing in Roelang.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Strings are one of the most commonly used data types in programming. Roelang provides powerful and intuitive features for working with text, including string interpolation, concatenation, and various text manipulation capabilities.</p>
+<h2>String Basics</h2>
+<h3>String Declaration</h3>
+<p>Strings are declared using the <code>text</code> type:</p>
+<pre><code class="language-roe">set greeting which is text to &quot;Hello, World!&quot;
+set name which is text to &quot;Alice&quot;
+set empty_string which is text to &quot;&quot;
+</code></pre>
+<h3>String Literals</h3>
+<p>Strings are enclosed in double quotes:</p>
+<pre><code class="language-roe">set simple_text which is text to &quot;This is a simple string&quot;
+set with_numbers which is text to &quot;Version 2.1.0&quot;
+set with_special which is text to &quot;Price: $19.99&quot;
+</code></pre>
+<h3>Multi-line Strings</h3>
+<p>Roelang supports multi-line strings:</p>
+<pre><code class="language-roe">set long_message which is text to &quot;This is a very long message
+that spans multiple lines
+for better readability&quot;
+
+set formatted_text which is text to &quot;Line 1
+Line 2
+Line 3&quot;
+</code></pre>
+<h2>Escape Sequences</h2>
+<p>Use backslash escapes for special characters:</p>
+<pre><code class="language-roe">set with_quotes which is text to &quot;She said \&quot;Hello there!\&quot;&quot;
+set with_newline which is text to &quot;First line\nSecond line&quot;
+set with_tab which is text to &quot;Name:\tAlice\tAge:\t25&quot;
+set with_backslash which is text to &quot;Path: C:\\Users\\Alice&quot;
+set with_return which is text to &quot;Line 1\r\nLine 2&quot;
+</code></pre>
+<h3>Common Escape Sequences</h3>
+<table>
+<thead>
+<tr>
+<th>Sequence</th>
+<th>Character</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\&quot;</code></td>
+<td><code>&quot;</code></td>
+<td>Double quote</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td><code>\</code></td>
+<td>Backslash</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>newline</td>
+<td>Line feed</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>return</td>
+<td>Carriage return</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>tab</td>
+<td>Horizontal tab</td>
+</tr>
+</tbody>
+</table>
+<h2>String Interpolation</h2>
+<h3>Basic Interpolation</h3>
+<p>Embed variables directly in strings using square brackets:</p>
+<pre><code class="language-roe">set name which is text to &quot;Alice&quot;
+set age which is int to 28
+
+set greeting to &quot;Hello, [name]!&quot;
+set info to &quot;Name: [name], Age: [age]&quot;
+
+display greeting    // Displays: Hello, Alice!
+display info        // Displays: Name: Alice, Age: 28
+</code></pre>
+<h3>Multiple Variables</h3>
+<p>Include multiple variables in a single string:</p>
+<pre><code class="language-roe">set first_name which is text to &quot;Alice&quot;
+set last_name which is text to &quot;Johnson&quot;
+set title which is text to &quot;Dr.&quot;
+set department which is text to &quot;Engineering&quot;
+
+set introduction to &quot;Meet [title] [first_name] [last_name] from [department]&quot;
+display introduction
+// Displays: Meet Dr. Alice Johnson from Engineering
+</code></pre>
+<h3>Different Data Types</h3>
+<p>Interpolation works with all data types:</p>
+<pre><code class="language-roe">set product_name which is text to &quot;Laptop&quot;
+set price which is decimal to 1299.99
+set in_stock which is flag to true
+set quantity which is int to 15
+
+set product_info to &quot;Product: [product_name]
+Price: $[price]
+In Stock: [in_stock]
+Available: [quantity] units&quot;
+
+display product_info
+// Displays:
+// Product: Laptop
+// Price: $1299.99
+// In Stock: true
+// Available: 15 units
+</code></pre>
+<h3>Collections in Interpolation</h3>
+<p>You can interpolate entire collections:</p>
+<pre><code class="language-roe">set favorite_colors which are list of text to [&quot;blue&quot;, &quot;green&quot;, &quot;purple&quot;]
+set lucky_numbers which are list of int to [7, 13, 42]
+
+set preferences to &quot;Colors: [favorite_colors], Numbers: [lucky_numbers]&quot;
+display preferences
+// Displays: Colors: [blue, green, purple], Numbers: [7, 13, 42]
+</code></pre>
+<h2>String Concatenation</h2>
+<h3>Basic Concatenation</h3>
+<p>Join strings using the <code>+</code> operator:</p>
+<pre><code class="language-roe">set first_name which is text to &quot;Alice&quot;
+set last_name which is text to &quot;Johnson&quot;
+
+set full_name to first_name + &quot; &quot; + last_name
+display full_name    // Displays: Alice Johnson
+</code></pre>
+<h3>Multi-part Concatenation</h3>
+<p>Combine multiple strings and values:</p>
+<pre><code class="language-roe">set title which is text to &quot;Ms.&quot;
+set first_name which is text to &quot;Alice&quot;
+set last_name which is text to &quot;Johnson&quot;
+set age which is int to 28
+
+set formal_intro to title + &quot; &quot; + first_name + &quot; &quot; + last_name + &quot; (age &quot; + age + &quot;)&quot;
+display formal_intro    // Displays: Ms. Alice Johnson (age 28)
+</code></pre>
+<h3>Building Strings Progressively</h3>
+<pre><code class="language-roe">set message which is text to &quot;Dear&quot;
+set message to message + &quot; &quot; + &quot;Alice&quot;
+set message to message + &quot;,&quot;
+set message to message + &quot;\n\n&quot;
+set message to message + &quot;Thank you for your order.&quot;
+
+display message
+// Displays:
+// Dear Alice,
+//
+// Thank you for your order.
+</code></pre>
+<h2>Combining Interpolation and Concatenation</h2>
+<p>Use both techniques together for complex string building:</p>
+<pre><code class="language-roe">set customer_name which is text to &quot;Alice&quot;
+set order_id which is int to 12345
+set total which is decimal to 299.99
+set status which is text to &quot;confirmed&quot;
+
+// Using interpolation for readable templates
+set base_message to &quot;Order [order_id] for [customer_name] is [status].&quot;
+
+// Using concatenation to add dynamic parts
+set full_message to base_message + &quot; Total: $&quot; + total + &quot;. Thank you!&quot;
+
+display full_message
+// Displays: Order 12345 for Alice is confirmed. Total: $299.99. Thank you!
+</code></pre>
+<h2>Advanced String Patterns</h2>
+<h3>Template Strings</h3>
+<p>Create reusable string templates:</p>
+<pre><code class="language-roe">module email_templates
+  action welcome_email with name which is text, company which is text gives text
+    give &quot;Dear [name],\n\nWelcome to [company]! We're excited to have you join our team.\n\nBest regards,\nThe [company] Team&quot;
+  end action
+  
+  action order_confirmation with customer which is text, order_id which is int, amount which is decimal gives text
+    give &quot;Hi [customer],\n\nYour order #[order_id] has been confirmed.\nTotal: $[amount]\n\nWe'll send you updates as your order ships.\n\nThanks for your business!&quot;
+  end action
+end module
+
+set welcome_msg from run email_templates.welcome_email with &quot;Alice&quot;, &quot;Tech Corp&quot;
+set order_msg from run email_templates.order_confirmation with &quot;Bob&quot;, 67890, 199.99
+
+display welcome_msg
+display &quot;&quot;
+display order_msg
+</code></pre>
+<h3>Dynamic String Building</h3>
+<p>Build strings based on conditions:</p>
+<pre><code class="language-roe">set user_name which is text to &quot;Alice&quot;
+set user_type which is text to &quot;premium&quot;
+set points which is int to 1250
+
+set greeting to &quot;Hello, [user_name]!&quot;
+
+when user_type is equal to &quot;premium&quot; then
+  set greeting to greeting + &quot; Thanks for being a premium member.&quot;
+  set greeting to greeting + &quot; You have [points] reward points.&quot;
+end when
+
+when user_type is equal to &quot;standard&quot; then
+  set greeting to greeting + &quot; Upgrade to premium for exclusive benefits!&quot;
+end when
+
+display greeting
+</code></pre>
+<h3>Multi-line Formatted Strings</h3>
+<p>Create nicely formatted output:</p>
+<pre><code class="language-roe">set customer which is text to &quot;Alice Johnson&quot;
+set order_date which is text to &quot;2024-01-15&quot;
+set items which are list of text to [&quot;Laptop&quot;, &quot;Mouse&quot;, &quot;Keyboard&quot;]
+set total which is decimal to 1299.99
+
+set receipt to &quot;╔════════════════════════════════════╗
+║           ORDER RECEIPT            ║
+╠════════════════════════════════════╣
+║ Customer: [customer]&quot; + &quot;               ║
+║ Date: [order_date]&quot; + &quot;                    ║
+║                                    ║
+║ Items: [items]&quot; + &quot;                        ║
+║                                    ║
+║ Total: $[total]&quot; + &quot;                       ║
+╚════════════════════════════════════╝&quot;
+
+display receipt
+</code></pre>
+<h2>String Processing Patterns</h2>
+<h3>Input Validation Messages</h3>
+<pre><code class="language-roe">module validation_messages
+  action email_error with email which is text gives text
+    give &quot;Invalid email address: '[email]'. Please use format: name@domain.com&quot;
+  end action
+  
+  action password_error with min_length which is int gives text
+    give &quot;Password must be at least [min_length] characters long.&quot;
+  end action
+  
+  action range_error with value which is int, min which is int, max which is int gives text
+    give &quot;Value [value] is out of range. Must be between [min] and [max].&quot;
+  end action
+end module
+
+set user_email which is text to &quot;invalid-email&quot;
+set min_pwd_length which is int to 8
+set user_age which is int to 200
+
+set email_msg from run validation_messages.email_error with user_email
+set pwd_msg from run validation_messages.password_error with min_pwd_length
+set age_msg from run validation_messages.range_error with user_age, 0, 150
+
+display email_msg
+display pwd_msg
+display age_msg
+</code></pre>
+<h3>Report Generation</h3>
+<pre><code class="language-roe">set report_title which is text to &quot;Monthly Sales Report&quot;
+set month which is text to &quot;January 2024&quot;
+set total_sales which is decimal to 125750.50
+set num_orders which is int to 1247
+set top_product which is text to &quot;Wireless Headphones&quot;
+
+set report_header to &quot;=&quot; * 50
+set title_line to &quot;    [report_title] - [month]&quot;
+set separator to &quot;-&quot; * 50
+
+set sales_line to &quot;Total Sales: $[total_sales]&quot;
+set orders_line to &quot;Number of Orders: [num_orders]&quot;
+set product_line to &quot;Top Product: [top_product]&quot;
+
+set full_report to report_header + &quot;\n&quot; +
+                  title_line + &quot;\n&quot; +
+                  report_header + &quot;\n\n&quot; +
+                  sales_line + &quot;\n&quot; +
+                  orders_line + &quot;\n&quot; +
+                  product_line + &quot;\n\n&quot; +
+                  separator
+
+display full_report
+</code></pre>
+<h3>Configuration Messages</h3>
+<pre><code class="language-roe">set app_name which is text to &quot;TaskManager Pro&quot;
+set version which is text to &quot;2.1.0&quot;
+set build_date which is text to &quot;2024-01-15&quot;
+set config_file which is text to &quot;config.json&quot;
+
+set startup_message to &quot;[app_name] v[version]
+Built: [build_date]
+Loading configuration from: [config_file]
+Starting application...&quot;
+
+set shutdown_message to &quot;[app_name] shutting down gracefully.
+Session saved. Thank you for using [app_name]!&quot;
+
+display startup_message
+display &quot;&quot;
+display shutdown_message
+</code></pre>
+<h2>Working with User Input</h2>
+<h3>Prompts and Responses</h3>
+<pre><code class="language-roe">set user_name which is text to &quot;Alice&quot;
+set action which is text to &quot;login&quot;
+
+set prompt_message to &quot;Hello [user_name]! What would you like to do today?&quot;
+set action_message to &quot;You selected: [action]&quot;
+set confirmation to &quot;Processing [action] for user [user_name]...&quot;
+
+display prompt_message
+display action_message
+display confirmation
+</code></pre>
+<h3>Error Messages</h3>
+<pre><code class="language-roe">module error_handler
+  action file_not_found with filename which is text gives text
+    give &quot;Error: File '[filename]' not found. Please check the path and try again.&quot;
+  end action
+  
+  action access_denied with resource which is text, user which is text gives text
+    give &quot;Access denied: User '[user]' does not have permission to access '[resource]'.&quot;
+  end action
+  
+  action invalid_input with input which is text, expected which is text gives text
+    give &quot;Invalid input: '[input]'. Expected: [expected].&quot;
+  end action
+end module
+
+set missing_file which is text to &quot;data.csv&quot;
+set protected_resource which is text to &quot;admin_panel&quot;
+set current_user which is text to &quot;guest&quot;
+set bad_input which is text to &quot;abc123&quot;
+set expected_format which is text to &quot;numeric value&quot;
+
+set file_error from run error_handler.file_not_found with missing_file
+set access_error from run error_handler.access_denied with protected_resource, current_user
+set input_error from run error_handler.invalid_input with bad_input, expected_format
+
+display file_error
+display access_error
+display input_error
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Use Interpolation for Readability</h3>
+<pre><code class="language-roe">// Good: Clear and readable
+set welcome_message to &quot;Welcome [user_name]! You have [message_count] new messages.&quot;
+
+// Harder to read: Multiple concatenations
+set welcome_message to &quot;Welcome &quot; + user_name + &quot;! You have &quot; + message_count + &quot; new messages.&quot;
+</code></pre>
+<h3>2. Use Concatenation for Building Strings</h3>
+<pre><code class="language-roe">// Good: Building strings step by step
+set sql_query which is text to &quot;SELECT * FROM users&quot;
+set sql_query to sql_query + &quot; WHERE active = true&quot;
+set sql_query to sql_query + &quot; ORDER BY name&quot;
+
+// Less maintainable: Everything in interpolation
+set sql_query to &quot;SELECT * FROM users WHERE active = true ORDER BY name&quot;
+</code></pre>
+<h3>3. Create Template Functions</h3>
+<pre><code class="language-roe">module string_templates
+  action format_currency with amount which is decimal, currency which is text gives text
+    give &quot;[currency][amount]&quot;
+  end action
+  
+  action format_date with year which is int, month which is int, day which is int gives text
+    give &quot;[year]-[month]-[day]&quot;
+  end action
+  
+  action format_phone with area which is text, number which is text gives text
+    give &quot;([area]) [number]&quot;
+  end action
+end module
+</code></pre>
+<h3>4. Handle Empty Strings</h3>
+<pre><code class="language-roe">set user_input which is text to &quot;&quot;
+
+when user_input is equal to &quot;&quot; then
+  set message to &quot;Please enter a valid input.&quot;
+otherwise
+  set message to &quot;You entered: [user_input]&quot;
+end when
+
+display message
+</code></pre>
+<h3>5. Use Consistent String Formatting</h3>
+<pre><code class="language-roe">// Consistent error message format
+module error_formats
+  action standard_error with operation which is text, details which is text gives text
+    give &quot;ERROR: [operation] failed - [details]&quot;
+  end action
+  
+  action warning_message with component which is text, issue which is text gives text
+    give &quot;WARNING: [component] - [issue]&quot;
+  end action
+  
+  action info_message with action which is text, result which is text gives text
+    give &quot;INFO: [action] completed - [result]&quot;
+  end action
+end module
+</code></pre>
+<h2>Common String Patterns</h2>
+<h3>Email Generation</h3>
+<pre><code class="language-roe">set recipient which is text to &quot;alice@example.com&quot;
+set subject which is text to &quot;Welcome to our service&quot;
+set sender which is text to &quot;support@company.com&quot;
+
+set email_header to &quot;To: [recipient]
+From: [sender]
+Subject: [subject]&quot;
+
+set email_body to &quot;Dear Customer,
+
+Thank you for signing up for our service.
+We're excited to have you on board!
+
+Best regards,
+The Support Team&quot;
+
+set full_email to email_header + &quot;\n\n&quot; + email_body
+display full_email
+</code></pre>
+<h3>Log Messages</h3>
+<pre><code class="language-roe">set timestamp which is text to &quot;2024-01-15 14:30:25&quot;
+set level which is text to &quot;INFO&quot;
+set component which is text to &quot;UserService&quot;
+set message which is text to &quot;User login successful&quot;
+set user_id which is int to 12345
+
+set log_entry to &quot;[timestamp] [level] [component]: [message] (User ID: [user_id])&quot;
+display log_entry
+</code></pre>
+<h3>Configuration Strings</h3>
+<pre><code class="language-roe">set database_host which is text to &quot;localhost&quot;
+set database_port which is int to 5432
+set database_name which is text to &quot;myapp&quot;
+set ssl_enabled which is flag to true
+
+set connection_string to &quot;host=[database_host] port=[database_port] dbname=[database_name] ssl=[ssl_enabled]&quot;
+display &quot;Connecting to database: [connection_string]&quot;
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you've mastered strings and interpolation in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/collections/">Collections</a></strong> - Working with lists and groups of data</li>
+<li><strong><a href="/guide/conditionals/">Conditionals</a></strong> - Using string comparisons in logic</li>
+<li><strong><a href="/guide/loops/">Loops</a></strong> - Processing collections of strings</li>
+<li><strong><a href="/guide/modules/">Modules</a></strong> - Creating string utility modules</li>
+</ul>
+<p>String manipulation is a fundamental skill in Roelang. Use interpolation for readable templates, concatenation for dynamic building, and consistent patterns for maintainable code.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/variables/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Variables</span>
+        </a>
+        
+        
+        
+        <a href="/guide/collections/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Collections</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

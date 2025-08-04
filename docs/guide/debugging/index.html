@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debugging | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Learn techniques and tools for debugging and troubleshooting Roelang programs.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Debugging | Roelang">
+  <meta property="og:description" content="Learn techniques and tools for debugging and troubleshooting Roelang programs.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/debugging/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Debugging | Roelang">
+  <meta name="twitter:description" content="Learn techniques and tools for debugging and troubleshooting Roelang programs.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Debugging</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Debugging</h1>
+        
+        <p class="text-xl text-gray-600">Learn techniques and tools for debugging and troubleshooting Roelang programs.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Debugging is an essential skill for developing robust Roelang applications. This guide covers debugging techniques, common issues, and troubleshooting strategies for Roelang programs.</p>
+<h2>Basic Debugging Techniques</h2>
+<h3>Using Display Statements</h3>
+<p>The simplest debugging technique is adding display statements to trace program execution:</p>
+<pre><code class="language-roe">set user_age which is int to 25
+display &quot;Debug: user_age = [user_age]&quot;
+
+when user_age is greater than or equal to 18 then
+  display &quot;Debug: User is adult, proceeding...&quot;
+  display &quot;Access granted&quot;
+otherwise
+  display &quot;Debug: User is minor, access denied&quot;
+  display &quot;Access denied&quot;
+end when
+</code></pre>
+<h3>Variable State Tracking</h3>
+<p>Track variable changes throughout program execution:</p>
+<pre><code class="language-roe">set counter which is int to 0
+display &quot;Debug: Initial counter = [counter]&quot;
+
+set numbers which are list of int to [1, 2, 3, 4, 5]
+
+for each number in numbers
+  set counter to counter + number
+  display &quot;Debug: Added [number], counter now = [counter]&quot;
+end for
+
+display &quot;Debug: Final counter = [counter]&quot;
+</code></pre>
+<h3>Conditional Debug Output</h3>
+<p>Use flags to control debug output:</p>
+<pre><code class="language-roe">set debug_mode which is flag to true
+
+module debug_utils
+  action log_debug with message which is text
+    when debug_mode then
+      display &quot;[DEBUG] [message]&quot;
+    end when
+  end action
+  
+  action log_error with message which is text
+    display &quot;[ERROR] [message]&quot;
+  end action
+  
+  action log_info with message which is text
+    display &quot;[INFO] [message]&quot;
+  end action
+end module
+
+run debug_utils.log_info with &quot;Starting application&quot;
+run debug_utils.log_debug with &quot;Debug mode is enabled&quot;
+
+set user_input which is text to &quot;alice&quot;
+run debug_utils.log_debug with &quot;User input: [user_input]&quot;
+
+when user_input is equal to &quot;&quot; then
+  run debug_utils.log_error with &quot;Empty user input&quot;
+otherwise
+  run debug_utils.log_info with &quot;Processing user: [user_input]&quot;
+end when
+</code></pre>
+<h2>CLI Debugging Tools</h2>
+<h3>Verbose Compilation</h3>
+<p>Use verbose mode to see detailed compilation information:</p>
+<pre><code class="language-bash"># Compile with verbose output
+roe compile src/main.roe --verbose
+
+# This shows:
+# - Parsing steps
+# - Type checking results
+# - Code generation phases
+# - Output file information
+</code></pre>
+<h3>Debug Mode Execution</h3>
+<p>Run programs with debug information:</p>
+<pre><code class="language-bash"># Run with debug output
+roe run src/main.roe --debug
+
+# Run with execution trace
+roe run src/main.roe --trace
+
+# Combine debug and trace
+roe run src/main.roe --debug --trace
+</code></pre>
+<h3>System Diagnostics</h3>
+<p>Check system setup and dependencies:</p>
+<pre><code class="language-bash"># Run system diagnostics
+roe doctor
+
+# Check specific components
+roe doctor --component compiler
+roe doctor --component runtime
+roe doctor --component webassembly
+
+# Verbose diagnostics
+roe doctor --verbose
+</code></pre>
+<h2>Common Issues and Solutions</h2>
+<h3>Compilation Errors</h3>
+<h4>Type Mismatch Errors</h4>
+<p><strong>Problem:</strong></p>
+<pre><code class="language-roe">set age which is int to &quot;twenty-five&quot;  // Error: type mismatch
+</code></pre>
+<p><strong>Error Message:</strong></p>
+<pre><code>Error: Type mismatch at line 1:25
+Expected: int
+Got: text
+</code></pre>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-roe">set age which is int to 25  // Correct: use integer literal
+</code></pre>
+<h4>Variable Not Declared</h4>
+<p><strong>Problem:</strong></p>
+<pre><code class="language-roe">display username  // Error: username not declared
+</code></pre>
+<p><strong>Error Message:</strong></p>
+<pre><code>Error: Undefined variable 'username' at line 1:9
+</code></pre>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-roe">set username which is text to &quot;alice&quot;
+display username  // Correct: declare before use
+</code></pre>
+<h4>Missing Type Declaration</h4>
+<p><strong>Problem:</strong></p>
+<pre><code class="language-roe">set count to 5  // Error: missing type declaration
+</code></pre>
+<p><strong>Error Message:</strong></p>
+<pre><code>Error: Missing type declaration at line 1:5
+Expected: 'which is &lt;type&gt;'
+</code></pre>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-roe">set count which is int to 5  // Correct: explicit type
+</code></pre>
+<h3>Runtime Errors</h3>
+<h4>Division by Zero</h4>
+<p><strong>Problem:</strong></p>
+<pre><code class="language-roe">set numerator which is int to 10
+set denominator which is int to 0
+set result to numerator / denominator  // Runtime error
+</code></pre>
+<p><strong>Debug with Protection:</strong></p>
+<pre><code class="language-roe">set numerator which is int to 10
+set denominator which is int to 0
+
+display &quot;Debug: numerator = [numerator], denominator = [denominator]&quot;
+
+when denominator is equal to 0 then
+  display &quot;Error: Division by zero detected&quot;
+  set result which is decimal to 0.0
+otherwise
+  set result to numerator / denominator
+  display &quot;Result: [result]&quot;
+end when
+</code></pre>
+<h4>Array Index Errors (Future Feature)</h4>
+<p><strong>Problem:</strong></p>
+<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3]
+// Accessing invalid index would cause error
+</code></pre>
+<p><strong>Debug Approach:</strong></p>
+<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3]
+set count which is int to 0
+
+for each number in numbers
+  set count to count + 1
+  display &quot;Processing item [count]: [number]&quot;
+end for
+
+display &quot;Total items processed: [count]&quot;
+</code></pre>
+<h3>Logic Errors</h3>
+<h4>Incorrect Conditional Logic</h4>
+<p><strong>Problem:</strong></p>
+<pre><code class="language-roe">set score which is int to 85
+set passing_grade which is int to 80
+
+// Logic error: using 'or' instead of 'and'
+when score is greater than passing_grade or score is equal to passing_grade then
+  display &quot;Passed&quot;
+end when
+</code></pre>
+<p><strong>Debug with Explicit Checks:</strong></p>
+<pre><code class="language-roe">set score which is int to 85
+set passing_grade which is int to 80
+
+display &quot;Debug: score = [score], passing_grade = [passing_grade]&quot;
+display &quot;Debug: score &gt; passing_grade = &quot; // Would show comparison result
+
+when score is greater than or equal to passing_grade then
+  display &quot;Debug: Condition met, student passed&quot;
+  display &quot;Passed&quot;
+otherwise
+  display &quot;Debug: Condition not met, student failed&quot;
+  display &quot;Failed&quot;
+end when
+</code></pre>
+<h4>Loop Logic Issues</h4>
+<p><strong>Problem:</strong></p>
+<pre><code class="language-roe">set total which is int to 0
+set numbers which are list of int to [1, 2, 3, 4, 5]
+
+for each number in numbers
+  set total to number  // Bug: should be total + number
+end for
+
+display &quot;Total: [total]&quot;  // Will only show last number
+</code></pre>
+<p><strong>Debug Version:</strong></p>
+<pre><code class="language-roe">set total which is int to 0
+set numbers which are list of int to [1, 2, 3, 4, 5]
+set iteration which is int to 0
+
+display &quot;Debug: Starting loop with total = [total]&quot;
+
+for each number in numbers
+  set iteration to iteration + 1
+  set previous_total to total
+  set total to total + number  // Fixed: addition instead of assignment
+  
+  display &quot;Debug: Iteration [iteration]: [previous_total] + [number] = [total]&quot;
+end for
+
+display &quot;Final total: [total]&quot;
+</code></pre>
+<h2>Debugging Complex Programs</h2>
+<h3>Module Debugging</h3>
+<p><strong>Debug Module Actions:</strong></p>
+<pre><code class="language-roe">module calculator
+  action add with a which is int, b which is int gives int
+    display &quot;Debug: calculator.add called with a=[a], b=[b]&quot;
+    set result to a + b
+    display &quot;Debug: calculator.add returning [result]&quot;
+    give result
+  end action
+  
+  action multiply with x which is decimal, y which is decimal gives decimal
+    display &quot;Debug: calculator.multiply called with x=[x], y=[y]&quot;
+    set result to x * y
+    display &quot;Debug: calculator.multiply returning [result]&quot;
+    give result
+  end action
+end module
+
+set sum from run calculator.add with 10, 5
+display &quot;Sum result: [sum]&quot;
+
+set product from run calculator.multiply with 3.14, 2.0
+display &quot;Product result: [product]&quot;
+</code></pre>
+<h3>Data Flow Debugging</h3>
+<p>Track data flow through complex operations:</p>
+<pre><code class="language-roe">module data_processor
+  action validate_input with input which is text gives flag
+    display &quot;Debug: Validating input: '[input]'&quot;
+    
+    when input is equal to &quot;&quot; then
+      display &quot;Debug: Input is empty - invalid&quot;
+      give false
+    otherwise
+      display &quot;Debug: Input is not empty - valid&quot;
+      give true
+    end when
+  end action
+  
+  action process_data with data which is text gives text
+    display &quot;Debug: Processing data: '[data]'&quot;
+    
+    set is_valid from run data_processor.validate_input with data
+    display &quot;Debug: Validation result: [is_valid]&quot;
+    
+    when is_valid then
+      set result to &quot;Processed: &quot; + data
+      display &quot;Debug: Generated result: '[result]'&quot;
+      give result
+    otherwise
+      display &quot;Debug: Invalid data, returning error message&quot;
+      give &quot;Error: Invalid input&quot;
+    end when
+  end action
+end module
+
+set user_input which is text to &quot;test data&quot;
+display &quot;Debug: Starting processing with input: '[user_input]'&quot;
+
+set final_result from run data_processor.process_data with user_input
+display &quot;Final result: [final_result]&quot;
+</code></pre>
+<h2>Performance Debugging</h2>
+<h3>Timing and Performance</h3>
+<p>Add timing information to identify bottlenecks:</p>
+<pre><code class="language-roe">module performance_monitor
+  action log_start with operation which is text
+    display &quot;[PERF] Starting: [operation]&quot;
+  end action
+  
+  action log_end with operation which is text
+    display &quot;[PERF] Completed: [operation]&quot;
+  end action
+  
+  action log_progress with operation which is text, current which is int, total which is int
+    set percent which is decimal to (current * 100) / total
+    display &quot;[PERF] [operation]: [current]/[total] ([percent]%)&quot;
+  end action
+end module
+
+run performance_monitor.log_start with &quot;Data processing&quot;
+
+set large_dataset which are list of int to [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+set processed_count which is int to 0
+set total_count which is int to 10
+
+for each item in large_dataset
+  set processed_count to processed_count + 1
+  
+  // Simulate work
+  set temp_result to item * 2
+  
+  when processed_count % 3 is equal to 0 then
+    run performance_monitor.log_progress with &quot;Processing&quot;, processed_count, total_count
+  end when
+end for
+
+run performance_monitor.log_end with &quot;Data processing&quot;
+</code></pre>
+<h3>Memory Usage Debugging</h3>
+<p>Track memory-intensive operations:</p>
+<pre><code class="language-roe">module memory_monitor
+  action log_allocation with operation which is text, size which is int
+    display &quot;[MEM] Allocating for [operation]: ~[size] items&quot;
+  end action
+  
+  action log_deallocation with operation which is text
+    display &quot;[MEM] Deallocating: [operation]&quot;
+  end action
+end module
+
+run memory_monitor.log_allocation with &quot;Large number list&quot;, 1000
+
+set large_numbers which are list of int to []
+// In real implementation, would add 1000 items
+
+run memory_monitor.log_deallocation with &quot;Large number list&quot;
+</code></pre>
+<h2>WebAssembly Debugging</h2>
+<h3>Inspecting Generated WebAssembly</h3>
+<pre><code class="language-bash"># Compile to WebAssembly text format
+roe compile src/main.roe --format wat
+
+# View the generated .wat file
+cat build/main.wat
+
+# Validate WebAssembly module
+wasm-validate build/main.wasm
+
+# Disassemble binary WebAssembly
+wasm-objdump -d build/main.wasm
+</code></pre>
+<h3>Runtime Debugging</h3>
+<p>Add debug output to the WebAssembly runtime:</p>
+<pre><code class="language-javascript">// Custom debug runtime (debug-run.js)
+const fs = require('fs');
+
+async function runWasmWithDebug(wasmFile) {
+  console.log(`[DEBUG] Loading WASM file: ${wasmFile}`);
+  const wasmBuffer = fs.readFileSync(wasmFile);
+  
+  const imports = {
+    env: {
+      display: (offset, length) =&gt; {
+        console.log(`[DEBUG] Display called with offset=${offset}, length=${length}`);
+        const memory = wasmInstance.exports.memory;
+        const buffer = new Uint8Array(memory.buffer, offset, length);
+        const text = new TextDecoder().decode(buffer);
+        console.log(`[OUTPUT] ${text}`);
+      }
+    }
+  };
+  
+  console.log('[DEBUG] Instantiating WASM module...');
+  const wasmModule = await WebAssembly.instantiate(wasmBuffer, imports);
+  const wasmInstance = wasmModule.instance;
+  
+  console.log('[DEBUG] Calling main function...');
+  wasmInstance.exports.main();
+  console.log('[DEBUG] Execution completed');
+}
+
+// Usage: node debug-run.js build/main.wasm
+runWasmWithDebug(process.argv[2]);
+</code></pre>
+<h2>Debugging Best Practices</h2>
+<h3>1. Use Descriptive Debug Messages</h3>
+<pre><code class="language-roe">// Good: Descriptive debug messages
+display &quot;Debug: User authentication - checking credentials for [username]&quot;
+display &quot;Debug: Database query returned [result_count] records&quot;
+display &quot;Debug: Validation failed at step 3: email format check&quot;
+
+// Avoid: Vague messages
+display &quot;Debug: here&quot;
+display &quot;Debug: value is [value]&quot;
+display &quot;Debug: error&quot;
+</code></pre>
+<h3>2. Create Debug Utilities</h3>
+<pre><code class="language-roe">module debug_helpers
+  action dump_variables with name which is text, age which is int, active which is flag
+    display &quot;=== Variable Dump ===&quot;
+    display &quot;Name: [name]&quot;
+    display &quot;Age: [age]&quot;
+    display &quot;Active: [active]&quot;
+    display &quot;===================&quot;
+  end action
+  
+  action trace_function_entry with function_name which is text, param1 which is text, param2 which is text
+    display &quot;&gt;&gt;&gt; Entering [function_name]([param1], [param2])&quot;
+  end action
+  
+  action trace_function_exit with function_name which is text, result which is text
+    display &quot;&lt;&lt;&lt; Exiting [function_name] with result: [result]&quot;
+  end action
+end module
+</code></pre>
+<h3>3. Progressive Debugging</h3>
+<p>Build complexity gradually:</p>
+<pre><code class="language-roe">// Step 1: Test basic functionality
+display &quot;Step 1: Basic display working&quot;
+
+// Step 2: Test variables
+set test_var which is int to 42
+display &quot;Step 2: Variable test_var = [test_var]&quot;
+
+// Step 3: Test conditionals
+when test_var is greater than 0 then
+  display &quot;Step 3: Conditional logic working&quot;
+end when
+
+// Step 4: Test loops
+set test_numbers which are list of int to [1, 2, 3]
+display &quot;Step 4: Testing loop...&quot;
+for each num in test_numbers
+  display &quot;  Number: [num]&quot;
+end for
+
+// Step 5: Test modules
+module test_module
+  action test_action with input which is int gives int
+    display &quot;Step 5: Module action called with [input]&quot;
+    give input * 2
+  end action
+end module
+
+set result from run test_module.test_action with 5
+display &quot;Step 5: Module result = [result]&quot;
+</code></pre>
+<h3>4. Error Boundaries</h3>
+<p>Implement error boundaries in your code:</p>
+<pre><code class="language-roe">module safe_operations
+  action safe_divide with numerator which is decimal, denominator which is decimal gives decimal
+    when denominator is equal to 0.0 then
+      display &quot;Warning: Division by zero, returning 0&quot;
+      give 0.0
+    otherwise
+      give numerator / denominator
+    end when
+  end action
+  
+  action safe_process_user with username which is text gives text
+    when username is equal to &quot;&quot; then
+      display &quot;Error: Empty username provided&quot;
+      give &quot;Invalid user&quot;
+    otherwise
+      give &quot;Processed: &quot; + username
+    end when
+  end action
+end module
+</code></pre>
+<h2>Troubleshooting Checklist</h2>
+<p>When encountering issues, follow this systematic approach:</p>
+<h3>1. Compilation Issues</h3>
+<ul>
+<li>[ ] Check syntax for typos and missing keywords</li>
+<li>[ ] Verify all variables are declared with types</li>
+<li>[ ] Ensure all blocks have proper <code>end</code> statements</li>
+<li>[ ] Check for reserved keyword usage</li>
+</ul>
+<h3>2. Runtime Issues</h3>
+<ul>
+<li>[ ] Add debug output to trace execution flow</li>
+<li>[ ] Check variable values at key points</li>
+<li>[ ] Verify conditional logic with explicit tests</li>
+<li>[ ] Test edge cases (empty strings, zero values, etc.)</li>
+</ul>
+<h3>3. Logic Issues</h3>
+<ul>
+<li>[ ] Break down complex operations into smaller steps</li>
+<li>[ ] Test each component independently</li>
+<li>[ ] Verify loop logic with simple examples</li>
+<li>[ ] Check module action parameters and return values</li>
+</ul>
+<h3>4. Performance Issues</h3>
+<ul>
+<li>[ ] Add timing information to identify bottlenecks</li>
+<li>[ ] Monitor memory usage patterns</li>
+<li>[ ] Check for unnecessary operations in loops</li>
+<li>[ ] Profile WebAssembly execution</li>
+</ul>
+<h2>Advanced Debugging Techniques</h2>
+<h3>State Machine Debugging</h3>
+<p>For complex state-based programs:</p>
+<pre><code class="language-roe">set current_state which is text to &quot;idle&quot;
+set debug_enabled which is flag to true
+
+module state_machine
+  action change_state with from_state which is text, to_state which is text, reason which is text
+    when debug_enabled then
+      display &quot;[STATE] Changing from '[from_state]' to '[to_state]' - Reason: [reason]&quot;
+    end when
+    
+    set current_state to to_state
+  end action
+  
+  action validate_transition with from_state which is text, to_state which is text gives flag
+    when debug_enabled then
+      display &quot;[STATE] Validating transition: '[from_state]' -&gt; '[to_state]'&quot;
+    end when
+    
+    // Add validation logic here
+    give true
+  end action
+end module
+
+run state_machine.change_state with current_state, &quot;processing&quot;, &quot;User initiated action&quot;
+</code></pre>
+<h3>Integration Testing</h3>
+<p>Test interactions between modules:</p>
+<pre><code class="language-roe">module integration_tests
+  action test_user_workflow
+    display &quot;[TEST] Starting user workflow integration test&quot;
+    
+    // Test user creation
+    set user_created from run user_service.create_user with &quot;testuser&quot;, &quot;test@example.com&quot;
+    display &quot;[TEST] User creation result: [user_created]&quot;
+    
+    // Test authentication
+    set auth_result from run auth_service.authenticate with &quot;testuser&quot;, &quot;password&quot;
+    display &quot;[TEST] Authentication result: [auth_result]&quot;
+    
+    // Test data processing
+    set process_result from run data_service.process with &quot;test data&quot;
+    display &quot;[TEST] Data processing result: [process_result]&quot;
+    
+    display &quot;[TEST] Integration test completed&quot;
+  end action
+end module
+
+run integration_tests.test_user_workflow
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand debugging in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Learn debugging command-line options</li>
+<li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Debug WebAssembly output</li>
+<li><strong><a href="/guide/performance/">Performance</a></strong> - Optimize program performance</li>
+<li><strong><a href="/guide/best-practices/">Best Practices</a></strong> - Write maintainable code</li>
+</ul>
+<p>Effective debugging is crucial for developing reliable Roelang applications. Use these techniques to identify and resolve issues quickly, and build robust, maintainable programs.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/webassembly/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>WebAssembly</span>
+        </a>
+        
+        
+        
+        <div></div>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

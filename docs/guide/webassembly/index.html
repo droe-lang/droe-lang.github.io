@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAssembly | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WebAssembly | Roelang">
+  <meta property="og:description" content="Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/webassembly/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WebAssembly | Roelang">
+  <meta name="twitter:description" content="Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">WebAssembly</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">WebAssembly</h1>
+        
+        <p class="text-xl text-gray-600">Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>WebAssembly (WASM) is Roelang's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Roelang leverages WebAssembly and how to work with the compiled output.</p>
+<h2>What is WebAssembly?</h2>
+<p>WebAssembly is a binary instruction format for a stack-based virtual machine. It's designed as a portable compilation target for programming languages, enabling deployment on the web, server, and embedded environments.</p>
+<h3>Key Benefits for Roelang</h3>
+<ul>
+<li><strong>Performance</strong>: Near-native execution speed</li>
+<li><strong>Portability</strong>: Runs on any platform with a WASM runtime</li>
+<li><strong>Security</strong>: Sandboxed execution environment</li>
+<li><strong>Interoperability</strong>: Can interface with other languages</li>
+<li><strong>Compact</strong>: Small binary size for efficient distribution</li>
+</ul>
+<h2>Roelang to WebAssembly Compilation</h2>
+<h3>Compilation Pipeline</h3>
+<pre><code>.roe → Roelang Compiler → .wat → wat2wasm → .wasm
+</code></pre>
+<ol>
+<li><strong>Roelang Source</strong> (<code>.roe</code>) - Your source code</li>
+<li><strong>WebAssembly Text</strong> (<code>.wat</code>) - Human-readable WASM format</li>
+<li><strong>WebAssembly Binary</strong> (<code>.wasm</code>) - Binary executable format</li>
+</ol>
+<h3>Example Compilation</h3>
+<pre><code class="language-bash"># Compile Roelang to WebAssembly text format
+roe compile src/main.roe
+
+# This generates: build/main.wat
+
+# Convert to binary format (done automatically)
+wat2wasm build/main.wat -o build/main.wasm
+
+# Run the WebAssembly module
+node ~/.roelang/run.js build/main.wasm
+</code></pre>
+<h2>WebAssembly Text Format (.wat)</h2>
+<p>When you compile Roelang code, you first get a <code>.wat</code> file. Here's what a simple Roelang program looks like in WebAssembly text format:</p>
+<h3>Simple Display Example</h3>
+<p><strong>Roelang source:</strong></p>
+<pre><code class="language-roe">display &quot;Hello, WebAssembly!&quot;
+</code></pre>
+<p><strong>Generated WebAssembly text (.wat):</strong></p>
+<pre><code class="language-wat">(module
+  (import &quot;env&quot; &quot;display&quot; (func $display (param i32 i32)))
+  (memory (export &quot;memory&quot;) 1)
+  (data (i32.const 0) &quot;Hello, WebAssembly!&quot;)
+  
+  (func $main (export &quot;main&quot;)
+    i32.const 0    ; string offset
+    i32.const 19   ; string length
+    call $display
+  )
+)
+</code></pre>
+<h3>Variables and Operations</h3>
+<p><strong>Roelang source:</strong></p>
+<pre><code class="language-roe">set count which is int to 42
+set name which is text to &quot;Alice&quot;
+display &quot;Count: [count], Name: [name]&quot;
+</code></pre>
+<p><strong>Generated WebAssembly concepts:</strong></p>
+<ul>
+<li>Variables become local variables or global variables</li>
+<li>String interpolation becomes string concatenation operations</li>
+<li>Type checking is enforced at compile time</li>
+</ul>
+<h2>WebAssembly Module Structure</h2>
+<h3>Memory Management</h3>
+<p>Roelang uses WebAssembly's linear memory model:</p>
+<pre><code class="language-wat">(module
+  (memory (export &quot;memory&quot;) 2)  ; 2 pages = 128KB
+  
+  ;; String data stored in memory
+  (data (i32.const 0) &quot;Hello&quot;)
+  (data (i32.const 5) &quot;World&quot;)
+  
+  ;; Functions access memory using offsets
+  (func $getString (param $offset i32) (param $length i32)
+    ;; Memory access operations
+  )
+)
+</code></pre>
+<h3>Function Exports</h3>
+<p>Roelang programs export a <code>main</code> function and any module actions:</p>
+<pre><code class="language-wat">(module
+  ;; Main program entry point
+  (func $main (export &quot;main&quot;)
+    ;; Program logic
+  )
+  
+  ;; Exported module actions
+  (func $calculate_add (export &quot;calculate_add&quot;) (param i32 i32) (result i32)
+    local.get 0
+    local.get 1
+    i32.add
+  )
+)
+</code></pre>
+<h3>Type System Mapping</h3>
+<p>Roelang types map to WebAssembly as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Roelang Type</th>
+<th>WebAssembly Type</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td><code>i32</code></td>
+<td>32-bit integer</td>
+</tr>
+<tr>
+<td><code>decimal</code></td>
+<td><code>f64</code></td>
+<td>64-bit float</td>
+</tr>
+<tr>
+<td><code>flag</code></td>
+<td><code>i32</code></td>
+<td>0 = false, 1 = true</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>i32, i32</code></td>
+<td>offset + length</td>
+</tr>
+<tr>
+<td><code>list of T</code></td>
+<td><code>i32</code></td>
+<td>memory offset to array</td>
+</tr>
+</tbody>
+</table>
+<h2>Runtime Environment</h2>
+<h3>Node.js Runtime</h3>
+<p>Roelang includes a Node.js runtime (<code>run.js</code>) that provides the execution environment:</p>
+<pre><code class="language-javascript">// Simplified version of run.js
+const fs = require('fs');
+
+async function runWasm(wasmFile) {
+  const wasmBuffer = fs.readFileSync(wasmFile);
+  
+  const imports = {
+    env: {
+      display: (offset, length) =&gt; {
+        const memory = wasmInstance.exports.memory;
+        const buffer = new Uint8Array(memory.buffer, offset, length);
+        const text = new TextDecoder().decode(buffer);
+        console.log(text);
+      }
+    }
+  };
+  
+  const wasmModule = await WebAssembly.instantiate(wasmBuffer, imports);
+  const wasmInstance = wasmModule.instance;
+  
+  // Call main function
+  wasmInstance.exports.main();
+}
+</code></pre>
+<h3>Host Functions</h3>
+<p>The runtime provides host functions that Roelang programs can import:</p>
+<pre><code class="language-wat">(module
+  ;; Import host functions
+  (import &quot;env&quot; &quot;display&quot; (func $display (param i32 i32)))
+  (import &quot;env&quot; &quot;input&quot; (func $input (result i32)))
+  (import &quot;env&quot; &quot;file_read&quot; (func $file_read (param i32 i32) (result i32)))
+  
+  ;; Your program uses these imports
+)
+</code></pre>
+<h2>Performance Characteristics</h2>
+<h3>Optimization Benefits</h3>
+<p>WebAssembly provides several performance advantages:</p>
+<pre><code class="language-roe">// This Roelang code...
+set numbers which are list of int to [1, 2, 3, 4, 5]
+set total which is int to 0
+
+for each number in numbers
+  set total to total + number
+end for
+
+display &quot;Total: [total]&quot;
+</code></pre>
+<p>Compiles to efficient WebAssembly that:</p>
+<ul>
+<li>Uses native integer arithmetic</li>
+<li>Minimizes memory allocations</li>
+<li>Leverages WASM's stack-based execution model</li>
+<li>Benefits from JIT compilation in modern runtimes</li>
+</ul>
+<h3>Memory Efficiency</h3>
+<pre><code class="language-wat">(module
+  (memory (export &quot;memory&quot;) 1)  ; Start with 64KB
+  
+  ;; Efficient memory layout
+  (global $heap_pointer (mut i32) (i32.const 1024))
+  
+  (func $allocate (param $size i32) (result i32)
+    ;; Simple bump allocator
+    global.get $heap_pointer
+    global.get $heap_pointer
+    local.get $size
+    i32.add
+    global.set $heap_pointer
+  )
+)
+</code></pre>
+<h2>Cross-Platform Deployment</h2>
+<h3>Web Browsers</h3>
+<p>Deploy Roelang programs in web browsers:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Roelang in Browser&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script&gt;
+        async function loadRoelang() {
+            const response = await fetch('program.wasm');
+            const bytes = await response.arrayBuffer();
+            
+            const imports = {
+                env: {
+                    display: (offset, length) =&gt; {
+                        // Display in DOM instead of console
+                        const memory = wasmModule.instance.exports.memory;
+                        const buffer = new Uint8Array(memory.buffer, offset, length);
+                        const text = new TextDecoder().decode(buffer);
+                        document.body.innerHTML += '&lt;p&gt;' + text + '&lt;/p&gt;';
+                    }
+                }
+            };
+            
+            const wasmModule = await WebAssembly.instantiate(bytes, imports);
+            wasmModule.instance.exports.main();
+        }
+        
+        loadRoelang();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3>Server Environments</h3>
+<p>Run Roelang programs on servers:</p>
+<pre><code class="language-javascript">// server.js
+const express = require('express');
+const fs = require('fs');
+
+const app = express();
+
+app.get('/run-roelang', async (req, res) =&gt; {
+    const wasmBuffer = fs.readFileSync('program.wasm');
+    
+    let output = '';
+    const imports = {
+        env: {
+            display: (offset, length) =&gt; {
+                const memory = wasmInstance.exports.memory;
+                const buffer = new Uint8Array(memory.buffer, offset, length);
+                const text = new TextDecoder().decode(buffer);
+                output += text + '\n';
+            }
+        }
+    };
+    
+    const wasmModule = await WebAssembly.instantiate(wasmBuffer, imports);
+    const wasmInstance = wasmModule.instance;
+    
+    wasmInstance.exports.main();
+    
+    res.send(output);
+});
+
+app.listen(3000, () =&gt; {
+    console.log('Roelang server running on port 3000');
+});
+</code></pre>
+<h3>Edge Computing</h3>
+<p>Deploy on edge platforms like Cloudflare Workers:</p>
+<pre><code class="language-javascript">// worker.js
+export default {
+    async fetch(request, env, ctx) {
+        const wasmModule = await WebAssembly.instantiate(
+            env.ROELANG_PROGRAM, // WASM binary stored as env variable
+            {
+                env: {
+                    display: (offset, length) =&gt; {
+                        // Handle display in edge environment
+                    }
+                }
+            }
+        );
+        
+        wasmModule.instance.exports.main();
+        
+        return new Response('Roelang program executed');
+    },
+};
+</code></pre>
+<h2>Advanced WebAssembly Features</h2>
+<h3>Memory Management</h3>
+<pre><code class="language-wat">(module
+  (memory (export &quot;memory&quot;) 1 10)  ; Min 1 page, max 10 pages
+  
+  ;; Custom memory allocator
+  (global $free_pointer (mut i32) (i32.const 1024))
+  
+  (func $malloc (param $size i32) (result i32)
+    ;; Allocation logic
+    global.get $free_pointer
+    global.get $free_pointer
+    local.get $size
+    i32.add
+    global.set $free_pointer
+  )
+)
+</code></pre>
+<h3>Table and Function References</h3>
+<pre><code class="language-wat">(module
+  ;; Function table for dynamic dispatch
+  (table (export &quot;table&quot;) 10 funcref)
+  
+  ;; Function types
+  (type $binary_op (func (param i32 i32) (result i32)))
+  
+  ;; Functions
+  (func $add (type $binary_op) ...)
+  (func $multiply (type $binary_op) ...)
+  
+  ;; Initialize table
+  (elem (i32.const 0) $add $multiply)
+)
+</code></pre>
+<h3>SIMD Operations (Future)</h3>
+<p>Future Roelang versions may leverage WASM SIMD:</p>
+<pre><code class="language-wat">(module
+  ;; SIMD operations for array processing
+  (func $process_array (param $arr i32) (param $len i32)
+    ;; Vector operations on arrays
+    (v128.load (local.get $arr))
+    (i32x4.add ...)
+  )
+)
+</code></pre>
+<h2>Debugging WebAssembly</h2>
+<h3>Source Maps</h3>
+<p>Future Roelang versions will generate source maps:</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: 3,
+  &quot;sources&quot;: [&quot;main.roe&quot;],
+  &quot;names&quot;: [&quot;main&quot;, &quot;display&quot;, &quot;count&quot;],
+  &quot;mappings&quot;: &quot;AAAA,aAAA,OAAO,CAAC,...&quot;
+}
+</code></pre>
+<h3>Debugging Tools</h3>
+<p>Use WebAssembly debugging tools:</p>
+<pre><code class="language-bash"># Disassemble WASM binary
+wasm-objdump -d program.wasm
+
+# Validate WASM module
+wasm-validate program.wasm
+
+# Analyze WASM size
+wasm-objdump -h program.wasm
+</code></pre>
+<h3>Browser DevTools</h3>
+<p>Modern browsers provide WASM debugging:</p>
+<ol>
+<li>Open DevTools</li>
+<li>Navigate to Sources tab</li>
+<li>Find your WASM module</li>
+<li>Set breakpoints in the disassembled code</li>
+<li>Step through execution</li>
+</ol>
+<h2>Performance Optimization</h2>
+<h3>Compilation Flags</h3>
+<pre><code class="language-bash"># Optimize for size
+roe compile src/main.roe --optimize-size
+
+# Optimize for speed
+roe compile src/main.roe --optimize-speed
+
+# Debug build with symbols
+roe compile src/main.roe --debug
+</code></pre>
+<h3>Profile-Guided Optimization</h3>
+<pre><code class="language-bash"># Generate profile data
+roe run src/main.roe --profile
+
+# Use profile for optimization
+roe compile src/main.roe --use-profile profile.data
+</code></pre>
+<h3>Manual Optimization Tips</h3>
+<ol>
+<li><strong>Minimize Memory Allocations</strong>: Reuse variables where possible</li>
+<li><strong>Use Appropriate Types</strong>: Choose <code>int</code> over <code>decimal</code> when possible</li>
+<li><strong>Batch Operations</strong>: Process collections efficiently</li>
+<li><strong>Avoid String Concatenation</strong>: Use string interpolation instead</li>
+</ol>
+<h2>WebAssembly Ecosystem Integration</h2>
+<h3>Interfacing with JavaScript</h3>
+<pre><code class="language-javascript">// Load and interact with Roelang WASM module
+async function createRoelangModule() {
+    const wasmModule = await loadRoelangWasm();
+    
+    return {
+        // Call exported Roelang functions
+        calculateTotal: wasmModule.instance.exports.calculate_total,
+        processData: wasmModule.instance.exports.process_data,
+        
+        // Access memory
+        getMemory: () =&gt; wasmModule.instance.exports.memory,
+        
+        // Utility functions
+        readString: (offset, length) =&gt; {
+            const memory = wasmModule.instance.exports.memory;
+            const buffer = new Uint8Array(memory.buffer, offset, length);
+            return new TextDecoder().decode(buffer);
+        }
+    };
+}
+</code></pre>
+<h3>Language Interoperability</h3>
+<p>WebAssembly enables Roelang to work with other WASM-compiled languages:</p>
+<pre><code class="language-javascript">// Combine Roelang with Rust, C++, etc.
+const roelangModule = await loadRoelangWasm();
+const rustModule = await loadRustWasm();
+
+// Share memory between modules
+const sharedMemory = new WebAssembly.Memory({ initial: 10 });
+
+// Use results from one in another
+const roelangResult = roelangModule.calculate(data);
+const finalResult = rustModule.process(roelangResult);
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Memory Management</h3>
+<pre><code class="language-roe">// Good: Reuse variables
+set temp which is int to 0
+for each value in large_dataset
+  set temp to process_value(value)
+  // Use temp...
+end for
+
+// Avoid: Creating many temporary variables
+for each value in large_dataset
+  set temp1 which is int to process_value(value)
+  set temp2 which is int to temp1 * 2
+  // Creates many allocations
+end for
+</code></pre>
+<h3>2. Efficient Data Structures</h3>
+<pre><code class="language-roe">// Good: Use appropriate collection types
+set lookup which are group of text to unique_values  // O(1) lookup
+set ordered which are list of text to sorted_values  // Maintain order
+
+// Good: Process in batches
+set batch_size which is int to 100
+// Process data in batches to manage memory
+</code></pre>
+<h3>3. Type Optimization</h3>
+<pre><code class="language-roe">// Good: Use appropriate numeric types
+set counter which is int to 0           // Integer for counting
+set percentage which is decimal to 0.0  // Decimal for precision
+
+// Good: Boolean flags for state
+set is_ready which is flag to false     // Clear boolean logic
+</code></pre>
+<h2>Future WebAssembly Features</h2>
+<p>Roelang will evolve to support new WebAssembly features:</p>
+<ul>
+<li><strong>Garbage Collection</strong>: Automatic memory management</li>
+<li><strong>Exception Handling</strong>: Structured exception support</li>
+<li><strong>Threads</strong>: Multi-threaded execution</li>
+<li><strong>SIMD</strong>: Vector operations for performance</li>
+<li><strong>Component Model</strong>: Module composition and linking</li>
+</ul>
+<h2>Next Steps</h2>
+<p>Now that you understand WebAssembly in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/debugging/">Debugging</a></strong> - Debug WebAssembly modules</li>
+<li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Compilation and build commands</li>
+<li><strong><a href="/guide/performance/">Performance Tips</a></strong> - Optimize WASM output</li>
+<li><strong><a href="/guide/deployment/">Deployment</a></strong> - Deploy WASM applications</li>
+</ul>
+<p>WebAssembly provides Roelang with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/cli/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>CLI Reference</span>
+        </a>
+        
+        
+        
+        <a href="/guide/debugging/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Debugging</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

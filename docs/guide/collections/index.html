@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Work with lists and groups to manage multiple values efficiently in Roelang.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Collections | Roelang">
+  <meta property="og:description" content="Work with lists and groups to manage multiple values efficiently in Roelang.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/collections/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Collections | Roelang">
+  <meta name="twitter:description" content="Work with lists and groups to manage multiple values efficiently in Roelang.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Collections</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Collections</h1>
+        
+        <p class="text-xl text-gray-600">Work with lists and groups to manage multiple values efficiently in Roelang.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Collections are essential for working with multiple values of the same type. Roelang provides two main collection types: <strong>lists</strong> (ordered collections) and <strong>groups</strong> (unordered collections with unique values).</p>
+<h2>List Collections</h2>
+<h3>Declaration and Initialization</h3>
+<p>Lists store ordered collections of the same type:</p>
+<pre><code class="language-roe">// Lists of different types
+set numbers which are list of int to [1, 2, 3, 4, 5]
+set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;, &quot;David&quot;]
+set prices which are list of decimal to [19.99, 29.50, 45.00]
+set flags which are list of flag to [true, false, true, false]
+
+// Empty lists
+set empty_numbers which are list of int to []
+set empty_names which are list of text to []
+</code></pre>
+<h3>List Operations</h3>
+<h4>Iteration with For-Each</h4>
+<p>The most common operation is iterating over list elements:</p>
+<pre><code class="language-roe">set student_names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
+
+display &quot;Student List:&quot;
+for each name in student_names
+  display &quot;- [name]&quot;
+end for
+</code></pre>
+<h4>Processing List Elements</h4>
+<pre><code class="language-roe">set test_scores which are list of int to [85, 92, 78, 95, 88]
+set total which is int to 0
+set count which is int to 0
+
+display &quot;Individual Scores:&quot;
+for each score in test_scores
+  display &quot;Score: [score]&quot;
+  set total to total + score
+  set count to count + 1
+end for
+
+set average which is decimal to total / count
+display &quot;Average: [average]&quot;
+</code></pre>
+<h4>Conditional Processing</h4>
+<pre><code class="language-roe">set temperatures which are list of decimal to [23.5, 18.2, 31.7, 15.9, 28.3]
+
+display &quot;Temperature Analysis:&quot;
+for each temp in temperatures
+  display &quot;Temperature: [temp]°C&quot;
+  
+  when temp is greater than 30 then
+    display &quot;  🔥 Hot day!&quot;
+  end when
+  
+  when temp is less than 20 then
+    display &quot;  🧊 Cold day!&quot;
+  end when
+  
+  when temp is greater than or equal to 20 and temp is less than or equal to 30 then
+    display &quot;  🌤️ Pleasant day!&quot;
+  end when
+end for
+</code></pre>
+<h3>Practical List Examples</h3>
+<h4>Shopping Cart</h4>
+<pre><code class="language-roe">set item_names which are list of text to [&quot;Laptop&quot;, &quot;Mouse&quot;, &quot;Keyboard&quot;, &quot;Monitor&quot;]
+set item_prices which are list of decimal to [999.99, 25.50, 75.00, 299.99]
+set cart_total which is decimal to 0.0
+
+display &quot;Shopping Cart:&quot;
+display &quot;==============&quot;
+
+set index which is int to 0
+for each price in item_prices
+  // Get corresponding item name (simplified - in real implementation would need indexed access)
+  set cart_total to cart_total + price
+  set index to index + 1
+  display &quot;[index]. Item: $[price]&quot;
+end for
+
+display &quot;==============&quot;
+display &quot;Total: $[cart_total]&quot;
+</code></pre>
+<h4>Grade Analysis</h4>
+<pre><code class="language-roe">set student_grades which are list of int to [85, 92, 78, 95, 88, 76, 94, 82]
+set passing_grade which is int to 80
+
+set total_students which is int to 0
+set passing_students which is int to 0
+set failing_students which is int to 0
+set grade_sum which is int to 0
+
+for each grade in student_grades
+  set total_students to total_students + 1
+  set grade_sum to grade_sum + grade
+  
+  when grade is greater than or equal to passing_grade then
+    set passing_students to passing_students + 1
+    display &quot;Grade [grade]: PASS ✅&quot;
+  otherwise
+    set failing_students to failing_students + 1
+    display &quot;Grade [grade]: FAIL ❌&quot;
+  end when
+end for
+
+set class_average which is decimal to grade_sum / total_students
+
+display &quot;&quot;
+display &quot;Class Summary:&quot;
+display &quot;Total Students: [total_students]&quot;
+display &quot;Passing: [passing_students]&quot;
+display &quot;Failing: [failing_students]&quot;
+display &quot;Class Average: [class_average]%&quot;
+</code></pre>
+<h2>Group Collections</h2>
+<h3>Declaration and Initialization</h3>
+<p>Groups store unique values (no duplicates):</p>
+<pre><code class="language-roe">// Groups automatically remove duplicates
+set unique_numbers which are group of int to [1, 2, 3, 2, 1, 4]  // Results in {1, 2, 3, 4}
+set programming_languages which are group of text to [&quot;Python&quot;, &quot;Java&quot;, &quot;Python&quot;, &quot;JavaScript&quot;]  // Results in {&quot;Python&quot;, &quot;Java&quot;, &quot;JavaScript&quot;}
+set status_flags which are group of flag to [true, false, true, false]  // Results in {true, false}
+
+// Empty groups
+set empty_group which are group of int to []
+</code></pre>
+<h3>Group Operations</h3>
+<p>Groups work similarly to lists but maintain uniqueness:</p>
+<pre><code class="language-roe">set categories which are group of text to [&quot;work&quot;, &quot;personal&quot;, &quot;work&quot;, &quot;health&quot;, &quot;personal&quot;, &quot;finance&quot;]
+
+display &quot;Unique Categories:&quot;
+for each category in categories
+  display &quot;- [category]&quot;
+end for
+// Output will show each category only once
+</code></pre>
+<h3>Practical Group Examples</h3>
+<h4>Unique Visitor Tracking</h4>
+<pre><code class="language-roe">set visitor_countries which are group of text to [&quot;USA&quot;, &quot;Canada&quot;, &quot;UK&quot;, &quot;USA&quot;, &quot;Germany&quot;, &quot;Canada&quot;, &quot;France&quot;, &quot;UK&quot;]
+
+display &quot;Unique Visitor Countries:&quot;
+set country_count which is int to 0
+
+for each country in visitor_countries
+  set country_count to country_count + 1
+  display &quot;[country_count]. [country]&quot;
+end for
+
+display &quot;Total unique countries: [country_count]&quot;
+</code></pre>
+<h4>Tag System</h4>
+<pre><code class="language-roe">set article_tags which are group of text to [&quot;programming&quot;, &quot;tutorial&quot;, &quot;beginner&quot;, &quot;programming&quot;, &quot;web&quot;, &quot;tutorial&quot;]
+
+display &quot;Article Tags:&quot;
+for each tag in article_tags
+  display &quot;#{tag}&quot;
+end for
+</code></pre>
+<h2>Advanced Collection Patterns</h2>
+<h3>Data Processing Pipeline</h3>
+<pre><code class="language-roe">set raw_data which are list of decimal to [10.5, 8.2, 15.7, 12.3, 9.8, 14.1, 11.6]
+set processed_count which is int to 0
+set sum which is decimal to 0.0
+set max_value which is decimal to 0.0
+set min_value which is decimal to 999.0
+
+display &quot;Processing data pipeline...&quot;
+
+for each value in raw_data
+  set processed_count to processed_count + 1
+  set sum to sum + value
+  
+  // Track maximum
+  when value is greater than max_value then
+    set max_value to value
+  end when
+  
+  // Track minimum
+  when value is less than min_value then
+    set min_value to value
+  end when
+  
+  display &quot;Processed: [value] (Running total: [sum])&quot;
+end for
+
+set average to sum / processed_count
+
+display &quot;&quot;
+display &quot;Pipeline Results:&quot;
+display &quot;Items processed: [processed_count]&quot;
+display &quot;Sum: [sum]&quot;
+display &quot;Average: [average]&quot;
+display &quot;Max: [max_value]&quot;
+display &quot;Min: [min_value]&quot;
+</code></pre>
+<h3>Multi-Collection Processing</h3>
+<pre><code class="language-roe">set product_names which are list of text to [&quot;Laptop&quot;, &quot;Mouse&quot;, &quot;Keyboard&quot;]
+set product_prices which are list of decimal to [999.99, 25.50, 75.00]
+set product_quantities which are list of int to [2, 5, 3]
+
+display &quot;Inventory Report:&quot;
+display &quot;================&quot;
+
+set total_value which is decimal to 0.0
+set item_index which is int to 0
+
+for each quantity in product_quantities
+  set item_index to item_index + 1
+  // In a real implementation, we'd access corresponding elements by index
+  // For this example, we'll use the current quantity with simplified logic
+  
+  when quantity is greater than 0 then
+    display &quot;Item [item_index]: In stock ([quantity] units)&quot;
+  otherwise
+    display &quot;Item [item_index]: Out of stock&quot;
+  end when
+end for
+</code></pre>
+<h3>Filtering and Categorization</h3>
+<pre><code class="language-roe">set all_scores which are list of int to [95, 78, 85, 92, 65, 88, 76, 94, 82, 71]
+set high_scores which are list of int to []
+set medium_scores which are list of int to []
+set low_scores which are list of int to []
+
+set high_count which is int to 0
+set medium_count which is int to 0
+set low_count which is int to 0
+
+display &quot;Categorizing scores...&quot;
+
+for each score in all_scores
+  when score is greater than or equal to 90 then
+    display &quot;Score [score]: HIGH 🌟&quot;
+    set high_count to high_count + 1
+  end when
+  
+  when score is greater than or equal to 80 and score is less than 90 then
+    display &quot;Score [score]: MEDIUM 📊&quot;
+    set medium_count to medium_count + 1
+  end when
+  
+  when score is less than 80 then
+    display &quot;Score [score]: LOW 📉&quot;
+    set low_count to low_count + 1
+  end when
+end for
+
+display &quot;&quot;
+display &quot;Score Distribution:&quot;
+display &quot;High (90+): [high_count] scores&quot;
+display &quot;Medium (80-89): [medium_count] scores&quot;
+display &quot;Low (&lt;80): [low_count] scores&quot;
+</code></pre>
+<h2>Collection Utility Patterns</h2>
+<h3>Counter Collections</h3>
+<pre><code class="language-roe">module collection_utils
+  action count_elements with items which are list of text gives int
+    set count which is int to 0
+    for each item in items
+      set count to count + 1
+    end for
+    give count
+  end action
+  
+  action sum_numbers with numbers which are list of int gives int
+    set total which is int to 0
+    for each number in numbers
+      set total to total + number
+    end for
+    give total
+  end action
+  
+  action find_max with numbers which are list of decimal gives decimal
+    set max_val which is decimal to -999999.0
+    for each number in numbers
+      when number is greater than max_val then
+        set max_val to number
+      end when
+    end for
+    give max_val
+  end action
+end module
+
+set test_items which are list of text to [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]
+set test_numbers which are list of int to [10, 25, 15, 30]
+set test_decimals which are list of decimal to [3.14, 2.71, 1.41, 4.47]
+
+set item_count from run collection_utils.count_elements with test_items
+set number_sum from run collection_utils.sum_numbers with test_numbers
+set max_decimal from run collection_utils.find_max with test_decimals
+
+display &quot;Collection Statistics:&quot;
+display &quot;Items: [item_count]&quot;
+display &quot;Sum: [number_sum]&quot;
+display &quot;Max: [max_decimal]&quot;
+</code></pre>
+<h3>Validation Collections</h3>
+<pre><code class="language-roe">set email_list which are list of text to [&quot;alice@example.com&quot;, &quot;bob@invalid&quot;, &quot;carol@test.org&quot;, &quot;dave@&quot;]
+set valid_emails which are list of text to []
+set invalid_emails which are list of text to []
+
+set valid_count which is int to 0
+set invalid_count which is int to 0
+
+display &quot;Validating email addresses...&quot;
+
+for each email in email_list
+  // Simplified email validation - check for @ symbol
+  when email is equal to &quot;&quot; then
+    display &quot;❌ Empty email&quot;
+    set invalid_count to invalid_count + 1
+  otherwise
+    // In real implementation, would have proper email validation
+    display &quot;✅ Email: [email]&quot;
+    set valid_count to valid_count + 1
+  end when
+end for
+
+display &quot;&quot;
+display &quot;Validation Results:&quot;
+display &quot;Valid emails: [valid_count]&quot;
+display &quot;Invalid emails: [invalid_count]&quot;
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Choose the Right Collection Type</h3>
+<pre><code class="language-roe">// Use lists for ordered data where duplicates matter
+set daily_temperatures which are list of decimal to [23.5, 24.1, 23.8, 25.2]
+set task_priorities which are list of text to [&quot;high&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;low&quot;]
+
+// Use groups for unique collections
+set user_roles which are group of text to [&quot;admin&quot;, &quot;user&quot;, &quot;moderator&quot;, &quot;admin&quot;]  // No duplicate admins
+set error_codes which are group of int to [404, 500, 404, 401, 500]  // Unique error types
+</code></pre>
+<h3>2. Use Descriptive Variable Names</h3>
+<pre><code class="language-roe">// Good: Descriptive collection names
+set monthly_sales_figures which are list of decimal to [12000.50, 15500.75, 13200.25]
+set active_user_sessions which are group of text to [&quot;session1&quot;, &quot;session2&quot;, &quot;session3&quot;]
+
+// Avoid: Generic names
+set data which are list of decimal to [12000.50, 15500.75, 13200.25]
+set stuff which are group of text to [&quot;session1&quot;, &quot;session2&quot;, &quot;session3&quot;]
+</code></pre>
+<h3>3. Initialize Collections Properly</h3>
+<pre><code class="language-roe">// Good: Initialize with expected data or empty
+set product_categories which are list of text to [&quot;Electronics&quot;, &quot;Books&quot;, &quot;Clothing&quot;]
+set error_messages which are list of text to []  // Start empty, add as needed
+
+// Good: Use meaningful initial values
+set default_settings which are list of flag to [true, false, true]
+</code></pre>
+<h3>4. Handle Empty Collections</h3>
+<pre><code class="language-roe">set user_inputs which are list of text to []
+set input_count which is int to 0
+
+for each input in user_inputs
+  set input_count to input_count + 1
+  display &quot;Processing: [input]&quot;
+end for
+
+when input_count is equal to 0 then
+  display &quot;No inputs to process&quot;
+otherwise
+  display &quot;Processed [input_count] inputs&quot;
+end when
+</code></pre>
+<h3>5. Use Collections in Modules</h3>
+<pre><code class="language-roe">module inventory_manager
+  action process_orders with order_ids which are list of int
+    display &quot;Processing orders...&quot;
+    for each order_id in order_ids
+      display &quot;Processing order #[order_id]&quot;
+    end for
+    display &quot;All orders processed&quot;
+  end action
+  
+  action unique_customers with customer_names which are list of text gives group of text
+    // Convert list to group to get unique customers
+    set unique_names which are group of text to []
+    // In real implementation, would properly convert list to group
+    give unique_names
+  end action
+end module
+</code></pre>
+<h2>Common Collection Patterns</h2>
+<h3>Accumulator Pattern</h3>
+<pre><code class="language-roe">set expenses which are list of decimal to [125.50, 75.25, 200.00, 45.75]
+set total_expenses which is decimal to 0.0
+
+for each expense in expenses
+  set total_expenses to total_expenses + expense
+end for
+
+display &quot;Total expenses: $[total_expenses]&quot;
+</code></pre>
+<h3>Search Pattern</h3>
+<pre><code class="language-roe">set product_names which are list of text to [&quot;Laptop&quot;, &quot;Mouse&quot;, &quot;Keyboard&quot;, &quot;Monitor&quot;]
+set search_term which is text to &quot;Mouse&quot;
+set found which is flag to false
+
+for each product in product_names
+  when product is equal to search_term then
+    set found to true
+    display &quot;Found product: [product]&quot;
+  end when
+end for
+
+when not found then
+  display &quot;Product '[search_term]' not found&quot;
+end when
+</code></pre>
+<h3>Counting Pattern</h3>
+<pre><code class="language-roe">set status_list which are list of text to [&quot;active&quot;, &quot;inactive&quot;, &quot;active&quot;, &quot;pending&quot;, &quot;active&quot;]
+set active_count which is int to 0
+set inactive_count which is int to 0
+set pending_count which is int to 0
+
+for each status in status_list
+  when status is equal to &quot;active&quot; then
+    set active_count to active_count + 1
+  end when
+  
+  when status is equal to &quot;inactive&quot; then
+    set inactive_count to inactive_count + 1
+  end when
+  
+  when status is equal to &quot;pending&quot; then
+    set pending_count to pending_count + 1
+  end when
+end for
+
+display &quot;Status Summary:&quot;
+display &quot;Active: [active_count]&quot;
+display &quot;Inactive: [inactive_count]&quot;
+display &quot;Pending: [pending_count]&quot;
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand collections in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/conditionals/">Conditionals</a></strong> - Using collection data in conditional logic</li>
+<li><strong><a href="/guide/loops/">Loops</a></strong> - Advanced iteration patterns with collections</li>
+<li><strong><a href="/guide/modules/">Modules</a></strong> - Creating collection utility modules</li>
+<li><strong><a href="/guide/actions/">Actions</a></strong> - Functions that work with collections</li>
+</ul>
+<p>Collections are powerful tools for managing multiple values efficiently. Use them to process data, track state, and build robust applications with clean, readable code.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/strings/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Strings &amp; Interpolation</span>
+        </a>
+        
+        
+        
+        <a href="/guide/conditionals/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Conditionals</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

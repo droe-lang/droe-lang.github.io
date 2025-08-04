@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Type System | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Understanding Roelang&#39;s strong static type system and built-in data types.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Type System | Roelang">
+  <meta property="og:description" content="Understanding Roelang&#39;s strong static type system and built-in data types.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/types/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Type System | Roelang">
+  <meta name="twitter:description" content="Understanding Roelang&#39;s strong static type system and built-in data types.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Type System</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Type System</h1>
+        
+        <p class="text-xl text-gray-600">Understanding Roelang&#39;s strong static type system and built-in data types.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Roelang features a <strong>strong static type system</strong> that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Roelang has a specific type that determines what operations can be performed on it.</p>
+<h2>Core Principles</h2>
+<h3>Static Typing</h3>
+<p>Types are checked at compile time, not runtime:</p>
+<pre><code class="language-roe">set name which is text to &quot;Alice&quot;      // ✅ Valid: text assigned to text
+set age which is int to 25             // ✅ Valid: int assigned to int
+set age which is int to &quot;twenty-five&quot;  // ❌ Error: text cannot be assigned to int
+</code></pre>
+<h3>Type Safety</h3>
+<p>Operations are only allowed between compatible types:</p>
+<pre><code class="language-roe">set count which is int to 10
+set message which is text to &quot;items&quot;
+
+display count + 5        // ✅ Valid: int + int
+display message + &quot;!&quot;    // ✅ Valid: text + text
+display count + message  // ❌ Error: cannot add int and text
+</code></pre>
+<h3>Explicit Typing</h3>
+<p>Types must be declared explicitly:</p>
+<pre><code class="language-roe">set value which is int to 42       // ✅ Explicit type declaration
+set value to 42                    // ❌ Error: type must be specified
+</code></pre>
+<h2>Built-in Types</h2>
+<h3>Primitive Types</h3>
+<h4><code>int</code> - Integers</h4>
+<p>Whole numbers without decimal points:</p>
+<pre><code class="language-roe">set count which is int to 42
+set negative which is int to -10
+set zero which is int to 0
+set large which is int to 1000000
+</code></pre>
+<p><strong>Range</strong>: -2³¹ to 2³¹-1 (32-bit signed integers)</p>
+<p><strong>Operations</strong>:</p>
+<pre><code class="language-roe">set a which is int to 10
+set b which is int to 3
+
+set sum to a + b           // Addition: 13
+set difference to a - b    // Subtraction: 7
+set product to a * b       // Multiplication: 30
+set quotient to a / b      // Division: 3 (integer division)
+set remainder to a % b     // Modulo: 1
+</code></pre>
+<h4><code>decimal</code> - Floating Point Numbers</h4>
+<p>Numbers with decimal places:</p>
+<pre><code class="language-roe">set price which is decimal to 19.99
+set pi which is decimal to 3.14159
+set negative which is decimal to -5.5
+set scientific which is decimal to 1.23e10
+</code></pre>
+<p><strong>Precision</strong>: 64-bit floating point (IEEE 754)</p>
+<p><strong>Operations</strong>:</p>
+<pre><code class="language-roe">set x which is decimal to 10.5
+set y which is decimal to 2.5
+
+set sum to x + y           // 13.0
+set difference to x - y    // 8.0
+set product to x * y       // 26.25
+set quotient to x / y      // 4.2
+</code></pre>
+<h4><code>text</code> - Strings</h4>
+<p>Sequences of characters:</p>
+<pre><code class="language-roe">set name which is text to &quot;Alice&quot;
+set empty which is text to &quot;&quot;
+set multiline which is text to &quot;Hello
+World&quot;
+set with_quotes which is text to &quot;She said \&quot;Hello\&quot;&quot;
+</code></pre>
+<p><strong>Operations</strong>:</p>
+<pre><code class="language-roe">set first which is text to &quot;Hello&quot;
+set second which is text to &quot;World&quot;
+
+set greeting to first + &quot; &quot; + second    // Concatenation
+set length from run text.length with greeting
+</code></pre>
+<p><strong>Escape Sequences</strong>:</p>
+<pre><code class="language-roe">set newline which is text to &quot;Line 1\nLine 2&quot;
+set tab which is text to &quot;Name:\tValue&quot;
+set backslash which is text to &quot;Path: C:\\Users&quot;
+set quote which is text to &quot;He said \&quot;Hi\&quot;&quot;
+</code></pre>
+<h4><code>flag</code> - Booleans</h4>
+<p>True or false values:</p>
+<pre><code class="language-roe">set is_active which is flag to true
+set is_hidden which is flag to false
+set is_ready which is flag to false
+</code></pre>
+<p><strong>Operations</strong>:</p>
+<pre><code class="language-roe">set a which is flag to true
+set b which is flag to false
+
+set and_result to a and b        // false
+set or_result to a or b          // true
+set not_result to not a          // false
+</code></pre>
+<h3>Collection Types</h3>
+<h4><code>list of T</code> - Arrays</h4>
+<p>Ordered collections of the same type:</p>
+<pre><code class="language-roe">// Lists of different types
+set numbers which are list of int to [1, 2, 3, 4, 5]
+set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
+set flags which are list of flag to [true, false, true]
+set prices which are list of decimal to [19.99, 25.50, 12.00]
+
+// Empty lists
+set empty_numbers which are list of int to []
+set empty_names which are list of text to []
+</code></pre>
+<p><strong>Operations</strong>:</p>
+<pre><code class="language-roe">set scores which are list of int to [85, 92, 78, 95]
+
+// Iteration
+for each score in scores
+  display &quot;Score: [score]&quot;
+end for
+
+// Access (future feature)
+set first_score from run list.get with scores, 0
+</code></pre>
+<h4><code>group of T</code> - Sets</h4>
+<p>Unordered collections with unique values:</p>
+<pre><code class="language-roe">set unique_numbers which are group of int to [1, 2, 3, 2, 1]  // {1, 2, 3}
+set languages which are group of text to [&quot;Python&quot;, &quot;Java&quot;, &quot;Python&quot;]  // {&quot;Python&quot;, &quot;Java&quot;}
+</code></pre>
+<h2>Type Conversion</h2>
+<h3>Implicit Conversion</h3>
+<p>Some conversions happen automatically:</p>
+<pre><code class="language-roe">set whole which is int to 42
+set fractional which is decimal to whole    // int → decimal (safe)
+</code></pre>
+<h3>Explicit Conversion</h3>
+<p>Use built-in conversion functions:</p>
+<pre><code class="language-roe">set number which is int to 42
+set text_number from run int.to_text with number          // &quot;42&quot;
+set decimal_number from run int.to_decimal with number    // 42.0
+
+set price which is decimal to 19.99
+set price_text from run decimal.to_text with price       // &quot;19.99&quot;
+set rounded from run decimal.to_int with price           // 19 (truncated)
+
+set flag_value which is flag to true
+set flag_text from run flag.to_text with flag_value      // &quot;true&quot;
+</code></pre>
+<h2>Type Checking and Validation</h2>
+<h3>Compile-Time Checks</h3>
+<p>Types are validated when you compile:</p>
+<pre><code class="language-roe">set age which is int to 25
+set name which is text to &quot;Alice&quot;
+
+when age is greater than 18 then     // ✅ Valid: int comparison
+  display &quot;Adult&quot;
+end when
+
+when name is greater than 18 then    // ❌ Error: cannot compare text to int
+  display &quot;Invalid&quot;
+end when
+</code></pre>
+<h3>Type Compatibility</h3>
+<p>Operations require compatible types:</p>
+<pre><code class="language-roe">// Arithmetic - requires numeric types
+set a which is int to 10
+set b which is int to 5
+set sum to a + b                     // ✅ Valid: int + int
+
+set x which is decimal to 10.5
+set y which is decimal to 2.5
+set result to x * y                  // ✅ Valid: decimal * decimal
+
+set mixed to a + x                   // ❌ Error: int + decimal not allowed
+
+// String operations - requires text
+set first which is text to &quot;Hello&quot;
+set second which is text to &quot;World&quot;
+set greeting to first + &quot; &quot; + second // ✅ Valid: text concatenation
+
+// Boolean operations - requires flag
+set is_ready which is flag to true
+set is_active which is flag to false
+set both to is_ready and is_active   // ✅ Valid: flag and flag
+</code></pre>
+<h2>Advanced Type Features</h2>
+<h3>Custom Data Types</h3>
+<p>Define your own structured types:</p>
+<pre><code class="language-roe">data Person
+  name is text
+  age is int
+  active is flag
+end data
+
+data Address
+  street is text
+  city is text
+  zip_code is text
+end data
+</code></pre>
+<h3>Type Parameters in Actions</h3>
+<p>Actions can specify parameter and return types:</p>
+<pre><code class="language-roe">module math_utils
+  action add with a which is int, b which is int gives int
+    give a + b
+  end action
+  
+  action calculate_percentage with part which is decimal, total which is decimal gives decimal
+    give (part / total) * 100
+  end action
+  
+  action format_currency with amount which is decimal gives text
+    give &quot;$&quot; + amount
+  end action
+end module
+</code></pre>
+<h3>Collection Type Safety</h3>
+<p>Collections are strongly typed:</p>
+<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3]
+set texts which are list of text to [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+
+// This would be an error:
+// set mixed which are list of int to [1, &quot;two&quot;, 3]  // ❌ Mixed types not allowed
+</code></pre>
+<h2>Type Inference Context</h2>
+<p>While types must be explicitly declared for variables, Roelang can infer types in expressions:</p>
+<pre><code class="language-roe">set base_price which is decimal to 100.0
+set tax_rate which is decimal to 0.08
+
+// Type inferred from expression
+set total_price to base_price + (base_price * tax_rate)  // decimal inferred
+</code></pre>
+<h2>Common Type Patterns</h2>
+<h3>Input Validation</h3>
+<pre><code class="language-roe">module validation
+  action is_valid_email with email which is text gives flag
+    // Email validation logic
+    give true  // Simplified
+  end action
+  
+  action is_positive with number which is int gives flag
+    give number &gt; 0
+  end action
+end module
+
+set user_email which is text to &quot;user@example.com&quot;
+set is_email_valid from run validation.is_valid_email with user_email
+
+when is_email_valid then
+  display &quot;Email is valid&quot;
+otherwise
+  display &quot;Invalid email format&quot;
+end when
+</code></pre>
+<h3>Type-Safe Calculations</h3>
+<pre><code class="language-roe">module finance
+  action calculate_tax with amount which is decimal, rate which is decimal gives decimal
+    give amount * rate
+  end action
+  
+  action format_money with amount which is decimal gives text
+    give &quot;$&quot; + amount
+  end action
+end module
+
+set price which is decimal to 100.00
+set tax_rate which is decimal to 0.08
+set tax_amount from run finance.calculate_tax with price, tax_rate
+set total which is decimal to price + tax_amount
+
+display &quot;Price: &quot; + finance.format_money with price
+display &quot;Tax: &quot; + finance.format_money with tax_amount
+display &quot;Total: &quot; + finance.format_money with total
+</code></pre>
+<h3>Collection Processing</h3>
+<pre><code class="language-roe">set scores which are list of int to [85, 92, 78, 95, 88]
+set total which is int to 0
+set count which is int to 0
+
+for each score in scores
+  set total to total + score
+  set count to count + 1
+end for
+
+set average which is decimal to total / count
+display &quot;Average score: [average]&quot;
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Choose Appropriate Types</h3>
+<pre><code class="language-roe">// Good: Use specific types
+set user_id which is int to 12345
+set username which is text to &quot;alice_smith&quot;
+set is_admin which is flag to false
+set account_balance which is decimal to 1250.75
+
+// Avoid: Using text for everything
+set user_id which is text to &quot;12345&quot;          // Loses numeric operations
+set account_balance which is text to &quot;1250.75&quot; // Loses arithmetic operations
+</code></pre>
+<h3>2. Use Collections Appropriately</h3>
+<pre><code class="language-roe">// Good: Homogeneous collections
+set student_grades which are list of int to [85, 92, 78, 95]
+set employee_names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
+
+// Good: Use groups for uniqueness
+set programming_languages which are group of text to [&quot;Python&quot;, &quot;Java&quot;, &quot;JavaScript&quot;]
+</code></pre>
+<h3>3. Validate Input Types</h3>
+<pre><code class="language-roe">module input_validation
+  action validate_age with age which is int gives flag
+    give age &gt;= 0 and age &lt;= 150
+  end action
+  
+  action validate_email with email which is text gives flag
+    // Simple validation - contains @ symbol
+    give true  // Simplified for example
+  end action
+end module
+</code></pre>
+<h3>4. Use Type-Safe APIs</h3>
+<pre><code class="language-roe">module user_service
+  action create_user with name which is text, age which is int, email which is text gives flag
+    when age is less than 0 or age is greater than 150 then
+      give false
+    end when
+    
+    // Create user logic here
+    give true
+  end action
+end module
+</code></pre>
+<h2>Error Messages</h2>
+<p>Roelang provides clear error messages for type mismatches:</p>
+<pre><code class="language-roe">set count which is int to &quot;five&quot;
+// Error: Type mismatch: expected 'int', got 'text'
+
+set result to count + &quot;items&quot;
+// Error: Cannot perform addition between 'int' and 'text'
+
+action calculate with value which is decimal gives int
+  give value + &quot;units&quot;
+// Error: Cannot return 'text' from action that gives 'int'
+end action
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand Roelang's type system:</p>
+<ul>
+<li><strong><a href="/guide/variables/">Variables</a></strong> - Learn about variable declaration and scope</li>
+<li><strong><a href="/guide/strings/">Strings</a></strong> - Deep dive into string operations and interpolation</li>
+<li><strong><a href="/guide/collections/">Collections</a></strong> - Working with lists and groups</li>
+<li><strong><a href="/guide/data-structures/">Data Structures</a></strong> - Creating custom data types</li>
+</ul>
+<p>Roelang's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/basics/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Basic Syntax</span>
+        </a>
+        
+        
+        
+        <a href="/guide/variables/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Variables</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

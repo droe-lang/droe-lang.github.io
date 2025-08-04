@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variables | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Learn how to declare, assign, and work with variables in Roelang.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Variables | Roelang">
+  <meta property="og:description" content="Learn how to declare, assign, and work with variables in Roelang.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/variables/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Variables | Roelang">
+  <meta name="twitter:description" content="Learn how to declare, assign, and work with variables in Roelang.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Variables</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Variables</h1>
+        
+        <p class="text-xl text-gray-600">Learn how to declare, assign, and work with variables in Roelang.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Variables are fundamental building blocks in Roelang that store values for later use. Roelang uses explicit, descriptive syntax for variable declarations that makes code self-documenting and easy to understand.</p>
+<h2>Variable Declaration</h2>
+<h3>Basic Syntax</h3>
+<p>Variables are declared using the <code>set</code> keyword with explicit type declaration:</p>
+<pre><code class="language-roe">set variable_name which is type to value
+</code></pre>
+<h3>Examples</h3>
+<pre><code class="language-roe">// Basic declarations
+set user_name which is text to &quot;Alice&quot;
+set user_age which is int to 28
+set is_active which is flag to true
+set account_balance which is decimal to 1250.75
+
+// Collections
+set favorite_numbers which are list of int to [7, 13, 42]
+set programming_languages which are group of text to [&quot;Python&quot;, &quot;JavaScript&quot;, &quot;Roelang&quot;]
+</code></pre>
+<h2>Type Declarations</h2>
+<h3>Primitive Types</h3>
+<pre><code class="language-roe">// Integer
+set count which is int to 100
+set negative_value which is int to -42
+
+// Decimal
+set price which is decimal to 19.99
+set temperature which is decimal to -5.5
+
+// Text
+set greeting which is text to &quot;Hello, World!&quot;
+set empty_string which is text to &quot;&quot;
+
+// Flag (Boolean)
+set is_ready which is flag to true
+set is_hidden which is flag to false
+</code></pre>
+<h3>Collection Types</h3>
+<pre><code class="language-roe">// Lists (ordered collections)
+set scores which are list of int to [85, 92, 78, 95]
+set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
+set settings which are list of flag to [true, false, true]
+
+// Groups (unique collections)
+set unique_ids which are group of int to [1, 2, 3, 2, 1]  // Results in {1, 2, 3}
+set categories which are group of text to [&quot;work&quot;, &quot;personal&quot;, &quot;work&quot;]  // Results in {&quot;work&quot;, &quot;personal&quot;}
+
+// Empty collections
+set empty_list which are list of text to []
+set empty_group which are group of int to []
+</code></pre>
+<h2>Variable Assignment</h2>
+<h3>Initial Assignment</h3>
+<p>Variables must be initialized when declared:</p>
+<pre><code class="language-roe">set username which is text to &quot;alice_smith&quot;    // ✅ Valid: initialized with value
+set age which is int                           // ❌ Error: no initial value
+</code></pre>
+<h3>Reassignment</h3>
+<p>Variables can be reassigned to new values of the same type:</p>
+<pre><code class="language-roe">set counter which is int to 0
+display counter           // Displays: 0
+
+set counter to 10         // Reassignment
+display counter           // Displays: 10
+
+set counter to counter + 5
+display counter           // Displays: 15
+</code></pre>
+<h3>Type Consistency</h3>
+<p>Variables cannot change type after declaration:</p>
+<pre><code class="language-roe">set value which is int to 42
+display value             // Displays: 42
+
+set value to 100          // ✅ Valid: int to int
+display value             // Displays: 100
+
+set value to &quot;hello&quot;      // ❌ Error: cannot assign text to int variable
+</code></pre>
+<h2>Variable Naming</h2>
+<h3>Naming Rules</h3>
+<ol>
+<li><strong>Start with letter</strong>: Must begin with a-z or A-Z</li>
+<li><strong>Continue with letters, numbers, underscores</strong>: Can contain a-z, A-Z, 0-9, _</li>
+<li><strong>Case sensitive</strong>: <code>userName</code> and <code>username</code> are different variables</li>
+<li><strong>No reserved words</strong>: Cannot use keywords like <code>set</code>, <code>when</code>, <code>for</code>, etc.</li>
+</ol>
+<h3>Valid Names</h3>
+<pre><code class="language-roe">set user_name which is text to &quot;Alice&quot;         // ✅ snake_case
+set firstName which is text to &quot;Bob&quot;           // ✅ camelCase
+set MAX_RETRIES which is int to 3              // ✅ UPPER_CASE constants
+set item1 which is text to &quot;First Item&quot;       // ✅ with numbers
+set isValid which is flag to true             // ✅ boolean prefix
+</code></pre>
+<h3>Invalid Names</h3>
+<pre><code class="language-roe">set 123invalid which is int to 0               // ❌ starts with number
+set user-name which is text to &quot;Alice&quot;        // ❌ contains hyphen
+set for which is int to 10                    // ❌ reserved keyword
+set user name which is text to &quot;Alice&quot;        // ❌ contains space
+</code></pre>
+<h3>Naming Conventions</h3>
+<h4>Descriptive Names</h4>
+<pre><code class="language-roe">// Good: Clear, descriptive names
+set customer_email which is text to &quot;customer@example.com&quot;
+set total_order_amount which is decimal to 299.99
+set is_payment_successful which is flag to true
+set monthly_sales_figures which are list of decimal to [1250.00, 1380.75, 1195.50]
+
+// Avoid: Cryptic names
+set x which is text to &quot;customer@example.com&quot;     // What is x?
+set temp which is decimal to 299.99               // Temporary what?
+set flag1 which is flag to true                   // What does this flag represent?
+</code></pre>
+<h4>Consistent Style</h4>
+<p>Choose a naming style and stick with it:</p>
+<pre><code class="language-roe">// Option 1: snake_case (recommended)
+set user_name which is text to &quot;Alice&quot;
+set order_total which is decimal to 150.00
+set is_order_complete which is flag to false
+
+// Option 2: camelCase
+set userName which is text to &quot;Alice&quot;
+set orderTotal which is decimal to 150.00
+set isOrderComplete which is flag to false
+</code></pre>
+<h4>Boolean Variables</h4>
+<p>Use descriptive prefixes for boolean variables:</p>
+<pre><code class="language-roe">// Good boolean names
+set is_authenticated which is flag to false
+set has_permission which is flag to true
+set can_edit which is flag to false
+set should_update which is flag to true
+set was_successful which is flag to false
+</code></pre>
+<h2>Variable Scope</h2>
+<h3>File Scope</h3>
+<p>Variables declared at the file level are available throughout that file:</p>
+<pre><code class="language-roe">// File: user_management.roe
+set current_user which is text to &quot;alice&quot;
+set session_timeout which is int to 3600
+
+display &quot;User: [current_user]&quot;
+display &quot;Timeout: [session_timeout] seconds&quot;
+
+when session_timeout is greater than 0 then
+  display &quot;Session is active&quot;  // Can access session_timeout here
+end when
+</code></pre>
+<h3>Block Scope</h3>
+<p>Variables declared inside blocks (like conditionals and loops) have limited scope:</p>
+<pre><code class="language-roe">set global_counter which is int to 0
+
+when global_counter is equal to 0 then
+  set local_message which is text to &quot;Starting fresh&quot;
+  display local_message         // ✅ Valid: inside the block
+end when
+
+display local_message           // ❌ Error: local_message not accessible here
+</code></pre>
+<h3>Module Scope</h3>
+<p>Variables inside modules are local to that module:</p>
+<pre><code class="language-roe">module user_service
+  set default_role which is text to &quot;user&quot;     // Module-scoped variable
+  
+  action get_default_role gives text
+    give default_role           // ✅ Can access module variable
+  end action
+end module
+
+display default_role            // ❌ Error: cannot access module variable directly
+</code></pre>
+<h2>Working with Variables</h2>
+<h3>Calculations</h3>
+<pre><code class="language-roe">set base_salary which is decimal to 50000.00
+set bonus_percentage which is decimal to 0.15
+set years_experience which is int to 5
+
+// Calculate bonus
+set bonus_amount to base_salary * bonus_percentage
+set experience_multiplier to 1.0 + (years_experience * 0.02)
+set total_compensation to (base_salary + bonus_amount) * experience_multiplier
+
+display &quot;Base Salary: $[base_salary]&quot;
+display &quot;Bonus: $[bonus_amount]&quot;
+display &quot;Total Compensation: $[total_compensation]&quot;
+</code></pre>
+<h3>String Operations</h3>
+<pre><code class="language-roe">set first_name which is text to &quot;Alice&quot;
+set last_name which is text to &quot;Johnson&quot;
+set middle_initial which is text to &quot;M&quot;
+
+// String concatenation
+set full_name to first_name + &quot; &quot; + middle_initial + &quot;. &quot; + last_name
+set display_name to last_name + &quot;, &quot; + first_name
+
+// String interpolation
+set greeting to &quot;Hello, [first_name]!&quot;
+set formal_address to &quot;Dear [full_name],&quot;
+</code></pre>
+<h3>Collection Operations</h3>
+<pre><code class="language-roe">set product_prices which are list of decimal to [19.99, 29.50, 45.00, 12.75]
+set total_value which is decimal to 0.0
+set item_count which is int to 0
+
+for each price in product_prices
+  set total_value to total_value + price
+  set item_count to item_count + 1
+end for
+
+set average_price to total_value / item_count
+display &quot;Average price: $[average_price]&quot;
+</code></pre>
+<h2>Advanced Variable Patterns</h2>
+<h3>Configuration Variables</h3>
+<p>Group related configuration at the top of files:</p>
+<pre><code class="language-roe">// Configuration section
+set max_retries which is int to 3
+set timeout_seconds which is int to 30
+set debug_mode which is flag to false
+set api_base_url which is text to &quot;https://api.example.com&quot;
+set supported_formats which are list of text to [&quot;json&quot;, &quot;xml&quot;, &quot;csv&quot;]
+
+// Application logic using configuration
+when debug_mode then
+  display &quot;Debug mode is enabled&quot;
+end when
+</code></pre>
+<h3>Counter Variables</h3>
+<pre><code class="language-roe">set processed_items which is int to 0
+set error_count which is int to 0
+set success_count which is int to 0
+
+set items_to_process which are list of text to [&quot;item1&quot;, &quot;item2&quot;, &quot;item3&quot;, &quot;item4&quot;]
+
+for each item in items_to_process
+  set processed_items to processed_items + 1
+  
+  // Simulate processing...
+  when processed_items % 2 is equal to 0 then
+    set success_count to success_count + 1
+    display &quot;Successfully processed: [item]&quot;
+  otherwise
+    set error_count to error_count + 1
+    display &quot;Error processing: [item]&quot;
+  end when
+end for
+
+display &quot;Summary: [processed_items] processed, [success_count] successful, [error_count] errors&quot;
+</code></pre>
+<h3>State Variables</h3>
+<pre><code class="language-roe">set current_state which is text to &quot;idle&quot;
+set previous_state which is text to &quot;unknown&quot;
+set state_change_count which is int to 0
+
+action change_state with new_state which is text
+  set previous_state to current_state
+  set current_state to new_state
+  set state_change_count to state_change_count + 1
+  
+  display &quot;State changed from [previous_state] to [current_state]&quot;
+  display &quot;Total state changes: [state_change_count]&quot;
+end action
+</code></pre>
+<h2>Variable Best Practices</h2>
+<h3>1. Initialize at Declaration</h3>
+<pre><code class="language-roe">// Good: Always initialize
+set counter which is int to 0
+set message which is text to &quot;&quot;
+set is_ready which is flag to false
+
+// Bad: Would cause error
+// set counter which is int
+</code></pre>
+<h3>2. Use Meaningful Names</h3>
+<pre><code class="language-roe">// Good: Self-documenting
+set customer_birth_date which is text to &quot;1990-05-15&quot;
+set order_processing_status which is text to &quot;pending&quot;
+set maximum_allowed_attempts which is int to 5
+
+// Poor: Requires comments to understand
+set bd which is text to &quot;1990-05-15&quot;        // birth date
+set status which is text to &quot;pending&quot;       // order status
+set max which is int to 5                   // max attempts
+</code></pre>
+<h3>3. Group Related Variables</h3>
+<pre><code class="language-roe">// User information
+set user_id which is int to 12345
+set user_name which is text to &quot;alice_smith&quot;
+set user_email which is text to &quot;alice@example.com&quot;
+set user_role which is text to &quot;admin&quot;
+
+// Order details
+set order_id which is int to 67890
+set order_total which is decimal to 299.99
+set order_date which is text to &quot;2024-01-15&quot;
+set order_status which is text to &quot;confirmed&quot;
+</code></pre>
+<h3>4. Use Constants for Fixed Values</h3>
+<pre><code class="language-roe">// Application constants
+set MAX_LOGIN_ATTEMPTS which is int to 3
+set SESSION_TIMEOUT_MINUTES which is int to 30
+set DEFAULT_CURRENCY which is text to &quot;USD&quot;
+set SUPPORTED_FILE_TYPES which are list of text to [&quot;jpg&quot;, &quot;png&quot;, &quot;gif&quot;, &quot;pdf&quot;]
+
+// Use constants in logic
+set login_attempts which is int to 0
+
+when login_attempts is greater than or equal to MAX_LOGIN_ATTEMPTS then
+  display &quot;Account locked due to too many failed login attempts&quot;
+end when
+</code></pre>
+<h2>Common Patterns</h2>
+<h3>Accumulator Pattern</h3>
+<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3, 4, 5]
+set sum which is int to 0
+
+for each number in numbers
+  set sum to sum + number
+end for
+
+display &quot;Sum: [sum]&quot;
+</code></pre>
+<h3>Counter Pattern</h3>
+<pre><code class="language-roe">set items which are list of text to [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;, &quot;date&quot;]
+set index which is int to 0
+
+for each item in items
+  set index to index + 1
+  display &quot;[index]: [item]&quot;
+end for
+</code></pre>
+<h3>Flag Pattern</h3>
+<pre><code class="language-roe">set numbers which are list of int to [2, 4, 7, 8, 10]
+set found_odd which is flag to false
+
+for each number in numbers
+  when number % 2 is not equal to 0 then
+    set found_odd to true
+    display &quot;Found odd number: [number]&quot;
+  end when
+end for
+
+when found_odd then
+  display &quot;List contains odd numbers&quot;
+otherwise
+  display &quot;List contains only even numbers&quot;
+end when
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand variables in Roelang:</p>
+<ul>
+<li><strong><a href="/guide/strings/">Strings &amp; Interpolation</a></strong> - Working with text and string interpolation</li>
+<li><strong><a href="/guide/collections/">Collections</a></strong> - Deep dive into lists and groups</li>
+<li><strong><a href="/guide/conditionals/">Conditionals</a></strong> - Using variables in conditional logic</li>
+<li><strong><a href="/guide/loops/">Loops</a></strong> - Iterating over variables and collections</li>
+</ul>
+<p>Variables are the foundation of data manipulation in Roelang. Use them effectively with clear names, appropriate types, and consistent patterns to build maintainable programs.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/types/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Type System</span>
+        </a>
+        
+        
+        
+        <a href="/guide/strings/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Strings &amp; Interpolation</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

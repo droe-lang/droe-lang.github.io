@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Structure | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Understanding how Roelang projects are organized and configured.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Project Structure | Roelang">
+  <meta property="og:description" content="Understanding how Roelang projects are organized and configured.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/project-structure/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Project Structure | Roelang">
+  <meta name="twitter:description" content="Understanding how Roelang projects are organized and configured.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">Project Structure</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Project Structure</h1>
+        
+        <p class="text-xl text-gray-600">Understanding how Roelang projects are organized and configured.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>Roelang projects follow a simple, predictable structure that promotes organization and maintainability. Understanding this structure is key to working effectively with Roelang.</p>
+<h2>Standard Project Layout</h2>
+<p>Every Roelang project has this basic structure:</p>
+<pre><code>my-project/
+├── roeconfig.json     # Project configuration
+├── src/              # Source files (.roe)
+│   ├── main.roe      # Entry point
+│   ├── utils.roe     # Utility modules
+│   └── ...           # Other source files
+├── build/            # Compiled output (auto-generated)
+│   ├── main.wat      # WebAssembly text format
+│   ├── main.wasm     # WebAssembly binary
+│   └── ...           # Other compiled files
+└── README.md         # Project documentation (optional)
+</code></pre>
+<h2>Project Configuration</h2>
+<h3><code>roeconfig.json</code></h3>
+<p>The <code>roeconfig.json</code> file is the heart of every Roelang project:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;my-project&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;A sample Roelang project&quot;,
+  &quot;srcDir&quot;: &quot;src&quot;,
+  &quot;buildDir&quot;: &quot;build&quot;,
+  &quot;main&quot;: &quot;main.roe&quot;,
+  &quot;author&quot;: &quot;Your Name&quot;,
+  &quot;license&quot;: &quot;MIT&quot;
+}
+</code></pre>
+<h4>Configuration Options</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>✅</td>
+<td>Project name (used for output files)</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>✅</td>
+<td>Semantic version (e.g., &quot;1.0.0&quot;)</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>❌</td>
+<td>Brief project description</td>
+</tr>
+<tr>
+<td><code>srcDir</code></td>
+<td>string</td>
+<td>❌</td>
+<td>Source directory (default: &quot;src&quot;)</td>
+</tr>
+<tr>
+<td><code>buildDir</code></td>
+<td>string</td>
+<td>❌</td>
+<td>Build output directory (default: &quot;build&quot;)</td>
+</tr>
+<tr>
+<td><code>main</code></td>
+<td>string</td>
+<td>❌</td>
+<td>Entry point file (default: &quot;main.roe&quot;)</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>string</td>
+<td>❌</td>
+<td>Project author</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td>string</td>
+<td>❌</td>
+<td>License type</td>
+</tr>
+</tbody>
+</table>
+<h2>Source Directory (<code>src/</code>)</h2>
+<p>The source directory contains all your <code>.roe</code> files:</p>
+<h3>Entry Point</h3>
+<p>Every project has a main entry point, typically <code>src/main.roe</code>:</p>
+<pre><code class="language-roe">// src/main.roe
+display &quot;Hello from my Roelang project!&quot;
+
+// Import functionality from other modules
+// (Module system coming in future versions)
+</code></pre>
+<h3>Module Organization</h3>
+<p>Organize related functionality into separate files:</p>
+<pre><code>src/
+├── main.roe          # Entry point
+├── calculator.roe    # Math operations
+├── strings.roe       # String utilities
+└── validation.roe    # Input validation
+</code></pre>
+<p>Example module structure:</p>
+<p>::: code-group</p>
+<pre><code class="language-roe">module calculator
+  action add with a which is int, b which is int gives int
+    give a + b
+  end action
+  
+  action multiply with a which is int, b which is int gives int
+    give a * b
+  end action
+end module
+</code></pre>
+<pre><code class="language-roe">// Use calculator module
+set result from run calculator.add with 10, 5
+display &quot;10 + 5 = [result]&quot;
+</code></pre>
+<p>:::</p>
+<h2>Build Directory (<code>build/</code>)</h2>
+<p>The build directory is automatically created when you compile your project:</p>
+<pre><code>build/
+├── main.wat          # WebAssembly text format
+├── main.wasm         # WebAssembly binary
+├── calculator.wat    # Module compilation
+├── calculator.wasm   # Module binary
+└── metadata.json     # Build information
+</code></pre>
+<h3>Generated Files</h3>
+<ul>
+<li><strong><code>.wat</code> files</strong>: Human-readable WebAssembly text format</li>
+<li><strong><code>.wasm</code> files</strong>: Binary WebAssembly modules for execution</li>
+<li><strong><code>metadata.json</code></strong>: Build timestamp and configuration info</li>
+</ul>
+<p>::: warning
+Never edit files in the <code>build/</code> directory manually. They are automatically generated and will be overwritten on the next compilation.
+:::</p>
+<h2>Project Initialization</h2>
+<h3>Create New Project</h3>
+<p>Use the CLI to create a new project:</p>
+<pre><code class="language-bash"># Create project directory
+mkdir my-roelang-project
+cd my-roelang-project
+
+# Initialize project structure
+roe init
+</code></pre>
+<p>This creates:</p>
+<ul>
+<li><code>roeconfig.json</code> with default configuration</li>
+<li><code>src/</code> directory with sample <code>main.roe</code></li>
+<li>Empty <code>build/</code> directory</li>
+</ul>
+<h3>Custom Initialization</h3>
+<p>Initialize with custom options:</p>
+<pre><code class="language-bash">roe init --name &quot;awesome-project&quot; --author &quot;Your Name&quot;
+</code></pre>
+<p>Or initialize in an existing directory:</p>
+<pre><code class="language-bash">roe init .
+</code></pre>
+<h2>Working with Projects</h2>
+<h3>Building Projects</h3>
+<p>Compile the entire project:</p>
+<pre><code class="language-bash"># Build all files
+roe build
+
+# Build specific file
+roe compile src/calculator.roe
+
+# Build and run main entry point
+roe run
+</code></pre>
+<h3>Project Commands</h3>
+<pre><code class="language-bash"># Show project information
+roe info
+
+# Clean build directory
+roe clean
+
+# Validate project structure
+roe validate
+</code></pre>
+<h2>File Naming Conventions</h2>
+<h3>Source Files</h3>
+<ul>
+<li>Use descriptive names: <code>user_management.roe</code>, <code>data_processing.roe</code></li>
+<li>Use snake_case for multi-word names</li>
+<li>Group related functionality in single files</li>
+<li>Keep files focused and cohesive</li>
+</ul>
+<h3>Examples</h3>
+<pre><code>src/
+├── main.roe              # Entry point
+├── user_authentication.roe   # Auth logic
+├── data_validation.roe       # Validation rules
+├── report_generation.roe     # Report creation
+└── email_notifications.roe   # Email handling
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Logical Organization</h3>
+<p>Group related functionality:</p>
+<pre><code>src/
+├── main.roe
+├── models/
+│   ├── user.roe
+│   └── product.roe
+├── services/
+│   ├── email.roe
+│   └── payment.roe
+└── utils/
+    ├── validation.roe
+    └── formatting.roe
+</code></pre>
+<h3>2. Clear Entry Points</h3>
+<p>Make your <code>main.roe</code> file a clear starting point:</p>
+<pre><code class="language-roe">// src/main.roe
+display &quot;=== My Application ===&quot;
+display &quot;Starting application...&quot;
+
+// Initialize core systems
+// Process main logic
+// Handle cleanup
+
+display &quot;Application completed successfully&quot;
+</code></pre>
+<h3>3. Module Boundaries</h3>
+<p>Keep modules focused on single responsibilities:</p>
+<pre><code class="language-roe">// Good: Focused module
+module string_utils
+  action capitalize with text which is text gives text
+    // Implementation
+  end action
+  
+  action trim with text which is text gives text
+    // Implementation
+  end action
+end module
+
+// Avoid: Mixed responsibilities
+module mixed_utils
+  action calculate_tax with amount which is decimal gives decimal
+    // Tax calculation doesn't belong in string utils
+  end action
+end module
+</code></pre>
+<h3>4. Configuration Management</h3>
+<p>Use <code>roeconfig.json</code> effectively:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;inventory-system&quot;,
+  &quot;version&quot;: &quot;2.1.0&quot;,
+  &quot;description&quot;: &quot;Warehouse inventory management system&quot;,
+  &quot;srcDir&quot;: &quot;src&quot;,
+  &quot;buildDir&quot;: &quot;dist&quot;,
+  &quot;main&quot;: &quot;inventory.roe&quot;,
+  &quot;author&quot;: &quot;Development Team&quot;,
+  &quot;license&quot;: &quot;MIT&quot;
+}
+</code></pre>
+<h2>Advanced Project Patterns</h2>
+<h3>Library Projects</h3>
+<p>For reusable modules:</p>
+<pre><code>roelang-math-lib/
+├── roeconfig.json
+├── src/
+│   ├── trigonometry.roe
+│   ├── statistics.roe
+│   └── geometry.roe
+└── examples/
+    ├── basic_math.roe
+    └── advanced_calculations.roe
+</code></pre>
+<h3>Application Projects</h3>
+<p>For standalone applications:</p>
+<pre><code>inventory-app/
+├── roeconfig.json
+├── src/
+│   ├── main.roe
+│   ├── inventory.roe
+│   ├── reports.roe
+│   └── config.roe
+├── data/
+│   └── sample_inventory.json
+└── docs/
+    └── user_guide.md
+</code></pre>
+<h2>Version Control</h2>
+<h3><code>.gitignore</code> Template</h3>
+<pre><code class="language-gitignore"># Roelang build output
+build/
+dist/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+</code></pre>
+<h3>Repository Structure</h3>
+<pre><code>my-roelang-project/
+├── .gitignore
+├── README.md
+├── LICENSE
+├── roeconfig.json
+├── src/
+└── docs/
+</code></pre>
+<h2>Troubleshooting</h2>
+<h3>Common Issues</h3>
+<h4>Project Won't Build</h4>
+<p>Check these common issues:</p>
+<ol>
+<li>
+<p><strong>Missing <code>roeconfig.json</code></strong>:</p>
+<pre><code class="language-bash">roe init  # Create configuration
+</code></pre>
+</li>
+<li>
+<p><strong>Invalid configuration</strong>:</p>
+<pre><code class="language-bash">roe validate  # Check project structure
+</code></pre>
+</li>
+<li>
+<p><strong>Source file errors</strong>:</p>
+<pre><code class="language-bash">roe compile src/main.roe  # Test individual files
+</code></pre>
+</li>
+</ol>
+<h4>Build Directory Issues</h4>
+<pre><code class="language-bash"># Clean and rebuild
+roe clean
+roe build
+</code></pre>
+<h4>Configuration Problems</h4>
+<p>Validate your <code>roeconfig.json</code>:</p>
+<pre><code class="language-bash"># Check configuration syntax
+cat roeconfig.json | jq .
+
+# Validate project
+roe info
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand project structure, explore these topics:</p>
+<ul>
+<li><strong><a href="/guide/basics/">Basic Syntax</a></strong> - Learn Roelang's syntax fundamentals</li>
+<li><strong><a href="/guide/types/">Type System</a></strong> - Understanding data types</li>
+<li><strong><a href="/guide/modules/">Modules</a></strong> - Creating reusable modules</li>
+<li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Complete command-line reference</li>
+</ul>
+<p>Understanding project structure is the foundation for building maintainable Roelang applications. Keep your projects organized, use meaningful names, and follow the conventions outlined here for the best development experience.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/quick-start/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Quick Start</span>
+        </a>
+        
+        
+        
+        <a href="/guide/basics/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>Basic Syntax</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

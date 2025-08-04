@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLI Reference | Roelang - Modern WebAssembly Language</title>
+  <meta name="description" content="Complete reference for the Roelang command-line interface and development tools.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CLI Reference | Roelang">
+  <meta property="og:description" content="Complete reference for the Roelang command-line interface and development tools.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/cli/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CLI Reference | Roelang">
+  <meta name="twitter:description" content="Complete reference for the Roelang command-line interface and development tools.">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span>Roelang</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/guide/" class="nav-link">Guide</a>
+          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+            <span class="sr-only">GitHub</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-64">
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Breadcrumbs -->
+      
+      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <a href="/guide/" class="hover:text-primary-600">Guide</a>
+        
+        
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        
+        <span class="text-gray-900">CLI Reference</span>
+        
+        
+      </nav>
+      
+      
+      <!-- Page Header -->
+      
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">CLI Reference</h1>
+        
+        <p class="text-xl text-gray-600">Complete reference for the Roelang command-line interface and development tools.</p>
+        
+      </header>
+      
+      
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <p>The Roelang CLI (<code>roe</code>) is the primary tool for developing, compiling, and running Roelang programs. This reference covers all available commands and options.</p>
+<h2>Installation and Setup</h2>
+<h3>Verify Installation</h3>
+<pre><code class="language-bash">roe --version
+</code></pre>
+<h3>Get Help</h3>
+<pre><code class="language-bash">roe --help
+roe -h
+</code></pre>
+<h2>Core Commands</h2>
+<h3><code>roe init</code> - Initialize Project</h3>
+<p>Create a new Roelang project with the standard directory structure.</p>
+<pre><code class="language-bash"># Initialize in current directory
+roe init
+
+# Initialize with custom name
+roe init --name &quot;my-project&quot;
+
+# Initialize with author
+roe init --author &quot;Your Name&quot;
+
+# Initialize in specific directory
+roe init my-project-directory
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--name &lt;name&gt;</code> - Set project name</li>
+<li><code>--author &lt;author&gt;</code> - Set project author</li>
+<li><code>--description &lt;desc&gt;</code> - Set project description</li>
+</ul>
+<p><strong>Output:</strong>
+Creates the following structure:</p>
+<pre><code>project/
+├── roeconfig.json
+├── src/
+│   └── main.roe
+└── build/
+</code></pre>
+<h3><code>roe compile</code> - Compile Source Files</h3>
+<p>Compile <code>.roe</code> files to WebAssembly format.</p>
+<pre><code class="language-bash"># Compile specific file
+roe compile src/main.roe
+
+# Compile to specific output
+roe compile src/main.roe --output build/main.wat
+
+# Compile multiple files
+roe compile src/*.roe
+
+# Compile with verbose output
+roe compile src/main.roe --verbose
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--output &lt;file&gt;</code> - Specify output file location</li>
+<li><code>--format &lt;format&gt;</code> - Output format (<code>wat</code>, <code>wasm</code>) [default: <code>wat</code>]</li>
+<li><code>--verbose</code> - Show detailed compilation information</li>
+<li><code>--watch</code> - Watch for file changes and recompile automatically</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-bash"># Basic compilation
+roe compile examples/src/01_display.roe
+
+# Compile to WebAssembly binary
+roe compile src/main.roe --format wasm --output build/main.wasm
+
+# Watch mode for development
+roe compile src/main.roe --watch
+</code></pre>
+<h3><code>roe run</code> - Compile and Execute</h3>
+<p>Compile and immediately execute a Roelang program.</p>
+<pre><code class="language-bash"># Run specific file
+roe run src/main.roe
+
+# Run with arguments (future feature)
+roe run src/main.roe --args &quot;arg1 arg2&quot;
+
+# Run project main file
+roe run
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--debug</code> - Enable debug output</li>
+<li><code>--trace</code> - Show execution trace</li>
+<li><code>--timeout &lt;seconds&gt;</code> - Set execution timeout</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-bash"># Run a simple program
+roe run examples/src/01_display.roe
+
+# Run with debug information
+roe run src/main.roe --debug
+
+# Run main project file
+roe run
+</code></pre>
+<h3><code>roe build</code> - Build Entire Project</h3>
+<p>Build all source files in a project according to <code>roeconfig.json</code>.</p>
+<pre><code class="language-bash"># Build entire project
+roe build
+
+# Build with clean first
+roe build --clean
+
+# Build for production
+roe build --release
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--clean</code> - Clean build directory before building</li>
+<li><code>--release</code> - Build optimized release version</li>
+<li><code>--target &lt;target&gt;</code> - Specify build target platform</li>
+<li><code>--verbose</code> - Show detailed build information</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-bash"># Standard build
+roe build
+
+# Clean build
+roe build --clean
+
+# Production build
+roe build --release --clean
+</code></pre>
+<h2>Project Management Commands</h2>
+<h3><code>roe clean</code> - Clean Build Artifacts</h3>
+<p>Remove generated build files and artifacts.</p>
+<pre><code class="language-bash"># Clean build directory
+roe clean
+
+# Clean with confirmation
+roe clean --confirm
+
+# Clean specific patterns
+roe clean --pattern &quot;*.wat&quot;
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--confirm</code> - Ask for confirmation before cleaning</li>
+<li><code>--pattern &lt;pattern&gt;</code> - Clean files matching pattern</li>
+<li><code>--dry-run</code> - Show what would be deleted without deleting</li>
+</ul>
+<h3><code>roe info</code> - Project Information</h3>
+<p>Display information about the current project.</p>
+<pre><code class="language-bash"># Show project info
+roe info
+
+# Show detailed info
+roe info --detailed
+
+# Show configuration
+roe info --config
+</code></pre>
+<p><strong>Example output:</strong></p>
+<pre><code>Project: hello-roelang
+Version: 1.0.0
+Source Directory: src/
+Build Directory: build/
+Main File: main.roe
+Files: 3 source files, 2 build artifacts
+</code></pre>
+<h3><code>roe validate</code> - Validate Project</h3>
+<p>Check project structure and configuration for issues.</p>
+<pre><code class="language-bash"># Validate current project
+roe validate
+
+# Validate specific directory
+roe validate /path/to/project
+
+# Validate with fixes
+roe validate --fix
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--fix</code> - Automatically fix common issues</li>
+<li><code>--strict</code> - Use strict validation rules</li>
+<li><code>--report</code> - Generate validation report</li>
+</ul>
+<h2>Development Commands</h2>
+<h3><code>roe doctor</code> - System Diagnostics</h3>
+<p>Check system setup and dependencies.</p>
+<pre><code class="language-bash"># Run system diagnostics
+roe doctor
+
+# Check specific component
+roe doctor --component compiler
+
+# Verbose diagnostics
+roe doctor --verbose
+</code></pre>
+<p><strong>Checks:</strong></p>
+<ul>
+<li>Roelang installation</li>
+<li>Node.js availability</li>
+<li>WebAssembly tools (wat2wasm)</li>
+<li>Project configuration</li>
+<li>File permissions</li>
+</ul>
+<h3><code>roe test</code> - Run Tests</h3>
+<p>Execute test files and validate programs.</p>
+<pre><code class="language-bash"># Run all tests
+roe test
+
+# Run specific test file
+roe test tests/test_variables.roe
+
+# Run tests with coverage
+roe test --coverage
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--coverage</code> - Generate coverage report</li>
+<li><code>--verbose</code> - Show detailed test output</li>
+<li><code>--watch</code> - Watch for changes and re-run tests</li>
+<li><code>--pattern &lt;pattern&gt;</code> - Run tests matching pattern</li>
+</ul>
+<h3><code>roe format</code> - Format Source Code</h3>
+<p>Format Roelang source files according to style guidelines.</p>
+<pre><code class="language-bash"># Format all files
+roe format
+
+# Format specific file
+roe format src/main.roe
+
+# Check formatting without changes
+roe format --check
+</code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--check</code> - Check formatting without making changes</li>
+<li><code>--diff</code> - Show formatting differences</li>
+<li><code>--write</code> - Write changes to files (default)</li>
+</ul>
+<h2>Configuration Commands</h2>
+<h3><code>roe config</code> - Manage Configuration</h3>
+<p>View and modify Roelang configuration.</p>
+<pre><code class="language-bash"># Show all configuration
+roe config list
+
+# Get specific value
+roe config get editor.tabSize
+
+# Set configuration value
+roe config set editor.tabSize 2
+
+# Reset to defaults
+roe config reset
+</code></pre>
+<p><strong>Common Configuration Options:</strong></p>
+<ul>
+<li><code>editor.tabSize</code> - Tab size for formatting</li>
+<li><code>compiler.target</code> - Default compilation target</li>
+<li><code>runtime.timeout</code> - Default execution timeout</li>
+<li><code>build.outputDir</code> - Default build directory</li>
+</ul>
+<h2>Advanced Commands</h2>
+<h3><code>roe analyze</code> - Code Analysis</h3>
+<p>Analyze code for potential issues and improvements.</p>
+<pre><code class="language-bash"># Analyze current project
+roe analyze
+
+# Analyze specific file
+roe analyze src/main.roe
+
+# Generate analysis report
+roe analyze --report analysis_report.json
+</code></pre>
+<p><strong>Analysis Types:</strong></p>
+<ul>
+<li>Unused variables</li>
+<li>Type inconsistencies</li>
+<li>Performance suggestions</li>
+<li>Best practice violations</li>
+</ul>
+<h3><code>roe profile</code> - Performance Profiling</h3>
+<p>Profile program execution for performance analysis.</p>
+<pre><code class="language-bash"># Profile program execution
+roe profile src/main.roe
+
+# Profile with detailed output
+roe profile src/main.roe --detailed
+
+# Generate profiling report
+roe profile src/main.roe --report profile.json
+</code></pre>
+<h3><code>roe debug</code> - Debug Programs</h3>
+<p>Launch programs in debug mode with debugging support.</p>
+<pre><code class="language-bash"># Debug program
+roe debug src/main.roe
+
+# Debug with breakpoint
+roe debug src/main.roe --break line:10
+
+# Debug with step-through
+roe debug src/main.roe --step
+</code></pre>
+<h2>Environment Commands</h2>
+<h3><code>roe env</code> - Environment Information</h3>
+<p>Display environment and system information.</p>
+<pre><code class="language-bash"># Show environment info
+roe env
+
+# Show PATH information
+roe env --path
+
+# Show all environment variables
+roe env --all
+</code></pre>
+<h3><code>roe install</code> - Install Dependencies</h3>
+<p>Install and manage Roelang dependencies.</p>
+<pre><code class="language-bash"># Install project dependencies
+roe install
+
+# Install specific package
+roe install package-name
+
+# Install development dependencies
+roe install --dev
+</code></pre>
+<h2>Command-Line Options</h2>
+<h3>Global Options</h3>
+<p>Available for all commands:</p>
+<ul>
+<li><code>--help, -h</code> - Show help information</li>
+<li><code>--version, -v</code> - Show version information</li>
+<li><code>--verbose</code> - Enable verbose output</li>
+<li><code>--quiet, -q</code> - Suppress non-essential output</li>
+<li><code>--no-color</code> - Disable colored output</li>
+<li><code>--config &lt;file&gt;</code> - Use specific configuration file</li>
+</ul>
+<h3>Output Formats</h3>
+<p>Many commands support different output formats:</p>
+<pre><code class="language-bash"># JSON output
+roe info --format json
+
+# YAML output
+roe info --format yaml
+
+# Table output (default)
+roe info --format table
+</code></pre>
+<h2>Configuration File</h2>
+<h3><code>roeconfig.json</code></h3>
+<p>Project configuration file format:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;my-project&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;My Roelang project&quot;,
+  &quot;author&quot;: &quot;Your Name&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;srcDir&quot;: &quot;src&quot;,
+  &quot;buildDir&quot;: &quot;build&quot;,
+  &quot;main&quot;: &quot;main.roe&quot;,
+  &quot;compiler&quot;: {
+    &quot;target&quot;: &quot;wasm&quot;,
+    &quot;optimize&quot;: true,
+    &quot;debug&quot;: false
+  },
+  &quot;runtime&quot;: {
+    &quot;timeout&quot;: 30,
+    &quot;maxMemory&quot;: &quot;128MB&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;roelang-std&quot;: &quot;^1.0.0&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;roe run&quot;,
+    &quot;build&quot;: &quot;roe build --release&quot;,
+    &quot;test&quot;: &quot;roe test&quot;,
+    &quot;clean&quot;: &quot;roe clean&quot;
+  }
+}
+</code></pre>
+<h3>Configuration Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Project name</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>Project version (semver)</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>Project description</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>string</td>
+<td>Project author</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td>string</td>
+<td>License type</td>
+</tr>
+<tr>
+<td><code>srcDir</code></td>
+<td>string</td>
+<td>Source directory path</td>
+</tr>
+<tr>
+<td><code>buildDir</code></td>
+<td>string</td>
+<td>Build output directory</td>
+</tr>
+<tr>
+<td><code>main</code></td>
+<td>string</td>
+<td>Main entry file</td>
+</tr>
+<tr>
+<td><code>compiler</code></td>
+<td>object</td>
+<td>Compiler configuration</td>
+</tr>
+<tr>
+<td><code>runtime</code></td>
+<td>object</td>
+<td>Runtime configuration</td>
+</tr>
+<tr>
+<td><code>dependencies</code></td>
+<td>object</td>
+<td>Project dependencies</td>
+</tr>
+<tr>
+<td><code>scripts</code></td>
+<td>object</td>
+<td>Custom scripts</td>
+</tr>
+</tbody>
+</table>
+<h2>Exit Codes</h2>
+<p>The <code>roe</code> command uses standard exit codes:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>1</td>
+<td>General error</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Compilation error</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Runtime error</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Configuration error</td>
+</tr>
+<tr>
+<td>5</td>
+<td>File not found</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Permission denied</td>
+</tr>
+</tbody>
+</table>
+<h2>Examples</h2>
+<h3>Complete Development Workflow</h3>
+<pre><code class="language-bash"># Create new project
+mkdir my-roelang-app
+cd my-roelang-app
+roe init --name &quot;my-roelang-app&quot; --author &quot;Your Name&quot;
+
+# Create source file
+cat &gt; src/main.roe &lt;&lt; 'EOF'
+display &quot;Hello, Roelang!&quot;
+set name which is text to &quot;World&quot;
+display &quot;Welcome to [name]!&quot;
+EOF
+
+# Run the program
+roe run src/main.roe
+
+# Build the project
+roe build
+
+# Run tests (if any)
+roe test
+
+# Clean up
+roe clean
+</code></pre>
+<h3>Compilation Pipeline</h3>
+<pre><code class="language-bash"># Compile to WebAssembly text format
+roe compile src/main.roe --output build/main.wat
+
+# Compile to WebAssembly binary
+roe compile src/main.roe --format wasm --output build/main.wasm
+
+# Run compiled WebAssembly
+node ~/.roelang/run.js build/main.wasm
+</code></pre>
+<h3>Development with Watch Mode</h3>
+<pre><code class="language-bash"># Terminal 1: Watch and compile
+roe compile src/main.roe --watch
+
+# Terminal 2: Run tests continuously
+roe test --watch
+
+# Terminal 3: Format on save
+roe format --watch
+</code></pre>
+<h2>Troubleshooting</h2>
+<h3>Common Issues</h3>
+<h4>Command Not Found</h4>
+<pre><code class="language-bash"># Check if roe is in PATH
+which roe
+echo $PATH
+
+# Reinstall or add to PATH
+export PATH=&quot;$HOME/.roelang:$PATH&quot;
+</code></pre>
+<h4>Compilation Errors</h4>
+<pre><code class="language-bash"># Check syntax with verbose output
+roe compile src/main.roe --verbose
+
+# Validate project structure
+roe validate
+
+# Run system diagnostics
+roe doctor
+</code></pre>
+<h4>Runtime Errors</h4>
+<pre><code class="language-bash"># Run with debug information
+roe run src/main.roe --debug --trace
+
+# Check for system requirements
+roe doctor --component runtime
+</code></pre>
+<h3>Getting Help</h3>
+<pre><code class="language-bash"># General help
+roe --help
+
+# Command-specific help
+roe compile --help
+roe run --help
+roe build --help
+
+# Show examples
+roe --examples
+
+# Show troubleshooting guide
+roe doctor --help
+</code></pre>
+<h2>Next Steps</h2>
+<p>Now that you understand the Roelang CLI:</p>
+<ul>
+<li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Understanding compilation targets</li>
+<li><strong><a href="/guide/debugging/">Debugging</a></strong> - Troubleshooting and debugging techniques</li>
+<li><strong><a href="/guide/project-structure/">Project Structure</a></strong> - Organizing Roelang projects</li>
+<li><strong><a href="/guide/installation/">Installation</a></strong> - Setting up your development environment</li>
+</ul>
+<p>The Roelang CLI provides powerful tools for developing, building, and managing Roelang applications. Use these commands to streamline your development workflow and build robust applications.</p>
+
+      </div>
+      
+      <!-- Navigation Footer -->
+      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+        
+        <a href="/guide/task-actions/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Task Actions</span>
+        </a>
+        
+        
+        
+        <a href="/guide/webassembly/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
+          <span>WebAssembly</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roelang</span>
+          </div>
+          <p class="text-gray-600 max-w-md">
+            A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
+          <ul class="space-y-2">
+            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
+            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
+          <ul class="space-y-2">
+            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
+            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
