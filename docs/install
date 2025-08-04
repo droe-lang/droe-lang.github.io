@@ -1,0 +1,273 @@
+#!/bin/bash
+
+# Roe Language Installer
+# Usage: curl -sSL https://roe-lang.dev/install | sh
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Configuration
+ROE_HOME="$HOME/.roelang"
+ROE_BIN="$ROE_HOME/bin"
+ROE_VERSION="latest"
+GITHUB_REPO="roe-lang/roe"
+
+# Platform detection
+detect_platform() {
+    local os=$(uname -s | tr '[:upper:]' '[:lower:]')
+    local arch=$(uname -m)
+    
+    case $os in
+        darwin*) os="macos" ;;
+        linux*) os="linux" ;;
+        mingw*|msys*|cygwin*) os="windows" ;;
+        *) 
+            echo -e "${RED}Error: Unsupported operating system: $os${NC}"
+            exit 1
+            ;;
+    esac
+    
+    case $arch in
+        x86_64|amd64) arch="x64" ;;
+        arm64|aarch64) arch="arm64" ;;
+        *) 
+            echo -e "${RED}Error: Unsupported architecture: $arch${NC}"
+            exit 1
+            ;;
+    esac
+    
+    echo "${os}-${arch}"
+}
+
+# Print banner
+print_banner() {
+    echo -e "${BLUE}"
+    echo "  ____            "
+    echo " |  _ \ ___   ___ "
+    echo " | |_) / _ \ / _ \\"
+    echo " |  _ < (_) |  __/"
+    echo " |_| \_\___/ \___|"
+    echo -e "${NC}"
+    echo -e "${GREEN}Roe Language Installer${NC}"
+    echo "======================"
+    echo
+}
+
+# Check dependencies
+check_dependencies() {
+    echo -e "${BLUE}Checking dependencies...${NC}"
+    
+    # Check for curl or wget
+    if ! command -v curl >/dev/null 2>&1 && ! command -v wget >/dev/null 2>&1; then
+        echo -e "${RED}Error: curl or wget is required${NC}"
+        exit 1
+    fi
+    
+    # Check for tar
+    if ! command -v tar >/dev/null 2>&1; then
+        echo -e "${RED}Error: tar is required${NC}"
+        exit 1
+    fi
+    
+    # Check for Node.js (required for WebAssembly runtime)
+    if ! command -v node >/dev/null 2>&1; then
+        echo -e "${YELLOW}Warning: Node.js not found. Installing Node.js is recommended for running .roe files.${NC}"
+        echo -e "${YELLOW}Visit https://nodejs.org/ to install Node.js${NC}"
+        echo
+    fi
+    
+    echo -e "${GREEN}✓ Dependencies check passed${NC}"
+    echo
+}
+
+# Download file with fallback
+download_file() {
+    local url="$1"
+    local output="$2"
+    
+    if command -v curl >/dev/null 2>&1; then
+        curl -fsSL "$url" -o "$output"
+    elif command -v wget >/dev/null 2>&1; then
+        wget -q "$url" -O "$output"
+    else
+        echo -e "${RED}Error: No download tool available${NC}"
+        exit 1
+    fi
+}
+
+# Get latest release version
+get_latest_version() {
+    echo -e "${BLUE}Fetching latest version...${NC}"
+    
+    local api_url="https://api.github.com/repos/$GITHUB_REPO/releases/latest"
+    local version
+    
+    if command -v curl >/dev/null 2>&1; then
+        version=$(curl -fsSL "$api_url" | grep '"tag_name":' | sed 's/.*"tag_name": *"\([^"]*\)".*/\1/')
+    elif command -v wget >/dev/null 2>&1; then
+        version=$(wget -qO- "$api_url" | grep '"tag_name":' | sed 's/.*"tag_name": *"\([^"]*\)".*/\1/')
+    fi
+    
+    if [ -z "$version" ]; then
+        echo -e "${YELLOW}Warning: Could not fetch latest version, using fallback${NC}"
+        version="v0.1.0"
+    fi
+    
+    echo "$version"
+}
+
+# Install Roe
+install_roe() {
+    local platform=$(detect_platform)
+    local version=$(get_latest_version)
+    
+    echo -e "${BLUE}Installing Roe $version for $platform...${NC}"
+    
+    # Create directories
+    mkdir -p "$ROE_HOME"
+    mkdir -p "$ROE_BIN"
+    
+    # For now, we'll install the Python-based version since binaries aren't available yet
+    echo -e "${BLUE}Installing Roe CLI tools...${NC}"
+    
+    # Download the CLI tool (this would be from releases when available)
+    local roe_cli_url="https://raw.githubusercontent.com/$GITHUB_REPO/main/roe"
+    local compiler_url="https://raw.githubusercontent.com/$GITHUB_REPO/main/compiler.py"
+    local runtime_url="https://raw.githubusercontent.com/$GITHUB_REPO/main/run.js"
+    
+    # Download files
+    if download_file "$roe_cli_url" "$ROE_BIN/roe" 2>/dev/null; then
+        chmod +x "$ROE_BIN/roe"
+        echo -e "${GREEN}✓ Downloaded roe CLI${NC}"
+    else
+        echo -e "${YELLOW}Warning: Could not download roe CLI from GitHub${NC}"
+        # Create a basic roe script as fallback
+        cat > "$ROE_BIN/roe" << 'EOF'
+#!/usr/bin/env python3
+import sys
+import os
+
+def main():
+    print("Roe Language CLI v0.1.0")
+    print("This is a placeholder installation.")
+    print("Visit https://github.com/roe-lang/roe for the full implementation.")
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "version" or sys.argv[1] == "--version":
+            print("roe 0.1.0")
+        elif sys.argv[1] == "help" or sys.argv[1] == "--help":
+            print("Usage: roe <command>")
+            print("Commands:")
+            print("  init     Initialize a new Roe project")
+            print("  compile  Compile .roe files to WebAssembly")
+            print("  run      Run a .roe file")
+            print("  version  Show version information")
+        else:
+            print(f"Unknown command: {sys.argv[1]}")
+            print("Run 'roe help' for available commands")
+
+if __name__ == "__main__":
+    main()
+EOF
+        chmod +x "$ROE_BIN/roe"
+        echo -e "${GREEN}✓ Created roe CLI placeholder${NC}"
+    fi
+    
+    if download_file "$compiler_url" "$ROE_HOME/compiler.py" 2>/dev/null; then
+        echo -e "${GREEN}✓ Downloaded compiler.py${NC}"
+    else
+        echo -e "${YELLOW}Warning: Could not download compiler.py${NC}"
+    fi
+    
+    if download_file "$runtime_url" "$ROE_HOME/run.js" 2>/dev/null; then
+        echo -e "${GREEN}✓ Downloaded run.js${NC}"
+    else
+        echo -e "${YELLOW}Warning: Could not download run.js${NC}"
+    fi
+    
+    echo -e "${GREEN}✓ Roe installed to $ROE_HOME${NC}"
+    echo
+}
+
+# Update shell profile
+update_shell_profile() {
+    echo -e "${BLUE}Updating shell profile...${NC}"
+    
+    local shell_profile=""
+    local shell_name=$(basename "$SHELL")
+    
+    case $shell_name in
+        bash)
+            if [ -f "$HOME/.bashrc" ]; then
+                shell_profile="$HOME/.bashrc"
+            elif [ -f "$HOME/.bash_profile" ]; then
+                shell_profile="$HOME/.bash_profile"
+            fi
+            ;;
+        zsh)
+            shell_profile="$HOME/.zshrc"
+            ;;
+        fish)
+            shell_profile="$HOME/.config/fish/config.fish"
+            ;;
+        *)
+            echo -e "${YELLOW}Warning: Unknown shell $shell_name${NC}"
+            ;;
+    esac
+    
+    if [ -n "$shell_profile" ] && [ -f "$shell_profile" ]; then
+        # Check if PATH is already updated
+        if ! grep -q "$ROE_BIN" "$shell_profile" 2>/dev/null; then
+            echo "" >> "$shell_profile"
+            echo "# Roe Language" >> "$shell_profile"
+            echo "export PATH=\"$ROE_BIN:\$PATH\"" >> "$shell_profile"
+            echo -e "${GREEN}✓ Updated $shell_profile${NC}"
+        else
+            echo -e "${GREEN}✓ PATH already configured in $shell_profile${NC}"
+        fi
+    else
+        echo -e "${YELLOW}Warning: Could not find shell profile to update${NC}"
+        echo -e "${YELLOW}Please add $ROE_BIN to your PATH manually${NC}"
+    fi
+    
+    echo
+}
+
+# Print completion message
+print_completion() {
+    echo -e "${GREEN}🎉 Roe installation completed!${NC}"
+    echo
+    echo -e "${BLUE}Next steps:${NC}"
+    echo "1. Restart your terminal or run: source ~/.bashrc (or your shell profile)"
+    echo "2. Verify installation: roe version"
+    echo "3. Create your first project: roe init my-project"
+    echo "4. Visit https://roe-lang.dev/guide/ for documentation"
+    echo
+    echo -e "${BLUE}Quick start:${NC}"
+    echo "  mkdir hello-roe && cd hello-roe"
+    echo "  echo 'display \"Hello, Roe! 🦌\"' > hello.roe"
+    echo "  roe run hello.roe"
+    echo
+    echo -e "${GREEN}Happy coding with Roe! 🦌${NC}"
+}
+
+# Main installation function
+main() {
+    print_banner
+    check_dependencies
+    install_roe
+    update_shell_profile
+    print_completion
+}
+
+# Error handling
+trap 'echo -e "${RED}Installation failed!${NC}" >&2' ERR
+
+# Run main function
+main "$@"
