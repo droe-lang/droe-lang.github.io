@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: CLI Reference
-description: Complete reference for the Roelang command-line interface and development tools.
+description: Complete reference for the Roe command-line interface and development tools.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/webassembly/
 ---
 
-The Roelang CLI (`roe`) is the primary tool for developing, compiling, and running Roelang programs. This reference covers all available commands and options.
+The Roe CLI (`roe`) is the primary tool for developing, compiling, and running Roe programs. This reference covers all available commands and options.
 
 ## Installation and Setup
 
@@ -35,7 +35,7 @@ roe -h
 
 ### `roe init` - Initialize Project
 
-Create a new Roelang project with the standard directory structure.
+Create a new Roe project with the standard directory structure.
 
 ```bash
 # Initialize in current directory
@@ -104,7 +104,7 @@ roe compile src/main.roe --watch
 
 ### `roe run` - Compile and Execute
 
-Compile and immediately execute a Roelang program.
+Compile and immediately execute a Roe program.
 
 ```bash
 # Run specific file
@@ -252,7 +252,7 @@ roe doctor --verbose
 ```
 
 **Checks:**
-- Roelang installation
+- Roe installation
 - Node.js availability
 - WebAssembly tools (wat2wasm)
 - Project configuration
@@ -281,7 +281,7 @@ roe test --coverage
 
 ### `roe format` - Format Source Code
 
-Format Roelang source files according to style guidelines.
+Format Roe source files according to style guidelines.
 
 ```bash
 # Format all files
@@ -303,7 +303,7 @@ roe format --check
 
 ### `roe config` - Manage Configuration
 
-View and modify Roelang configuration.
+View and modify Roe configuration.
 
 ```bash
 # Show all configuration
@@ -397,7 +397,7 @@ roe env --all
 
 ### `roe install` - Install Dependencies
 
-Install and manage Roelang dependencies.
+Install and manage Roe dependencies.
 
 ```bash
 # Install project dependencies
@@ -448,7 +448,7 @@ Project configuration file format:
 {
   "name": "my-project",
   "version": "1.0.0",
-  "description": "My Roelang project",
+  "description": "My Roe project",
   "author": "Your Name",
   "license": "MIT",
   "srcDir": "src",
@@ -518,7 +518,7 @@ roe init --name "my-roelang-app" --author "Your Name"
 
 # Create source file
 cat > src/main.roe << 'EOF'
-display "Hello, Roelang!"
+display "Hello, Roe!"
 set name which is text to "World"
 display "Welcome to [name]!"
 EOF
@@ -617,11 +617,11 @@ roe doctor --help
 
 ## Next Steps
 
-Now that you understand the Roelang CLI:
+Now that you understand the Roe CLI:
 
 - **[WebAssembly](/guide/webassembly/)** - Understanding compilation targets
 - **[Debugging](/guide/debugging/)** - Troubleshooting and debugging techniques
-- **[Project Structure](/guide/project-structure/)** - Organizing Roelang projects
+- **[Project Structure](/guide/project-structure/)** - Organizing Roe projects
 - **[Installation](/guide/installation/)** - Setting up your development environment
 
-The Roelang CLI provides powerful tools for developing, building, and managing Roelang applications. Use these commands to streamline your development workflow and build robust applications.
+The Roe CLI provides powerful tools for developing, building, and managing Roe applications. Use these commands to streamline your development workflow and build robust applications.

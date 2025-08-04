@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Actions
-description: Create reusable functions with parameters and return values in Roelang modules.
+description: Create reusable functions with parameters and return values in Roe modules.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/data-structures/
 ---
 
-Actions are functions within modules that accept parameters and return values. They enable code reuse, encapsulation, and clean separation of concerns in Roelang programs.
+Actions are functions within modules that accept parameters and return values. They enable code reuse, encapsulation, and clean separation of concerns in Roe programs.
 
 ## Action Syntax
 
@@ -568,11 +568,11 @@ end module
 
 ## Next Steps
 
-Now that you understand actions in Roelang:
+Now that you understand actions in Roe:
 
 - **[Data Structures](/guide/data-structures/)** - Use actions with custom data types
 - **[Task Actions](/guide/task-actions/)** - Learn about task-specific actions
 - **[CLI Reference](/guide/cli/)** - Compile and test modules with actions
 - **[WebAssembly](/guide/webassembly/)** - Understand how actions compile to WASM
 
-Actions are the building blocks of reusable functionality in Roelang. Use them to create clean, testable, and maintainable code that can be easily shared across your applications.
+Actions are the building blocks of reusable functionality in Roe. Use them to create clean, testable, and maintainable code that can be easily shared across your applications.

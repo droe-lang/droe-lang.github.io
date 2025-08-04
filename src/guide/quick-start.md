@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Quick Start
-description: Create your first Roelang project and learn the basics in minutes.
+description: Create your first Roe project and learn the basics in minutes.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,11 +14,11 @@ next:
   url: /guide/project-structure/
 ---
 
-Let's build your first Roelang program! This guide will walk you through creating a simple project that demonstrates the key features of the language.
+Let's build your first Roe program! This guide will walk you through creating a simple project that demonstrates the key features of the language.
 
 ## Create Your First Project
 
-Start by creating a new Roelang project:
+Start by creating a new Roe project:
 
 ```bash
 # Create and enter project directory
@@ -44,8 +44,8 @@ hello-roelang/
 Open `src/main.roe` and replace the contents with:
 
 ```roe
-// Welcome to Roelang! 🦌
-display "=== Hello Roelang Demo ==="
+// Welcome to Roe! 🦌
+display "=== Hello Roe Demo ==="
 display ""
 
 // Variables with strong typing
@@ -64,7 +64,7 @@ display ""
 // String concatenation
 set greeting to "Hello, " + programmer_name + "!"
 display greeting
-display "Welcome to the world of Roelang development! 🚀"
+display "Welcome to the world of Roe development! 🚀"
 ```
 
 ## Run Your Program
@@ -78,7 +78,7 @@ roe run src/main.roe
 You should see output like:
 
 ```
-=== Hello Roelang Demo ===
+=== Hello Roe Demo ===
 
 Programmer: Alice
 Experience: 3 years
@@ -86,7 +86,7 @@ Loves coding: true
 Rate: $75.50 per hour
 
 Hello, Alice!
-Welcome to the world of Roelang development! 🚀
+Welcome to the world of Roe development! 🚀
 ```
 
 ## Understanding the Code
@@ -114,7 +114,7 @@ set loves_coding which is flag to true
 set hourly_rate which is decimal to 75.50
 ```
 
-Roelang uses strong typing with clear, readable syntax:
+Roe uses strong typing with clear, readable syntax:
 - `text` - strings
 - `int` - integers
 - `flag` - booleans
@@ -141,7 +141,7 @@ display ""
 display "=== Collections Demo ==="
 
 // Arrays (lists)
-set programming_languages which are list of text to ["Python", "JavaScript", "Roelang"]
+set programming_languages which are list of text to ["Python", "JavaScript", "Roe"]
 set project_scores which are list of int to [85, 92, 78, 95]
 
 display "Languages I know:"
@@ -172,7 +172,7 @@ roe run src/main.roe
 
 ## Adding Logic with Conditionals
 
-Roelang supports conditional logic with natural language syntax:
+Roe supports conditional logic with natural language syntax:
 
 ```roe
 display ""
@@ -265,7 +265,7 @@ Your `roeconfig.json` controls project settings:
   "srcDir": "src",
   "buildDir": "build",
   "main": "main.roe",
-  "description": "My first Roelang project"
+  "description": "My first Roe project"
 }
 ```
 
@@ -275,8 +275,8 @@ Here's the complete `main.roe` file with all examples:
 
 ::: details View complete example
 ```roe
-// Welcome to Roelang! 🦌
-display "=== Hello Roelang Demo ==="
+// Welcome to Roe! 🦌
+display "=== Hello Roe Demo ==="
 display ""
 
 // Variables with strong typing
@@ -295,13 +295,13 @@ display ""
 // String concatenation
 set greeting to "Hello, " + programmer_name + "!"
 display greeting
-display "Welcome to the world of Roelang development! 🚀"
+display "Welcome to the world of Roe development! 🚀"
 
 display ""
 display "=== Collections Demo ==="
 
 // Arrays (lists)
-set programming_languages which are list of text to ["Python", "JavaScript", "Roelang"]
+set programming_languages which are list of text to ["Python", "JavaScript", "Roe"]
 set project_scores which are list of int to [85, 92, 78, 95]
 
 display "Languages I know:"
@@ -380,7 +380,7 @@ display "6 × 7 = [product]"
 display "75 out of 100 = [percentage]%"
 
 display ""
-display "🎉 Demo complete! Welcome to Roelang!"
+display "🎉 Demo complete! Welcome to Roe!"
 ```
 :::
 
@@ -402,13 +402,13 @@ In this quick start, you've learned:
 Ready to dive deeper? Continue with:
 
 - **[Basic Syntax](/guide/basics/)** - Complete syntax reference
-- **[Type System](/guide/types/)** - Understanding Roelang's types
+- **[Type System](/guide/types/)** - Understanding Roe's types
 - **[Variables](/guide/variables/)** - Variable declaration and scope
 - **[Collections](/guide/collections/)** - Working with arrays and lists
 - **[Modules](/guide/modules/)** - Organizing code with modules
 
 Or explore practical examples:
-- **[Examples](/examples/)** - Real-world Roelang programs
+- **[Examples](/examples/)** - Real-world Roe programs
 - **[CLI Reference](/guide/cli/)** - Complete command reference
 
-Happy coding with Roelang! 🦌✨
+Happy coding with Roe! 🦌✨

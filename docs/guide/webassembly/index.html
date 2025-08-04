@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebAssembly | Roelang - Modern WebAssembly Language</title>
-  <meta name="description" content="Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.">
+  <title>WebAssembly | Roe - Modern WebAssembly Language</title>
+  <meta name="description" content="Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.">
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
@@ -15,14 +15,14 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WebAssembly | Roelang">
-  <meta property="og:description" content="Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.">
+  <meta property="og:title" content="WebAssembly | Roe">
+  <meta property="og:description" content="Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.">
   <meta property="og:url" content="https://roe-lang.dev/guide/webassembly/">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WebAssembly | Roelang">
-  <meta name="twitter:description" content="Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.">
+  <meta name="twitter:title" content="WebAssembly | Roe">
+  <meta name="twitter:description" content="Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Navigation -->
@@ -32,8 +32,8 @@
         <!-- Logo -->
         <div class="flex items-center">
           <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
-            <span>Roelang</span>
+            <img src="/logo.png" alt="Roe" class="w-6 h-6">
+            <span>Roe</span>
           </a>
         </div>
         
@@ -157,17 +157,17 @@
       <header class="mb-8">
         <h1 class="text-4xl font-bold text-gray-900 mb-4">WebAssembly</h1>
         
-        <p class="text-xl text-gray-600">Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.</p>
+        <p class="text-xl text-gray-600">Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.</p>
         
       </header>
       
       
       <!-- Content -->
       <div class="prose prose-lg max-w-none">
-        <p>WebAssembly (WASM) is Roelang's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Roelang leverages WebAssembly and how to work with the compiled output.</p>
+        <p>WebAssembly (WASM) is Roe's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Roe leverages WebAssembly and how to work with the compiled output.</p>
 <h2>What is WebAssembly?</h2>
 <p>WebAssembly is a binary instruction format for a stack-based virtual machine. It's designed as a portable compilation target for programming languages, enabling deployment on the web, server, and embedded environments.</p>
-<h3>Key Benefits for Roelang</h3>
+<h3>Key Benefits for Roe</h3>
 <ul>
 <li><strong>Performance</strong>: Near-native execution speed</li>
 <li><strong>Portability</strong>: Runs on any platform with a WASM runtime</li>
@@ -175,17 +175,17 @@
 <li><strong>Interoperability</strong>: Can interface with other languages</li>
 <li><strong>Compact</strong>: Small binary size for efficient distribution</li>
 </ul>
-<h2>Roelang to WebAssembly Compilation</h2>
+<h2>Roe to WebAssembly Compilation</h2>
 <h3>Compilation Pipeline</h3>
-<pre><code>.roe → Roelang Compiler → .wat → wat2wasm → .wasm
+<pre><code>.roe → Roe Compiler → .wat → wat2wasm → .wasm
 </code></pre>
 <ol>
-<li><strong>Roelang Source</strong> (<code>.roe</code>) - Your source code</li>
+<li><strong>Roe Source</strong> (<code>.roe</code>) - Your source code</li>
 <li><strong>WebAssembly Text</strong> (<code>.wat</code>) - Human-readable WASM format</li>
 <li><strong>WebAssembly Binary</strong> (<code>.wasm</code>) - Binary executable format</li>
 </ol>
 <h3>Example Compilation</h3>
-<pre><code class="language-bash"># Compile Roelang to WebAssembly text format
+<pre><code class="language-bash"># Compile Roe to WebAssembly text format
 roe compile src/main.roe
 
 # This generates: build/main.wat
@@ -197,9 +197,9 @@ wat2wasm build/main.wat -o build/main.wasm
 node ~/.roelang/run.js build/main.wasm
 </code></pre>
 <h2>WebAssembly Text Format (.wat)</h2>
-<p>When you compile Roelang code, you first get a <code>.wat</code> file. Here's what a simple Roelang program looks like in WebAssembly text format:</p>
+<p>When you compile Roe code, you first get a <code>.wat</code> file. Here's what a simple Roe program looks like in WebAssembly text format:</p>
 <h3>Simple Display Example</h3>
-<p><strong>Roelang source:</strong></p>
+<p><strong>Roe source:</strong></p>
 <pre><code class="language-roe">display &quot;Hello, WebAssembly!&quot;
 </code></pre>
 <p><strong>Generated WebAssembly text (.wat):</strong></p>
@@ -216,7 +216,7 @@ node ~/.roelang/run.js build/main.wasm
 )
 </code></pre>
 <h3>Variables and Operations</h3>
-<p><strong>Roelang source:</strong></p>
+<p><strong>Roe source:</strong></p>
 <pre><code class="language-roe">set count which is int to 42
 set name which is text to &quot;Alice&quot;
 display &quot;Count: [count], Name: [name]&quot;
@@ -229,7 +229,7 @@ display &quot;Count: [count], Name: [name]&quot;
 </ul>
 <h2>WebAssembly Module Structure</h2>
 <h3>Memory Management</h3>
-<p>Roelang uses WebAssembly's linear memory model:</p>
+<p>Roe uses WebAssembly's linear memory model:</p>
 <pre><code class="language-wat">(module
   (memory (export &quot;memory&quot;) 2)  ; 2 pages = 128KB
   
@@ -244,7 +244,7 @@ display &quot;Count: [count], Name: [name]&quot;
 )
 </code></pre>
 <h3>Function Exports</h3>
-<p>Roelang programs export a <code>main</code> function and any module actions:</p>
+<p>Roe programs export a <code>main</code> function and any module actions:</p>
 <pre><code class="language-wat">(module
   ;; Main program entry point
   (func $main (export &quot;main&quot;)
@@ -260,11 +260,11 @@ display &quot;Count: [count], Name: [name]&quot;
 )
 </code></pre>
 <h3>Type System Mapping</h3>
-<p>Roelang types map to WebAssembly as follows:</p>
+<p>Roe types map to WebAssembly as follows:</p>
 <table>
 <thead>
 <tr>
-<th>Roelang Type</th>
+<th>Roe Type</th>
 <th>WebAssembly Type</th>
 <th>Storage</th>
 </tr>
@@ -299,7 +299,7 @@ display &quot;Count: [count], Name: [name]&quot;
 </table>
 <h2>Runtime Environment</h2>
 <h3>Node.js Runtime</h3>
-<p>Roelang includes a Node.js runtime (<code>run.js</code>) that provides the execution environment:</p>
+<p>Roe includes a Node.js runtime (<code>run.js</code>) that provides the execution environment:</p>
 <pre><code class="language-javascript">// Simplified version of run.js
 const fs = require('fs');
 
@@ -325,7 +325,7 @@ async function runWasm(wasmFile) {
 }
 </code></pre>
 <h3>Host Functions</h3>
-<p>The runtime provides host functions that Roelang programs can import:</p>
+<p>The runtime provides host functions that Roe programs can import:</p>
 <pre><code class="language-wat">(module
   ;; Import host functions
   (import &quot;env&quot; &quot;display&quot; (func $display (param i32 i32)))
@@ -338,7 +338,7 @@ async function runWasm(wasmFile) {
 <h2>Performance Characteristics</h2>
 <h3>Optimization Benefits</h3>
 <p>WebAssembly provides several performance advantages:</p>
-<pre><code class="language-roe">// This Roelang code...
+<pre><code class="language-roe">// This Roe code...
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set total which is int to 0
 
@@ -374,15 +374,15 @@ display &quot;Total: [total]&quot;
 </code></pre>
 <h2>Cross-Platform Deployment</h2>
 <h3>Web Browsers</h3>
-<p>Deploy Roelang programs in web browsers:</p>
+<p>Deploy Roe programs in web browsers:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Roelang in Browser&lt;/title&gt;
+    &lt;title&gt;Roe in Browser&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;script&gt;
-        async function loadRoelang() {
+        async function loadRoe() {
             const response = await fetch('program.wasm');
             const bytes = await response.arrayBuffer();
             
@@ -402,13 +402,13 @@ display &quot;Total: [total]&quot;
             wasmModule.instance.exports.main();
         }
         
-        loadRoelang();
+        loadRoe();
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
 <h3>Server Environments</h3>
-<p>Run Roelang programs on servers:</p>
+<p>Run Roe programs on servers:</p>
 <pre><code class="language-javascript">// server.js
 const express = require('express');
 const fs = require('fs');
@@ -439,7 +439,7 @@ app.get('/run-roelang', async (req, res) =&gt; {
 });
 
 app.listen(3000, () =&gt; {
-    console.log('Roelang server running on port 3000');
+    console.log('Roe server running on port 3000');
 });
 </code></pre>
 <h3>Edge Computing</h3>
@@ -460,7 +460,7 @@ export default {
         
         wasmModule.instance.exports.main();
         
-        return new Response('Roelang program executed');
+        return new Response('Roe program executed');
     },
 };
 </code></pre>
@@ -499,7 +499,7 @@ export default {
 )
 </code></pre>
 <h3>SIMD Operations (Future)</h3>
-<p>Future Roelang versions may leverage WASM SIMD:</p>
+<p>Future Roe versions may leverage WASM SIMD:</p>
 <pre><code class="language-wat">(module
   ;; SIMD operations for array processing
   (func $process_array (param $arr i32) (param $len i32)
@@ -511,7 +511,7 @@ export default {
 </code></pre>
 <h2>Debugging WebAssembly</h2>
 <h3>Source Maps</h3>
-<p>Future Roelang versions will generate source maps:</p>
+<p>Future Roe versions will generate source maps:</p>
 <pre><code class="language-json">{
   &quot;version&quot;: 3,
   &quot;sources&quot;: [&quot;main.roe&quot;],
@@ -566,12 +566,12 @@ roe compile src/main.roe --use-profile profile.data
 </ol>
 <h2>WebAssembly Ecosystem Integration</h2>
 <h3>Interfacing with JavaScript</h3>
-<pre><code class="language-javascript">// Load and interact with Roelang WASM module
-async function createRoelangModule() {
-    const wasmModule = await loadRoelangWasm();
+<pre><code class="language-javascript">// Load and interact with Roe WASM module
+async function createRoeModule() {
+    const wasmModule = await loadRoeWasm();
     
     return {
-        // Call exported Roelang functions
+        // Call exported Roe functions
         calculateTotal: wasmModule.instance.exports.calculate_total,
         processData: wasmModule.instance.exports.process_data,
         
@@ -588,9 +588,9 @@ async function createRoelangModule() {
 }
 </code></pre>
 <h3>Language Interoperability</h3>
-<p>WebAssembly enables Roelang to work with other WASM-compiled languages:</p>
-<pre><code class="language-javascript">// Combine Roelang with Rust, C++, etc.
-const roelangModule = await loadRoelangWasm();
+<p>WebAssembly enables Roe to work with other WASM-compiled languages:</p>
+<pre><code class="language-javascript">// Combine Roe with Rust, C++, etc.
+const roelangModule = await loadRoeWasm();
 const rustModule = await loadRustWasm();
 
 // Share memory between modules
@@ -634,7 +634,7 @@ set percentage which is decimal to 0.0  // Decimal for precision
 set is_ready which is flag to false     // Clear boolean logic
 </code></pre>
 <h2>Future WebAssembly Features</h2>
-<p>Roelang will evolve to support new WebAssembly features:</p>
+<p>Roe will evolve to support new WebAssembly features:</p>
 <ul>
 <li><strong>Garbage Collection</strong>: Automatic memory management</li>
 <li><strong>Exception Handling</strong>: Structured exception support</li>
@@ -643,14 +643,14 @@ set is_ready which is flag to false     // Clear boolean logic
 <li><strong>Component Model</strong>: Module composition and linking</li>
 </ul>
 <h2>Next Steps</h2>
-<p>Now that you understand WebAssembly in Roelang:</p>
+<p>Now that you understand WebAssembly in Roe:</p>
 <ul>
 <li><strong><a href="/guide/debugging/">Debugging</a></strong> - Debug WebAssembly modules</li>
 <li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Compilation and build commands</li>
 <li><strong><a href="/guide/performance/">Performance Tips</a></strong> - Optimize WASM output</li>
 <li><strong><a href="/guide/deployment/">Deployment</a></strong> - Deploy WASM applications</li>
 </ul>
-<p>WebAssembly provides Roelang with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.</p>
+<p>WebAssembly provides Roe with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.</p>
 
       </div>
       
@@ -699,8 +699,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div class="md:col-span-2">
           <div class="flex items-center space-x-2 mb-4">
-            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
-            <span class="text-xl font-bold text-gray-900">Roelang</span>
+            <img src="/logo.png" alt="Roe" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roe</span>
           </div>
           <p class="text-gray-600 max-w-md">
             A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
@@ -726,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       
       <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+        <p>&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
       </div>
     </div>
   </footer>

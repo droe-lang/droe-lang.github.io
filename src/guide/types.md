@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Type System
-description: Understanding Roelang's strong static type system and built-in data types.
+description: Understanding Roe's strong static type system and built-in data types.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/variables/
 ---
 
-Roelang features a **strong static type system** that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Roelang has a specific type that determines what operations can be performed on it.
+Roe features a **strong static type system** that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Roe has a specific type that determines what operations can be performed on it.
 
 ## Core Principles
 
@@ -317,7 +317,7 @@ set texts which are list of text to ["a", "b", "c"]
 
 ## Type Inference Context
 
-While types must be explicitly declared for variables, Roelang can infer types in expressions:
+While types must be explicitly declared for variables, Roe can infer types in expressions:
 
 ```roe
 set base_price which is decimal to 100.0
@@ -451,7 +451,7 @@ end module
 
 ## Error Messages
 
-Roelang provides clear error messages for type mismatches:
+Roe provides clear error messages for type mismatches:
 
 ```roe
 set count which is int to "five"
@@ -468,11 +468,11 @@ end action
 
 ## Next Steps
 
-Now that you understand Roelang's type system:
+Now that you understand Roe's type system:
 
 - **[Variables](/guide/variables/)** - Learn about variable declaration and scope
 - **[Strings](/guide/strings/)** - Deep dive into string operations and interpolation
 - **[Collections](/guide/collections/)** - Working with lists and groups
 - **[Data Structures](/guide/data-structures/)** - Creating custom data types
 
-Roelang's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.
+Roe's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.

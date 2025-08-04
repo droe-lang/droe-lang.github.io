@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Loops
-description: Master iteration and repetitive tasks with Roelang's for-each loops.
+description: Master iteration and repetitive tasks with Roe's for-each loops.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/modules/
 ---
 
-Loops allow you to repeat operations over collections or perform repetitive tasks efficiently. Roelang provides intuitive `for each` loops that work naturally with collections.
+Loops allow you to repeat operations over collections or perform repetitive tasks efficiently. Roe provides intuitive `for each` loops that work naturally with collections.
 
 ## For-Each Loop Syntax
 
@@ -534,7 +534,7 @@ display "Valid: [valid_count], Invalid: [invalid_count]"
 
 ## Next Steps
 
-Now that you understand loops in Roelang:
+Now that you understand loops in Roe:
 
 - **[Modules](/guide/modules/)** - Organize loop logic in reusable modules
 - **[Actions](/guide/actions/)** - Create functions that process collections

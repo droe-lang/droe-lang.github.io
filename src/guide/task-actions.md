@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Task Actions
-description: Learn about task-based automation and workflow management in Roelang.
+description: Learn about task-based automation and workflow management in Roe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/cli/
 ---
 
-Task actions in Roelang provide a specialized way to define and execute discrete units of work or automation tasks. They're designed for workflow automation, process management, and building executable task sequences.
+Task actions in Roe provide a specialized way to define and execute discrete units of work or automation tasks. They're designed for workflow automation, process management, and building executable task sequences.
 
 ## Basic Task Syntax
 
@@ -38,9 +38,9 @@ end
 run send_notification
 ```
 
-## Task Examples from Roelang
+## Task Examples from Roe
 
-Based on the Roelang examples, here are working task patterns:
+Based on the Roe examples, here are working task patterns:
 
 ### Basic Task Actions
 
@@ -50,7 +50,7 @@ task send_reminder
 end
 
 task greet_user
-  display "Hello! Welcome to Roelang"
+  display "Hello! Welcome to Roe"
   display "Hope you enjoy using task actions!"
 end
 
@@ -604,11 +604,11 @@ run coordinate_parallel_tasks
 
 ## Next Steps
 
-Now that you understand task actions in Roelang:
+Now that you understand task actions in Roe:
 
 - **[CLI Reference](/guide/cli/)** - Command-line tools for running tasks
 - **[WebAssembly](/guide/webassembly/)** - How tasks compile to WASM
 - **[Debugging](/guide/debugging/)** - Troubleshooting task execution
 - **[Modules](/guide/modules/)** - Organizing tasks in modules
 
-Task actions provide a powerful way to automate workflows and manage complex processes in Roelang. Use them to build reliable, maintainable automation solutions.
+Task actions provide a powerful way to automate workflows and manage complex processes in Roe. Use them to build reliable, maintainable automation solutions.

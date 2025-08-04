@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Type System | Roelang - Modern WebAssembly Language</title>
-  <meta name="description" content="Understanding Roelang&#39;s strong static type system and built-in data types.">
+  <title>Type System | Roe - Modern WebAssembly Language</title>
+  <meta name="description" content="Understanding Roe&#39;s strong static type system and built-in data types.">
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
@@ -15,14 +15,14 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Type System | Roelang">
-  <meta property="og:description" content="Understanding Roelang&#39;s strong static type system and built-in data types.">
+  <meta property="og:title" content="Type System | Roe">
+  <meta property="og:description" content="Understanding Roe&#39;s strong static type system and built-in data types.">
   <meta property="og:url" content="https://roe-lang.dev/guide/types/">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Type System | Roelang">
-  <meta name="twitter:description" content="Understanding Roelang&#39;s strong static type system and built-in data types.">
+  <meta name="twitter:title" content="Type System | Roe">
+  <meta name="twitter:description" content="Understanding Roe&#39;s strong static type system and built-in data types.">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Navigation -->
@@ -32,8 +32,8 @@
         <!-- Logo -->
         <div class="flex items-center">
           <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
-            <span>Roelang</span>
+            <img src="/logo.png" alt="Roe" class="w-6 h-6">
+            <span>Roe</span>
           </a>
         </div>
         
@@ -157,14 +157,14 @@
       <header class="mb-8">
         <h1 class="text-4xl font-bold text-gray-900 mb-4">Type System</h1>
         
-        <p class="text-xl text-gray-600">Understanding Roelang&#39;s strong static type system and built-in data types.</p>
+        <p class="text-xl text-gray-600">Understanding Roe&#39;s strong static type system and built-in data types.</p>
         
       </header>
       
       
       <!-- Content -->
       <div class="prose prose-lg max-w-none">
-        <p>Roelang features a <strong>strong static type system</strong> that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Roelang has a specific type that determines what operations can be performed on it.</p>
+        <p>Roe features a <strong>strong static type system</strong> that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Roe has a specific type that determines what operations can be performed on it.</p>
 <h2>Core Principles</h2>
 <h3>Static Typing</h3>
 <p>Types are checked at compile time, not runtime:</p>
@@ -383,7 +383,7 @@ set texts which are list of text to [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;
 // set mixed which are list of int to [1, &quot;two&quot;, 3]  // ❌ Mixed types not allowed
 </code></pre>
 <h2>Type Inference Context</h2>
-<p>While types must be explicitly declared for variables, Roelang can infer types in expressions:</p>
+<p>While types must be explicitly declared for variables, Roe can infer types in expressions:</p>
 <pre><code class="language-roe">set base_price which is decimal to 100.0
 set tax_rate which is decimal to 0.08
 
@@ -490,7 +490,7 @@ end module
 end module
 </code></pre>
 <h2>Error Messages</h2>
-<p>Roelang provides clear error messages for type mismatches:</p>
+<p>Roe provides clear error messages for type mismatches:</p>
 <pre><code class="language-roe">set count which is int to &quot;five&quot;
 // Error: Type mismatch: expected 'int', got 'text'
 
@@ -503,14 +503,14 @@ action calculate with value which is decimal gives int
 end action
 </code></pre>
 <h2>Next Steps</h2>
-<p>Now that you understand Roelang's type system:</p>
+<p>Now that you understand Roe's type system:</p>
 <ul>
 <li><strong><a href="/guide/variables/">Variables</a></strong> - Learn about variable declaration and scope</li>
 <li><strong><a href="/guide/strings/">Strings</a></strong> - Deep dive into string operations and interpolation</li>
 <li><strong><a href="/guide/collections/">Collections</a></strong> - Working with lists and groups</li>
 <li><strong><a href="/guide/data-structures/">Data Structures</a></strong> - Creating custom data types</li>
 </ul>
-<p>Roelang's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.</p>
+<p>Roe's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.</p>
 
       </div>
       
@@ -559,8 +559,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div class="md:col-span-2">
           <div class="flex items-center space-x-2 mb-4">
-            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
-            <span class="text-xl font-bold text-gray-900">Roelang</span>
+            <img src="/logo.png" alt="Roe" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roe</span>
           </div>
           <p class="text-gray-600 max-w-md">
             A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       
       <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+        <p>&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
       </div>
     </div>
   </footer>

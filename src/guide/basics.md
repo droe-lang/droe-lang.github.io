@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Basic Syntax
-description: Learn the fundamental syntax and structure of the Roelang programming language.
+description: Learn the fundamental syntax and structure of the Roe programming language.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,11 +14,11 @@ next:
   url: /guide/types/
 ---
 
-Roelang's syntax is designed to be readable and expressive, using natural language constructs that make code easy to understand and maintain.
+Roe's syntax is designed to be readable and expressive, using natural language constructs that make code easy to understand and maintain.
 
 ## Comments
 
-Roelang supports both single-line and multi-line comments:
+Roe supports both single-line and multi-line comments:
 
 ```roe
 // This is a single-line comment
@@ -34,12 +34,12 @@ Comments are ignored by the compiler and are used to document your code.
 
 ## Display Statements
 
-The most basic operation in Roelang is displaying output:
+The most basic operation in Roe is displaying output:
 
 ```roe
 display "Hello, World!"
 display ""                    // Empty line
-display "Welcome to Roelang"
+display "Welcome to Roe"
 ```
 
 You can display variables and expressions:
@@ -55,7 +55,7 @@ display "Name: [name]"        // String interpolation
 
 ### Reserved Keywords
 
-Roelang uses natural language keywords:
+Roe uses natural language keywords:
 
 ```roe
 // Variable declaration
@@ -156,7 +156,7 @@ set remainder to a % b    // Modulo: 1
 
 ### Comparison Operators
 
-Roelang uses natural language for comparisons:
+Roe uses natural language for comparisons:
 
 ```roe
 set x which is int to 10
@@ -211,7 +211,7 @@ set info to "Name: [full_name], Age: [age]"
 
 ## Block Structure
 
-Roelang uses explicit `end` keywords to terminate blocks:
+Roe uses explicit `end` keywords to terminate blocks:
 
 ```roe
 // Conditional blocks
@@ -238,7 +238,7 @@ end action
 
 ## Whitespace and Formatting
 
-Roelang is flexible with whitespace:
+Roe is flexible with whitespace:
 
 ```roe
 // Compact style
@@ -284,7 +284,7 @@ end when
 
 ## Case Sensitivity
 
-Roelang is case-sensitive:
+Roe is case-sensitive:
 
 ```roe
 set userName which is text to "Alice"
@@ -447,9 +447,9 @@ end when
 
 ## Next Steps
 
-Now that you understand Roelang's basic syntax, explore these topics:
+Now that you understand Roe's basic syntax, explore these topics:
 
-- **[Type System](/guide/types/)** - Learn about Roelang's strong typing
+- **[Type System](/guide/types/)** - Learn about Roe's strong typing
 - **[Variables](/guide/variables/)** - Variable declaration and scope
 - **[Strings](/guide/strings/)** - String interpolation and manipulation
 - **[Collections](/guide/collections/)** - Working with lists and arrays

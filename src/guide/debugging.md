@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Debugging
-description: Learn techniques and tools for debugging and troubleshooting Roelang programs.
+description: Learn techniques and tools for debugging and troubleshooting Roe programs.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -11,7 +11,7 @@ prev:
   url: /guide/webassembly/
 ---
 
-Debugging is an essential skill for developing robust Roelang applications. This guide covers debugging techniques, common issues, and troubleshooting strategies for Roelang programs.
+Debugging is an essential skill for developing robust Roe applications. This guide covers debugging techniques, common issues, and troubleshooting strategies for Roe programs.
 
 ## Basic Debugging Techniques
 
@@ -688,11 +688,11 @@ run integration_tests.test_user_workflow
 
 ## Next Steps
 
-Now that you understand debugging in Roelang:
+Now that you understand debugging in Roe:
 
 - **[CLI Reference](/guide/cli/)** - Learn debugging command-line options
 - **[WebAssembly](/guide/webassembly/)** - Debug WebAssembly output
 - **[Performance](/guide/performance/)** - Optimize program performance
 - **[Best Practices](/guide/best-practices/)** - Write maintainable code
 
-Effective debugging is crucial for developing reliable Roelang applications. Use these techniques to identify and resolve issues quickly, and build robust, maintainable programs.
+Effective debugging is crucial for developing reliable Roe applications. Use these techniques to identify and resolve issues quickly, and build robust, maintainable programs.

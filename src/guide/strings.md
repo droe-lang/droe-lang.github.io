@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Strings & Interpolation
-description: Master string manipulation, interpolation, and text processing in Roelang.
+description: Master string manipulation, interpolation, and text processing in Roe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/collections/
 ---
 
-Strings are one of the most commonly used data types in programming. Roelang provides powerful and intuitive features for working with text, including string interpolation, concatenation, and various text manipulation capabilities.
+Strings are one of the most commonly used data types in programming. Roe provides powerful and intuitive features for working with text, including string interpolation, concatenation, and various text manipulation capabilities.
 
 ## String Basics
 
@@ -40,7 +40,7 @@ set with_special which is text to "Price: $19.99"
 
 ### Multi-line Strings
 
-Roelang supports multi-line strings:
+Roe supports multi-line strings:
 
 ```roe
 set long_message which is text to "This is a very long message
@@ -535,11 +535,11 @@ display "Connecting to database: [connection_string]"
 
 ## Next Steps
 
-Now that you've mastered strings and interpolation in Roelang:
+Now that you've mastered strings and interpolation in Roe:
 
 - **[Collections](/guide/collections/)** - Working with lists and groups of data
 - **[Conditionals](/guide/conditionals/)** - Using string comparisons in logic
 - **[Loops](/guide/loops/)** - Processing collections of strings
 - **[Modules](/guide/modules/)** - Creating string utility modules
 
-String manipulation is a fundamental skill in Roelang. Use interpolation for readable templates, concatenation for dynamic building, and consistent patterns for maintainable code.
+String manipulation is a fundamental skill in Roe. Use interpolation for readable templates, concatenation for dynamic building, and consistent patterns for maintainable code.

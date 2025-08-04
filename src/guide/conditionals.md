@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Conditionals
-description: Control program flow with Roelang's natural language conditional statements.
+description: Control program flow with Roe's natural language conditional statements.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/loops/
 ---
 
-Conditionals allow your programs to make decisions and execute different code paths based on conditions. Roelang uses natural language syntax that makes conditional logic clear and readable.
+Conditionals allow your programs to make decisions and execute different code paths based on conditions. Roe uses natural language syntax that makes conditional logic clear and readable.
 
 ## Basic Conditional Syntax
 
@@ -42,7 +42,7 @@ end when
 
 ## Comparison Operators
 
-Roelang uses natural language for comparisons:
+Roe uses natural language for comparisons:
 
 ### Equality Comparisons
 
@@ -567,7 +567,7 @@ end when
 
 ## Next Steps
 
-Now that you understand conditional logic in Roelang:
+Now that you understand conditional logic in Roe:
 
 - **[Loops](/guide/loops/)** - Combine conditionals with iteration
 - **[Modules](/guide/modules/)** - Organize conditional logic in modules

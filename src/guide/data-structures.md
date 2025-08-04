@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Data Structures
-description: Create custom data types and structures to organize complex data in Roelang.
+description: Create custom data types and structures to organize complex data in Roe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/task-actions/
 ---
 
-Data structures allow you to create custom types that group related data together, making your programs more organized and easier to understand. Roelang provides a simple yet powerful `data` construct for defining custom data types.
+Data structures allow you to create custom types that group related data together, making your programs more organized and easier to understand. Roe provides a simple yet powerful `data` construct for defining custom data types.
 
 ## Basic Data Structure Syntax
 
@@ -38,7 +38,7 @@ data User
   is_admin is flag
 end data
 
-// Note: In current Roelang implementation, data structures are primarily 
+// Note: In current Roe implementation, data structures are primarily 
 // used for documentation and future language features
 // For now, use individual variables to represent structured data
 
@@ -536,7 +536,7 @@ end data
 
 ## Future Data Structure Features
 
-While current Roelang primarily uses data structures for documentation and planning, future versions may include:
+While current Roe primarily uses data structures for documentation and planning, future versions may include:
 
 - **Object instantiation**: Creating instances of data structures
 - **Property access**: Accessing fields with dot notation
@@ -584,11 +584,11 @@ end module
 
 ## Next Steps
 
-Now that you understand data structures in Roelang:
+Now that you understand data structures in Roe:
 
 - **[Task Actions](/guide/task-actions/)** - Learn about specialized task automation
 - **[CLI Reference](/guide/cli/)** - Command-line tools for development
 - **[WebAssembly](/guide/webassembly/)** - Understanding compilation to WASM
 - **[Modules](/guide/modules/)** - Review module organization patterns
 
-Data structures provide a foundation for organizing complex data in your Roelang applications. Use them to plan your data architecture and create maintainable, well-structured code.
+Data structures provide a foundation for organizing complex data in your Roe applications. Use them to plan your data architecture and create maintainable, well-structured code.

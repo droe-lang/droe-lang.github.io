@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Collections
-description: Work with lists and groups to manage multiple values efficiently in Roelang.
+description: Work with lists and groups to manage multiple values efficiently in Roe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/conditionals/
 ---
 
-Collections are essential for working with multiple values of the same type. Roelang provides two main collection types: **lists** (ordered collections) and **groups** (unordered collections with unique values).
+Collections are essential for working with multiple values of the same type. Roe provides two main collection types: **lists** (ordered collections) and **groups** (unordered collections with unique values).
 
 ## List Collections
 
@@ -529,7 +529,7 @@ display "Pending: [pending_count]"
 
 ## Next Steps
 
-Now that you understand collections in Roelang:
+Now that you understand collections in Roe:
 
 - **[Conditionals](/guide/conditionals/)** - Using collection data in conditional logic
 - **[Loops](/guide/loops/)** - Advanced iteration patterns with collections

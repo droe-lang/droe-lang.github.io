@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Installation
-description: Install Roelang on your system and set up your development environment.
+description: Install Roe on your system and set up your development environment.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -18,16 +18,16 @@ next:
 
 ### GUI Installer (Recommended)
 
-The easiest way to install Roelang on macOS is using our graphical installer:
+The easiest way to install Roe on macOS is using our graphical installer:
 
 1. **Download** the latest DMG from [GitHub Releases](https://github.com/roe-lang/roe/releases)
 2. **Mount** the DMG file by double-clicking it
-3. **Drag** the Roelang Installer to your Applications folder
+3. **Drag** the Roe Installer to your Applications folder
 4. **Run** the installer and follow the prompts
 
 The installer will:
-- Install Roelang tools to `~/.roelang/`
-- Add Roelang to your PATH
+- Install Roe tools to `~/.roelang/`
+- Add Roe to your PATH
 - Configure your shell (bash, zsh, fish)
 
 ### Command Line Installation
@@ -38,7 +38,7 @@ Alternatively, install via the command line:
 curl -sSL https://roe-lang.dev/install | sh
 ```
 
-This script will download and install the latest version of Roelang.
+This script will download and install the latest version of Roe.
 
 ## Manual Installation
 
@@ -55,7 +55,7 @@ Ensure you have the following installed:
   brew install wabt
   ```
 
-### Install Roelang
+### Install Roe
 
 1. **Download** the latest release
 2. **Extract** to your preferred location
@@ -70,11 +70,11 @@ Ensure you have the following installed:
 Test your installation:
 
 ```bash
-# Check Roelang version
+# Check Roe version
 roe --version
 
 # Create a test file
-echo 'display "Hello, Roelang!"' > test.roe
+echo 'display "Hello, Roe!"' > test.roe
 
 # Run the test
 roe run test.roe
@@ -82,17 +82,17 @@ roe run test.roe
 
 You should see:
 ```
-Hello, Roelang!
+Hello, Roe!
 ```
 
 ## Development Environment Setup
 
 ### IDE Support
 
-While Roelang works with any text editor, here are some recommendations:
+While Roe works with any text editor, here are some recommendations:
 
 #### Visual Studio Code
-- **Syntax highlighting**: Install the Roelang extension (coming soon)
+- **Syntax highlighting**: Install the Roe extension (coming soon)
 - **File associations**: Add `.roe` files to your settings
 
 #### Vim/Neovim
@@ -124,7 +124,7 @@ roe completion fish | source
 
 ## Project Structure
 
-Roelang projects follow a simple structure:
+Roe projects follow a simple structure:
 
 ```
 my-project/
@@ -174,7 +174,7 @@ This creates the basic structure and `roeconfig.json`:
 
 #### `node: command not found`
 - **Solution**: Install Node.js from [nodejs.org](https://nodejs.org/)
-- **Version**: Roelang requires Node.js v16 or later
+- **Version**: Roe requires Node.js v16 or later
 
 #### Permission denied errors
 - **Solution**: The installer might need to modify shell configuration files
@@ -191,11 +191,11 @@ Still having issues? Here's how to get help:
 
 ## Next Steps
 
-Now that Roelang is installed, let's create your first project:
+Now that Roe is installed, let's create your first project:
 
-👉 **[Quick Start Guide](/guide/quick-start/)** - Build your first Roelang program
+👉 **[Quick Start Guide](/guide/quick-start/)** - Build your first Roe program
 
 Or explore other topics:
-- [Project Structure](/guide/project-structure/) - Understanding Roelang projects
+- [Project Structure](/guide/project-structure/) - Understanding Roe projects
 - [Basic Syntax](/guide/basics/) - Learn the language fundamentals
 - [CLI Reference](/guide/cli/) - Complete command-line reference

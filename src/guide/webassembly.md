@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: WebAssembly
-description: Understanding how Roelang compiles to WebAssembly and leveraging WASM capabilities.
+description: Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/debugging/
 ---
 
-WebAssembly (WASM) is Roelang's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Roelang leverages WebAssembly and how to work with the compiled output.
+WebAssembly (WASM) is Roe's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Roe leverages WebAssembly and how to work with the compiled output.
 
 ## What is WebAssembly?
 
 WebAssembly is a binary instruction format for a stack-based virtual machine. It's designed as a portable compilation target for programming languages, enabling deployment on the web, server, and embedded environments.
 
-### Key Benefits for Roelang
+### Key Benefits for Roe
 
 - **Performance**: Near-native execution speed
 - **Portability**: Runs on any platform with a WASM runtime
@@ -28,22 +28,22 @@ WebAssembly is a binary instruction format for a stack-based virtual machine. It
 - **Interoperability**: Can interface with other languages
 - **Compact**: Small binary size for efficient distribution
 
-## Roelang to WebAssembly Compilation
+## Roe to WebAssembly Compilation
 
 ### Compilation Pipeline
 
 ```
-.roe → Roelang Compiler → .wat → wat2wasm → .wasm
+.roe → Roe Compiler → .wat → wat2wasm → .wasm
 ```
 
-1. **Roelang Source** (`.roe`) - Your source code
+1. **Roe Source** (`.roe`) - Your source code
 2. **WebAssembly Text** (`.wat`) - Human-readable WASM format
 3. **WebAssembly Binary** (`.wasm`) - Binary executable format
 
 ### Example Compilation
 
 ```bash
-# Compile Roelang to WebAssembly text format
+# Compile Roe to WebAssembly text format
 roe compile src/main.roe
 
 # This generates: build/main.wat
@@ -57,11 +57,11 @@ node ~/.roelang/run.js build/main.wasm
 
 ## WebAssembly Text Format (.wat)
 
-When you compile Roelang code, you first get a `.wat` file. Here's what a simple Roelang program looks like in WebAssembly text format:
+When you compile Roe code, you first get a `.wat` file. Here's what a simple Roe program looks like in WebAssembly text format:
 
 ### Simple Display Example
 
-**Roelang source:**
+**Roe source:**
 ```roe
 display "Hello, WebAssembly!"
 ```
@@ -83,7 +83,7 @@ display "Hello, WebAssembly!"
 
 ### Variables and Operations
 
-**Roelang source:**
+**Roe source:**
 ```roe
 set count which is int to 42
 set name which is text to "Alice"
@@ -99,7 +99,7 @@ display "Count: [count], Name: [name]"
 
 ### Memory Management
 
-Roelang uses WebAssembly's linear memory model:
+Roe uses WebAssembly's linear memory model:
 
 ```wat
 (module
@@ -118,7 +118,7 @@ Roelang uses WebAssembly's linear memory model:
 
 ### Function Exports
 
-Roelang programs export a `main` function and any module actions:
+Roe programs export a `main` function and any module actions:
 
 ```wat
 (module
@@ -138,9 +138,9 @@ Roelang programs export a `main` function and any module actions:
 
 ### Type System Mapping
 
-Roelang types map to WebAssembly as follows:
+Roe types map to WebAssembly as follows:
 
-| Roelang Type | WebAssembly Type | Storage |
+| Roe Type | WebAssembly Type | Storage |
 |--------------|------------------|---------|
 | `int` | `i32` | 32-bit integer |
 | `decimal` | `f64` | 64-bit float |
@@ -152,7 +152,7 @@ Roelang types map to WebAssembly as follows:
 
 ### Node.js Runtime
 
-Roelang includes a Node.js runtime (`run.js`) that provides the execution environment:
+Roe includes a Node.js runtime (`run.js`) that provides the execution environment:
 
 ```javascript
 // Simplified version of run.js
@@ -182,7 +182,7 @@ async function runWasm(wasmFile) {
 
 ### Host Functions
 
-The runtime provides host functions that Roelang programs can import:
+The runtime provides host functions that Roe programs can import:
 
 ```wat
 (module
@@ -202,7 +202,7 @@ The runtime provides host functions that Roelang programs can import:
 WebAssembly provides several performance advantages:
 
 ```roe
-// This Roelang code...
+// This Roe code...
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set total which is int to 0
 
@@ -243,17 +243,17 @@ Compiles to efficient WebAssembly that:
 
 ### Web Browsers
 
-Deploy Roelang programs in web browsers:
+Deploy Roe programs in web browsers:
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Roelang in Browser</title>
+    <title>Roe in Browser</title>
 </head>
 <body>
     <script>
-        async function loadRoelang() {
+        async function loadRoe() {
             const response = await fetch('program.wasm');
             const bytes = await response.arrayBuffer();
             
@@ -273,7 +273,7 @@ Deploy Roelang programs in web browsers:
             wasmModule.instance.exports.main();
         }
         
-        loadRoelang();
+        loadRoe();
     </script>
 </body>
 </html>
@@ -281,7 +281,7 @@ Deploy Roelang programs in web browsers:
 
 ### Server Environments
 
-Run Roelang programs on servers:
+Run Roe programs on servers:
 
 ```javascript
 // server.js
@@ -314,7 +314,7 @@ app.get('/run-roelang', async (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('Roelang server running on port 3000');
+    console.log('Roe server running on port 3000');
 });
 ```
 
@@ -339,7 +339,7 @@ export default {
         
         wasmModule.instance.exports.main();
         
-        return new Response('Roelang program executed');
+        return new Response('Roe program executed');
     },
 };
 ```
@@ -387,7 +387,7 @@ export default {
 
 ### SIMD Operations (Future)
 
-Future Roelang versions may leverage WASM SIMD:
+Future Roe versions may leverage WASM SIMD:
 
 ```wat
 (module
@@ -404,7 +404,7 @@ Future Roelang versions may leverage WASM SIMD:
 
 ### Source Maps
 
-Future Roelang versions will generate source maps:
+Future Roe versions will generate source maps:
 
 ```json
 {
@@ -477,12 +477,12 @@ roe compile src/main.roe --use-profile profile.data
 ### Interfacing with JavaScript
 
 ```javascript
-// Load and interact with Roelang WASM module
-async function createRoelangModule() {
-    const wasmModule = await loadRoelangWasm();
+// Load and interact with Roe WASM module
+async function createRoeModule() {
+    const wasmModule = await loadRoeWasm();
     
     return {
-        // Call exported Roelang functions
+        // Call exported Roe functions
         calculateTotal: wasmModule.instance.exports.calculate_total,
         processData: wasmModule.instance.exports.process_data,
         
@@ -501,11 +501,11 @@ async function createRoelangModule() {
 
 ### Language Interoperability
 
-WebAssembly enables Roelang to work with other WASM-compiled languages:
+WebAssembly enables Roe to work with other WASM-compiled languages:
 
 ```javascript
-// Combine Roelang with Rust, C++, etc.
-const roelangModule = await loadRoelangWasm();
+// Combine Roe with Rust, C++, etc.
+const roelangModule = await loadRoeWasm();
 const rustModule = await loadRustWasm();
 
 // Share memory between modules
@@ -561,7 +561,7 @@ set is_ready which is flag to false     // Clear boolean logic
 
 ## Future WebAssembly Features
 
-Roelang will evolve to support new WebAssembly features:
+Roe will evolve to support new WebAssembly features:
 
 - **Garbage Collection**: Automatic memory management
 - **Exception Handling**: Structured exception support
@@ -571,11 +571,11 @@ Roelang will evolve to support new WebAssembly features:
 
 ## Next Steps
 
-Now that you understand WebAssembly in Roelang:
+Now that you understand WebAssembly in Roe:
 
 - **[Debugging](/guide/debugging/)** - Debug WebAssembly modules
 - **[CLI Reference](/guide/cli/)** - Compilation and build commands
 - **[Performance Tips](/guide/performance/)** - Optimize WASM output
 - **[Deployment](/guide/deployment/)** - Deploy WASM applications
 
-WebAssembly provides Roelang with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.
+WebAssembly provides Roe with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.

@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Project Structure
-description: Understanding how Roelang projects are organized and configured.
+description: Understanding how Roe projects are organized and configured.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,11 +14,11 @@ next:
   url: /guide/basics/
 ---
 
-Roelang projects follow a simple, predictable structure that promotes organization and maintainability. Understanding this structure is key to working effectively with Roelang.
+Roe projects follow a simple, predictable structure that promotes organization and maintainability. Understanding this structure is key to working effectively with Roe.
 
 ## Standard Project Layout
 
-Every Roelang project has this basic structure:
+Every Roe project has this basic structure:
 
 ```
 my-project/
@@ -38,13 +38,13 @@ my-project/
 
 ### `roeconfig.json`
 
-The `roeconfig.json` file is the heart of every Roelang project:
+The `roeconfig.json` file is the heart of every Roe project:
 
 ```json
 {
   "name": "my-project",
   "version": "1.0.0",
-  "description": "A sample Roelang project",
+  "description": "A sample Roe project",
   "srcDir": "src",
   "buildDir": "build",
   "main": "main.roe",
@@ -76,7 +76,7 @@ Every project has a main entry point, typically `src/main.roe`:
 
 ```roe
 // src/main.roe
-display "Hello from my Roelang project!"
+display "Hello from my Roe project!"
 
 // Import functionality from other modules
 // (Module system coming in future versions)
@@ -341,7 +341,7 @@ inventory-app/
 ### `.gitignore` Template
 
 ```gitignore
-# Roelang build output
+# Roe build output
 build/
 dist/
 
@@ -416,9 +416,9 @@ roe info
 
 Now that you understand project structure, explore these topics:
 
-- **[Basic Syntax](/guide/basics/)** - Learn Roelang's syntax fundamentals
+- **[Basic Syntax](/guide/basics/)** - Learn Roe's syntax fundamentals
 - **[Type System](/guide/types/)** - Understanding data types
 - **[Modules](/guide/modules/)** - Creating reusable modules
 - **[CLI Reference](/guide/cli/)** - Complete command-line reference
 
-Understanding project structure is the foundation for building maintainable Roelang applications. Keep your projects organized, use meaningful names, and follow the conventions outlined here for the best development experience.
+Understanding project structure is the foundation for building maintainable Roe applications. Keep your projects organized, use meaningful names, and follow the conventions outlined here for the best development experience.

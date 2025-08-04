@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Modules
-description: Organize and structure your Roelang code with modules for better maintainability.
+description: Organize and structure your Roe code with modules for better maintainability.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/actions/
 ---
 
-Modules in Roelang provide a way to organize related functionality into logical groups, making your code more maintainable, reusable, and easier to understand.
+Modules in Roe provide a way to organize related functionality into logical groups, making your code more maintainable, reusable, and easier to understand.
 
 ## Basic Module Syntax
 
@@ -524,11 +524,11 @@ run logger.log_with_timestamp with "DEBUG", "Processing user request"
 
 ## Next Steps
 
-Now that you understand modules in Roelang:
+Now that you understand modules in Roe:
 
 - **[Actions](/guide/actions/)** - Deep dive into creating module actions
 - **[Data Structures](/guide/data-structures/)** - Use modules with custom data types
 - **[Task Actions](/guide/task-actions/)** - Combine modules with task automation
 - **[CLI Reference](/guide/cli/)** - Learn about module compilation and organization
 
-Modules are essential for organizing complex Roelang applications. Use them to create clean, maintainable code with clear separation of concerns and reusable functionality.
+Modules are essential for organizing complex Roe applications. Use them to create clean, maintainable code with clear separation of concerns and reusable functionality.

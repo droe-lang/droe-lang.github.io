@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Variables
-description: Learn how to declare, assign, and work with variables in Roelang.
+description: Learn how to declare, assign, and work with variables in Roe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/strings/
 ---
 
-Variables are fundamental building blocks in Roelang that store values for later use. Roelang uses explicit, descriptive syntax for variable declarations that makes code self-documenting and easy to understand.
+Variables are fundamental building blocks in Roe that store values for later use. Roe uses explicit, descriptive syntax for variable declarations that makes code self-documenting and easy to understand.
 
 ## Variable Declaration
 
@@ -37,7 +37,7 @@ set account_balance which is decimal to 1250.75
 
 // Collections
 set favorite_numbers which are list of int to [7, 13, 42]
-set programming_languages which are group of text to ["Python", "JavaScript", "Roelang"]
+set programming_languages which are group of text to ["Python", "JavaScript", "Roe"]
 ```
 
 ## Type Declarations
@@ -466,11 +466,11 @@ end when
 
 ## Next Steps
 
-Now that you understand variables in Roelang:
+Now that you understand variables in Roe:
 
 - **[Strings & Interpolation](/guide/strings/)** - Working with text and string interpolation
 - **[Collections](/guide/collections/)** - Deep dive into lists and groups
 - **[Conditionals](/guide/conditionals/)** - Using variables in conditional logic
 - **[Loops](/guide/loops/)** - Iterating over variables and collections
 
-Variables are the foundation of data manipulation in Roelang. Use them effectively with clear names, appropriate types, and consistent patterns to build maintainable programs.
+Variables are the foundation of data manipulation in Roe. Use them effectively with clear names, appropriate types, and consistent patterns to build maintainable programs.

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLI Reference | Roelang - Modern WebAssembly Language</title>
-  <meta name="description" content="Complete reference for the Roelang command-line interface and development tools.">
+  <title>CLI Reference | Roe - Modern WebAssembly Language</title>
+  <meta name="description" content="Complete reference for the Roe command-line interface and development tools.">
   
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
@@ -15,14 +15,14 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CLI Reference | Roelang">
-  <meta property="og:description" content="Complete reference for the Roelang command-line interface and development tools.">
+  <meta property="og:title" content="CLI Reference | Roe">
+  <meta property="og:description" content="Complete reference for the Roe command-line interface and development tools.">
   <meta property="og:url" content="https://roe-lang.dev/guide/cli/">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CLI Reference | Roelang">
-  <meta name="twitter:description" content="Complete reference for the Roelang command-line interface and development tools.">
+  <meta name="twitter:title" content="CLI Reference | Roe">
+  <meta name="twitter:description" content="Complete reference for the Roe command-line interface and development tools.">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Navigation -->
@@ -32,8 +32,8 @@
         <!-- Logo -->
         <div class="flex items-center">
           <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
-            <span>Roelang</span>
+            <img src="/logo.png" alt="Roe" class="w-6 h-6">
+            <span>Roe</span>
           </a>
         </div>
         
@@ -157,14 +157,14 @@
       <header class="mb-8">
         <h1 class="text-4xl font-bold text-gray-900 mb-4">CLI Reference</h1>
         
-        <p class="text-xl text-gray-600">Complete reference for the Roelang command-line interface and development tools.</p>
+        <p class="text-xl text-gray-600">Complete reference for the Roe command-line interface and development tools.</p>
         
       </header>
       
       
       <!-- Content -->
       <div class="prose prose-lg max-w-none">
-        <p>The Roelang CLI (<code>roe</code>) is the primary tool for developing, compiling, and running Roelang programs. This reference covers all available commands and options.</p>
+        <p>The Roe CLI (<code>roe</code>) is the primary tool for developing, compiling, and running Roe programs. This reference covers all available commands and options.</p>
 <h2>Installation and Setup</h2>
 <h3>Verify Installation</h3>
 <pre><code class="language-bash">roe --version
@@ -175,7 +175,7 @@ roe -h
 </code></pre>
 <h2>Core Commands</h2>
 <h3><code>roe init</code> - Initialize Project</h3>
-<p>Create a new Roelang project with the standard directory structure.</p>
+<p>Create a new Roe project with the standard directory structure.</p>
 <pre><code class="language-bash"># Initialize in current directory
 roe init
 
@@ -234,7 +234,7 @@ roe compile src/main.roe --format wasm --output build/main.wasm
 roe compile src/main.roe --watch
 </code></pre>
 <h3><code>roe run</code> - Compile and Execute</h3>
-<p>Compile and immediately execute a Roelang program.</p>
+<p>Compile and immediately execute a Roe program.</p>
 <pre><code class="language-bash"># Run specific file
 roe run src/main.roe
 
@@ -356,7 +356,7 @@ roe doctor --verbose
 </code></pre>
 <p><strong>Checks:</strong></p>
 <ul>
-<li>Roelang installation</li>
+<li>Roe installation</li>
 <li>Node.js availability</li>
 <li>WebAssembly tools (wat2wasm)</li>
 <li>Project configuration</li>
@@ -381,7 +381,7 @@ roe test --coverage
 <li><code>--pattern &lt;pattern&gt;</code> - Run tests matching pattern</li>
 </ul>
 <h3><code>roe format</code> - Format Source Code</h3>
-<p>Format Roelang source files according to style guidelines.</p>
+<p>Format Roe source files according to style guidelines.</p>
 <pre><code class="language-bash"># Format all files
 roe format
 
@@ -399,7 +399,7 @@ roe format --check
 </ul>
 <h2>Configuration Commands</h2>
 <h3><code>roe config</code> - Manage Configuration</h3>
-<p>View and modify Roelang configuration.</p>
+<p>View and modify Roe configuration.</p>
 <pre><code class="language-bash"># Show all configuration
 roe config list
 
@@ -473,7 +473,7 @@ roe env --path
 roe env --all
 </code></pre>
 <h3><code>roe install</code> - Install Dependencies</h3>
-<p>Install and manage Roelang dependencies.</p>
+<p>Install and manage Roe dependencies.</p>
 <pre><code class="language-bash"># Install project dependencies
 roe install
 
@@ -511,7 +511,7 @@ roe info --format table
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;my-project&quot;,
   &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;My Roelang project&quot;,
+  &quot;description&quot;: &quot;My Roe project&quot;,
   &quot;author&quot;: &quot;Your Name&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;srcDir&quot;: &quot;src&quot;,
@@ -658,7 +658,7 @@ roe init --name &quot;my-roelang-app&quot; --author &quot;Your Name&quot;
 
 # Create source file
 cat &gt; src/main.roe &lt;&lt; 'EOF'
-display &quot;Hello, Roelang!&quot;
+display &quot;Hello, Roe!&quot;
 set name which is text to &quot;World&quot;
 display &quot;Welcome to [name]!&quot;
 EOF
@@ -738,14 +738,14 @@ roe --examples
 roe doctor --help
 </code></pre>
 <h2>Next Steps</h2>
-<p>Now that you understand the Roelang CLI:</p>
+<p>Now that you understand the Roe CLI:</p>
 <ul>
 <li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Understanding compilation targets</li>
 <li><strong><a href="/guide/debugging/">Debugging</a></strong> - Troubleshooting and debugging techniques</li>
-<li><strong><a href="/guide/project-structure/">Project Structure</a></strong> - Organizing Roelang projects</li>
+<li><strong><a href="/guide/project-structure/">Project Structure</a></strong> - Organizing Roe projects</li>
 <li><strong><a href="/guide/installation/">Installation</a></strong> - Setting up your development environment</li>
 </ul>
-<p>The Roelang CLI provides powerful tools for developing, building, and managing Roelang applications. Use these commands to streamline your development workflow and build robust applications.</p>
+<p>The Roe CLI provides powerful tools for developing, building, and managing Roe applications. Use these commands to streamline your development workflow and build robust applications.</p>
 
       </div>
       
@@ -794,8 +794,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div class="md:col-span-2">
           <div class="flex items-center space-x-2 mb-4">
-            <img src="/logo.png" alt="Roelang" class="w-6 h-6">
-            <span class="text-xl font-bold text-gray-900">Roelang</span>
+            <img src="/logo.png" alt="Roe" class="w-6 h-6">
+            <span class="text-xl font-bold text-gray-900">Roe</span>
           </div>
           <p class="text-gray-600 max-w-md">
             A minimal declarative language for writing executable processes as .roe files — compiled to WebAssembly.
@@ -821,7 +821,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       
       <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-        <p>&copy; 2025 Roelang. Open source under Apache 2.0 License.</p>
+        <p>&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
       </div>
     </div>
   </footer>
