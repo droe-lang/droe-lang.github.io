@@ -20,13 +20,14 @@ Task actions in Roe provide a specialized way to define and execute discrete uni
 
 Roe has two different constructs for executable code:
 
-| Feature           | Tasks                                 | Actions                                               |
-| ----------------- | ------------------------------------- | ----------------------------------------------------- |
-| **Return Values** | ❌ No return values                   | ✅ Return typed values                                |
-| **Syntax**        | `task name` ... `end task`            | `action name with params gives type` ... `end action` |
-| **Execution**     | `run task_name`                       | `run module.action with params`                       |
-| **Use Case**      | Automation workflows, void procedures | Reusable functions, data processing                   |
-| **Module Scope**  | Standalone or in modules              | Must be in modules                                    |
+| Feature           | Tasks                                              | Actions                                               |
+| ----------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| **Parameters**    | ✅ Support parameters (NEW!)                       | ✅ Support parameters                                 |
+| **Return Values** | ❌ No return values (void procedures)              | ✅ Return typed values                                |
+| **Syntax**        | `task name with params` ... `end task`            | `action name with params gives type` ... `end action` |
+| **Execution**     | `run task_name with args`                         | `run module.action with params`                       |
+| **Use Case**      | Automation workflows, parameterized void procedures| Reusable functions, data processing                   |
+| **Module Scope**  | Standalone or in modules                          | Must be in modules                                    |
 
 **When to use Tasks:**
 
@@ -53,6 +54,34 @@ end task
 ```
 
 **Note:** Tasks support both `end` and `end task` for closing the block.
+
+### Task with Parameters (NEW!)
+
+Tasks now support parameters, making them more flexible and reusable:
+
+```roe
+task greet_person with name which is text
+  display "Hello, " + name + "!"
+  display "Welcome to the Roelang community!"
+end task
+
+// Execute the task with arguments
+run greet_person with "Alice"
+```
+
+### Task with Multiple Parameters
+
+```roe
+task process_order with order_id which is int, customer_name which is text, amount which is decimal
+  display "Processing order #" + order_id
+  display "Customer: " + customer_name
+  display "Amount: $" + amount
+  display "Order processed successfully!"
+end task
+
+// Execute with multiple arguments
+run process_order with 12345, "John Doe", 99.99
+```
 
 ### Task with Implementation
 

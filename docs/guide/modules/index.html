@@ -164,7 +164,7 @@
       
       <!-- Content -->
       <div class="prose prose-lg max-w-none">
-        <p>Modules in Roe provide a way to organize related functionality into logical groups, making your code more maintainable, reusable, and easier to understand.</p>
+        <p>Modules in Roe provide a way to organize related functionality into logical groups, making your code more maintainable, reusable, and easier to understand. Roe also supports an include system that allows you to split your code across multiple files and organize modules in subdirectories.</p>
 <h2>Basic Module Syntax</h2>
 <h3>Simple Module Declaration</h3>
 <pre><code class="language-roe">module utilities
@@ -622,6 +622,207 @@ run logger.log_info with &quot;Application starting&quot;
 run logger.log_warning with &quot;Configuration file not found, using defaults&quot;
 run logger.log_error with &quot;Database connection failed&quot;
 run logger.log_with_timestamp with &quot;DEBUG&quot;, &quot;Processing user request&quot;
+</code></pre>
+<h2>Include System</h2>
+<h3>Basic Include Syntax</h3>
+<p>Roe supports including modules from other files using the <code>include</code> statement:</p>
+<pre><code class="language-roe">// Include a module from the same directory
+include MathUtils.roe
+
+// Include modules from subdirectories using quoted paths
+include &quot;utils/StringUtils.roe&quot;
+include &quot;common/Helpers.roe&quot;
+include &quot;includes/UserManager.roe&quot;
+</code></pre>
+<h3>Module Naming Convention</h3>
+<p>When including modules from subdirectories, Roe automatically derives the module name by:</p>
+<ol>
+<li>Removing the <code>.roe</code> extension</li>
+<li>Replacing forward slashes (<code>/</code>) with underscores (<code>_</code>)</li>
+</ol>
+<p>For example:</p>
+<ul>
+<li><code>utils/MathUtils.roe</code> → module name: <code>utils_MathUtils</code></li>
+<li><code>common/StringHelpers.roe</code> → module name: <code>common_StringHelpers</code></li>
+<li><code>includes/UserManager.roe</code> → module name: <code>includes_UserManager</code></li>
+</ul>
+<p>The module declaration in the file must match this derived name:</p>
+<pre><code class="language-roe">// File: utils/MathUtils.roe
+module utils_MathUtils
+  action add with a which is int, b which is int gives int
+    give a + b
+  end action
+end module
+</code></pre>
+<h3>Cross-Module Action Calls</h3>
+<p>Once a module is included, you can call its actions using the module name:</p>
+<pre><code class="language-roe">// main.roe
+include &quot;utils/MathUtils.roe&quot;
+include &quot;utils/StringUtils.roe&quot;
+
+// Call actions from included modules
+set sum which is int from run utils_MathUtils.add with 10, 20
+set greeting which is text from run utils_StringUtils.greet with &quot;Alice&quot;
+
+display &quot;Sum: [sum]&quot;
+display greeting
+</code></pre>
+<h3>Complete Include Example</h3>
+<p>Here's a complete example showing how to organize a project with includes:</p>
+<p><strong>Project Structure:</strong></p>
+<pre><code>src/
+├── main.roe
+├── utils/
+│   ├── MathUtils.roe
+│   └── StringUtils.roe
+├── common/
+│   └── StringHelpers.roe
+└── includes/
+    └── UserManager.roe
+</code></pre>
+<p><strong>utils/MathUtils.roe:</strong></p>
+<pre><code class="language-roe">module utils_MathUtils
+  action add with a which is int, b which is int gives int
+    give a + b
+  end action
+  
+  action multiply with x which is decimal, y which is decimal gives decimal
+    give x * y
+  end action
+  
+  action calculate_area with width which is decimal, height which is decimal gives decimal
+    set area which is decimal from run utils_MathUtils.multiply with width, height
+    give area
+  end action
+end module
+</code></pre>
+<p><strong>utils/StringUtils.roe:</strong></p>
+<pre><code class="language-roe">module utils_StringUtils
+  action greet with name which is text gives text
+    give &quot;Hello, &quot; + name + &quot;!&quot;
+  end action
+  
+  action format_title with title which is text gives text
+    give &quot;=== &quot; + title + &quot; ===&quot;
+  end action
+  
+  action create_email with first_name which is text, last_name which is text, domain which is text gives text
+    set username which is text to first_name + &quot;.&quot; + last_name
+    give username + &quot;@&quot; + domain
+  end action
+end module
+</code></pre>
+<p><strong>common/StringHelpers.roe:</strong></p>
+<pre><code class="language-roe">module common_StringHelpers
+  action format_name with first which is text, last which is text gives text
+    give first + &quot; &quot; + last
+  end action
+  
+  action create_greeting with name which is text gives text
+    give &quot;Hello, &quot; + name + &quot;!&quot;
+  end action
+end module
+</code></pre>
+<p><strong>includes/UserManager.roe:</strong></p>
+<pre><code class="language-roe">// UserManager can include other modules
+include &quot;utils/StringUtils.roe&quot;
+
+module includes_UserManager
+  action create_user_email with name which is text, domain which is text gives text
+    // Use actions from included modules
+    set email which is text from run utils_StringUtils.create_email with name, &quot;user&quot;, domain
+    give email
+  end action
+  
+  action format_user_info with name which is text, age which is int gives text
+    set greeting which is text from run utils_StringUtils.greet with name
+    give greeting + &quot; (Age: &quot; + age + &quot;)&quot;
+  end action
+end module
+</code></pre>
+<p><strong>main.roe:</strong></p>
+<pre><code class="language-roe">// Include all necessary modules
+include &quot;utils/MathUtils.roe&quot;
+include &quot;utils/StringUtils.roe&quot;
+include &quot;common/StringHelpers.roe&quot;
+include &quot;includes/UserManager.roe&quot;
+
+// Use Math utilities
+display &quot;=== Math Operations ===&quot;
+set a which is int to 10
+set b which is int to 5
+set sum which is int from run utils_MathUtils.add with a, b
+display &quot;10 + 5 = [sum]&quot;
+
+set width which is decimal to 12.5
+set height which is decimal to 8.0
+set area which is decimal from run utils_MathUtils.calculate_area with width, height
+display &quot;Rectangle area: [area]&quot;
+
+// Use String utilities
+display &quot;&quot;
+display &quot;=== String Operations ===&quot;
+set user_name which is text to &quot;Alice&quot;
+set greeting which is text from run utils_StringUtils.greet with user_name
+display greeting
+
+set page_title which is text to &quot;Welcome to Roe&quot;
+set formatted_title which is text from run utils_StringUtils.format_title with page_title
+display formatted_title
+
+// Use StringHelpers from common
+set full_name which is text from run common_StringHelpers.format_name with &quot;John&quot;, &quot;Doe&quot;
+display &quot;Full name: [full_name]&quot;
+
+// Use UserManager which internally uses StringUtils
+set user_email which is text from run includes_UserManager.create_user_email with &quot;alice&quot;, &quot;example.com&quot;
+display &quot;User email: [user_email]&quot;
+
+set user_info which is text from run includes_UserManager.format_user_info with &quot;Bob&quot;, 25
+display user_info
+</code></pre>
+<h3>Include System Benefits</h3>
+<ol>
+<li><strong>Code Organization</strong>: Split large programs into manageable files</li>
+<li><strong>Reusability</strong>: Share modules across multiple programs</li>
+<li><strong>Maintainability</strong>: Update modules in one place</li>
+<li><strong>Namespace Management</strong>: Subdirectory prefixes prevent naming conflicts</li>
+<li><strong>Dependency Management</strong>: Modules can include other modules</li>
+</ol>
+<h3>Best Practices for Includes</h3>
+<ol>
+<li>
+<p><strong>Organize by Functionality</strong>: Group related modules in subdirectories</p>
+<ul>
+<li><code>utils/</code> for utility functions</li>
+<li><code>common/</code> for shared helpers</li>
+<li><code>includes/</code> for composite modules</li>
+<li><code>data/</code> for data structures</li>
+<li><code>services/</code> for business logic</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Descriptive Names</strong>: Module names should clearly indicate their purpose</p>
+</li>
+<li>
+<p><strong>Avoid Circular Dependencies</strong>: Module A should not include Module B if Module B includes Module A</p>
+</li>
+<li>
+<p><strong>Keep Module Names Consistent</strong>: The module declaration must match the derived name from the file path</p>
+</li>
+<li>
+<p><strong>Document Dependencies</strong>: Comment which external modules are required</p>
+</li>
+</ol>
+<pre><code class="language-roe">// This module requires:
+// - utils/StringUtils.roe for string operations
+// - common/Validators.roe for input validation
+include &quot;utils/StringUtils.roe&quot;
+include &quot;common/Validators.roe&quot;
+
+module my_module
+  // Module implementation
+end module
 </code></pre>
 <h2>Next Steps</h2>
 <p>Now that you understand modules in Roe:</p>

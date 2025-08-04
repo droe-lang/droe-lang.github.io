@@ -177,23 +177,28 @@
 </thead>
 <tbody>
 <tr>
+<td><strong>Parameters</strong></td>
+<td>✅ Support parameters (NEW!)</td>
+<td>✅ Support parameters</td>
+</tr>
+<tr>
 <td><strong>Return Values</strong></td>
-<td>❌ No return values</td>
+<td>❌ No return values (void procedures)</td>
 <td>✅ Return typed values</td>
 </tr>
 <tr>
 <td><strong>Syntax</strong></td>
-<td><code>task name</code> ... <code>end task</code></td>
+<td><code>task name with params</code> ... <code>end task</code></td>
 <td><code>action name with params gives type</code> ... <code>end action</code></td>
 </tr>
 <tr>
 <td><strong>Execution</strong></td>
-<td><code>run task_name</code></td>
+<td><code>run task_name with args</code></td>
 <td><code>run module.action with params</code></td>
 </tr>
 <tr>
 <td><strong>Use Case</strong></td>
-<td>Automation workflows, void procedures</td>
+<td>Automation workflows, parameterized void procedures</td>
 <td>Reusable functions, data processing</td>
 </tr>
 <tr>
@@ -224,6 +229,27 @@
 end task
 </code></pre>
 <p><strong>Note:</strong> Tasks support both <code>end</code> and <code>end task</code> for closing the block.</p>
+<h3>Task with Parameters (NEW!)</h3>
+<p>Tasks now support parameters, making them more flexible and reusable:</p>
+<pre><code class="language-roe">task greet_person with name which is text
+  display &quot;Hello, &quot; + name + &quot;!&quot;
+  display &quot;Welcome to the Roelang community!&quot;
+end task
+
+// Execute the task with arguments
+run greet_person with &quot;Alice&quot;
+</code></pre>
+<h3>Task with Multiple Parameters</h3>
+<pre><code class="language-roe">task process_order with order_id which is int, customer_name which is text, amount which is decimal
+  display &quot;Processing order #&quot; + order_id
+  display &quot;Customer: &quot; + customer_name
+  display &quot;Amount: $&quot; + amount
+  display &quot;Order processed successfully!&quot;
+end task
+
+// Execute with multiple arguments
+run process_order with 12345, &quot;John Doe&quot;, 99.99
+</code></pre>
 <h3>Task with Implementation</h3>
 <pre><code class="language-roe">task send_notification
   display &quot;Sending notification...&quot;
