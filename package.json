@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "build": "npm run build:css && eleventy",
-    "build:css": "tailwindcss -i ./src/input.css -o ./docs/style.css --watch",
-    "dev": "npm run build:css & eleventy --serve",
+    "build:css": "tailwindcss -i ./src/input.css -o ./docs/style.css",
+    "dev": "tailwindcss -i ./src/input.css -o ./docs/style.css --watch & eleventy --serve",
+    "build:watch": "tailwindcss -i ./src/input.css -o ./docs/style.css --watch",
     "postinstall": "npm run build:css"
   },
   "devDependencies": {
