@@ -40,5 +40,20 @@
       menu.classList.toggle('hidden');
     });
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+      const scrollPos = sessionStorage.getItem('sidebarScroll');
+      if (scrollPos) {
+        sidebar.scrollTop = parseInt(scrollPos, 10);
+      }
+
+      window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
+      });
+    }
+  });
+</script>
 </body>
 </html>

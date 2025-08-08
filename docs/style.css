@@ -1265,6 +1265,10 @@ body {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -1428,6 +1432,10 @@ body {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .min-w-0 {
@@ -2235,6 +2243,14 @@ html {
 }
 
 @media (min-width: 1024px) {
+  .lg\:fixed {
+    position: fixed;
+  }
+
+  .lg\:ml-64 {
+    margin-left: 16rem;
+  }
+
   .lg\:grid {
     display: grid;
   }
@@ -2278,6 +2294,10 @@ html {
 
   .lg\:p-12 {
     padding: 3rem;
+  }
+
+  .lg\:p-10 {
+    padding: 2.5rem;
   }
 
   .lg\:px-8 {

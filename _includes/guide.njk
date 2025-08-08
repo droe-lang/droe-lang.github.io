@@ -2,9 +2,9 @@
 layout: base.njk
 ---
 
-<div class="lg:grid lg:grid-cols-[256px,1fr]">
+<div>
   <!-- Sidebar Navigation -->
-  <aside class="lg:h-screen lg:overflow-y-auto lg:border-r lg:border-gray-200 bg-gray-50 pb-16">
+  <aside id="sidebar" class="lg:fixed lg:h-screen lg:overflow-y-auto bg-gray-50 pb-16 w-64">
     <div class="p-6">
       <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
       
@@ -77,7 +77,7 @@ layout: base.njk
   </aside>
   
   <!-- Main Content -->
-  <div class="flex flex-col min-h-screen min-w-0">
+  <div class="lg:ml-64 flex flex-col min-h-screen">
     {% include "header.njk" %}
     <main class="flex-grow p-6 lg:p-12">
       <div class="overflow-x-auto">

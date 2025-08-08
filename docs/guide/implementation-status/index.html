@@ -31,9 +31,9 @@
   <!-- Main Content -->
   <main>
     
-<div class="lg:grid lg:grid-cols-[256px,1fr]">
+<div>
   <!-- Sidebar Navigation -->
-  <aside class="lg:h-screen lg:overflow-y-auto lg:border-r lg:border-gray-200 bg-gray-50 pb-16">
+  <aside id="sidebar" class="lg:fixed lg:h-screen lg:overflow-y-auto bg-gray-50 pb-16 w-64">
     <div class="p-6">
       <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
       
@@ -106,7 +106,7 @@
   </aside>
   
   <!-- Main Content -->
-  <div class="flex flex-col min-h-screen min-w-0">
+  <div class="lg:ml-64 flex flex-col min-h-screen">
     <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
@@ -335,8 +335,8 @@
       <div>
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
         <ul class="mt-4 space-y-4">
-          <li><a href="/docs" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+          <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
+          <li><a href="/examples/" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
         </ul>
       </div>
       
@@ -379,5 +379,20 @@ document.addEventListener('DOMContentLoaded', function() {
       menu.classList.toggle('hidden');
     });
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+      const scrollPos = sessionStorage.getItem('sidebarScroll');
+      if (scrollPos) {
+        sidebar.scrollTop = parseInt(scrollPos, 10);
+      }
+
+      window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
+      });
+    }
+  });
+</script>
 </body>
 </html>
