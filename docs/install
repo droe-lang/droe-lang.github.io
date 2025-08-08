@@ -103,20 +103,20 @@ download_file() {
 
 # Get latest release version
 get_latest_version() {
-    echo -e "${BLUE}Fetching latest version...${NC}"
+    echo -e "${BLUE}Fetching latest version...${NC}" >&2
     
     local api_url="https://api.github.com/repos/$GITHUB_REPO/releases/latest"
     local version
     
     if command -v curl >/dev/null 2>&1; then
-        version=$(curl -fsSL "$api_url" | grep '"tag_name":' | sed 's/.*"tag_name": *"\([^"]*\)".*/\1/')
+        version=$(curl -fsSL "$api_url" 2>/dev/null | grep '"tag_name":' | sed 's/.*"tag_name": *"\([^"]*\)".*/\1/')
     elif command -v wget >/dev/null 2>&1; then
-        version=$(wget -qO- "$api_url" | grep '"tag_name":' | sed 's/.*"tag_name": *"\([^"]*\)".*/\1/')
+        version=$(wget -qO- "$api_url" 2>/dev/null | grep '"tag_name":' | sed 's/.*"tag_name": *"\([^"]*\)".*/\1/')
     fi
     
     if [ -z "$version" ]; then
-        echo -e "${YELLOW}Warning: Could not fetch latest version, using fallback${NC}"
-        version="v0.1.0"
+        echo -e "${YELLOW}No releases found, using main branch${NC}" >&2
+        version="main"
     fi
     
     echo "$version"
@@ -125,6 +125,7 @@ get_latest_version() {
 # Install Roe
 install_roe() {
     local platform=$(detect_platform)
+    local version="$(get_latest_version)"
 
     if [ "$platform" = "windows-x64" ] || [ "$platform" = "windows-arm64" ]; then
         echo -e "${YELLOW}Windows detected. Automatic installation is not supported.${NC}"
@@ -134,9 +135,9 @@ install_roe() {
         echo -e "   ${GREEN}New-Item -ItemType Directory -Force -Path \"$HOME\.roelang\"${NC}"
         echo
         echo "2. Download the required files:"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer/roe' -OutFile \"$HOME\.roelang\roe\"${NC}"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer/run.js' -OutFile \"$HOME\.roelang\run.js\"${NC}"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer/compiler.tar.gz' -OutFile \"$HOME\.roelang\compiler.tar.gz\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/roe-lang/roe/main/roe' -OutFile \"$HOME\.roelang\roe\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/roe-lang/roe/main/run.js' -OutFile \"$HOME\.roelang\run.js\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/roe-lang/roe/main/compiler.tar.gz' -OutFile \"$HOME\.roelang\compiler.tar.gz\"${NC}"
         echo
         echo "3. Extract the compiler archive:"
         echo -e "   ${GREEN}tar -xzf \"$HOME\.roelang\compiler.tar.gz\" -C \"$HOME\.roelang\"${NC}"
@@ -149,15 +150,21 @@ install_roe() {
         exit 0
     fi
 
-    local version=$(get_latest_version)
-    
     echo -e "${BLUE}Installing Roe $version for $platform...${NC}"
     
     # Create directories
     mkdir -p "$ROE_HOME"
     mkdir -p "$ROE_BIN"
     
-    local BASE_URL="https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer"
+    # Determine download URL based on version
+    local BASE_URL
+    if [ "$version" = "main" ] || [ "$version" = "latest" ] || [ "$version" = "dev" ]; then
+        # Use raw files from main branch when no release exists
+        BASE_URL="https://raw.githubusercontent.com/$GITHUB_REPO/main"
+    else
+        # Use GitHub releases for tagged versions
+        BASE_URL="https://github.com/$GITHUB_REPO/releases/download/$version"
+    fi
 
     # Download and extract the compiler directory
     echo -e "${BLUE}Downloading Roe compiler module...${NC}"
@@ -178,17 +185,24 @@ install_roe() {
 
     # Download the main roe CLI script
     echo -e "${BLUE}Downloading Roe CLI...${NC}"
-    download_file "$BASE_URL/roe" "$ROE_BIN/roe"
-    if [ $? -ne 0 ] || [ ! -f "$ROE_BIN/roe" ]; then
+    download_file "$BASE_URL/roe" "$ROE_HOME/roe"
+    if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/roe" ]; then
         echo -e "${RED}Error: Failed to download roe CLI. Aborting installation.${NC}" >&2
         exit 1
     fi
-    chmod +x "$ROE_BIN/roe"
+    chmod +x "$ROE_HOME/roe"
+    
+    # Create symlink in bin directory
+    ln -sf "$ROE_HOME/roe" "$ROE_BIN/roe"
     echo -e "${GREEN}✓ Roe CLI installed successfully.${NC}"
 
     # Download the Node.js runtime for WebAssembly execution
     echo -e "${BLUE}Downloading Roe runtime...${NC}"
-    download_file "$BASE_URL/run.js" "$ROE_HOME/run.js"
+    if [ "$version" = "main" ]; then
+        download_file "$BASE_URL/run.js" "$ROE_HOME/run.js"
+    else
+        download_file "$BASE_URL/run.js" "$ROE_HOME/run.js"
+    fi
     if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/run.js" ]; then
         echo -e "${YELLOW}Warning: Failed to download Node.js runtime. You may not be able to run .roe files directly.${NC}"
     else
