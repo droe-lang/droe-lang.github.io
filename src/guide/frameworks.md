@@ -20,16 +20,16 @@ Roelang provides framework adapters that automatically generate idiomatic code f
 
 | Target | Framework | Generated Output | Status |
 |--------|-----------|------------------|---------|
-| `roe` | RoeVM Bytecode | `.roebc` files for native runtime | ✅ Stable |
-| `rust` | Axum | Complete Rust web server project | 🧪 Implemented - Testing Pending |
-| `wasm` | WebAssembly | `.wasm` binary for cross-platform execution | ✅ Stable |
-| `java` | Spring Boot | Full Java web application | 🧪 Implemented - Testing Pending |
-| `python` | FastAPI | Python async web API | 🧪 Implemented - Testing Pending |
-| `go` | Fiber | Go web server | 🧪 Implemented - Testing Pending |
-| `javascript` | Node.js/Fastify | JavaScript web server | 🧪 Implemented - Testing Pending |
-| `html` | Static Web | HTML/CSS/JavaScript | 🧪 Implemented - Testing Pending |
-| `android` | Native Android | Kotlin Android project | 🧪 Implemented - Testing Pending |
-| `ios` | Native iOS | Swift iOS project | 🧪 Implemented - Testing Pending |
+| `roe` | RoeVM Bytecode | `.roebc` files for native runtime | ✅ **Default & Recommended** |
+| `rust` | Axum | Complete Rust web server project | 🧪 **Implemented** - Testing Pending |
+| `wasm` | WebAssembly | `.wasm` binary for cross-platform execution | ✅ **Stable** |
+| `java` | Spring Boot | Full Java web application | 🧪 **Implemented** - Testing Pending |
+| `python` | FastAPI | Python async web API | 🧪 **Implemented** - Testing Pending |
+| `go` | Fiber | Go web server | 🧪 **Implemented** - Testing Pending |
+| `javascript` | Node.js/Fastify | JavaScript web server | 🧪 **Implemented** - Testing Pending |
+| `html` | Static Web | HTML/CSS/JavaScript | 🧪 **Implemented** - Testing Pending |
+| `android` | Native Android | Kotlin Android project | 🧪 **Implemented** - Testing Pending |
+| `ios` | Native iOS | Swift iOS project | 🧪 **Implemented** - Testing Pending |
 
 ## Primary Target: RoeVM Bytecode
 
