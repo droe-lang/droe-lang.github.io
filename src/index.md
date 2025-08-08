@@ -1,5 +1,5 @@
 ---
 layout: home.njk
 title: Home
-description: Roe is a minimal, declarative language for defining executable processes. It features a multi-target code generation system — currently supporting WebAssembly, with planned support for Python, Java, Rust, and more. Designed for clarity, portability, and AI-native development, Roe empowers LLM-assisted authoring, agent orchestration, and seamless delivery of platform-agnostic logic.
+description: Roe is a minimal, declarative language for business logic and process automation. It currently compiles to WebAssembly and native bytecode with experimental Rust code generation. Designed for clarity and readability, Roe is ideal for business automation, simple APIs, and AI-assisted development workflows.
 ---

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Development | Roe - Unified Programming System</title>
+  <meta name="description" content="Build cross-platform mobile applications for Android and iOS with Roelang&#39;s mobile DSL.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/logo.png">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mobile Development | Roe">
+  <meta property="og:description" content="Build cross-platform mobile applications for Android and iOS with Roelang&#39;s mobile DSL.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/mobile/">
+  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mobile Development | Roe">
+  <meta name="twitter:description" content="Build cross-platform mobile applications for Android and iOS with Roelang&#39;s mobile DSL.">
+  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Main Content -->
+  <main>
+    
+<div class="lg:grid lg:grid-cols-[256px,1fr]">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:h-screen lg:overflow-y-auto lg:border-r lg:border-gray-200 bg-gray-50 pb-16">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Backend Development -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
+        <nav class="space-y-1">
+          <a href="/guide/database/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database DSL</a>
+          <a href="/guide/api-endpoints/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API Endpoints</a>
+        </nav>
+      </div>
+      
+      <!-- Frontend & Mobile -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
+        <nav class="space-y-1">
+          <a href="/guide/ui-components/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI Components</a>
+          <a href="/guide/mobile/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile Development</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/frameworks/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework Support</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+          <a href="/guide/implementation-status/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation Status</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <div class="flex flex-col min-h-screen min-w-0">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+          <img src="/logo.png" alt="Roe" class="w-6 h-6">
+          <span>Roe</span>
+        </a>
+      </div>
+      
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/guide/" class="nav-link">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+          <span class="sr-only">GitHub</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon for menu (hamburger) -->
+          <svg class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h-8" />
+          </svg>
+          <!-- Icon for close (X) -->
+          <svg class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <main class="flex-grow p-6 lg:p-12">
+      <div class="overflow-x-auto">
+        <article class="prose dark:prose-invert max-w-none">
+          <h1>Mobile Development</h1>
+          <p>Roelang provides comprehensive mobile development capabilities, allowing you to create native Android and iOS applications from a single codebase using mobile-specific UI components and device features.</p>
+<h2>Mobile Project Setup</h2>
+<h3>Configuration</h3>
+<p>Configure mobile targets in <code>roeconfig.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;target&quot;: &quot;mobile&quot;,
+    &quot;mobile&quot;: {
+        &quot;enabled&quot;: true,
+        &quot;platforms&quot;: [&quot;android&quot;, &quot;ios&quot;],
+        &quot;package&quot;: &quot;com.example.myapp&quot;,
+        &quot;appName&quot;: &quot;My Mobile App&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;permissions&quot;: {
+            &quot;camera&quot;: true,
+            &quot;location&quot;: true,
+            &quot;storage&quot;: true,
+            &quot;notifications&quot;: true
+        },
+        &quot;features&quot;: {
+            &quot;offline&quot;: true,
+            &quot;cloudSync&quot;: true,
+            &quot;analytics&quot;: false
+        }
+    }
+}
+</code></pre>
+<h3>Project Structure</h3>
+<pre><code>my-mobile-app/
+├── roeconfig.json
+├── src/
+│   ├── main.roe
+│   ├── screens/
+│   │   ├── login.roe
+│   │   └── profile.roe
+│   └── components/
+│       └── user_card.roe
+├── assets/
+│   ├── images/
+│   └── icons/
+└── build/
+    ├── android/          // Generated Android project
+    └── ios/              // Generated iOS project
+</code></pre>
+<h2>Mobile-Specific Metadata</h2>
+<p>Use file-level metadata annotations for app information (mobile target is configured in <code>roeconfig.json</code>):</p>
+<pre><code class="language-roe">@name &quot;PhotoShare&quot;
+@description &quot;Cross-platform photo sharing application&quot;
+@package &quot;com.example.photoapp&quot;
+
+module photo_app
+    // Mobile app content
+end module
+</code></pre>
+<p><strong>Note:</strong> The <code>@targets</code> annotation is not implemented. Use <code>roeconfig.json</code> configuration instead.</p>
+<h2>Device Capabilities</h2>
+<h3>Camera Integration</h3>
+<pre><code class="language-roe">// Camera button component
+button &quot;Take Photo&quot; type camera action capturePhoto permissions &quot;camera, storage&quot; class &quot;camera-btn&quot;
+
+// Camera action with permission handling
+action capturePhoto
+    when device has camera permission then
+        show message &quot;Opening camera...&quot;
+        run native camera capture
+        set capturedImage to camera result
+        
+        when capturedImage is not empty then
+            display &quot;Photo captured successfully&quot;
+            set UserProfile.profilePicture to capturedImage
+        end when
+    otherwise
+        show alert &quot;Camera permission required&quot; with title &quot;Permission Needed&quot;
+    end when
+end action
+</code></pre>
+<h3>Location Services</h3>
+<pre><code class="language-roe">// Location button component
+button &quot;Get Location&quot; type location action getLocation permissions &quot;location&quot; accuracy high class &quot;location-btn&quot;
+
+// Location action
+action getLocation  
+    when device has location permission then
+        show message &quot;Getting location...&quot;
+        run native location service with accuracy high
+        set currentLocation to location result
+        
+        display &quot;Location: [currentLocation.latitude], [currentLocation.longitude]&quot;
+        set UserProfile.lastLocation to currentLocation
+    otherwise  
+        show alert &quot;Location permission required&quot; with title &quot;Permission Needed&quot;
+    end when
+end action
+
+// Background location tracking
+action startLocationTracking
+    when device has background_location permission then
+        run native location tracking with interval 60 seconds
+    end when
+end action
+</code></pre>
+<h3>Push Notifications</h3>
+<pre><code class="language-roe">// Show notifications
+action sendNotification with title which is text, message which is text
+    show notification message with title title sound default
+end action
+
+action scheduleReminder with message which is text, delay which is int
+    schedule notification message after delay minutes
+end action
+
+// Request notification permissions on app start
+action initializeApp
+    request notification permissions
+    
+    when notifications_enabled then
+        display &quot;Notifications enabled&quot;
+    otherwise
+        display &quot;Notifications disabled&quot;
+    end when
+end action
+</code></pre>
+<h3>Device Sensors</h3>
+<pre><code class="language-roe">// Motion detection
+action setupMotionDetection
+    when device has motion sensor then
+        run native motion detection with sensitivity medium
+        
+        when motion_detected then
+            display &quot;Motion detected!&quot;
+            run action capturePhoto
+        end when
+    end when
+end action
+
+// Accelerometer data
+action getAccelerometerData
+    when device has accelerometer then
+        set acceleration to native accelerometer data
+        display &quot;X: [acceleration.x], Y: [acceleration.y], Z: [acceleration.z]&quot;
+    end when
+end action
+</code></pre>
+<h3>Hardware Features</h3>
+<pre><code class="language-roe">// Vibration
+action vibrate with pattern which is text
+    when pattern equals &quot;short&quot; then
+        run native vibration with duration 100
+    otherwise when pattern equals &quot;long&quot; then
+        run native vibration with duration 500
+    otherwise
+        run native vibration with pattern [100, 200, 100, 200]
+    end when
+end action
+
+// Audio playback
+action playSound with soundFile which is text
+    run native audio playback with soundFile
+end action
+
+// Flashlight control
+action toggleFlashlight
+    when flashlight is on then
+        run native flashlight off
+        set flashlight to off
+    otherwise
+        run native flashlight on
+        set flashlight to on
+    end when
+end action
+</code></pre>
+<h2>Data Persistence</h2>
+<h3>Local Storage</h3>
+<pre><code class="language-roe">// Save user data locally
+action saveUserData
+    store UserProfile in local database with key &quot;user_profile&quot;
+    
+    when online then
+        sync UserProfile with cloud storage
+    end when
+    
+    display &quot;User data saved&quot;
+end action
+
+// Load user data
+action loadUserData
+    set userData from local database with key &quot;user_profile&quot;
+    
+    when userData is not empty then
+        set UserProfile to userData
+        display &quot;User data loaded&quot;
+    otherwise
+        display &quot;No saved user data found&quot;
+    end when
+end action
+
+// Clear all local data
+action clearLocalData
+    clear local database
+    display &quot;Local data cleared&quot;
+end action
+</code></pre>
+<h3>Cloud Synchronization</h3>
+<pre><code class="language-roe">action syncWithCloud
+    when online then
+        // Upload local changes
+        set local_changes from local database where synced equals false
+        
+        for each change in local_changes
+            call cloud_api_endpoint method POST with change into response
+            when response.status equals 200 then
+                mark change as synced in local database
+            end when
+        end for
+        
+        // Download remote changes
+        call cloud_api_endpoint method GET into remote_data
+        merge remote_data with local database
+        
+        display &quot;Sync completed&quot;
+    otherwise
+        display &quot;No internet connection - sync postponed&quot;
+    end when
+end action
+</code></pre>
+<h2>Cross-Platform UI Components</h2>
+<h3>Mobile Layouts</h3>
+<pre><code class="language-roe">layout MainScreen
+    column class &quot;main-container&quot;
+        title &quot;My Mobile App&quot; class &quot;app-title&quot;
+        
+        column class &quot;content-section&quot;
+            text &quot;Welcome to the mobile app!&quot; class &quot;welcome-text&quot;
+            
+            // Mobile-specific button types
+            button &quot;Take Photo&quot; type camera action capturePhoto class &quot;camera-btn&quot;
+            button &quot;Get Location&quot; type location action getLocation class &quot;location-btn&quot;
+            
+            // Regular buttons
+            button &quot;Settings&quot; action openSettings class &quot;settings-btn&quot;
+        end column
+    end column
+end layout
+</code></pre>
+<h3>Forms for Mobile</h3>
+<pre><code class="language-roe">form UserRegistration
+    column class &quot;form-container&quot;
+        title &quot;Create Account&quot; class &quot;form-title&quot;
+        
+        column class &quot;form-fields&quot;
+            input id name_field text placeholder &quot;Full Name&quot; bind UserProfile.fullName validate required class &quot;mobile-input&quot;
+            input id email_field email placeholder &quot;Email Address&quot; bind UserProfile.email validate email class &quot;mobile-input&quot;
+            input id phone_field phone placeholder &quot;Phone Number&quot; bind UserProfile.phone validate phone class &quot;mobile-input&quot;
+            
+            toggle id notifications_toggle &quot;Enable Push Notifications&quot; bind UserSettings.pushNotifications default on class &quot;mobile-toggle&quot;
+            
+            button &quot;Create Account&quot; action createAccount class &quot;primary-btn mobile-btn&quot;
+        end column
+    end column
+end form
+</code></pre>
+<h3>Navigation</h3>
+<pre><code class="language-roe">layout TabNavigation
+    tabs class &quot;bottom-navigation&quot;
+        tab &quot;Home&quot; screen HomeScreen icon &quot;home&quot; selected
+        tab &quot;Profile&quot; screen ProfileScreen icon &quot;user&quot;
+        tab &quot;Settings&quot; screen SettingsScreen icon &quot;settings&quot;
+        tab &quot;Camera&quot; action capturePhoto icon &quot;camera&quot;
+    end tabs
+end layout
+</code></pre>
+<h2>Platform-Specific Features</h2>
+<h3>Android-Specific</h3>
+<pre><code class="language-roe">// Android-specific features
+when platform equals &quot;android&quot; then
+    // Use Android-specific components
+    button &quot;Share via Android&quot; action shareViaAndroid type android_share
+    
+    // Access Android intents
+    run android_intent with action &quot;android.intent.action.VIEW&quot; data share_url
+end when
+
+action shareViaAndroid
+    run native android share with content share_content
+end action
+</code></pre>
+<h3>iOS-Specific</h3>
+<pre><code class="language-roe">// iOS-specific features  
+when platform equals &quot;ios&quot; then
+    // Use iOS-specific components
+    button &quot;Share via iOS&quot; action shareViaiOS type ios_share
+    
+    // Access iOS frameworks
+    run ios_framework CoreLocation with method getCurrentLocation
+end when
+
+action shareViaiOS
+    run native ios share with content share_content
+end action
+</code></pre>
+<h2>Permission Management</h2>
+<h3>Requesting Permissions</h3>
+<pre><code class="language-roe">// Request multiple permissions
+action requestPermissions
+    request permissions &quot;camera, location, notifications, storage&quot;
+    
+    when all_permissions_granted then
+        display &quot;All permissions granted&quot;
+        run action initializeApp
+    otherwise
+        display &quot;Some permissions denied&quot;
+        show alert &quot;App requires permissions to function properly&quot;
+    end when
+end action
+
+// Check individual permissions
+action checkCameraPermission
+    when device has camera permission then
+        enable camera_button
+    otherwise
+        disable camera_button
+        show permission_request_dialog for camera
+    end when
+end action
+</code></pre>
+<h3>Permission Handling by Component</h3>
+<pre><code class="language-roe">// Components automatically handle permissions
+button &quot;Take Photo&quot; type camera permissions &quot;camera, storage&quot; 
+    on permission_denied show alert &quot;Camera access required for photos&quot;
+    action capturePhoto
+
+button &quot;Get Location&quot; type location permissions &quot;location&quot; accuracy high
+    on permission_denied show alert &quot;Location access required for this feature&quot;  
+    action getLocation
+</code></pre>
+<h2>Complete Mobile App Example</h2>
+<pre><code class="language-roe">@name &quot;PhotoShare&quot;
+@description &quot;Cross-platform photo sharing application&quot; 
+@package &quot;com.example.photoshare&quot;
+
+// roeconfig.json should contain:
+// {
+//   &quot;target&quot;: &quot;mobile&quot;,
+//   &quot;mobile&quot;: {
+//     &quot;platforms&quot;: [&quot;android&quot;, &quot;ios&quot;],
+//     &quot;package&quot;: &quot;com.example.photoshare&quot;
+//   }
+// }
+
+module photoshare
+
+    // Data models
+    data Photo
+        id is text required
+        imagePath is text required  
+        location is text optional
+        timestamp is date required
+        userName is text required
+        isShared is flag default false
+    end data
+
+    // Main application layout
+    layout MainScreen
+        column class &quot;main-container&quot;
+            title &quot;PhotoShare App&quot; class &quot;app-title&quot;
+            
+            column class &quot;form-container&quot;
+                input id name_field text placeholder &quot;Enter your name&quot; bind UserProfile.userName validate required class &quot;form-input&quot;
+                
+                // Mobile-specific components
+                button &quot;Take Photo&quot; type camera action capturePhoto permissions &quot;camera, storage&quot; class &quot;camera-btn&quot;
+                button &quot;Get Location&quot; type location action getLocation permissions &quot;location&quot; accuracy high class &quot;location-btn&quot;
+                
+                image source &quot;placeholder.jpg&quot; alt &quot;Your captured photo&quot; bind UserProfile.capturedImage class &quot;photo-preview&quot;
+                
+                button &quot;Share Photo&quot; action sharePhoto enabled when capturedImage is not empty class &quot;share-btn primary&quot;
+            end column
+        end column
+    end layout
+
+    // Settings form
+    form SettingsForm
+        column class &quot;settings-container&quot;
+            title &quot;App Settings&quot; class &quot;form-title&quot;
+            
+            column class &quot;form-fields&quot;
+                toggle id notifications_toggle &quot;Enable Push Notifications&quot; bind UserSettings.notificationsEnabled default off class &quot;toggle-field&quot;
+                
+                dropdown id quality_dropdown bind UserSettings.photoQuality default &quot;Medium Quality&quot; class &quot;dropdown-field&quot;
+                    option &quot;High Quality&quot;
+                    option &quot;Medium Quality&quot; 
+                    option &quot;Low Quality&quot;
+                end dropdown
+                
+                button &quot;Save Settings&quot; action saveSettings class &quot;save-btn primary&quot;
+            end column
+        end column
+    end form
+
+    // Actions with platform-specific implementations
+    action capturePhoto
+        when device has camera permission then
+            show message &quot;Opening camera...&quot;
+            run native camera capture
+            set capturedImage to camera result
+            
+            when capturedImage is not empty then
+                save capturedImage to local storage
+                display &quot;Photo captured successfully&quot;
+            end when
+        otherwise
+            show alert &quot;Camera permission required&quot;
+        end when
+    end action
+
+    action getLocation  
+        when device has location permission then
+            show message &quot;Getting location...&quot;
+            run native location service with accuracy high
+            set currentLocation to location result
+            
+            when currentLocation is not empty then
+                set UserProfile.lastLocation to currentLocation
+                display &quot;Location obtained: [currentLocation.latitude], [currentLocation.longitude]&quot;
+            end when
+        otherwise  
+            show alert &quot;Location permission required&quot;
+        end when
+    end action
+
+    action sharePhoto
+        when capturedImage is not empty then
+            show message &quot;Sharing photo...&quot;
+            
+            // Create photo record
+            db create Photo with 
+                imagePath is capturedImage,
+                location is UserProfile.lastLocation,
+                userName is UserProfile.userName,
+                timestamp is current_time
+            
+            // Share via platform
+            when platform equals &quot;android&quot; then
+                run android_intent share with content capturedImage
+            otherwise when platform equals &quot;ios&quot; then  
+                run ios_share with content capturedImage
+            end when
+            
+            show notification &quot;Photo shared successfully!&quot;
+        otherwise
+            show alert &quot;Please take a photo first&quot;
+        end when
+    end action
+
+    // Data persistence
+    action saveSettings
+        store UserSettings in local database
+        when online then 
+            sync UserSettings with cloud storage
+        end when
+        show notification &quot;Settings saved successfully!&quot;
+    end action
+
+    // App initialization
+    action initializeApp
+        request permissions &quot;camera, location, notifications, storage&quot;
+        load UserSettings from local database
+        
+        when first_launch then
+            show welcome_tutorial
+        end when
+    end action
+
+end module
+</code></pre>
+<h2>Generated Platform Code</h2>
+<h3>Android Output (Kotlin)</h3>
+<pre><code class="language-kotlin">// Generated MainActivity.kt
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        setContent {
+            PhotoShareTheme {
+                MainScreen()
+            }
+        }
+        
+        // Request permissions
+        requestPermissions(
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ),
+            PERMISSION_REQUEST_CODE
+        )
+    }
+    
+    private fun capturePhoto() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) 
+            == PackageManager.PERMISSION_GRANTED) {
+            // Open camera
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(intent, CAMERA_REQUEST_CODE)
+        }
+    }
+}
+</code></pre>
+<h3>iOS Output (Swift)</h3>
+<pre><code class="language-swift">// Generated ContentView.swift
+struct ContentView: View {
+    @StateObject private var locationManager = LocationManager()
+    @State private var showingCamera = false
+    @State private var capturedImage: UIImage?
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text(&quot;PhotoShare App&quot;)
+                .font(.title)
+            
+            TextField(&quot;Enter your name&quot;, text: $userName)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            Button(&quot;Take Photo&quot;) {
+                showingCamera = true
+            }
+            .sheet(isPresented: $showingCamera) {
+                CameraView(image: $capturedImage)
+            }
+            
+            Button(&quot;Get Location&quot;) {
+                locationManager.requestLocation()
+            }
+        }
+        .onAppear {
+            requestPermissions()
+        }
+    }
+    
+    private func requestPermissions() {
+        // Request camera and location permissions
+        AVCaptureDevice.requestAccess(for: .video) { granted in
+            // Handle camera permission
+        }
+        
+        locationManager.requestWhenInUseAuthorization()
+    }
+}
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Handle Permissions Gracefully</h3>
+<pre><code class="language-roe">// Good: Always check permissions before using features
+action useCamera
+    when device has camera permission then
+        run native camera capture
+    otherwise
+        show permission_explanation for camera
+        request camera permission
+    end when
+end action
+</code></pre>
+<h3>2. Provide Offline Functionality</h3>
+<pre><code class="language-roe">// Good: Handle offline scenarios
+action saveData
+    store data in local database
+    
+    when online then
+        sync with cloud storage
+    otherwise
+        display &quot;Saved locally - will sync when online&quot;
+        add to sync_queue
+    end when
+end action
+</code></pre>
+<h3>3. Use Platform-Appropriate UI</h3>
+<pre><code class="language-roe">// Good: Platform-specific styling
+button &quot;Share&quot; action shareContent class &quot;primary-btn&quot;
+    when platform equals &quot;android&quot; then
+        class &quot;material-btn&quot;
+    otherwise when platform equals &quot;ios&quot; then
+        class &quot;ios-btn&quot; 
+    end when
+</code></pre>
+<h2>Next Steps</h2>
+<ul>
+<li><strong><a href="/guide/ui-components/">UI Components</a></strong> - Detailed UI component reference</li>
+<li><strong><a href="/guide/frameworks/">Framework Support</a></strong> - Mobile framework generation</li>
+<li><strong><a href="/guide/deployment/">Deployment</a></strong> - Publishing mobile apps</li>
+</ul>
+<p>Mobile development in Roelang provides a unified way to create native applications for both Android and iOS platforms while leveraging device-specific features and maintaining platform-appropriate user experiences.</p>
+
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <div class="flex items-center space-x-2 mb-4">
+          <img src="/logo.png" alt="Roe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Roe</span>
+        </div>
+        <p class="text-gray-600 max-w-md">
+          A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
+        </p>
+      </div>
+      
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
+        <ul class="mt-4 space-y-4">
+          <li><a href="/docs" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
+          <li><a href="/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
+        <ul class="mt-4 space-y-4">
+          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-200 pt-8 text-center">
+      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+    </div>
+  </div>
+</footer>
+
+  </div>
+</div>
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

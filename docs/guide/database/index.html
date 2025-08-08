@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Introduction to Roe | Roe - Unified Programming System</title>
-  <meta name="description" content="Learn the fundamentals of Roe, a minimal declarative language that compiles to WebAssembly.">
+  <title>Database DSL | Roe - Unified Programming System</title>
+  <meta name="description" content="Define data models and perform database operations with Roelang&#39;s built-in database DSL.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,15 +16,15 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Introduction to Roe | Roe">
-  <meta property="og:description" content="Learn the fundamentals of Roe, a minimal declarative language that compiles to WebAssembly.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/">
+  <meta property="og:title" content="Database DSL | Roe">
+  <meta property="og:description" content="Define data models and perform database operations with Roelang&#39;s built-in database DSL.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/database/">
   <meta property="og:image" content="https://roe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Introduction to Roe | Roe">
-  <meta name="twitter:description" content="Learn the fundamentals of Roe, a minimal declarative language that compiles to WebAssembly.">
+  <meta name="twitter:title" content="Database DSL | Roe">
+  <meta name="twitter:description" content="Define data models and perform database operations with Roelang&#39;s built-in database DSL.">
   <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -160,88 +160,363 @@
     <main class="flex-grow p-6 lg:p-12">
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
-          <h1>Introduction to Roe</h1>
-          <p>Roe is a <strong>minimal declarative language</strong> designed for writing executable processes as <code>.roe</code> files. By default, Roe compiles to <strong>RoeVM bytecode</strong> for high-performance native execution, while also supporting compilation to multiple target languages and platforms including WebAssembly, Rust, Java, Python, Go, Node.js and mobile frameworks.</p>
-<h2>What is Roe?</h2>
-<p>Roe fills the gap between simple configuration files and full programming languages. It's designed for:</p>
-<ul>
-<li><strong>High-performance execution</strong> with RoeVM's native bytecode runtime as the default choice</li>
-<li><strong>Multi-language compilation</strong> to native code for Rust, Java, Python, Go, Node.js and JavaScript ecosystems</li>
-<li><strong>Cross-platform deployment</strong> supporting web, mobile (Android/iOS), and backend frameworks</li>
-<li><strong>Automation scripts</strong> that need to be readable and maintainable</li>
-<li><strong>Process definitions</strong> that can be version-controlled and reviewed</li>
-<li><strong>Git-friendly workflows</strong> with clean, mergeable source files</li>
-</ul>
-<h2>Key Features</h2>
-<h3>🚀 High-Performance RoeVM Runtime</h3>
-<p>Roe compiles to native bytecode by default, running on the high-performance RoeVM runtime. Also supports WebAssembly compilation for maximum portability across all platforms.</p>
-<h3>🔒 Strong Type System</h3>
-<p>Static typing with <code>int</code>, <code>text</code>, <code>flag</code>, <code>decimal</code>, and collections. Catch errors at compile time, not runtime.</p>
-<h3>🧩 Modular Design</h3>
-<p>Organize code with modules and parameterized actions. Build reusable components with clean interfaces.</p>
-<h3>✨ Modern Syntax</h3>
-<p>String interpolation, concatenation, and expressive syntax that reads like natural language.</p>
-<h3>📝 Git Friendly</h3>
-<p>Clean, readable <code>.roe</code> files work beautifully with version control. Merge conflicts are rare and easy to resolve.</p>
-<h3>⚡ Multiple Compilation Targets</h3>
-<p>Compile to RoeVM bytecode for optimal performance, WebAssembly for portability, or generate native code for Rust, Java, Python, Go, Node.js and mobile frameworks. Single source code, multiple deployment options.</p>
-<h2>Your First Roe Program</h2>
-<p>Here's a simple &quot;Hello World&quot; program that demonstrates basic Roe syntax:</p>
-<p>::: code-group</p>
-<pre><code class="language-roe">// Welcome to Roe! 🦌
-display &quot;Hello, World!&quot;
+          <h1>Database DSL</h1>
+          <p>Roelang provides a native Database DSL for defining data models and performing database operations with automatic ORM generation for target frameworks.</p>
+<h2>Data Definitions with Annotations</h2>
+<p>Define data structures with field annotations for database schema generation:</p>
+<pre><code class="language-roe">data User
+    id is text key auto                    // Primary key with auto-generation
+    name is text required                   // Required field
+    email is text required unique           // Unique constraint
+    age is int optional                     // Nullable field
+    active is flag default true             // Default value
+    created_at is date auto                 // Auto-timestamp
+end data
 
-// Variables with strong typing
-set name which is text to &quot;Alice&quot;
-set age which is int to 25
-
-// String interpolation
-display &quot;Welcome [name], you are [age] years old!&quot;
-
-// String concatenation
-set greeting to &quot;Hello, &quot; + name + &quot;!&quot;
-display greeting
+data Post
+    id is text key auto
+    title is text required
+    content is text required
+    author_id is text required              // Foreign key reference
+    published is flag default false
+    created_at is date auto
+end data
 </code></pre>
-<pre><code class="language-bash">$ roe run hello.roe
+<h2>Field Annotations</h2>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td>Primary key field</td>
+<td><code>id is text key</code></td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td>Auto-generated value</td>
+<td><code>id is text key auto</code></td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>Non-nullable field</td>
+<td><code>name is text required</code></td>
+</tr>
+<tr>
+<td><code>optional</code></td>
+<td>Nullable field</td>
+<td><code>age is int optional</code></td>
+</tr>
+<tr>
+<td><code>unique</code></td>
+<td>Unique constraint</td>
+<td><code>email is text unique</code></td>
+</tr>
+<tr>
+<td><code>default &lt;value&gt;</code></td>
+<td>Default value</td>
+<td><code>active is flag default true</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Database Operations</h2>
+<h3>Create (INSERT)</h3>
+<pre><code class="language-roe">// Create new record
+db create User with name is &quot;Alice&quot;, email is &quot;alice@example.com&quot;, age is 25
 
-Hello, World!
-Welcome Alice, you are 25 years old!
-Hello, Alice!
+// Create with variable
+set new_user which is User
+set new_user.name to &quot;Bob&quot;
+set new_user.email to &quot;bob@example.com&quot;
+db create User from new_user
 </code></pre>
-<p>:::</p>
-<h2>Language Philosophy</h2>
-<p>Roe follows several key principles:</p>
-<h3>Declarative First</h3>
-<p>Code should describe <em>what</em> you want to happen, not <em>how</em> to make it happen. This makes programs easier to read, understand, and maintain.</p>
-<h3>Type Safety</h3>
-<p>Strong static typing catches errors early and makes code more reliable. Types are explicit and readable.</p>
-<h3>Natural Language Syntax</h3>
-<p>Code should read like structured English. Instead of cryptic symbols, use clear keywords like <code>which is</code>, <code>from run</code>, and <code>for each</code>.</p>
-<h3>Module System</h3>
-<p>Organize functionality into modules with clear interfaces. Actions can be parameterized and return typed values.</p>
-<h2>What's Next?</h2>
-<p>Ready to get started? The next sections will guide you through:</p>
-<ol>
-<li><strong><a href="/guide/installation/">Installation</a></strong> - Set up Roe on your system</li>
-<li><strong><a href="/guide/quick-start/">Quick Start</a></strong> - Create your first project</li>
-<li><strong><a href="/guide/basics/">Basic Syntax</a></strong> - Learn the fundamentals</li>
-<li><strong><a href="/guide/types/">Type System</a></strong> - Understanding Roe's types</li>
-</ol>
-<p>Or jump directly to specific topics:</p>
+<h3>Read (SELECT)</h3>
+<pre><code class="language-roe">// Find single record
+set user from db find User where id equals &quot;user123&quot;
+
+// Find with multiple conditions
+set active_user from db find User where email equals &quot;alice@example.com&quot; and active equals true
+
+// Find all records
+set all_users from db find all User
+
+// Find with conditions
+set adult_users from db find all User where age is greater than 18
+</code></pre>
+<h3>Update</h3>
+<pre><code class="language-roe">// Update single record
+db update User where id equals &quot;user123&quot; set name is &quot;Alice Smith&quot;, age is 26
+
+// Update with variables
+set user_id which is text to &quot;user123&quot;
+set new_name which is text to &quot;Alice Johnson&quot;
+db update User where id equals user_id set name is new_name
+</code></pre>
+<h3>Delete</h3>
+<pre><code class="language-roe">// Delete single record
+db delete User where id equals &quot;user123&quot;
+
+// Delete with conditions
+db delete User where active equals false and age is less than 18
+</code></pre>
+<h2>Complete Database Example</h2>
+<p><strong>roeconfig.json:</strong></p>
+<pre><code class="language-json">{
+    &quot;target&quot;: &quot;roe&quot;,
+    &quot;framework&quot;: &quot;axum&quot;,
+    &quot;database&quot;: {&quot;type&quot;: &quot;postgres&quot;}
+}
+</code></pre>
+<p><strong>src/user_management.roe:</strong></p>
+<pre><code class="language-roe">module user_management
+
+    // Define User entity
+    data User
+        id is text key auto
+        username is text required unique
+        email is text required unique
+        password is text required
+        active is flag default true
+        created_at is date auto
+    end data
+    
+    // User registration
+    action register_user with username which is text, email which is text, password which is text
+        // Check if user exists
+        set existing from db find User where email equals email
+        when existing is not empty then
+            display &quot;User already exists&quot;
+            give false
+        end when
+        
+        // Create new user
+        db create User with username is username, email is email, password is password
+        display &quot;User registered successfully&quot;
+        give true
+    end action
+    
+    // User authentication
+    action authenticate with email which is text, password which is text gives User
+        set user from db find User where email equals email and password equals password
+        when user is empty then
+            display &quot;Invalid credentials&quot;
+            give empty
+        end when
+        give user
+    end action
+    
+    // Update user profile
+    action update_profile with user_id which is text, new_email which is text
+        db update User where id equals user_id set email is new_email
+        display &quot;Profile updated&quot;
+    end action
+
+end module
+</code></pre>
+<h2>Database Configuration</h2>
+<p>Configure database connection in <code>roeconfig.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;target&quot;: &quot;roe&quot;,
+    &quot;framework&quot;: &quot;axum&quot;,
+    &quot;database&quot;: {
+        &quot;type&quot;: &quot;postgres&quot;,
+        &quot;url&quot;: &quot;postgresql://localhost/mydb&quot;
+    }
+}
+</code></pre>
+<p><strong>Supported Database Types:</strong></p>
 <ul>
-<li><a href="/guide/variables/">Variables and Assignment</a></li>
-<li><a href="/guide/strings/">String Interpolation</a></li>
-<li><a href="/guide/collections/">Collections and Arrays</a></li>
-<li><a href="/guide/modules/">Modules and Actions</a></li>
+<li><code>postgres</code> - PostgreSQL</li>
+<li><code>mysql</code> - MySQL</li>
+<li><code>sqlite</code> - SQLite</li>
+<li><code>oracle</code> - Oracle Database</li>
+<li><code>mssql</code> - Microsoft SQL Server</li>
+<li><code>mongodb</code> - MongoDB</li>
 </ul>
-<h2>Getting Help</h2>
+<h2>Database Type Mapping</h2>
+<table>
+<thead>
+<tr>
+<th>Roelang Type</th>
+<th>PostgreSQL</th>
+<th>MySQL</th>
+<th>SQLite</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>TEXT</code></td>
+<td><code>TEXT</code></td>
+<td><code>TEXT</code></td>
+<td>Variable length string</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>INTEGER</code></td>
+<td><code>INT</code></td>
+<td><code>INTEGER</code></td>
+<td>32-bit signed integer</td>
+</tr>
+<tr>
+<td><code>decimal</code></td>
+<td><code>DECIMAL</code></td>
+<td><code>DECIMAL</code></td>
+<td><code>REAL</code></td>
+<td>Floating point number</td>
+</tr>
+<tr>
+<td><code>flag</code></td>
+<td><code>BOOLEAN</code></td>
+<td><code>BOOLEAN</code></td>
+<td><code>INTEGER</code></td>
+<td>True/false value</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><code>TIMESTAMP</code></td>
+<td><code>DATETIME</code></td>
+<td><code>TEXT</code></td>
+<td>ISO date format</td>
+</tr>
+</tbody>
+</table>
+<h2>Framework Integration</h2>
+<p>When using framework targets, database operations generate appropriate ORM code:</p>
+<p><strong>Rust + Axum:</strong></p>
+<pre><code class="language-rust">// Generated model
+#[derive(Serialize, Deserialize, sqlx::FromRow)]
+pub struct User {
+    pub id: String,
+    pub name: String,
+    pub email: String,
+    pub age: Option&lt;i32&gt;,
+    pub active: bool,
+    pub created_at: chrono::DateTime&lt;chrono::Utc&gt;,
+}
+
+// Generated handler
+pub async fn create_user(
+    State(pool): State&lt;PgPool&gt;,
+    Json(user): Json&lt;CreateUserRequest&gt;
+) -&gt; Result&lt;Json&lt;User&gt;, StatusCode&gt; {
+    let result = sqlx::query_as!(
+        User,
+        &quot;INSERT INTO users (name, email, age) VALUES ($1, $2, $3) RETURNING *&quot;,
+        user.name, user.email, user.age
+    )
+    .fetch_one(&amp;pool)
+    .await
+    .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+    
+    Ok(Json(result))
+}
+</code></pre>
+<h2>Advanced Database Features</h2>
+<h3>Relationships</h3>
+<pre><code class="language-roe">data User
+    id is text key auto
+    name is text required
+end data
+
+data Post
+    id is text key auto
+    title is text required
+    author_id is text required foreign_key User.id
+    created_at is date auto
+end data
+
+// Query with joins
+set posts_with_authors from db find all Post join User on Post.author_id equals User.id
+</code></pre>
+<h3>Indexes</h3>
+<pre><code class="language-roe">data User
+    id is text key auto
+    email is text required unique index
+    name is text required index
+    created_at is date auto index
+end data
+</code></pre>
+<h3>Transactions</h3>
+<pre><code class="language-roe">action transfer_funds with from_user which is text, to_user which is text, amount which is decimal
+    db begin transaction
+    
+    db update Account where user_id equals from_user set balance is balance - amount
+    db update Account where user_id equals to_user set balance is balance + amount
+    
+    db commit transaction
+end action
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Use Appropriate Field Annotations</h3>
+<pre><code class="language-roe">// Good: Clear field constraints
+data User
+    id is text key auto
+    email is text required unique
+    name is text required
+    age is int optional
+    created_at is date auto
+end data
+
+// Avoid: Missing constraints
+data User
+    id is text
+    email is text
+    name is text
+end data
+</code></pre>
+<h3>2. Handle Empty Results</h3>
+<pre><code class="language-roe">// Good: Check for empty results
+set user from db find User where id equals user_id
+when user is empty then
+    display &quot;User not found&quot;
+    give null
+end when
+
+// Good: Use appropriate queries
+set users from db find all User where active equals true
+when users is empty then
+    display &quot;No active users found&quot;
+end when
+</code></pre>
+<h3>3. Use Parameterized Queries</h3>
+<pre><code class="language-roe">// Good: Use variables for conditions
+action find_user_by_email with email which is text gives User
+    set user from db find User where email equals email
+    give user
+end action
+
+// Good: Multiple parameters
+action find_users_by_criteria with min_age which is int, active which is flag gives list of User
+    set users from db find all User where age is greater than min_age and active equals active
+    give users
+end action
+</code></pre>
+<h2>Database Migrations</h2>
+<p>Database schema changes are handled automatically when using framework targets:</p>
+<pre><code class="language-roe">// Adding new field
+data User
+    id is text key auto
+    name is text required
+    email is text required unique
+    phone is text optional        // New field - migration generated
+    created_at is date auto
+end data
+</code></pre>
+<p>The framework adapter generates appropriate migration files for schema updates.</p>
+<h2>Next Steps</h2>
 <ul>
-<li>📖 <strong>Documentation</strong>: You're reading it! Browse the guide sections in the sidebar</li>
-<li>🐛 <strong>Issues</strong>: Report bugs on <a href="https://github.com/roe-lang/roe/issues">GitHub Issues</a></li>
-<li>💬 <strong>Discussions</strong>: Ask questions on <a href="https://github.com/roe-lang/roe/discussions">GitHub Discussions</a></li>
-<li>📧 <strong>Contact</strong>: Reach out to the maintainers for support</li>
+<li><strong><a href="/guide/api-endpoints/">API Endpoints</a></strong> - Create HTTP endpoints that use database operations</li>
+<li><strong><a href="/guide/frameworks/">Framework Support</a></strong> - Understanding framework-specific database generation</li>
+<li><strong><a href="/guide/deployment/">Deployment</a></strong> - Production database configuration</li>
 </ul>
-<p>Let's build something amazing with Roe! 🦌</p>
+<p>Database operations in Roelang provide a clean, type-safe way to work with data while generating efficient framework-specific code.</p>
 
         </article>
       </div>

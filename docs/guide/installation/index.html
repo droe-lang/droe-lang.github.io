@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Installation | Roe - Modern WebAssembly Language</title>
+  <title>Installation | Roe - Unified Programming System</title>
   <meta name="description" content="Install Roe on your system and set up your development environment.">
   
   <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/logo.png">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
   
   <!-- Styles -->
   <link rel="stylesheet" href="/style.css">
@@ -18,64 +19,21 @@
   <meta property="og:title" content="Installation | Roe">
   <meta property="og:description" content="Install Roe on your system and set up your development environment.">
   <meta property="og:url" content="https://roe-lang.dev/guide/installation/">
+  <meta property="og:image" content="https://roe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Installation | Roe">
   <meta name="twitter:description" content="Install Roe on your system and set up your development environment.">
+  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
-  <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <!-- Logo -->
-        <div class="flex items-center">
-          <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-            <img src="/logo.png" alt="Roe" class="w-6 h-6">
-            <span>Roe</span>
-          </a>
-        </div>
-        
-        <!-- Navigation Links -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="/guide/" class="nav-link">Guide</a>
-          <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-          <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
-            <span class="sr-only">GitHub</span>
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-            </svg>
-          </a>
-        </div>
-        
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <a href="/guide/" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 text-gray-600 hover:text-primary-600 font-medium">GitHub</a>
-      </div>
-    </div>
-  </nav>
-
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <main>
     
-<div class="flex flex-col lg:flex-row min-h-screen">
+<div class="lg:grid lg:grid-cols-[256px,1fr]">
   <!-- Sidebar Navigation -->
-  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+  <aside class="lg:h-screen lg:overflow-y-auto lg:border-r lg:border-gray-200 bg-gray-50 pb-16">
     <div class="p-6">
       <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
       
@@ -115,56 +73,95 @@
         </nav>
       </div>
       
+      <!-- Backend Development -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
+        <nav class="space-y-1">
+          <a href="/guide/database/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database DSL</a>
+          <a href="/guide/api-endpoints/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API Endpoints</a>
+        </nav>
+      </div>
+      
+      <!-- Frontend & Mobile -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
+        <nav class="space-y-1">
+          <a href="/guide/ui-components/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI Components</a>
+          <a href="/guide/mobile/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile Development</a>
+        </nav>
+      </div>
+      
       <!-- Tools -->
       <div class="mb-6">
         <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
         <nav class="space-y-1">
           <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
           <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/frameworks/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework Support</a>
           <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+          <a href="/guide/implementation-status/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation Status</a>
         </nav>
       </div>
     </div>
   </aside>
   
   <!-- Main Content -->
-  <main class="flex-1 lg:ml-64">
-    <div class="max-w-4xl mx-auto px-6 py-8">
-      <!-- Breadcrumbs -->
+  <div class="flex flex-col min-h-screen min-w-0">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+          <img src="/logo.png" alt="Roe" class="w-6 h-6">
+          <span>Roe</span>
+        </a>
+      </div>
       
-      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-        <a href="/" class="hover:text-primary-600">Home</a>
-        
-        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-        
-        <a href="/guide/" class="hover:text-primary-600">Guide</a>
-        
-        
-        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-        
-        <span class="text-gray-900">Installation</span>
-        
-        
-      </nav>
-      
-      
-      <!-- Page Header -->
-      
-      <header class="mb-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Installation</h1>
-        
-        <p class="text-xl text-gray-600">Install Roe on your system and set up your development environment.</p>
-        
-      </header>
-      
-      
-      <!-- Content -->
-      <div class="prose prose-lg max-w-none">
-        <h2>macOS Installation</h2>
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/guide/" class="nav-link">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+          <span class="sr-only">GitHub</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon for menu (hamburger) -->
+          <svg class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h-8" />
+          </svg>
+          <!-- Icon for close (X) -->
+          <svg class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <main class="flex-grow p-6 lg:p-12">
+      <div class="overflow-x-auto">
+        <article class="prose dark:prose-invert max-w-none">
+          <h1>Installation</h1>
+          <h2>macOS Installation</h2>
 <h3>GUI Installer (Recommended)</h3>
 <p>The easiest way to install Roe on macOS is using our graphical installer:</p>
 <ol>
@@ -315,32 +312,48 @@ roe init
 <li><a href="/guide/cli/">CLI Reference</a> - Complete command-line reference</li>
 </ul>
 
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <div class="flex items-center space-x-2 mb-4">
+          <img src="/logo.png" alt="Roe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Roe</span>
+        </div>
+        <p class="text-gray-600 max-w-md">
+          A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
+        </p>
       </div>
       
-      <!-- Navigation Footer -->
-      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
-        
-        <a href="/guide/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          <span>Introduction</span>
-        </a>
-        
-        
-        
-        <a href="/guide/quick-start/" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
-          <span>Quick Start</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
-        
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
+        <ul class="mt-4 space-y-4">
+          <li><a href="/docs" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
+          <li><a href="/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
+        <ul class="mt-4 space-y-4">
+          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+        </ul>
       </div>
     </div>
-  </main>
-</div>
+    <div class="mt-8 border-t border-gray-200 pt-8 text-center">
+      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+    </div>
+  </div>
+</footer>
 
+  </div>
+</div>
 <script>
 // Highlight current page in sidebar
 document.addEventListener('DOMContentLoaded', function() {
@@ -355,44 +368,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
   </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-50 border-t border-gray-200 mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="md:col-span-2">
-          <div class="flex items-center space-x-2 mb-4">
-            <img src="/logo.png" alt="Roe" class="w-6 h-6">
-            <span class="text-xl font-bold text-gray-900">Roe</span>
-          </div>
-          <p class="text-gray-600 max-w-md">
-            A declarative language for portable, multi-target systems — designed for AI-assisted development.
-          </p>
-        </div>
-        
-        <div>
-          <h3 class="font-semibold text-gray-900 mb-4">Documentation</h3>
-          <ul class="space-y-2">
-            <li><a href="/guide/" class="text-gray-600 hover:text-primary-600">Getting Started</a></li>
-            <li><a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Examples</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h3 class="font-semibold text-gray-900 mb-4">Community</h3>
-          <ul class="space-y-2">
-            <li><a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
-            <li><a href="https://github.com/roe-lang/roe/issues" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Issues</a></li>
-            <li><a href="https://github.com/roe-lang/roe/discussions" target="_blank" rel="noopener" class="text-gray-600 hover:text-primary-600">Discussions</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-        <p>&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
-      </div>
-    </div>
-  </footer>
 
   <!-- JavaScript for mobile menu -->
   <script>

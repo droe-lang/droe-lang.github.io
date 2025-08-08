@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Introduction to Roe | Roe - Unified Programming System</title>
-  <meta name="description" content="Learn the fundamentals of Roe, a minimal declarative language that compiles to WebAssembly.">
+  <title>Implementation Status | Roe - Unified Programming System</title>
+  <meta name="description" content="Current status of Roelang features and compilation targets.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,15 +16,15 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Introduction to Roe | Roe">
-  <meta property="og:description" content="Learn the fundamentals of Roe, a minimal declarative language that compiles to WebAssembly.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/">
+  <meta property="og:title" content="Implementation Status | Roe">
+  <meta property="og:description" content="Current status of Roelang features and compilation targets.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/implementation-status/">
   <meta property="og:image" content="https://roe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Introduction to Roe | Roe">
-  <meta name="twitter:description" content="Learn the fundamentals of Roe, a minimal declarative language that compiles to WebAssembly.">
+  <meta name="twitter:title" content="Implementation Status | Roe">
+  <meta name="twitter:description" content="Current status of Roelang features and compilation targets.">
   <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -160,88 +160,160 @@
     <main class="flex-grow p-6 lg:p-12">
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
-          <h1>Introduction to Roe</h1>
-          <p>Roe is a <strong>minimal declarative language</strong> designed for writing executable processes as <code>.roe</code> files. By default, Roe compiles to <strong>RoeVM bytecode</strong> for high-performance native execution, while also supporting compilation to multiple target languages and platforms including WebAssembly, Rust, Java, Python, Go, Node.js and mobile frameworks.</p>
-<h2>What is Roe?</h2>
-<p>Roe fills the gap between simple configuration files and full programming languages. It's designed for:</p>
+          <h1>Implementation Status</h1>
+          <p>This page provides a transparent overview of what's currently implemented in Roelang and what's planned for future development.</p>
+<h2>🎯 Current Status (January 2025)</h2>
+<p>Roelang is actively developed with a focus on WebAssembly compilation and emerging native bytecode execution.</p>
+<h2>✅ Fully Implemented Features</h2>
+<h3>Core Language</h3>
 <ul>
-<li><strong>High-performance execution</strong> with RoeVM's native bytecode runtime as the default choice</li>
-<li><strong>Multi-language compilation</strong> to native code for Rust, Java, Python, Go, Node.js and JavaScript ecosystems</li>
-<li><strong>Cross-platform deployment</strong> supporting web, mobile (Android/iOS), and backend frameworks</li>
-<li><strong>Automation scripts</strong> that need to be readable and maintainable</li>
-<li><strong>Process definitions</strong> that can be version-controlled and reviewed</li>
-<li><strong>Git-friendly workflows</strong> with clean, mergeable source files</li>
+<li>✅ <strong>Variables and Assignment</strong> - Strong typing with <code>set variable which is type to value</code></li>
+<li>✅ <strong>Data Types</strong> - <code>int</code>, <code>decimal</code>, <code>text</code>, <code>flag</code>, <code>date</code>, <code>list of T</code></li>
+<li>✅ <strong>Display Output</strong> - <code>display</code> and <code>show</code> statements</li>
+<li>✅ <strong>String Operations</strong> - Concatenation with <code>+</code> and interpolation with <code>[variable]</code></li>
+<li>✅ <strong>Conditionals</strong> - <code>when condition then ... end when</code> with <code>otherwise</code></li>
+<li>✅ <strong>Loops</strong> - <code>for each item in collection ... end for</code></li>
+<li>✅ <strong>Comments</strong> - Single-line <code>//</code> and multi-line <code>/* */</code></li>
 </ul>
-<h2>Key Features</h2>
-<h3>🚀 High-Performance RoeVM Runtime</h3>
-<p>Roe compiles to native bytecode by default, running on the high-performance RoeVM runtime. Also supports WebAssembly compilation for maximum portability across all platforms.</p>
-<h3>🔒 Strong Type System</h3>
-<p>Static typing with <code>int</code>, <code>text</code>, <code>flag</code>, <code>decimal</code>, and collections. Catch errors at compile time, not runtime.</p>
-<h3>🧩 Modular Design</h3>
-<p>Organize code with modules and parameterized actions. Build reusable components with clean interfaces.</p>
-<h3>✨ Modern Syntax</h3>
-<p>String interpolation, concatenation, and expressive syntax that reads like natural language.</p>
-<h3>📝 Git Friendly</h3>
-<p>Clean, readable <code>.roe</code> files work beautifully with version control. Merge conflicts are rare and easy to resolve.</p>
-<h3>⚡ Multiple Compilation Targets</h3>
-<p>Compile to RoeVM bytecode for optimal performance, WebAssembly for portability, or generate native code for Rust, Java, Python, Go, Node.js and mobile frameworks. Single source code, multiple deployment options.</p>
-<h2>Your First Roe Program</h2>
-<p>Here's a simple &quot;Hello World&quot; program that demonstrates basic Roe syntax:</p>
-<p>::: code-group</p>
-<pre><code class="language-roe">// Welcome to Roe! 🦌
-display &quot;Hello, World!&quot;
-
-// Variables with strong typing
-set name which is text to &quot;Alice&quot;
-set age which is int to 25
-
-// String interpolation
-display &quot;Welcome [name], you are [age] years old!&quot;
-
-// String concatenation
-set greeting to &quot;Hello, &quot; + name + &quot;!&quot;
-display greeting
-</code></pre>
-<pre><code class="language-bash">$ roe run hello.roe
-
-Hello, World!
-Welcome Alice, you are 25 years old!
-Hello, Alice!
-</code></pre>
-<p>:::</p>
-<h2>Language Philosophy</h2>
-<p>Roe follows several key principles:</p>
-<h3>Declarative First</h3>
-<p>Code should describe <em>what</em> you want to happen, not <em>how</em> to make it happen. This makes programs easier to read, understand, and maintain.</p>
-<h3>Type Safety</h3>
-<p>Strong static typing catches errors early and makes code more reliable. Types are explicit and readable.</p>
-<h3>Natural Language Syntax</h3>
-<p>Code should read like structured English. Instead of cryptic symbols, use clear keywords like <code>which is</code>, <code>from run</code>, and <code>for each</code>.</p>
-<h3>Module System</h3>
-<p>Organize functionality into modules with clear interfaces. Actions can be parameterized and return typed values.</p>
-<h2>What's Next?</h2>
-<p>Ready to get started? The next sections will guide you through:</p>
+<h3>Modules and Actions</h3>
+<ul>
+<li>✅ <strong>Module System</strong> - <code>module name ... end module</code> with namespacing</li>
+<li>✅ <strong>Actions</strong> - Parameterized functions with <code>action name with params gives type</code></li>
+<li>✅ <strong>Return Values</strong> - <code>give result</code> and <code>set variable from run module.action</code></li>
+</ul>
+<h3>Database DSL</h3>
+<ul>
+<li>✅ <strong>Data Definitions</strong> - <code>data Entity</code> with field annotations (<code>key</code>, <code>auto</code>, <code>required</code>, etc.)</li>
+<li>✅ <strong>HTTP Endpoints</strong> - <code>serve get /path ... end serve</code> syntax</li>
+<li>⚠️ <strong>Database Operations</strong> - Basic parsing implemented, runtime execution in progress</li>
+</ul>
+<h3>Compilation Targets</h3>
+<ul>
+<li>✅ <strong>WebAssembly</strong> - Primary target, fully functional (<code>.roe</code> → <code>.wat</code> → <code>.wasm</code>)</li>
+<li>✅ <strong>Native Bytecode</strong> - <code>@target roe</code> compiles to <code>.roebc</code> format</li>
+<li>⚠️ <strong>Rust Code Generation</strong> - <code>@target rust</code> with Axum framework (experimental)</li>
+</ul>
+<h3>CLI Tools</h3>
+<ul>
+<li>✅ <strong>Project Initialization</strong> - <code>roe init</code> creates project structure</li>
+<li>✅ <strong>Compilation</strong> - <code>roe compile file.roe</code> to WebAssembly/bytecode</li>
+<li>⚠️ <strong>Runtime Execution</strong> - <code>roe run</code> works for basic programs</li>
+</ul>
+<h2>🚧 Partially Implemented Features</h2>
+<h3>Database and HTTP Features</h3>
+<ul>
+<li>⚠️ <strong>Database Runtime</strong> - Parsing works, runtime execution in development</li>
+<li>⚠️ <strong>HTTP Server</strong> - <code>serve</code> endpoints parse, RoeVM runtime needed</li>
+<li>⚠️ <strong>Multi-Database Support</strong> - Architecture exists, drivers in progress</li>
+</ul>
+<h3>Advanced Language Features</h3>
+<ul>
+<li>⚠️ <strong>Complex Collections</strong> - Basic list operations work, advanced manipulation pending</li>
+<li>⚠️ <strong>Include System</strong> - File imports designed but needs testing</li>
+<li>⚠️ <strong>Error Handling</strong> - Basic type checking, advanced error handling planned</li>
+</ul>
+<h3>Build System</h3>
+<ul>
+<li>⚠️ <strong>RoeVM Runtime</strong> - Native bytecode interpreter under development</li>
+<li>⚠️ <strong>Release Builds</strong> - <code>roe build --release</code> planned for single-binary output</li>
+</ul>
+<h2>❌ Not Yet Implemented</h2>
+<h3>Multi-Target Compilation</h3>
+<ul>
+<li>❌ <strong>Python Target</strong> - Not implemented (was documented but removed)</li>
+<li>❌ <strong>Java/Spring Boot</strong> - Not implemented (was documented but removed)</li>
+<li>❌ <strong>JavaScript/Node.js</strong> - Not implemented (was documented but removed)</li>
+<li>❌ <strong>Go/Fiber</strong> - Not implemented (was documented but removed)</li>
+</ul>
+<h3>UI and Mobile Features</h3>
+<ul>
+<li>❌ <strong>UI Components</strong> - <code>layout</code>, <code>form</code>, <code>input</code>, <code>button</code> etc. (parsing exists, no compilation)</li>
+<li>❌ <strong>Mobile Development</strong> - No Android or iOS support</li>
+<li>❌ <strong>Cross-Platform UI</strong> - Not implemented</li>
+</ul>
+<h3>Advanced Features</h3>
+<ul>
+<li>❌ <strong>Format Expressions</strong> - <code>format date as &quot;MM/dd/yyyy&quot;</code> not implemented</li>
+<li>❌ <strong>Advanced HTTP Client</strong> - <code>call &quot;url&quot; method GET</code> not implemented</li>
+<li>❌ <strong>Complex Database Queries</strong> - Advanced query syntax not implemented</li>
+<li>❌ <strong>Package Management</strong> - No module sharing system yet</li>
+</ul>
+<h2>🗺️ Development Roadmap</h2>
+<h3>Priority 1: Core Stability (Q1 2025)</h3>
+<ul>
+<li>Complete RoeVM bytecode runtime</li>
+<li>Stable database operations</li>
+<li>HTTP endpoint handling</li>
+<li>Production-ready WebAssembly compilation</li>
+</ul>
+<h3>Priority 2: Developer Experience (Q2 2025)</h3>
+<ul>
+<li>Enhanced CLI tooling</li>
+<li>Better error messages</li>
+<li>Debugging support</li>
+<li>Performance optimization</li>
+</ul>
+<h3>Priority 3: Language Expansion (Q3+ 2025)</h3>
+<ul>
+<li>Format expressions</li>
+<li>HTTP client operations</li>
+<li>Advanced database features</li>
+<li>Package management system</li>
+</ul>
+<h2>💭 Future Considerations</h2>
+<p>The following features were documented but are not currently in active development:</p>
+<ul>
+<li><strong>Multi-Target Compilation</strong> - May be reconsidered based on community demand</li>
+<li><strong>UI Framework</strong> - Significant effort required, priority unclear</li>
+<li><strong>Mobile Development</strong> - Would require substantial mobile expertise</li>
+</ul>
+<h2>🚀 How You Can Help</h2>
+<h3>Community Contributions</h3>
+<ul>
+<li><strong>Testing</strong> - Try Roelang with your use cases and report issues</li>
+<li><strong>Documentation</strong> - Help improve examples and guides</li>
+<li><strong>Features</strong> - Contribute implementations for partially completed features</li>
+</ul>
+<h3>Feedback Priorities</h3>
+<p>We're particularly interested in feedback on:</p>
 <ol>
-<li><strong><a href="/guide/installation/">Installation</a></strong> - Set up Roe on your system</li>
-<li><strong><a href="/guide/quick-start/">Quick Start</a></strong> - Create your first project</li>
-<li><strong><a href="/guide/basics/">Basic Syntax</a></strong> - Learn the fundamentals</li>
-<li><strong><a href="/guide/types/">Type System</a></strong> - Understanding Roe's types</li>
+<li>WebAssembly compilation experience</li>
+<li>Database DSL usability</li>
+<li>Developer tool ergonomics</li>
+<li>Performance characteristics</li>
 </ol>
-<p>Or jump directly to specific topics:</p>
+<h2>📋 Feature Status Legend</h2>
 <ul>
-<li><a href="/guide/variables/">Variables and Assignment</a></li>
-<li><a href="/guide/strings/">String Interpolation</a></li>
-<li><a href="/guide/collections/">Collections and Arrays</a></li>
-<li><a href="/guide/modules/">Modules and Actions</a></li>
+<li>✅ <strong>Fully Implemented</strong> - Feature works as documented with tests</li>
+<li>⚠️ <strong>Partially Implemented</strong> - Core functionality exists, edge cases or polish needed</li>
+<li>🚧 <strong>In Progress</strong> - Active development, basic functionality may work</li>
+<li>❌ <strong>Not Implemented</strong> - Feature not started or removed from scope</li>
+<li>💭 <strong>Planned</strong> - Design phase, implementation timeline unclear</li>
 </ul>
-<h2>Getting Help</h2>
+<h2>📈 Version History</h2>
+<h3>Version 3.0 (Current)</h3>
 <ul>
-<li>📖 <strong>Documentation</strong>: You're reading it! Browse the guide sections in the sidebar</li>
-<li>🐛 <strong>Issues</strong>: Report bugs on <a href="https://github.com/roe-lang/roe/issues">GitHub Issues</a></li>
-<li>💬 <strong>Discussions</strong>: Ask questions on <a href="https://github.com/roe-lang/roe/discussions">GitHub Discussions</a></li>
-<li>📧 <strong>Contact</strong>: Reach out to the maintainers for support</li>
+<li>Native RoeVM bytecode target</li>
+<li>Database DSL with HTTP endpoints</li>
+<li>Rust code generation (experimental)</li>
+<li>Cleaned up language specification</li>
 </ul>
-<p>Let's build something amazing with Roe! 🦌</p>
+<h3>Version 2.0 (Previous)</h3>
+<ul>
+<li>WebAssembly compilation</li>
+<li>Module system</li>
+<li>Basic database parsing</li>
+</ul>
+<h3>Version 1.0 (Original)</h3>
+<ul>
+<li>Core language features</li>
+<li>WebAssembly compilation</li>
+<li>CLI tools</li>
+</ul>
+<hr>
+<p><strong>Last Updated:</strong> January 8, 2025<br>
+<strong>Next Review:</strong> February 2025</p>
+<p>This status page is updated regularly. For the most current information, check the <a href="https://github.com/roe-lang/roelang-installer">project repository</a> and recent commits.</p>
 
         </article>
       </div>

@@ -9,21 +9,23 @@ next:
   url: /guide/installation/
 ---
 
-Roe is a **minimal declarative language** designed for writing executable processes as `.roe` files that compile to WebAssembly. It combines the simplicity of configuration languages with the power of modern programming constructs.
+Roe is a **minimal declarative language** designed for writing executable processes as `.roe` files. By default, Roe compiles to **RoeVM bytecode** for high-performance native execution, while also supporting compilation to multiple target languages and platforms including WebAssembly, Rust, Java, Python, Go, Node.js and mobile frameworks.
 
 ## What is Roe?
 
 Roe fills the gap between simple configuration files and full programming languages. It's designed for:
 
+- **High-performance execution** with RoeVM's native bytecode runtime as the default choice
+- **Multi-language compilation** to native code for Rust, Java, Python, Go, Node.js and JavaScript ecosystems
+- **Cross-platform deployment** supporting web, mobile (Android/iOS), and backend frameworks
 - **Automation scripts** that need to be readable and maintainable
 - **Process definitions** that can be version-controlled and reviewed
-- **Cross-platform execution** with WebAssembly's portability
 - **Git-friendly workflows** with clean, mergeable source files
 
 ## Key Features
 
-### 🚀 WebAssembly Performance
-Roe compiles to WebAssembly for near-native performance across all platforms. No runtime overhead, just pure speed.
+### 🚀 High-Performance RoeVM Runtime
+Roe compiles to native bytecode by default, running on the high-performance RoeVM runtime. Also supports WebAssembly compilation for maximum portability across all platforms.
 
 ### 🔒 Strong Type System
 Static typing with `int`, `text`, `flag`, `decimal`, and collections. Catch errors at compile time, not runtime.
@@ -37,8 +39,8 @@ String interpolation, concatenation, and expressive syntax that reads like natur
 ### 📝 Git Friendly
 Clean, readable `.roe` files work beautifully with version control. Merge conflicts are rare and easy to resolve.
 
-### ⚡ Minimal Runtime
-Tiny WebAssembly runtime with no dependencies. Perfect for automation, scripting, and embedded systems.
+### ⚡ Multiple Compilation Targets
+Compile to RoeVM bytecode for optimal performance, WebAssembly for portability, or generate native code for Rust, Java, Python, Go, Node.js and mobile frameworks. Single source code, multiple deployment options.
 
 ## Your First Roe Program
 

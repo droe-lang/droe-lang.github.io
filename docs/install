@@ -125,6 +125,30 @@ get_latest_version() {
 # Install Roe
 install_roe() {
     local platform=$(detect_platform)
+
+    if [ "$platform" = "windows-x64" ] || [ "$platform" = "windows-arm64" ]; then
+        echo -e "${YELLOW}Windows detected. Automatic installation is not supported.${NC}"
+        echo -e "${BLUE}Please follow these manual installation steps:${NC}"
+        echo
+        echo "1. Open PowerShell and create the installation directory:"
+        echo -e "   ${GREEN}New-Item -ItemType Directory -Force -Path \"$HOME\.roelang\"${NC}"
+        echo
+        echo "2. Download the required files:"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer/roe' -OutFile \"$HOME\.roelang\roe\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer/run.js' -OutFile \"$HOME\.roelang\run.js\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer/compiler.tar.gz' -OutFile \"$HOME\.roelang\compiler.tar.gz\"${NC}"
+        echo
+        echo "3. Extract the compiler archive:"
+        echo -e "   ${GREEN}tar -xzf \"$HOME\.roelang\compiler.tar.gz\" -C \"$HOME\.roelang\"${NC}"
+        echo
+        echo "4. Add Roe to your PATH (run in PowerShell):"
+        echo -e "   ${GREEN}\"[System.Environment]::SetEnvironmentVariable('Path', \"$([System.Environment]::GetEnvironmentVariable('Path', 'User'));$HOME\.roelang\", 'User')\"${NC}"
+        echo
+        echo "5. Close and reopen your terminal to apply changes."
+        echo
+        exit 0
+    fi
+
     local version=$(get_latest_version)
     
     echo -e "${BLUE}Installing Roe $version for $platform...${NC}"
@@ -133,62 +157,42 @@ install_roe() {
     mkdir -p "$ROE_HOME"
     mkdir -p "$ROE_BIN"
     
-    # For now, we'll install the Python-based version since binaries aren't available yet
-    echo -e "${BLUE}Installing Roe CLI tools...${NC}"
-    
-    # Download the CLI tool (this would be from releases when available)
-    local roe_cli_url="https://raw.githubusercontent.com/$GITHUB_REPO/main/roe"
-    local compiler_url="https://raw.githubusercontent.com/$GITHUB_REPO/main/compiler.py"
-    local runtime_url="https://raw.githubusercontent.com/$GITHUB_REPO/main/run.js"
-    
-    # Download files
-    if download_file "$roe_cli_url" "$ROE_BIN/roe" 2>/dev/null; then
-        chmod +x "$ROE_BIN/roe"
-        echo -e "${GREEN}✓ Downloaded roe CLI${NC}"
-    else
-        echo -e "${YELLOW}Warning: Could not download roe CLI from GitHub${NC}"
-        # Create a basic roe script as fallback
-        cat > "$ROE_BIN/roe" << 'EOF'
-#!/usr/bin/env python3
-import sys
-import os
+    local BASE_URL="https://raw.githubusercontent.com/yppartha/ROELANG/main/roelang-installer"
 
-def main():
-    print("Roe Language CLI v0.1.0")
-    print("This is a placeholder installation.")
-    print("Visit https://github.com/roe-lang/roe for the full implementation.")
-    
-    if len(sys.argv) > 1:
-        if sys.argv[1] == "version" or sys.argv[1] == "--version":
-            print("roe 0.1.0")
-        elif sys.argv[1] == "help" or sys.argv[1] == "--help":
-            print("Usage: roe <command>")
-            print("Commands:")
-            print("  init     Initialize a new Roe project")
-            print("  compile  Compile .roe files to WebAssembly")
-            print("  run      Run a .roe file")
-            print("  version  Show version information")
-        else:
-            print(f"Unknown command: {sys.argv[1]}")
-            print("Run 'roe help' for available commands")
+    # Download and extract the compiler directory
+    echo -e "${BLUE}Downloading Roe compiler module...${NC}"
+    download_file "$BASE_URL/compiler.tar.gz" "$ROE_HOME/compiler.tar.gz"
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}Error: Failed to download compiler module.${NC}"
+        exit 1
+    fi
 
-if __name__ == "__main__":
-    main()
-EOF
-        chmod +x "$ROE_BIN/roe"
-        echo -e "${GREEN}✓ Created roe CLI placeholder${NC}"
+    echo -e "${BLUE}Extracting compiler...${NC}"
+    tar -xzf "$ROE_HOME/compiler.tar.gz" -C "$ROE_HOME"
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}Error: Failed to extract compiler module.${NC}"
+        exit 1
     fi
-    
-    if download_file "$compiler_url" "$ROE_HOME/compiler.py" 2>/dev/null; then
-        echo -e "${GREEN}✓ Downloaded compiler.py${NC}"
-    else
-        echo -e "${YELLOW}Warning: Could not download compiler.py${NC}"
+    rm "$ROE_HOME/compiler.tar.gz"
+    echo -e "${GREEN}✓ Compiler module installed successfully.${NC}"
+
+    # Download the main roe CLI script
+    echo -e "${BLUE}Downloading Roe CLI...${NC}"
+    download_file "$BASE_URL/roe" "$ROE_BIN/roe"
+    if [ $? -ne 0 ] || [ ! -f "$ROE_BIN/roe" ]; then
+        echo -e "${RED}Error: Failed to download roe CLI. Aborting installation.${NC}" >&2
+        exit 1
     fi
-    
-    if download_file "$runtime_url" "$ROE_HOME/run.js" 2>/dev/null; then
-        echo -e "${GREEN}✓ Downloaded run.js${NC}"
+    chmod +x "$ROE_BIN/roe"
+    echo -e "${GREEN}✓ Roe CLI installed successfully.${NC}"
+
+    # Download the Node.js runtime for WebAssembly execution
+    echo -e "${BLUE}Downloading Roe runtime...${NC}"
+    download_file "$BASE_URL/run.js" "$ROE_HOME/run.js"
+    if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/run.js" ]; then
+        echo -e "${YELLOW}Warning: Failed to download Node.js runtime. You may not be able to run .roe files directly.${NC}"
     else
-        echo -e "${YELLOW}Warning: Could not download run.js${NC}"
+        echo -e "${GREEN}✓ Roe runtime installed successfully.${NC}"
     fi
     
     echo -e "${GREEN}✓ Roe installed to $ROE_HOME${NC}"

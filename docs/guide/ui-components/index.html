@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Components | Roe - Unified Programming System</title>
+  <meta name="description" content="Build user interfaces with Roelang&#39;s cross-platform UI component system for web, Android, and iOS.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/logo.png">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <!-- Meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UI Components | Roe">
+  <meta property="og:description" content="Build user interfaces with Roelang&#39;s cross-platform UI component system for web, Android, and iOS.">
+  <meta property="og:url" content="https://roe-lang.dev/guide/ui-components/">
+  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UI Components | Roe">
+  <meta name="twitter:description" content="Build user interfaces with Roelang&#39;s cross-platform UI component system for web, Android, and iOS.">
+  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+</head>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Main Content -->
+  <main>
+    
+<div class="lg:grid lg:grid-cols-[256px,1fr]">
+  <!-- Sidebar Navigation -->
+  <aside class="lg:h-screen lg:overflow-y-auto lg:border-r lg:border-gray-200 bg-gray-50 pb-16">
+    <div class="p-6">
+      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
+      
+      <!-- Getting Started -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+        <nav class="space-y-1">
+          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
+          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
+        </nav>
+      </div>
+      
+      <!-- Language Guide -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+        <nav class="space-y-1">
+          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
+          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
+          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
+          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+        </nav>
+      </div>
+      
+      <!-- Advanced -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+        <nav class="space-y-1">
+          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
+          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
+        </nav>
+      </div>
+      
+      <!-- Backend Development -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
+        <nav class="space-y-1">
+          <a href="/guide/database/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database DSL</a>
+          <a href="/guide/api-endpoints/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API Endpoints</a>
+        </nav>
+      </div>
+      
+      <!-- Frontend & Mobile -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
+        <nav class="space-y-1">
+          <a href="/guide/ui-components/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI Components</a>
+          <a href="/guide/mobile/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile Development</a>
+        </nav>
+      </div>
+      
+      <!-- Tools -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+        <nav class="space-y-1">
+          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
+          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/frameworks/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework Support</a>
+          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+          <a href="/guide/implementation-status/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation Status</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <div class="flex flex-col min-h-screen min-w-0">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+          <img src="/logo.png" alt="Roe" class="w-6 h-6">
+          <span>Roe</span>
+        </a>
+      </div>
+      
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/guide/" class="nav-link">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+          <span class="sr-only">GitHub</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon for menu (hamburger) -->
+          <svg class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h-8" />
+          </svg>
+          <!-- Icon for close (X) -->
+          <svg class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
+        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <main class="flex-grow p-6 lg:p-12">
+      <div class="overflow-x-auto">
+        <article class="prose dark:prose-invert max-w-none">
+          <h1>UI Components</h1>
+          <p>Roelang provides a comprehensive UI component system that generates native interfaces for web (HTML/JavaScript), Android (Kotlin), and iOS (Swift) from a single, consistent syntax.</p>
+<h2>Layout System</h2>
+<h3>Basic Layouts</h3>
+<p>Layouts define the structure and organization of UI components:</p>
+<pre><code class="language-roe">layout MainScreen
+    column class &quot;main-container&quot;
+        title &quot;My Application&quot; class &quot;app-title&quot;
+        
+        column class &quot;content-section&quot;
+            text &quot;Welcome to the app!&quot; class &quot;welcome-text&quot;
+            button &quot;Get Started&quot; action startApp class &quot;primary-btn&quot;
+        end column
+    end column
+end layout
+</code></pre>
+<h3>Layout Types</h3>
+<pre><code class="language-roe">// Vertical column layout
+layout VerticalLayout
+    column class &quot;container&quot;
+        text &quot;Item 1&quot;
+        text &quot;Item 2&quot;
+        text &quot;Item 3&quot;
+    end column
+end layout
+
+// Horizontal row layout (future feature)
+layout HorizontalLayout
+    row class &quot;container&quot;
+        button &quot;Left&quot; action leftAction
+        button &quot;Center&quot; action centerAction  
+        button &quot;Right&quot; action rightAction
+    end row
+end layout
+</code></pre>
+<h3>Layout Attributes</h3>
+<ul>
+<li><code>class</code> - CSS class for web, styling hints for mobile</li>
+<li>Automatic responsive design for different screen sizes</li>
+<li>Platform-specific layout generation</li>
+</ul>
+<h2>Text Components</h2>
+<h3>Static Text</h3>
+<pre><code class="language-roe">// Basic text display
+text &quot;Hello World&quot; class &quot;greeting&quot;
+
+// Title text
+title &quot;Page Title&quot; class &quot;page-header&quot;
+
+// Paragraph text
+text &quot;This is a longer paragraph of text that will wrap appropriately on different screen sizes.&quot; class &quot;paragraph&quot;
+</code></pre>
+<h3>Dynamic Text with Data Binding</h3>
+<pre><code class="language-roe">// Bind to variables
+text bind UserProfile.displayName class &quot;user-name&quot;
+
+// Bind with fallback
+text bind UserProfile.displayName or &quot;Guest User&quot; class &quot;user-name&quot;
+
+// Conditional text
+when UserProfile.isLoggedIn then
+    text &quot;Welcome back, [UserProfile.name]!&quot; class &quot;welcome-message&quot;
+otherwise
+    text &quot;Please log in to continue&quot; class &quot;login-prompt&quot;
+end when
+</code></pre>
+<h2>Input Components</h2>
+<h3>Text Input</h3>
+<pre><code class="language-roe">// Basic text input
+input id username_field text placeholder &quot;Enter username&quot; bind UserProfile.userName validate required class &quot;form-input&quot;
+
+// Email input with validation
+input id email_field email placeholder &quot;your@email.com&quot; bind UserProfile.email validate email class &quot;form-input&quot;
+
+// Password input
+input id password_field password placeholder &quot;Password&quot; bind LoginForm.password validate required class &quot;form-input&quot;
+
+// Phone number input
+input id phone_field phone placeholder &quot;Phone Number&quot; bind UserProfile.phone validate phone class &quot;form-input&quot;
+</code></pre>
+<h3>Input Validation</h3>
+<pre><code class="language-roe">// Required field validation
+input id name_field text placeholder &quot;Name&quot; bind UserProfile.name validate required class &quot;form-input&quot;
+
+// Email format validation
+input id email_field email placeholder &quot;Email&quot; bind UserProfile.email validate email class &quot;form-input&quot;
+
+// Custom pattern validation
+input id code_field text placeholder &quot;Product Code&quot; bind ProductForm.code validate pattern &quot;^[A-Z]{3}-[0-9]{4}$&quot; class &quot;form-input&quot;
+
+// Length validation
+input id description_field text placeholder &quot;Description&quot; bind ProductForm.description validate minlength 10 maxlength 500 class &quot;form-input&quot;
+</code></pre>
+<h3>Input Types</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Purpose</th>
+<th>Platform Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>General text input</td>
+<td>Web, Android, iOS</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Email address</td>
+<td>Web, Android, iOS</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Password field</td>
+<td>Web, Android, iOS</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>Phone number</td>
+<td>Web, Android, iOS</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>Numeric input</td>
+<td>Web, Android, iOS</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>URL input</td>
+<td>Web, Android, iOS</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>Search field</td>
+<td>Web, Android, iOS</td>
+</tr>
+</tbody>
+</table>
+<h2>Button Components</h2>
+<h3>Basic Buttons</h3>
+<pre><code class="language-roe">// Action button
+button &quot;Submit&quot; action submitForm class &quot;submit-btn primary&quot;
+
+// Button with conditional enabling
+button &quot;Save&quot; action saveData enabled when form is valid class &quot;save-btn&quot;
+
+// Button with confirmation
+button &quot;Delete&quot; action deleteItem confirm &quot;Are you sure?&quot; class &quot;delete-btn danger&quot;
+</code></pre>
+<h3>Mobile-Specific Buttons</h3>
+<pre><code class="language-roe">// Camera button (mobile only)
+button &quot;Take Photo&quot; type camera action capturePhoto permissions &quot;camera, storage&quot; class &quot;camera-btn&quot;
+
+// Location button (mobile only) 
+button &quot;Get Location&quot; type location action getLocation permissions &quot;location&quot; accuracy high class &quot;location-btn&quot;
+
+// Share button (mobile only)
+button &quot;Share&quot; type share action shareContent class &quot;share-btn&quot;
+</code></pre>
+<h3>Button States</h3>
+<pre><code class="language-roe">// Conditional button states
+button &quot;Process&quot; action processData 
+    enabled when data is valid
+    loading when processing is true
+    class &quot;process-btn&quot;
+
+// Button with multiple states
+button &quot;Download&quot; action downloadFile
+    enabled when not downloading
+    loading when downloading is true  
+    text when downloading then &quot;Downloading...&quot; otherwise &quot;Download&quot;
+    class &quot;download-btn&quot;
+</code></pre>
+<h2>Selection Components</h2>
+<h3>Toggle Switches</h3>
+<pre><code class="language-roe">// Basic toggle
+toggle id notifications_toggle &quot;Enable Notifications&quot; bind UserSettings.notificationsEnabled default off class &quot;toggle-field&quot;
+
+// Toggle with conditional behavior
+toggle id dark_mode_toggle &quot;Dark Mode&quot; bind UserSettings.darkMode default off class &quot;toggle-field&quot;
+    on change action updateTheme
+
+// Toggle with description
+toggle id auto_save_toggle &quot;Auto Save&quot; bind AppSettings.autoSave default on class &quot;toggle-field&quot;
+    description &quot;Automatically save changes every 30 seconds&quot;
+</code></pre>
+<h3>Dropdown Selection</h3>
+<pre><code class="language-roe">dropdown id quality_dropdown bind UserSettings.photoQuality default &quot;Medium Quality&quot; class &quot;dropdown-field&quot;
+    option &quot;High Quality&quot;
+    option &quot;Medium Quality&quot; 
+    option &quot;Low Quality&quot;
+end dropdown
+
+// Dropdown with values
+dropdown id language_dropdown bind UserSettings.language default &quot;en&quot; class &quot;dropdown-field&quot;
+    option value &quot;en&quot; text &quot;English&quot;
+    option value &quot;es&quot; text &quot;Spanish&quot;
+    option value &quot;fr&quot; text &quot;French&quot;
+end dropdown
+
+// Conditional dropdown options
+dropdown id country_dropdown bind UserProfile.country class &quot;dropdown-field&quot;
+    when region equals &quot;north_america&quot; then
+        option &quot;United States&quot;
+        option &quot;Canada&quot;
+        option &quot;Mexico&quot;
+    otherwise when region equals &quot;europe&quot; then
+        option &quot;United Kingdom&quot;
+        option &quot;Germany&quot;
+        option &quot;France&quot;
+    end when
+end dropdown
+</code></pre>
+<h3>Radio Button Groups</h3>
+<pre><code class="language-roe">radio id theme_radio group &quot;appTheme&quot; bind UserSettings.appTheme default &quot;System Default&quot; class &quot;radio-group&quot;
+    option &quot;Light Theme&quot;
+    option &quot;Dark Theme&quot; 
+    option &quot;System Default&quot;
+end radio
+
+// Radio with descriptions
+radio id payment_radio group &quot;paymentMethod&quot; bind OrderForm.paymentMethod class &quot;radio-group&quot;
+    option value &quot;card&quot; text &quot;Credit Card&quot; description &quot;Pay with credit or debit card&quot;
+    option value &quot;paypal&quot; text &quot;PayPal&quot; description &quot;Pay with your PayPal account&quot;
+    option value &quot;apple&quot; text &quot;Apple Pay&quot; description &quot;Pay with Touch ID or Face ID&quot;
+end radio
+</code></pre>
+<h2>Image Components</h2>
+<h3>Static Images</h3>
+<pre><code class="language-roe">// Basic image
+image source &quot;logo.png&quot; alt &quot;Company Logo&quot; class &quot;logo-image&quot;
+
+// Image with sizing
+image source &quot;banner.jpg&quot; alt &quot;Welcome Banner&quot; class &quot;banner-image&quot; width 800 height 200
+
+// Placeholder image
+image source &quot;placeholder.png&quot; alt &quot;No Image Available&quot; class &quot;placeholder-image&quot;
+</code></pre>
+<h3>Dynamic Images</h3>
+<pre><code class="language-roe">// Data-bound image
+image source bind UserProfile.profilePicture alt &quot;Profile Picture&quot; class &quot;profile-pic&quot;
+
+// Conditional image
+image source bind ProductInfo.imageUrl or &quot;default-product.png&quot; alt &quot;Product Image&quot; class &quot;product-image&quot;
+
+// Image gallery
+for each photo in PhotoGallery.photos
+    image source bind photo.url alt bind photo.caption class &quot;gallery-image&quot;
+        on click action viewFullImage with photo
+end for
+</code></pre>
+<h2>Form Components</h2>
+<h3>Complete Forms</h3>
+<pre><code class="language-roe">form RegistrationForm
+    column class &quot;form-container&quot;
+        title &quot;Create Account&quot; class &quot;form-title&quot;
+        
+        column class &quot;form-fields&quot;
+            input id name_field text placeholder &quot;Full Name&quot; bind UserProfile.fullName validate required class &quot;form-input&quot;
+            input id email_field email placeholder &quot;Email Address&quot; bind UserProfile.email validate email class &quot;form-input&quot;
+            input id password_field password placeholder &quot;Password&quot; bind UserProfile.password validate minlength 8 class &quot;form-input&quot;
+            
+            toggle id terms_toggle &quot;I accept the terms and conditions&quot; bind UserProfile.acceptedTerms default off class &quot;toggle-field&quot;
+            
+            dropdown id country_dropdown bind UserProfile.country default &quot;United States&quot; class &quot;dropdown-field&quot;
+                option &quot;United States&quot;
+                option &quot;Canada&quot;
+                option &quot;United Kingdom&quot;
+                option &quot;Australia&quot;
+            end dropdown
+            
+            button &quot;Create Account&quot; action createAccount enabled when form is valid class &quot;submit-btn primary&quot;
+        end column
+    end column
+end form
+</code></pre>
+<h3>Form Validation</h3>
+<pre><code class="language-roe">form ContactForm
+    column class &quot;contact-form&quot;
+        input id name_field text placeholder &quot;Your Name&quot; bind ContactInfo.name validate required class &quot;form-input&quot;
+            on invalid show message &quot;Name is required&quot;
+        
+        input id email_field email placeholder &quot;Your Email&quot; bind ContactInfo.email validate required email class &quot;form-input&quot;
+            on invalid show message &quot;Please enter a valid email address&quot;
+        
+        input id subject_field text placeholder &quot;Subject&quot; bind ContactInfo.subject validate required maxlength 100 class &quot;form-input&quot;
+            on invalid show message &quot;Subject is required (max 100 characters)&quot;
+        
+        input id message_field textarea placeholder &quot;Your Message&quot; bind ContactInfo.message validate required minlength 20 maxlength 1000 class &quot;form-textarea&quot;
+            on invalid show message &quot;Message must be between 20 and 1000 characters&quot;
+        
+        button &quot;Send Message&quot; action sendMessage enabled when form is valid class &quot;submit-btn&quot;
+    end column
+end form
+</code></pre>
+<h2>Data Binding</h2>
+<h3>Variable Binding</h3>
+<pre><code class="language-roe">// Bind to simple variables
+text bind userName
+input text bind userEmail
+
+// Bind to object properties
+text bind UserProfile.displayName
+input text bind UserProfile.email
+image source bind UserProfile.avatar
+</code></pre>
+<h3>Two-Way Data Binding</h3>
+<pre><code class="language-roe">// Input automatically updates bound variable
+input id name_field text bind UserProfile.name
+
+// Changes to UserProfile.name automatically update UI
+action updateName with newName which is text
+    set UserProfile.name to newName
+    // UI automatically reflects the change
+end action
+</code></pre>
+<h3>Conditional Binding</h3>
+<pre><code class="language-roe">// Show different content based on state
+when UserProfile.isLoggedIn then
+    text &quot;Welcome back, [UserProfile.name]!&quot;
+    button &quot;Logout&quot; action logoutUser
+otherwise
+    text &quot;Please log in to continue&quot;
+    button &quot;Login&quot; action showLogin
+end when
+
+// Conditional enabling
+button &quot;Submit&quot; action submitForm
+    enabled when formIsValid and not isSubmitting
+</code></pre>
+<h2>Event Handling</h2>
+<h3>Click Events</h3>
+<pre><code class="language-roe">// Button click
+button &quot;Click Me&quot; action handleClick class &quot;btn&quot;
+
+// Image click
+image source &quot;photo.jpg&quot; alt &quot;Photo&quot; class &quot;clickable-image&quot;
+    on click action viewLargeImage
+
+// Text click (for links)
+text &quot;Click here for more info&quot; class &quot;link-text&quot;
+    on click action showMoreInfo
+</code></pre>
+<h3>Input Events</h3>
+<pre><code class="language-roe">// Input change events
+input id search_field text placeholder &quot;Search...&quot; bind searchTerm class &quot;search-input&quot;
+    on change action performSearch
+    on focus action highlightSearchArea
+    on blur action hideSearchSuggestions
+
+// Toggle change events  
+toggle id notifications_toggle &quot;Notifications&quot; bind notificationsEnabled class &quot;toggle&quot;
+    on change action updateNotificationSettings
+</code></pre>
+<h3>Form Events</h3>
+<pre><code class="language-roe">form UserForm
+    // Form submission
+    on submit action submitForm
+    
+    // Form validation
+    on validate action validateForm
+    
+    // Form change
+    on change action autoSave
+    
+    // Input fields...
+end form
+</code></pre>
+<h2>Styling and Theming</h2>
+<h3>CSS Classes</h3>
+<pre><code class="language-roe">// Component styling
+text &quot;Styled Text&quot; class &quot;large-text bold red-color&quot;
+button &quot;Styled Button&quot; action doSomething class &quot;primary-btn rounded shadow&quot;
+
+// Responsive classes
+column class &quot;container mobile-stack tablet-row desktop-grid&quot;
+    text &quot;Content adapts to screen size&quot;
+end column
+</code></pre>
+<h3>Platform-Specific Styling</h3>
+<pre><code class="language-roe">// Different styles per platform
+button &quot;Platform Button&quot; action handleClick
+    class when platform equals &quot;web&quot; then &quot;web-btn&quot;
+    class when platform equals &quot;android&quot; then &quot;material-btn&quot;  
+    class when platform equals &quot;ios&quot; then &quot;ios-btn&quot;
+</code></pre>
+<h3>Theme Support</h3>
+<pre><code class="language-roe">// Theme-aware components
+text &quot;Themed Text&quot; class &quot;text-primary&quot;
+button &quot;Themed Button&quot; action doSomething class &quot;btn-primary&quot;
+
+// Dark/light theme switching
+when UserSettings.darkMode then
+    layout class &quot;dark-theme&quot;
+otherwise  
+    layout class &quot;light-theme&quot;
+end when
+</code></pre>
+<h2>Platform Output Examples</h2>
+<h3>Web (HTML/JavaScript)</h3>
+<pre><code class="language-html">&lt;!-- Generated HTML --&gt;
+&lt;div class=&quot;main-container&quot;&gt;
+    &lt;h1 class=&quot;app-title&quot;&gt;My Application&lt;/h1&gt;
+    &lt;div class=&quot;content-section&quot;&gt;
+        &lt;p class=&quot;welcome-text&quot;&gt;Welcome to the app!&lt;/p&gt;
+        &lt;button class=&quot;primary-btn&quot; onclick=&quot;startApp()&quot;&gt;Get Started&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;form class=&quot;form-container&quot;&gt;
+    &lt;input type=&quot;email&quot; placeholder=&quot;Email&quot; class=&quot;form-input&quot; 
+           onchange=&quot;updateUserEmail(this.value)&quot; required&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;toggle-field&quot; 
+           onchange=&quot;toggleNotifications(this.checked)&quot;&gt;
+    &lt;button type=&quot;submit&quot; class=&quot;submit-btn&quot;&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<h3>Android (Kotlin/XML)</h3>
+<pre><code class="language-kotlin">// Generated MainActivity.kt
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        setContent {
+            MyAppTheme {
+                MainScreen()
+            }
+        }
+    }
+}
+
+@Composable
+fun MainScreen() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = &quot;My Application&quot;,
+            style = MaterialTheme.typography.h4
+        )
+        
+        Text(
+            text = &quot;Welcome to the app!&quot;,
+            style = MaterialTheme.typography.body1
+        )
+        
+        Button(
+            onClick = { startApp() }
+        ) {
+            Text(&quot;Get Started&quot;)
+        }
+    }
+}
+</code></pre>
+<h3>iOS (SwiftUI)</h3>
+<pre><code class="language-swift">// Generated ContentView.swift
+struct ContentView: View {
+    @State private var email = &quot;&quot;
+    @State private var notificationsEnabled = false
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text(&quot;My Application&quot;)
+                .font(.largeTitle)
+            
+            Text(&quot;Welcome to the app!&quot;)
+                .font(.body)
+            
+            Button(&quot;Get Started&quot;) {
+                startApp()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+    
+    private func startApp() {
+        // Handle button action
+    }
+}
+
+struct RegistrationForm: View {
+    @State private var email = &quot;&quot;
+    @State private var notificationsEnabled = false
+    
+    var body: some View {
+        Form {
+            TextField(&quot;Email&quot;, text: $email)
+                .keyboardType(.emailAddress)
+            
+            Toggle(&quot;Enable Notifications&quot;, isOn: $notificationsEnabled)
+            
+            Button(&quot;Submit&quot;) {
+                submitForm()
+            }
+            .disabled(!isFormValid)
+        }
+    }
+}
+</code></pre>
+<h2>Advanced UI Patterns</h2>
+<h3>Lists and Collections</h3>
+<pre><code class="language-roe">// Dynamic list
+layout UserList
+    column class &quot;list-container&quot;
+        for each user in UserList.users
+            column class &quot;user-item&quot;
+                text bind user.name class &quot;user-name&quot;
+                text bind user.email class &quot;user-email&quot;
+                button &quot;Edit&quot; action editUser with user class &quot;edit-btn&quot;
+            end column
+        end for
+    end column
+end layout
+
+// Empty state handling
+when UserList.users is empty then
+    column class &quot;empty-state&quot;
+        text &quot;No users found&quot; class &quot;empty-message&quot;
+        button &quot;Add User&quot; action showAddUserForm class &quot;add-btn&quot;
+    end column
+otherwise
+    // Show user list
+end when
+</code></pre>
+<h3>Modal Dialogs</h3>
+<pre><code class="language-roe">// Modal dialog
+when showConfirmDialog is true then
+    dialog class &quot;confirm-dialog&quot;
+        title &quot;Confirm Action&quot; class &quot;dialog-title&quot;
+        text &quot;Are you sure you want to delete this item?&quot; class &quot;dialog-message&quot;
+        
+        row class &quot;dialog-buttons&quot;
+            button &quot;Cancel&quot; action hideConfirmDialog class &quot;cancel-btn&quot;
+            button &quot;Delete&quot; action confirmDelete class &quot;delete-btn danger&quot;
+        end row
+    end dialog
+end when
+</code></pre>
+<h3>Loading States</h3>
+<pre><code class="language-roe">// Loading indicator
+when isLoading is true then
+    column class &quot;loading-container&quot;
+        spinner class &quot;loading-spinner&quot;
+        text &quot;Loading...&quot; class &quot;loading-text&quot;
+    end column
+otherwise
+    // Show content
+    layout MainContent
+end when
+
+// Button loading state
+button &quot;Submit&quot; action submitForm class &quot;submit-btn&quot;
+    text when isSubmitting then &quot;Submitting...&quot; otherwise &quot;Submit&quot;
+    enabled when not isSubmitting
+    loading when isSubmitting
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. Use Semantic Components</h3>
+<pre><code class="language-roe">// Good: Semantic structure
+form LoginForm
+    title &quot;Login&quot; class &quot;form-title&quot;
+    input email bind credentials.email validate required
+    input password bind credentials.password validate required  
+    button &quot;Sign In&quot; action authenticate class &quot;primary-btn&quot;
+end form
+
+// Avoid: Generic layout only
+column
+    text &quot;Login&quot;
+    input text bind email
+    input text bind password
+    button &quot;Submit&quot; action submit
+end column
+</code></pre>
+<h3>2. Handle All States</h3>
+<pre><code class="language-roe">// Good: Handle loading, error, and success states
+when dataState equals &quot;loading&quot; then
+    spinner class &quot;loading&quot;
+otherwise when dataState equals &quot;error&quot; then
+    text &quot;Error loading data&quot; class &quot;error-message&quot;
+    button &quot;Retry&quot; action retryLoad class &quot;retry-btn&quot;
+otherwise when dataState equals &quot;empty&quot; then
+    text &quot;No data available&quot; class &quot;empty-message&quot;
+otherwise
+    // Show data
+end when
+</code></pre>
+<h3>3. Validate User Input</h3>
+<pre><code class="language-roe">// Good: Comprehensive validation
+input id email_field email bind userEmail validate required email class &quot;form-input&quot;
+    on invalid show message &quot;Please enter a valid email address&quot;
+
+input id password_field password bind userPassword validate required minlength 8 class &quot;form-input&quot;
+    on invalid show message &quot;Password must be at least 8 characters&quot;
+</code></pre>
+<h2>Next Steps</h2>
+<ul>
+<li><strong><a href="/guide/frameworks/">Framework Support</a></strong> - Framework-specific UI generation</li>
+<li><strong><a href="/guide/mobile/">Mobile Development</a></strong> - Mobile-specific UI features</li>
+<li><strong><a href="/guide/styling/">Styling Guide</a></strong> - Advanced styling and theming</li>
+</ul>
+<p>UI Components in Roelang provide a declarative way to build user interfaces that work consistently across web, Android, and iOS platforms while maintaining platform-appropriate look and behavior.</p>
+
+        </article>
+      </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <div class="flex items-center space-x-2 mb-4">
+          <img src="/logo.png" alt="Roe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Roe</span>
+        </div>
+        <p class="text-gray-600 max-w-md">
+          A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
+        </p>
+      </div>
+      
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
+        <ul class="mt-4 space-y-4">
+          <li><a href="/docs" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
+          <li><a href="/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
+        <ul class="mt-4 space-y-4">
+          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-200 pt-8 text-center">
+      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+    </div>
+  </div>
+</footer>
+
+  </div>
+</div>
+<script>
+// Highlight current page in sidebar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const sidebarLinks = document.querySelectorAll('aside nav a');
+  
+  sidebarLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+});
+</script>
+  </main>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

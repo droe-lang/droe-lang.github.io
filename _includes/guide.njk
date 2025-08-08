@@ -2,9 +2,9 @@
 layout: base.njk
 ---
 
-<div class="flex flex-col lg:flex-row min-h-screen">
+<div class="lg:grid lg:grid-cols-[256px,1fr]">
   <!-- Sidebar Navigation -->
-  <aside class="lg:w-64 bg-gray-50 border-r border-gray-200 lg:fixed lg:h-screen lg:overflow-y-auto">
+  <aside class="lg:h-screen lg:overflow-y-auto lg:border-r lg:border-gray-200 bg-gray-50 pb-16">
     <div class="p-6">
       <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
       
@@ -44,81 +44,53 @@ layout: base.njk
         </nav>
       </div>
       
+      <!-- Backend Development -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
+        <nav class="space-y-1">
+          <a href="/guide/database/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database DSL</a>
+          <a href="/guide/api-endpoints/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API Endpoints</a>
+        </nav>
+      </div>
+      
+      <!-- Frontend & Mobile -->
+      <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
+        <nav class="space-y-1">
+          <a href="/guide/ui-components/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI Components</a>
+          <a href="/guide/mobile/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile Development</a>
+        </nav>
+      </div>
+      
       <!-- Tools -->
       <div class="mb-6">
         <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
         <nav class="space-y-1">
           <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
           <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+          <a href="/guide/frameworks/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework Support</a>
           <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+          <a href="/guide/implementation-status/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation Status</a>
         </nav>
       </div>
     </div>
   </aside>
   
   <!-- Main Content -->
-  <main class="flex-1 lg:ml-64">
-    <div class="max-w-4xl mx-auto px-6 py-8">
-      <!-- Breadcrumbs -->
-      {% if breadcrumbs %}
-      <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-8">
-        <a href="/" class="hover:text-primary-600">Home</a>
-        {% for crumb in breadcrumbs %}
-        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-        {% if crumb.url %}
-        <a href="{{ crumb.url }}" class="hover:text-primary-600">{{ crumb.title }}</a>
-        {% else %}
-        <span class="text-gray-900">{{ crumb.title }}</span>
-        {% endif %}
-        {% endfor %}
-      </nav>
-      {% endif %}
-      
-      <!-- Page Header -->
-      {% if title %}
-      <header class="mb-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ title }}</h1>
-        {% if description %}
-        <p class="text-xl text-gray-600">{{ description }}</p>
-        {% endif %}
-      </header>
-      {% endif %}
-      
-      <!-- Content -->
-      <div class="prose prose-lg max-w-none">
-        {{ content | safe }}
+  <div class="flex flex-col min-h-screen min-w-0">
+    {% include "header.njk" %}
+    <main class="flex-grow p-6 lg:p-12">
+      <div class="overflow-x-auto">
+        <article class="prose dark:prose-invert max-w-none">
+          <h1>{{ title }}</h1>
+          {{ content | safe }}
+        </article>
       </div>
-      
-      <!-- Navigation Footer -->
-      <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
-        {% if prev %}
-        <a href="{{ prev.url }}" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          <span>{{ prev.title }}</span>
-        </a>
-        {% else %}
-        <div></div>
-        {% endif %}
-        
-        {% if next %}
-        <a href="{{ next.url }}" class="flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium">
-          <span>{{ next.title }}</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
-        {% else %}
-        <div></div>
-        {% endif %}
-      </div>
-    </div>
-  </main>
-</div>
+    </main>
 
+    {% include "footer.njk" %}
+  </div>
+</div>
 <script>
 // Highlight current page in sidebar
 document.addEventListener('DOMContentLoaded', function() {
