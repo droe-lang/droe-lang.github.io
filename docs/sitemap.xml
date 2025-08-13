@@ -1,151 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://droe-lang.dev/guide/conditionals/</loc>
+    <loc>https://droe.dev/guide/conditionals/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/frameworks/</loc>
+    <loc>https://droe.dev/guide/frameworks/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/basics/</loc>
+    <loc>https://droe.dev/guide/basics/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/webassembly/</loc>
+    <loc>https://droe.dev/guide/webassembly/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/loops/</loc>
+    <loc>https://droe.dev/guide/loops/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/data-structures/</loc>
+    <loc>https://droe.dev/guide/data-structures/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/collections/</loc>
+    <loc>https://droe.dev/guide/collections/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/cli/</loc>
+    <loc>https://droe.dev/guide/cli/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/implementation-status/</loc>
+    <loc>https://droe.dev/guide/implementation-status/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/strings/</loc>
+    <loc>https://droe.dev/guide/strings/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/quick-start/</loc>
+    <loc>https://droe.dev/guide/quick-start/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/modules/</loc>
+    <loc>https://droe.dev/guide/modules/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/ui-components/</loc>
+    <loc>https://droe.dev/guide/ui-components/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/task-actions/</loc>
+    <loc>https://droe.dev/guide/task-actions/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/</loc>
+    <loc>https://droe.dev/guide/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/api-endpoints/</loc>
+    <loc>https://droe.dev/guide/api-endpoints/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/actions/</loc>
+    <loc>https://droe.dev/guide/actions/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/debugging/</loc>
+    <loc>https://droe.dev/guide/debugging/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/types/</loc>
+    <loc>https://droe.dev/guide/types/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/installation/</loc>
+    <loc>https://droe.dev/guide/installation/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/variables/</loc>
+    <loc>https://droe.dev/guide/variables/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/project-structure/</loc>
+    <loc>https://droe.dev/guide/project-structure/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/mobile/</loc>
+    <loc>https://droe.dev/guide/mobile/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/guide/database/</loc>
+    <loc>https://droe.dev/guide/database/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe-lang.dev/</loc>
+    <loc>https://droe.dev/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>

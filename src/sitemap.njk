@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
 {%- for page in collections.all %}
   {%- if not page.data.eleventyExcludeFromCollections and page.url %}
   <url>
-    <loc>https://droe-lang.dev{{ page.url | url }}</loc>
+    <loc>https://droe.dev{{ page.url | url }}</loc>
     <lastmod>{{ page.date | htmlDateString }}</lastmod>
     <changefreq>{% if page.url == "/" %}daily{% elif "/guide/" in page.url %}weekly{% else %}monthly{% endif %}</changefreq>
     <priority>{% if page.url == "/" %}1.0{% elif page.url == "/guide/" %}0.9{% elif "/guide/" in page.url %}0.8{% else %}0.5{% endif %}</priority>
