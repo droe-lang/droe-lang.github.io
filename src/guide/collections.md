@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Collections
-description: Work with lists and groups to manage multiple values efficiently in Roe.
+description: Work with lists and groups to manage multiple values efficiently in Droe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/conditionals/
 ---
 
-Collections are essential for working with multiple values of the same type. Roe provides two main collection types: **lists** (ordered collections) and **groups** (unordered collections with unique values).
+Collections are essential for working with multiple values of the same type. Droe provides two main collection types: **lists** (ordered collections) and **groups** (unordered collections with unique values).
 
 ## List Collections
 
@@ -22,7 +22,7 @@ Collections are essential for working with multiple values of the same type. Roe
 
 Lists store ordered collections of the same type:
 
-```roe
+```droe
 // Lists of different types
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set names which are list of text to ["Alice", "Bob", "Carol", "David"]
@@ -40,7 +40,7 @@ set empty_names which are list of text to []
 
 The most common operation is iterating over list elements:
 
-```roe
+```droe
 set student_names which are list of text to ["Alice", "Bob", "Carol"]
 
 display "Student List:"
@@ -51,7 +51,7 @@ end for
 
 #### Processing List Elements
 
-```roe
+```droe
 set test_scores which are list of int to [85, 92, 78, 95, 88]
 set total which is int to 0
 set count which is int to 0
@@ -69,7 +69,7 @@ display "Average: [average]"
 
 #### Conditional Processing
 
-```roe
+```droe
 set temperatures which are list of decimal to [23.5, 18.2, 31.7, 15.9, 28.3]
 
 display "Temperature Analysis:"
@@ -94,7 +94,7 @@ end for
 
 #### Shopping Cart
 
-```roe
+```droe
 set item_names which are list of text to ["Laptop", "Mouse", "Keyboard", "Monitor"]
 set item_prices which are list of decimal to [999.99, 25.50, 75.00, 299.99]
 set cart_total which is decimal to 0.0
@@ -116,7 +116,7 @@ display "Total: $[cart_total]"
 
 #### Grade Analysis
 
-```roe
+```droe
 set student_grades which are list of int to [85, 92, 78, 95, 88, 76, 94, 82]
 set passing_grade which is int to 80
 
@@ -154,7 +154,7 @@ display "Class Average: [class_average]%"
 
 Groups store unique values (no duplicates):
 
-```roe
+```droe
 // Groups automatically remove duplicates
 set unique_numbers which are group of int to [1, 2, 3, 2, 1, 4]  // Results in {1, 2, 3, 4}
 set programming_languages which are group of text to ["Python", "Java", "Python", "JavaScript"]  // Results in {"Python", "Java", "JavaScript"}
@@ -168,7 +168,7 @@ set empty_group which are group of int to []
 
 Groups work similarly to lists but maintain uniqueness:
 
-```roe
+```droe
 set categories which are group of text to ["work", "personal", "work", "health", "personal", "finance"]
 
 display "Unique Categories:"
@@ -182,7 +182,7 @@ end for
 
 #### Unique Visitor Tracking
 
-```roe
+```droe
 set visitor_countries which are group of text to ["USA", "Canada", "UK", "USA", "Germany", "Canada", "France", "UK"]
 
 display "Unique Visitor Countries:"
@@ -198,7 +198,7 @@ display "Total unique countries: [country_count]"
 
 #### Tag System
 
-```roe
+```droe
 set article_tags which are group of text to ["programming", "tutorial", "beginner", "programming", "web", "tutorial"]
 
 display "Article Tags:"
@@ -211,7 +211,7 @@ end for
 
 ### Data Processing Pipeline
 
-```roe
+```droe
 set raw_data which are list of decimal to [10.5, 8.2, 15.7, 12.3, 9.8, 14.1, 11.6]
 set processed_count which is int to 0
 set sum which is decimal to 0.0
@@ -250,7 +250,7 @@ display "Min: [min_value]"
 
 ### Multi-Collection Processing
 
-```roe
+```droe
 set product_names which are list of text to ["Laptop", "Mouse", "Keyboard"]
 set product_prices which are list of decimal to [999.99, 25.50, 75.00]
 set product_quantities which are list of int to [2, 5, 3]
@@ -276,7 +276,7 @@ end for
 
 ### Filtering and Categorization
 
-```roe
+```droe
 set all_scores which are list of int to [95, 78, 85, 92, 65, 88, 76, 94, 82, 71]
 set high_scores which are list of int to []
 set medium_scores which are list of int to []
@@ -316,7 +316,7 @@ display "Low (<80): [low_count] scores"
 
 ### Counter Collections
 
-```roe
+```droe
 module collection_utils
   action count_elements with items which are list of text gives int
     set count which is int to 0
@@ -361,7 +361,7 @@ display "Max: [max_decimal]"
 
 ### Validation Collections
 
-```roe
+```droe
 set email_list which are list of text to ["alice@example.com", "bob@invalid", "carol@test.org", "dave@"]
 set valid_emails which are list of text to []
 set invalid_emails which are list of text to []
@@ -393,7 +393,7 @@ display "Invalid emails: [invalid_count]"
 
 ### 1. Choose the Right Collection Type
 
-```roe
+```droe
 // Use lists for ordered data where duplicates matter
 set daily_temperatures which are list of decimal to [23.5, 24.1, 23.8, 25.2]
 set task_priorities which are list of text to ["high", "medium", "high", "low"]
@@ -405,7 +405,7 @@ set error_codes which are group of int to [404, 500, 404, 401, 500]  // Unique e
 
 ### 2. Use Descriptive Variable Names
 
-```roe
+```droe
 // Good: Descriptive collection names
 set monthly_sales_figures which are list of decimal to [12000.50, 15500.75, 13200.25]
 set active_user_sessions which are group of text to ["session1", "session2", "session3"]
@@ -417,7 +417,7 @@ set stuff which are group of text to ["session1", "session2", "session3"]
 
 ### 3. Initialize Collections Properly
 
-```roe
+```droe
 // Good: Initialize with expected data or empty
 set product_categories which are list of text to ["Electronics", "Books", "Clothing"]
 set error_messages which are list of text to []  // Start empty, add as needed
@@ -428,7 +428,7 @@ set default_settings which are list of flag to [true, false, true]
 
 ### 4. Handle Empty Collections
 
-```roe
+```droe
 set user_inputs which are list of text to []
 set input_count which is int to 0
 
@@ -446,7 +446,7 @@ end when
 
 ### 5. Use Collections in Modules
 
-```roe
+```droe
 module inventory_manager
   action process_orders with order_ids which are list of int
     display "Processing orders..."
@@ -469,7 +469,7 @@ end module
 
 ### Accumulator Pattern
 
-```roe
+```droe
 set expenses which are list of decimal to [125.50, 75.25, 200.00, 45.75]
 set total_expenses which is decimal to 0.0
 
@@ -482,7 +482,7 @@ display "Total expenses: $[total_expenses]"
 
 ### Search Pattern
 
-```roe
+```droe
 set product_names which are list of text to ["Laptop", "Mouse", "Keyboard", "Monitor"]
 set search_term which is text to "Mouse"
 set found which is flag to false
@@ -501,7 +501,7 @@ end when
 
 ### Counting Pattern
 
-```roe
+```droe
 set status_list which are list of text to ["active", "inactive", "active", "pending", "active"]
 set active_count which is int to 0
 set inactive_count which is int to 0
@@ -529,7 +529,7 @@ display "Pending: [pending_count]"
 
 ## Next Steps
 
-Now that you understand collections in Roe:
+Now that you understand collections in Droe:
 
 - **[Conditionals](/guide/conditionals/)** - Using collection data in conditional logic
 - **[Loops](/guide/loops/)** - Advanced iteration patterns with collections

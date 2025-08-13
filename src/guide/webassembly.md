@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: WebAssembly
-description: Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.
+description: Understanding how Droe compiles to WebAssembly and leveraging WASM capabilities.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/debugging/
 ---
 
-WebAssembly (WASM) is Roe's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Roe leverages WebAssembly and how to work with the compiled output.
+WebAssembly (WASM) is Droe's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Droe leverages WebAssembly and how to work with the compiled output.
 
 ## What is WebAssembly?
 
 WebAssembly is a binary instruction format for a stack-based virtual machine. It's designed as a portable compilation target for programming languages, enabling deployment on the web, server, and embedded environments.
 
-### Key Benefits for Roe
+### Key Benefits for Droe
 
 - **Performance**: Near-native execution speed
 - **Portability**: Runs on any platform with a WASM runtime
@@ -28,23 +28,23 @@ WebAssembly is a binary instruction format for a stack-based virtual machine. It
 - **Interoperability**: Can interface with other languages
 - **Compact**: Small binary size for efficient distribution
 
-## Roe to WebAssembly Compilation
+## Droe to WebAssembly Compilation
 
 ### Compilation Pipeline
 
 ```
-.roe → Roe Compiler → .wat → wat2wasm → .wasm
+.droe → Droe Compiler → .wat → wat2wasm → .wasm
 ```
 
-1. **Roe Source** (`.roe`) - Your source code
+1. **Droe Source** (`.droe`) - Your source code
 2. **WebAssembly Text** (`.wat`) - Human-readable WASM format
 3. **WebAssembly Binary** (`.wasm`) - Binary executable format
 
 ### Example Compilation
 
 ```bash
-# Compile Roe to WebAssembly text format
-roe compile src/main.roe
+# Compile Droe to WebAssembly text format
+droe compile src/main.droe
 
 # This generates: build/main.wat
 
@@ -52,17 +52,17 @@ roe compile src/main.roe
 wat2wasm build/main.wat -o build/main.wasm
 
 # Run the WebAssembly module
-node ~/.roelang/run.js build/main.wasm
+node ~/.ddroelang/run.js build/main.wasm
 ```
 
 ## WebAssembly Text Format (.wat)
 
-When you compile Roe code, you first get a `.wat` file. Here's what a simple Roe program looks like in WebAssembly text format:
+When you compile Droe code, you first get a `.wat` file. Here's what a simple Droe program looks like in WebAssembly text format:
 
 ### Simple Display Example
 
-**Roe source:**
-```roe
+**Droe source:**
+```droe
 display "Hello, WebAssembly!"
 ```
 
@@ -83,8 +83,8 @@ display "Hello, WebAssembly!"
 
 ### Variables and Operations
 
-**Roe source:**
-```roe
+**Droe source:**
+```droe
 set count which is int to 42
 set name which is text to "Alice"
 display "Count: [count], Name: [name]"
@@ -99,7 +99,7 @@ display "Count: [count], Name: [name]"
 
 ### Memory Management
 
-Roe uses WebAssembly's linear memory model:
+Droe uses WebAssembly's linear memory model:
 
 ```wat
 (module
@@ -118,7 +118,7 @@ Roe uses WebAssembly's linear memory model:
 
 ### Function Exports
 
-Roe programs export a `main` function and any module actions:
+Droe programs export a `main` function and any module actions:
 
 ```wat
 (module
@@ -138,9 +138,9 @@ Roe programs export a `main` function and any module actions:
 
 ### Type System Mapping
 
-Roe types map to WebAssembly as follows:
+Droe types map to WebAssembly as follows:
 
-| Roe Type | WebAssembly Type | Storage |
+| Droe Type | WebAssembly Type | Storage |
 |--------------|------------------|---------|
 | `int` | `i32` | 32-bit integer |
 | `decimal` | `f64` | 64-bit float |
@@ -152,7 +152,7 @@ Roe types map to WebAssembly as follows:
 
 ### Node.js Runtime
 
-Roe includes a Node.js runtime (`run.js`) that provides the execution environment:
+Droe includes a Node.js runtime (`run.js`) that provides the execution environment:
 
 ```javascript
 // Simplified version of run.js
@@ -182,7 +182,7 @@ async function runWasm(wasmFile) {
 
 ### Host Functions
 
-The runtime provides host functions that Roe programs can import:
+The runtime provides host functions that Droe programs can import:
 
 ```wat
 (module
@@ -201,8 +201,8 @@ The runtime provides host functions that Roe programs can import:
 
 WebAssembly provides several performance advantages:
 
-```roe
-// This Roe code...
+```droe
+// This Droe code...
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set total which is int to 0
 
@@ -243,17 +243,17 @@ Compiles to efficient WebAssembly that:
 
 ### Web Browsers
 
-Deploy Roe programs in web browsers:
+Deploy Droe programs in web browsers:
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Roe in Browser</title>
+    <title>Droe in Browser</title>
 </head>
 <body>
     <script>
-        async function loadRoe() {
+        async function loadDroe() {
             const response = await fetch('program.wasm');
             const bytes = await response.arrayBuffer();
             
@@ -273,7 +273,7 @@ Deploy Roe programs in web browsers:
             wasmModule.instance.exports.main();
         }
         
-        loadRoe();
+        loadDroe();
     </script>
 </body>
 </html>
@@ -281,7 +281,7 @@ Deploy Roe programs in web browsers:
 
 ### Server Environments
 
-Run Roe programs on servers:
+Run Droe programs on servers:
 
 ```javascript
 // server.js
@@ -290,7 +290,7 @@ const fs = require('fs');
 
 const app = express();
 
-app.get('/run-roelang', async (req, res) => {
+app.get('/run-ddroelang', async (req, res) => {
     const wasmBuffer = fs.readFileSync('program.wasm');
     
     let output = '';
@@ -314,7 +314,7 @@ app.get('/run-roelang', async (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('Roe server running on port 3000');
+    console.log('Droe server running on port 3000');
 });
 ```
 
@@ -339,7 +339,7 @@ export default {
         
         wasmModule.instance.exports.main();
         
-        return new Response('Roe program executed');
+        return new Response('Droe program executed');
     },
 };
 ```
@@ -387,7 +387,7 @@ export default {
 
 ### SIMD Operations (Future)
 
-Future Roe versions may leverage WASM SIMD:
+Future Droe versions may leverage WASM SIMD:
 
 ```wat
 (module
@@ -404,12 +404,12 @@ Future Roe versions may leverage WASM SIMD:
 
 ### Source Maps
 
-Future Roe versions will generate source maps:
+Future Droe versions will generate source maps:
 
 ```json
 {
   "version": 3,
-  "sources": ["main.roe"],
+  "sources": ["main.droe"],
   "names": ["main", "display", "count"],
   "mappings": "AAAA,aAAA,OAAO,CAAC,..."
 }
@@ -446,23 +446,23 @@ Modern browsers provide WASM debugging:
 
 ```bash
 # Optimize for size
-roe compile src/main.roe --optimize-size
+droe compile src/main.droe --optimize-size
 
 # Optimize for speed
-roe compile src/main.roe --optimize-speed
+droe compile src/main.droe --optimize-speed
 
 # Debug build with symbols
-roe compile src/main.roe --debug
+droe compile src/main.droe --debug
 ```
 
 ### Profile-Guided Optimization
 
 ```bash
 # Generate profile data
-roe run src/main.roe --profile
+droe run src/main.droe --profile
 
 # Use profile for optimization
-roe compile src/main.roe --use-profile profile.data
+droe compile src/main.droe --use-profile profile.data
 ```
 
 ### Manual Optimization Tips
@@ -477,12 +477,12 @@ roe compile src/main.roe --use-profile profile.data
 ### Interfacing with JavaScript
 
 ```javascript
-// Load and interact with Roe WASM module
-async function createRoeModule() {
-    const wasmModule = await loadRoeWasm();
+// Load and interact with Droe WASM module
+async function createDroeModule() {
+    const wasmModule = await loadDroeWasm();
     
     return {
-        // Call exported Roe functions
+        // Call exported Droe functions
         calculateTotal: wasmModule.instance.exports.calculate_total,
         processData: wasmModule.instance.exports.process_data,
         
@@ -501,26 +501,26 @@ async function createRoeModule() {
 
 ### Language Interoperability
 
-WebAssembly enables Roe to work with other WASM-compiled languages:
+WebAssembly enables Droe to work with other WASM-compiled languages:
 
 ```javascript
-// Combine Roe with Rust, C++, etc.
-const roelangModule = await loadRoeWasm();
+// Combine Droe with Rust, C++, etc.
+const ddroelangModule = await loadDroeWasm();
 const rustModule = await loadRustWasm();
 
 // Share memory between modules
 const sharedMemory = new WebAssembly.Memory({ initial: 10 });
 
 // Use results from one in another
-const roelangResult = roelangModule.calculate(data);
-const finalResult = rustModule.process(roelangResult);
+const ddroelangResult = ddroelangModule.calculate(data);
+const finalResult = rustModule.process(ddroelangResult);
 ```
 
 ## Best Practices
 
 ### 1. Memory Management
 
-```roe
+```droe
 // Good: Reuse variables
 set temp which is int to 0
 for each value in large_dataset
@@ -538,7 +538,7 @@ end for
 
 ### 2. Efficient Data Structures
 
-```roe
+```droe
 // Good: Use appropriate collection types
 set lookup which are group of text to unique_values  // O(1) lookup
 set ordered which are list of text to sorted_values  // Maintain order
@@ -550,7 +550,7 @@ set batch_size which is int to 100
 
 ### 3. Type Optimization
 
-```roe
+```droe
 // Good: Use appropriate numeric types
 set counter which is int to 0           // Integer for counting
 set percentage which is decimal to 0.0  // Decimal for precision
@@ -561,7 +561,7 @@ set is_ready which is flag to false     // Clear boolean logic
 
 ## Future WebAssembly Features
 
-Roe will evolve to support new WebAssembly features:
+Droe will evolve to support new WebAssembly features:
 
 - **Garbage Collection**: Automatic memory management
 - **Exception Handling**: Structured exception support
@@ -571,11 +571,11 @@ Roe will evolve to support new WebAssembly features:
 
 ## Next Steps
 
-Now that you understand WebAssembly in Roe:
+Now that you understand WebAssembly in Droe:
 
 - **[Debugging](/guide/debugging/)** - Debug WebAssembly modules
 - **[CLI Reference](/guide/cli/)** - Compilation and build commands
 - **[Performance Tips](/guide/performance/)** - Optimize WASM output
 - **[Deployment](/guide/deployment/)** - Deploy WASM applications
 
-WebAssembly provides Roe with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.
+WebAssembly provides Droe with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.

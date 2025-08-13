@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: CLI Reference
-description: Complete reference for the Roe command-line interface and development tools.
+description: Complete reference for the Droe command-line interface and development tools.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,41 +14,41 @@ next:
   url: /guide/webassembly/
 ---
 
-The Roe CLI (`roe`) is the primary tool for developing, compiling, and running Roe programs. This reference covers all available commands and options.
+The Droe CLI (`droe`) is the primary tool for developing, compiling, and running Droe programs. This reference covers all available commands and options.
 
 ## Installation and Setup
 
 ### Verify Installation
 
 ```bash
-roe --version
+droe --version
 ```
 
 ### Get Help
 
 ```bash
-roe --help
-roe -h
+droe --help
+droe -h
 ```
 
 ## Core Commands
 
-### `roe init` - Initialize Project
+### `droe init` - Initialize Project
 
-Create a new Roe project with the standard directory structure.
+Create a new Droe project with the standard directory structure.
 
 ```bash
 # Initialize in current directory
-roe init
+droe init
 
 # Initialize with custom name
-roe init --name "my-project"
+droe init --name "my-project"
 
 # Initialize with author
-roe init --author "Your Name"
+droe init --author "Your Name"
 
 # Initialize in specific directory
-roe init my-project-directory
+droe init my-project-directory
 ```
 
 **Options:**
@@ -60,28 +60,28 @@ roe init my-project-directory
 Creates the following structure:
 ```
 project/
-├── roeconfig.json
+├── droeconfig.json
 ├── src/
-│   └── main.roe
+│   └── main.droe
 └── build/
 ```
 
-### `roe compile` - Compile Source Files
+### `droe compile` - Compile Source Files
 
-Compile `.roe` files to WebAssembly format.
+Compile `.droe` files to WebAssembly format.
 
 ```bash
 # Compile specific file
-roe compile src/main.roe
+droe compile src/main.droe
 
 # Compile to specific output
-roe compile src/main.roe --output build/main.wat
+droe compile src/main.droe --output build/main.wat
 
 # Compile multiple files
-roe compile src/*.roe
+droe compile src/*.droe
 
 # Compile with verbose output
-roe compile src/main.roe --verbose
+droe compile src/main.droe --verbose
 ```
 
 **Options:**
@@ -93,28 +93,28 @@ roe compile src/main.roe --verbose
 **Examples:**
 ```bash
 # Basic compilation
-roe compile examples/src/01_display.roe
+droe compile examples/src/01_display.droe
 
 # Compile to WebAssembly binary
-roe compile src/main.roe --format wasm --output build/main.wasm
+droe compile src/main.droe --format wasm --output build/main.wasm
 
 # Watch mode for development
-roe compile src/main.roe --watch
+droe compile src/main.droe --watch
 ```
 
-### `roe run` - Compile and Execute
+### `droe run` - Compile and Execute
 
-Compile and immediately execute a Roe program.
+Compile and immediately execute a Droe program.
 
 ```bash
 # Run specific file
-roe run src/main.roe
+droe run src/main.droe
 
 # Run with arguments (future feature)
-roe run src/main.roe --args "arg1 arg2"
+droe run src/main.droe --args "arg1 arg2"
 
 # Run project main file
-roe run
+droe run
 ```
 
 **Options:**
@@ -125,28 +125,28 @@ roe run
 **Examples:**
 ```bash
 # Run a simple program
-roe run examples/src/01_display.roe
+droe run examples/src/01_display.droe
 
 # Run with debug information
-roe run src/main.roe --debug
+droe run src/main.droe --debug
 
 # Run main project file
-roe run
+droe run
 ```
 
-### `roe build` - Build Entire Project
+### `droe build` - Build Entire Project
 
-Build all source files in a project according to `roeconfig.json`.
+Build all source files in a project according to `droeconfig.json`.
 
 ```bash
 # Build entire project
-roe build
+droe build
 
 # Build with clean first
-roe build --clean
+droe build --clean
 
 # Build for production
-roe build --release
+droe build --release
 ```
 
 **Options:**
@@ -158,30 +158,30 @@ roe build --release
 **Examples:**
 ```bash
 # Standard build
-roe build
+droe build
 
 # Clean build
-roe build --clean
+droe build --clean
 
 # Production build
-roe build --release --clean
+droe build --release --clean
 ```
 
 ## Project Management Commands
 
-### `roe clean` - Clean Build Artifacts
+### `droe clean` - Clean Build Artifacts
 
 Remove generated build files and artifacts.
 
 ```bash
 # Clean build directory
-roe clean
+droe clean
 
 # Clean with confirmation
-roe clean --confirm
+droe clean --confirm
 
 # Clean specific patterns
-roe clean --pattern "*.wat"
+droe clean --pattern "*.wat"
 ```
 
 **Options:**
@@ -189,44 +189,44 @@ roe clean --pattern "*.wat"
 - `--pattern <pattern>` - Clean files matching pattern
 - `--dry-run` - Show what would be deleted without deleting
 
-### `roe info` - Project Information
+### `droe info` - Project Information
 
 Display information about the current project.
 
 ```bash
 # Show project info
-roe info
+droe info
 
 # Show detailed info
-roe info --detailed
+droe info --detailed
 
 # Show configuration
-roe info --config
+droe info --config
 ```
 
 **Example output:**
 ```
-Project: hello-roelang
+Project: hello-ddroelang
 Version: 1.0.0
 Source Directory: src/
 Build Directory: build/
-Main File: main.roe
+Main File: main.droe
 Files: 3 source files, 2 build artifacts
 ```
 
-### `roe validate` - Validate Project
+### `droe validate` - Validate Project
 
 Check project structure and configuration for issues.
 
 ```bash
 # Validate current project
-roe validate
+droe validate
 
 # Validate specific directory
-roe validate /path/to/project
+droe validate /path/to/project
 
 # Validate with fixes
-roe validate --fix
+droe validate --fix
 ```
 
 **Options:**
@@ -236,41 +236,41 @@ roe validate --fix
 
 ## Development Commands
 
-### `roe doctor` - System Diagnostics
+### `droe doctor` - System Diagnostics
 
 Check system setup and dependencies.
 
 ```bash
 # Run system diagnostics
-roe doctor
+droe doctor
 
 # Check specific component
-roe doctor --component compiler
+droe doctor --component compiler
 
 # Verbose diagnostics
-roe doctor --verbose
+droe doctor --verbose
 ```
 
 **Checks:**
-- Roe installation
+- Droe installation
 - Node.js availability
 - WebAssembly tools (wat2wasm)
 - Project configuration
 - File permissions
 
-### `roe test` - Run Tests
+### `droe test` - Run Tests
 
 Execute test files and validate programs.
 
 ```bash
 # Run all tests
-roe test
+droe test
 
 # Run specific test file
-roe test tests/test_variables.roe
+droe test tests/test_variables.droe
 
 # Run tests with coverage
-roe test --coverage
+droe test --coverage
 ```
 
 **Options:**
@@ -279,19 +279,19 @@ roe test --coverage
 - `--watch` - Watch for changes and re-run tests
 - `--pattern <pattern>` - Run tests matching pattern
 
-### `roe format` - Format Source Code
+### `droe format` - Format Source Code
 
-Format Roe source files according to style guidelines.
+Format Droe source files according to style guidelines.
 
 ```bash
 # Format all files
-roe format
+droe format
 
 # Format specific file
-roe format src/main.roe
+droe format src/main.droe
 
 # Check formatting without changes
-roe format --check
+droe format --check
 ```
 
 **Options:**
@@ -301,22 +301,22 @@ roe format --check
 
 ## Configuration Commands
 
-### `roe config` - Manage Configuration
+### `droe config` - Manage Configuration
 
-View and modify Roe configuration.
+View and modify Droe configuration.
 
 ```bash
 # Show all configuration
-roe config list
+droe config list
 
 # Get specific value
-roe config get editor.tabSize
+droe config get editor.tabSize
 
 # Set configuration value
-roe config set editor.tabSize 2
+droe config set editor.tabSize 2
 
 # Reset to defaults
-roe config reset
+droe config reset
 ```
 
 **Common Configuration Options:**
@@ -327,19 +327,19 @@ roe config reset
 
 ## Advanced Commands
 
-### `roe analyze` - Code Analysis
+### `droe analyze` - Code Analysis
 
 Analyze code for potential issues and improvements.
 
 ```bash
 # Analyze current project
-roe analyze
+droe analyze
 
 # Analyze specific file
-roe analyze src/main.roe
+droe analyze src/main.droe
 
 # Generate analysis report
-roe analyze --report analysis_report.json
+droe analyze --report analysis_report.json
 ```
 
 **Analysis Types:**
@@ -348,66 +348,66 @@ roe analyze --report analysis_report.json
 - Performance suggestions
 - Best practice violations
 
-### `roe profile` - Performance Profiling
+### `droe profile` - Performance Profiling
 
 Profile program execution for performance analysis.
 
 ```bash
 # Profile program execution
-roe profile src/main.roe
+droe profile src/main.droe
 
 # Profile with detailed output
-roe profile src/main.roe --detailed
+droe profile src/main.droe --detailed
 
 # Generate profiling report
-roe profile src/main.roe --report profile.json
+droe profile src/main.droe --report profile.json
 ```
 
-### `roe debug` - Debug Programs
+### `droe debug` - Debug Programs
 
 Launch programs in debug mode with debugging support.
 
 ```bash
 # Debug program
-roe debug src/main.roe
+droe debug src/main.droe
 
 # Debug with breakpoint
-roe debug src/main.roe --break line:10
+droe debug src/main.droe --break line:10
 
 # Debug with step-through
-roe debug src/main.roe --step
+droe debug src/main.droe --step
 ```
 
 ## Environment Commands
 
-### `roe env` - Environment Information
+### `droe env` - Environment Information
 
 Display environment and system information.
 
 ```bash
 # Show environment info
-roe env
+droe env
 
 # Show PATH information
-roe env --path
+droe env --path
 
 # Show all environment variables
-roe env --all
+droe env --all
 ```
 
-### `roe install` - Install Dependencies
+### `droe install` - Install Dependencies
 
-Install and manage Roe dependencies.
+Install and manage Droe dependencies.
 
 ```bash
 # Install project dependencies
-roe install
+droe install
 
 # Install specific package
-roe install package-name
+droe install package-name
 
 # Install development dependencies
-roe install --dev
+droe install --dev
 ```
 
 ## Command-Line Options
@@ -429,18 +429,18 @@ Many commands support different output formats:
 
 ```bash
 # JSON output
-roe info --format json
+droe info --format json
 
 # YAML output
-roe info --format yaml
+droe info --format yaml
 
 # Table output (default)
-roe info --format table
+droe info --format table
 ```
 
 ## Configuration File
 
-### `roeconfig.json`
+### `droeconfig.json`
 
 Project configuration file format:
 
@@ -448,12 +448,12 @@ Project configuration file format:
 {
   "name": "my-project",
   "version": "1.0.0",
-  "description": "My Roe project",
+  "description": "My Droe project",
   "author": "Your Name",
   "license": "MIT",
   "srcDir": "src",
   "buildDir": "build",
-  "main": "main.roe",
+  "main": "main.droe",
   "compiler": {
     "target": "wasm",
     "optimize": true,
@@ -464,13 +464,13 @@ Project configuration file format:
     "maxMemory": "128MB"
   },
   "dependencies": {
-    "roelang-std": "^1.0.0"
+    "ddroelang-std": "^1.0.0"
   },
   "scripts": {
-    "start": "roe run",
-    "build": "roe build --release",
-    "test": "roe test",
-    "clean": "roe clean"
+    "start": "droe run",
+    "build": "droe build --release",
+    "test": "droe test",
+    "clean": "droe clean"
   }
 }
 ```
@@ -494,7 +494,7 @@ Project configuration file format:
 
 ## Exit Codes
 
-The `roe` command uses standard exit codes:
+The `droe` command uses standard exit codes:
 
 | Code | Meaning |
 |------|---------|
@@ -512,54 +512,54 @@ The `roe` command uses standard exit codes:
 
 ```bash
 # Create new project
-mkdir my-roelang-app
-cd my-roelang-app
-roe init --name "my-roelang-app" --author "Your Name"
+mkdir my-ddroelang-app
+cd my-ddroelang-app
+droe init --name "my-ddroelang-app" --author "Your Name"
 
 # Create source file
-cat > src/main.roe << 'EOF'
-display "Hello, Roe!"
+cat > src/main.droe << 'EOF'
+display "Hello, Droe!"
 set name which is text to "World"
 display "Welcome to [name]!"
 EOF
 
 # Run the program
-roe run src/main.roe
+droe run src/main.droe
 
 # Build the project
-roe build
+droe build
 
 # Run tests (if any)
-roe test
+droe test
 
 # Clean up
-roe clean
+droe clean
 ```
 
 ### Compilation Pipeline
 
 ```bash
 # Compile to WebAssembly text format
-roe compile src/main.roe --output build/main.wat
+droe compile src/main.droe --output build/main.wat
 
 # Compile to WebAssembly binary
-roe compile src/main.roe --format wasm --output build/main.wasm
+droe compile src/main.droe --format wasm --output build/main.wasm
 
 # Run compiled WebAssembly
-node ~/.roelang/run.js build/main.wasm
+node ~/.ddroelang/run.js build/main.wasm
 ```
 
 ### Development with Watch Mode
 
 ```bash
 # Terminal 1: Watch and compile
-roe compile src/main.roe --watch
+droe compile src/main.droe --watch
 
 # Terminal 2: Run tests continuously
-roe test --watch
+droe test --watch
 
 # Terminal 3: Format on save
-roe format --watch
+droe format --watch
 ```
 
 ## Troubleshooting
@@ -568,60 +568,60 @@ roe format --watch
 
 #### Command Not Found
 ```bash
-# Check if roe is in PATH
-which roe
+# Check if droe is in PATH
+which droe
 echo $PATH
 
 # Reinstall or add to PATH
-export PATH="$HOME/.roelang:$PATH"
+export PATH="$HOME/.ddroelang:$PATH"
 ```
 
 #### Compilation Errors
 ```bash
 # Check syntax with verbose output
-roe compile src/main.roe --verbose
+droe compile src/main.droe --verbose
 
 # Validate project structure
-roe validate
+droe validate
 
 # Run system diagnostics
-roe doctor
+droe doctor
 ```
 
 #### Runtime Errors
 ```bash
 # Run with debug information
-roe run src/main.roe --debug --trace
+droe run src/main.droe --debug --trace
 
 # Check for system requirements
-roe doctor --component runtime
+droe doctor --component runtime
 ```
 
 ### Getting Help
 
 ```bash
 # General help
-roe --help
+droe --help
 
 # Command-specific help
-roe compile --help
-roe run --help
-roe build --help
+droe compile --help
+droe run --help
+droe build --help
 
 # Show examples
-roe --examples
+droe --examples
 
 # Show troubleshooting guide
-roe doctor --help
+droe doctor --help
 ```
 
 ## Next Steps
 
-Now that you understand the Roe CLI:
+Now that you understand the Droe CLI:
 
 - **[WebAssembly](/guide/webassembly/)** - Understanding compilation targets
 - **[Debugging](/guide/debugging/)** - Troubleshooting and debugging techniques
-- **[Project Structure](/guide/project-structure/)** - Organizing Roe projects
+- **[Project Structure](/guide/project-structure/)** - Organizing Droe projects
 - **[Installation](/guide/installation/)** - Setting up your development environment
 
-The Roe CLI provides powerful tools for developing, building, and managing Roe applications. Use these commands to streamline your development workflow and build robust applications.
+The Droe CLI provides powerful tools for developing, building, and managing Droe applications. Use these commands to streamline your development workflow and build robust applications.

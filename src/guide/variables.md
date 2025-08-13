@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Variables
-description: Learn how to declare, assign, and work with variables in Roe.
+description: Learn how to declare, assign, and work with variables in Droe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/strings/
 ---
 
-Variables are fundamental building blocks in Roe that store values for later use. Roe uses explicit, descriptive syntax for variable declarations that makes code self-documenting and easy to understand.
+Variables are fundamental building blocks in Droe that store values for later use. Droe uses explicit, descriptive syntax for variable declarations that makes code self-documenting and easy to understand.
 
 ## Variable Declaration
 
@@ -22,13 +22,13 @@ Variables are fundamental building blocks in Roe that store values for later use
 
 Variables are declared using the `set` keyword with explicit type declaration:
 
-```roe
+```droe
 set variable_name which is type to value
 ```
 
 ### Examples
 
-```roe
+```droe
 // Basic declarations
 set user_name which is text to "Alice"
 set user_age which is int to 28
@@ -37,14 +37,14 @@ set account_balance which is decimal to 1250.75
 
 // Collections
 set favorite_numbers which are list of int to [7, 13, 42]
-set programming_languages which are group of text to ["Python", "JavaScript", "Roe"]
+set programming_languages which are group of text to ["Python", "JavaScript", "Droe"]
 ```
 
 ## Type Declarations
 
 ### Primitive Types
 
-```roe
+```droe
 // Integer
 set count which is int to 100
 set negative_value which is int to -42
@@ -64,7 +64,7 @@ set is_hidden which is flag to false
 
 ### Collection Types
 
-```roe
+```droe
 // Lists (ordered collections)
 set scores which are list of int to [85, 92, 78, 95]
 set names which are list of text to ["Alice", "Bob", "Carol"]
@@ -85,7 +85,7 @@ set empty_group which are group of int to []
 
 Variables must be initialized when declared:
 
-```roe
+```droe
 set username which is text to "alice_smith"    // ✅ Valid: initialized with value
 set age which is int                           // ❌ Error: no initial value
 ```
@@ -94,7 +94,7 @@ set age which is int                           // ❌ Error: no initial value
 
 Variables can be reassigned to new values of the same type:
 
-```roe
+```droe
 set counter which is int to 0
 display counter           // Displays: 0
 
@@ -109,7 +109,7 @@ display counter           // Displays: 15
 
 Variables cannot change type after declaration:
 
-```roe
+```droe
 set value which is int to 42
 display value             // Displays: 42
 
@@ -130,7 +130,7 @@ set value to "hello"      // ❌ Error: cannot assign text to int variable
 
 ### Valid Names
 
-```roe
+```droe
 set user_name which is text to "Alice"         // ✅ snake_case
 set firstName which is text to "Bob"           // ✅ camelCase
 set MAX_RETRIES which is int to 3              // ✅ UPPER_CASE constants
@@ -140,7 +140,7 @@ set isValid which is flag to true             // ✅ boolean prefix
 
 ### Invalid Names
 
-```roe
+```droe
 set 123invalid which is int to 0               // ❌ starts with number
 set user-name which is text to "Alice"        // ❌ contains hyphen
 set for which is int to 10                    // ❌ reserved keyword
@@ -151,7 +151,7 @@ set user name which is text to "Alice"        // ❌ contains space
 
 #### Descriptive Names
 
-```roe
+```droe
 // Good: Clear, descriptive names
 set customer_email which is text to "customer@example.com"
 set total_order_amount which is decimal to 299.99
@@ -168,7 +168,7 @@ set flag1 which is flag to true                   // What does this flag represe
 
 Choose a naming style and stick with it:
 
-```roe
+```droe
 // Option 1: snake_case (recommended)
 set user_name which is text to "Alice"
 set order_total which is decimal to 150.00
@@ -184,7 +184,7 @@ set isOrderComplete which is flag to false
 
 Use descriptive prefixes for boolean variables:
 
-```roe
+```droe
 // Good boolean names
 set is_authenticated which is flag to false
 set has_permission which is flag to true
@@ -199,8 +199,8 @@ set was_successful which is flag to false
 
 Variables declared at the file level are available throughout that file:
 
-```roe
-// File: user_management.roe
+```droe
+// File: user_management.droe
 set current_user which is text to "alice"
 set session_timeout which is int to 3600
 
@@ -216,7 +216,7 @@ end when
 
 Variables declared inside blocks (like conditionals and loops) have limited scope:
 
-```roe
+```droe
 set global_counter which is int to 0
 
 when global_counter is equal to 0 then
@@ -231,7 +231,7 @@ display local_message           // ❌ Error: local_message not accessible here
 
 Variables inside modules are local to that module:
 
-```roe
+```droe
 module user_service
   set default_role which is text to "user"     // Module-scoped variable
   
@@ -247,7 +247,7 @@ display default_role            // ❌ Error: cannot access module variable dire
 
 ### Calculations
 
-```roe
+```droe
 set base_salary which is decimal to 50000.00
 set bonus_percentage which is decimal to 0.15
 set years_experience which is int to 5
@@ -264,7 +264,7 @@ display "Total Compensation: $[total_compensation]"
 
 ### String Operations
 
-```roe
+```droe
 set first_name which is text to "Alice"
 set last_name which is text to "Johnson"
 set middle_initial which is text to "M"
@@ -280,7 +280,7 @@ set formal_address to "Dear [full_name],"
 
 ### Collection Operations
 
-```roe
+```droe
 set product_prices which are list of decimal to [19.99, 29.50, 45.00, 12.75]
 set total_value which is decimal to 0.0
 set item_count which is int to 0
@@ -300,7 +300,7 @@ display "Average price: $[average_price]"
 
 Group related configuration at the top of files:
 
-```roe
+```droe
 // Configuration section
 set max_retries which is int to 3
 set timeout_seconds which is int to 30
@@ -316,7 +316,7 @@ end when
 
 ### Counter Variables
 
-```roe
+```droe
 set processed_items which is int to 0
 set error_count which is int to 0
 set success_count which is int to 0
@@ -341,7 +341,7 @@ display "Summary: [processed_items] processed, [success_count] successful, [erro
 
 ### State Variables
 
-```roe
+```droe
 set current_state which is text to "idle"
 set previous_state which is text to "unknown"
 set state_change_count which is int to 0
@@ -360,7 +360,7 @@ end action
 
 ### 1. Initialize at Declaration
 
-```roe
+```droe
 // Good: Always initialize
 set counter which is int to 0
 set message which is text to ""
@@ -372,7 +372,7 @@ set is_ready which is flag to false
 
 ### 2. Use Meaningful Names
 
-```roe
+```droe
 // Good: Self-documenting
 set customer_birth_date which is text to "1990-05-15"
 set order_processing_status which is text to "pending"
@@ -386,7 +386,7 @@ set max which is int to 5                   // max attempts
 
 ### 3. Group Related Variables
 
-```roe
+```droe
 // User information
 set user_id which is int to 12345
 set user_name which is text to "alice_smith"
@@ -402,7 +402,7 @@ set order_status which is text to "confirmed"
 
 ### 4. Use Constants for Fixed Values
 
-```roe
+```droe
 // Application constants
 set MAX_LOGIN_ATTEMPTS which is int to 3
 set SESSION_TIMEOUT_MINUTES which is int to 30
@@ -421,7 +421,7 @@ end when
 
 ### Accumulator Pattern
 
-```roe
+```droe
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set sum which is int to 0
 
@@ -434,7 +434,7 @@ display "Sum: [sum]"
 
 ### Counter Pattern
 
-```roe
+```droe
 set items which are list of text to ["apple", "banana", "cherry", "date"]
 set index which is int to 0
 
@@ -446,7 +446,7 @@ end for
 
 ### Flag Pattern
 
-```roe
+```droe
 set numbers which are list of int to [2, 4, 7, 8, 10]
 set found_odd which is flag to false
 
@@ -466,11 +466,11 @@ end when
 
 ## Next Steps
 
-Now that you understand variables in Roe:
+Now that you understand variables in Droe:
 
 - **[Strings & Interpolation](/guide/strings/)** - Working with text and string interpolation
 - **[Collections](/guide/collections/)** - Deep dive into lists and groups
 - **[Conditionals](/guide/conditionals/)** - Using variables in conditional logic
 - **[Loops](/guide/loops/)** - Iterating over variables and collections
 
-Variables are the foundation of data manipulation in Roe. Use them effectively with clear names, appropriate types, and consistent patterns to build maintainable programs.
+Variables are the foundation of data manipulation in Droe. Use them effectively with clear names, appropriate types, and consistent patterns to build maintainable programs.

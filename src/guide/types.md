@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Type System
-description: Understanding Roe's strong static type system and built-in data types.
+description: Understanding Droe's strong static type system and built-in data types.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,14 +14,14 @@ next:
   url: /guide/variables/
 ---
 
-Roe features a **strong static type system** that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Roe has a specific type that determines what operations can be performed on it.
+Droe features a **strong static type system** that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Droe has a specific type that determines what operations can be performed on it.
 
 ## Core Principles
 
 ### Static Typing
 Types are checked at compile time, not runtime:
 
-```roe
+```droe
 set name which is text to "Alice"      // ✅ Valid: text assigned to text
 set age which is int to 25             // ✅ Valid: int assigned to int
 set age which is int to "twenty-five"  // ❌ Error: text cannot be assigned to int
@@ -30,7 +30,7 @@ set age which is int to "twenty-five"  // ❌ Error: text cannot be assigned to 
 ### Type Safety
 Operations are only allowed between compatible types:
 
-```roe
+```droe
 set count which is int to 10
 set message which is text to "items"
 
@@ -42,7 +42,7 @@ display count + message  // ❌ Error: cannot add int and text
 ### Explicit Typing
 Types must be declared explicitly:
 
-```roe
+```droe
 set value which is int to 42       // ✅ Explicit type declaration
 set value to 42                    // ❌ Error: type must be specified
 ```
@@ -55,7 +55,7 @@ set value to 42                    // ❌ Error: type must be specified
 
 Whole numbers without decimal points:
 
-```roe
+```droe
 set count which is int to 42
 set negative which is int to -10
 set zero which is int to 0
@@ -65,7 +65,7 @@ set large which is int to 1000000
 **Range**: -2³¹ to 2³¹-1 (32-bit signed integers)
 
 **Operations**:
-```roe
+```droe
 set a which is int to 10
 set b which is int to 3
 
@@ -80,7 +80,7 @@ set remainder to a % b     // Modulo: 1
 
 Numbers with decimal places:
 
-```roe
+```droe
 set price which is decimal to 19.99
 set pi which is decimal to 3.14159
 set negative which is decimal to -5.5
@@ -90,7 +90,7 @@ set scientific which is decimal to 1.23e10
 **Precision**: 64-bit floating point (IEEE 754)
 
 **Operations**:
-```roe
+```droe
 set x which is decimal to 10.5
 set y which is decimal to 2.5
 
@@ -104,7 +104,7 @@ set quotient to x / y      // 4.2
 
 Sequences of characters:
 
-```roe
+```droe
 set name which is text to "Alice"
 set empty which is text to ""
 set multiline which is text to "Hello
@@ -113,7 +113,7 @@ set with_quotes which is text to "She said \"Hello\""
 ```
 
 **Operations**:
-```roe
+```droe
 set first which is text to "Hello"
 set second which is text to "World"
 
@@ -122,7 +122,7 @@ set length from run text.length with greeting
 ```
 
 **Escape Sequences**:
-```roe
+```droe
 set newline which is text to "Line 1\nLine 2"
 set tab which is text to "Name:\tValue"
 set backslash which is text to "Path: C:\\Users"
@@ -133,14 +133,14 @@ set quote which is text to "He said \"Hi\""
 
 True or false values:
 
-```roe
+```droe
 set is_active which is flag to true
 set is_hidden which is flag to false
 set is_ready which is flag to false
 ```
 
 **Operations**:
-```roe
+```droe
 set a which is flag to true
 set b which is flag to false
 
@@ -155,7 +155,7 @@ set not_result to not a          // false
 
 Ordered collections of the same type:
 
-```roe
+```droe
 // Lists of different types
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set names which are list of text to ["Alice", "Bob", "Carol"]
@@ -168,7 +168,7 @@ set empty_names which are list of text to []
 ```
 
 **Operations**:
-```roe
+```droe
 set scores which are list of int to [85, 92, 78, 95]
 
 // Iteration
@@ -184,7 +184,7 @@ set first_score from run list.get with scores, 0
 
 Unordered collections with unique values:
 
-```roe
+```droe
 set unique_numbers which are group of int to [1, 2, 3, 2, 1]  // {1, 2, 3}
 set languages which are group of text to ["Python", "Java", "Python"]  // {"Python", "Java"}
 ```
@@ -195,7 +195,7 @@ set languages which are group of text to ["Python", "Java", "Python"]  // {"Pyth
 
 Some conversions happen automatically:
 
-```roe
+```droe
 set whole which is int to 42
 set fractional which is decimal to whole    // int → decimal (safe)
 ```
@@ -204,7 +204,7 @@ set fractional which is decimal to whole    // int → decimal (safe)
 
 Use built-in conversion functions:
 
-```roe
+```droe
 set number which is int to 42
 set text_number from run int.to_text with number          // "42"
 set decimal_number from run int.to_decimal with number    // 42.0
@@ -223,7 +223,7 @@ set flag_text from run flag.to_text with flag_value      // "true"
 
 Types are validated when you compile:
 
-```roe
+```droe
 set age which is int to 25
 set name which is text to "Alice"
 
@@ -240,7 +240,7 @@ end when
 
 Operations require compatible types:
 
-```roe
+```droe
 // Arithmetic - requires numeric types
 set a which is int to 10
 set b which is int to 5
@@ -269,7 +269,7 @@ set both to is_ready and is_active   // ✅ Valid: flag and flag
 
 Define your own structured types:
 
-```roe
+```droe
 data Person
   name is text
   age is int
@@ -287,7 +287,7 @@ end data
 
 Actions can specify parameter and return types:
 
-```roe
+```droe
 module math_utils
   action add with a which is int, b which is int gives int
     give a + b
@@ -307,7 +307,7 @@ end module
 
 Collections are strongly typed:
 
-```roe
+```droe
 set numbers which are list of int to [1, 2, 3]
 set texts which are list of text to ["a", "b", "c"]
 
@@ -317,9 +317,9 @@ set texts which are list of text to ["a", "b", "c"]
 
 ## Type Inference Context
 
-While types must be explicitly declared for variables, Roe can infer types in expressions:
+While types must be explicitly declared for variables, Droe can infer types in expressions:
 
-```roe
+```droe
 set base_price which is decimal to 100.0
 set tax_rate which is decimal to 0.08
 
@@ -331,7 +331,7 @@ set total_price to base_price + (base_price * tax_rate)  // decimal inferred
 
 ### Input Validation
 
-```roe
+```droe
 module validation
   action is_valid_email with email which is text gives flag
     // Email validation logic
@@ -355,7 +355,7 @@ end when
 
 ### Type-Safe Calculations
 
-```roe
+```droe
 module finance
   action calculate_tax with amount which is decimal, rate which is decimal gives decimal
     give amount * rate
@@ -378,7 +378,7 @@ display "Total: " + finance.format_money with total
 
 ### Collection Processing
 
-```roe
+```droe
 set scores which are list of int to [85, 92, 78, 95, 88]
 set total which is int to 0
 set count which is int to 0
@@ -396,7 +396,7 @@ display "Average score: [average]"
 
 ### 1. Choose Appropriate Types
 
-```roe
+```droe
 // Good: Use specific types
 set user_id which is int to 12345
 set username which is text to "alice_smith"
@@ -410,7 +410,7 @@ set account_balance which is text to "1250.75" // Loses arithmetic operations
 
 ### 2. Use Collections Appropriately
 
-```roe
+```droe
 // Good: Homogeneous collections
 set student_grades which are list of int to [85, 92, 78, 95]
 set employee_names which are list of text to ["Alice", "Bob", "Carol"]
@@ -421,7 +421,7 @@ set programming_languages which are group of text to ["Python", "Java", "JavaScr
 
 ### 3. Validate Input Types
 
-```roe
+```droe
 module input_validation
   action validate_age with age which is int gives flag
     give age >= 0 and age <= 150
@@ -436,7 +436,7 @@ end module
 
 ### 4. Use Type-Safe APIs
 
-```roe
+```droe
 module user_service
   action create_user with name which is text, age which is int, email which is text gives flag
     when age is less than 0 or age is greater than 150 then
@@ -451,9 +451,9 @@ end module
 
 ## Error Messages
 
-Roe provides clear error messages for type mismatches:
+Droe provides clear error messages for type mismatches:
 
-```roe
+```droe
 set count which is int to "five"
 // Error: Type mismatch: expected 'int', got 'text'
 
@@ -468,11 +468,11 @@ end action
 
 ## Next Steps
 
-Now that you understand Roe's type system:
+Now that you understand Droe's type system:
 
 - **[Variables](/guide/variables/)** - Learn about variable declaration and scope
 - **[Strings](/guide/strings/)** - Deep dive into string operations and interpolation
 - **[Collections](/guide/collections/)** - Working with lists and groups
 - **[Data Structures](/guide/data-structures/)** - Creating custom data types
 
-Roe's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.
+Droe's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.

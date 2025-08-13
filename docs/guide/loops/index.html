@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loops | Roe - Unified Programming System</title>
-  <meta name="description" content="Master iteration and repetitive tasks with Roe&#39;s for-each loops.">
+  <title>Loops | Droe</title>
+  <meta name="description" content="Master iteration and repetitive tasks with Droe&#39;s for-each loops.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,16 +16,16 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Loops | Roe">
-  <meta property="og:description" content="Master iteration and repetitive tasks with Roe&#39;s for-each loops.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/loops/">
-  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  <meta property="og:title" content="Loops | Droe">
+  <meta property="og:description" content="Master iteration and repetitive tasks with Droe&#39;s for-each loops.">
+  <meta property="og:url" content="https://droe-lang.dev/guide/loops/">
+  <meta property="og:image" content="https://droe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Loops | Roe">
-  <meta name="twitter:description" content="Master iteration and repetitive tasks with Roe&#39;s for-each loops.">
-  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+  <meta name="twitter:title" content="Loops | Droe">
+  <meta name="twitter:description" content="Master iteration and repetitive tasks with Droe&#39;s for-each loops.">
+  <meta name="twitter:image" content="https://droe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
@@ -113,16 +113,16 @@
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span>Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span>Droe</span>
         </a>
       </div>
       
       <!-- Navigation Links -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
           <span class="sr-only">GitHub</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
@@ -150,8 +150,8 @@
     <div id="mobile-menu" class="md:hidden hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
       </div>
     </div>
   </div>
@@ -161,15 +161,15 @@
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
           <h1>Loops</h1>
-          <p>Loops allow you to repeat operations over collections or perform repetitive tasks efficiently. Roe provides intuitive <code>for each</code> loops that work naturally with collections.</p>
+          <p>Loops allow you to repeat operations over collections or perform repetitive tasks efficiently. Droe provides intuitive <code>for each</code> loops that work naturally with collections.</p>
 <h2>For-Each Loop Syntax</h2>
 <h3>Basic Structure</h3>
-<pre><code class="language-roe">for each item in collection
+<pre><code class="language-droe">for each item in collection
   // Process each item
 end for
 </code></pre>
 <h3>Simple Examples</h3>
-<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3, 4, 5]
+<pre><code class="language-droe">set numbers which are list of int to [1, 2, 3, 4, 5]
 
 display &quot;Counting:&quot;
 for each number in numbers
@@ -178,7 +178,7 @@ end for
 </code></pre>
 <h2>Working with Different Collection Types</h2>
 <h3>Lists of Different Types</h3>
-<pre><code class="language-roe">// Text lists
+<pre><code class="language-droe">// Text lists
 set fruits which are list of text to [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]
 for each fruit in fruits
   display &quot;I like [fruit]s! 🍎&quot;
@@ -197,7 +197,7 @@ for each setting in settings
 end for
 </code></pre>
 <h3>Groups (Unique Collections)</h3>
-<pre><code class="language-roe">set unique_categories which are group of text to [&quot;work&quot;, &quot;personal&quot;, &quot;work&quot;, &quot;health&quot;]
+<pre><code class="language-droe">set unique_categories which are group of text to [&quot;work&quot;, &quot;personal&quot;, &quot;work&quot;, &quot;health&quot;]
 
 display &quot;Available categories:&quot;
 for each category in unique_categories
@@ -207,7 +207,7 @@ end for
 </code></pre>
 <h2>Processing and Calculations</h2>
 <h3>Accumulation Pattern</h3>
-<pre><code class="language-roe">set daily_sales which are list of decimal to [150.25, 200.50, 175.75, 300.00, 225.25]
+<pre><code class="language-droe">set daily_sales which are list of decimal to [150.25, 200.50, 175.75, 300.00, 225.25]
 set total_sales which is decimal to 0.0
 set day_count which is int to 0
 
@@ -223,7 +223,7 @@ display &quot;Total Sales: $[total_sales]&quot;
 display &quot;Average Daily Sales: $[average_daily_sales]&quot;
 </code></pre>
 <h3>Finding Maximum and Minimum</h3>
-<pre><code class="language-roe">set test_scores which are list of int to [85, 92, 78, 95, 88, 76, 94]
+<pre><code class="language-droe">set test_scores which are list of int to [85, 92, 78, 95, 88, 76, 94]
 set highest_score which is int to 0
 set lowest_score which is int to 100
 set total_score which is int to 0
@@ -256,7 +256,7 @@ display &quot;Class Average: [class_average]%&quot;
 </code></pre>
 <h2>Conditional Processing in Loops</h2>
 <h3>Filtering Data</h3>
-<pre><code class="language-roe">set all_temperatures which are list of decimal to [15.5, 25.2, 32.1, 18.7, 28.9, 35.4, 22.3]
+<pre><code class="language-droe">set all_temperatures which are list of decimal to [15.5, 25.2, 32.1, 18.7, 28.9, 35.4, 22.3]
 set hot_days which is int to 0
 set cold_days which is int to 0
 set pleasant_days which is int to 0
@@ -283,7 +283,7 @@ display &quot;&quot;
 display &quot;Summary: [hot_days] hot, [pleasant_days] pleasant, [cold_days] cold days&quot;
 </code></pre>
 <h3>Validation and Error Handling</h3>
-<pre><code class="language-roe">set user_emails which are list of text to [&quot;alice@example.com&quot;, &quot;bob@invalid&quot;, &quot;carol@test.org&quot;, &quot;&quot;, &quot;dave@company.com&quot;]
+<pre><code class="language-droe">set user_emails which are list of text to [&quot;alice@example.com&quot;, &quot;bob@invalid&quot;, &quot;carol@test.org&quot;, &quot;&quot;, &quot;dave@company.com&quot;]
 set valid_emails which is int to 0
 set invalid_emails which is int to 0
 
@@ -310,7 +310,7 @@ display &quot;Valid: [valid_emails], Invalid: [invalid_emails]&quot;
 </code></pre>
 <h2>Advanced Loop Patterns</h2>
 <h3>Multi-Collection Processing</h3>
-<pre><code class="language-roe">set product_names which are list of text to [&quot;Laptop&quot;, &quot;Mouse&quot;, &quot;Keyboard&quot;, &quot;Monitor&quot;]
+<pre><code class="language-droe">set product_names which are list of text to [&quot;Laptop&quot;, &quot;Mouse&quot;, &quot;Keyboard&quot;, &quot;Monitor&quot;]
 set product_prices which are list of decimal to [999.99, 25.50, 75.00, 299.99]
 set product_stock which are list of int to [5, 15, 8, 3]
 
@@ -340,7 +340,7 @@ display &quot;&quot;
 display &quot;Low stock items: [low_stock_items]&quot;
 </code></pre>
 <h3>Nested Processing</h3>
-<pre><code class="language-roe">set departments which are list of text to [&quot;Sales&quot;, &quot;Engineering&quot;, &quot;Marketing&quot;]
+<pre><code class="language-droe">set departments which are list of text to [&quot;Sales&quot;, &quot;Engineering&quot;, &quot;Marketing&quot;]
 set department_scores which are list of int to [85, 92, 78]
 
 set dept_index which is int to 0
@@ -375,7 +375,7 @@ display &quot;Company Average: [company_average]%&quot;
 </code></pre>
 <h2>Practical Applications</h2>
 <h3>Order Processing System</h3>
-<pre><code class="language-roe">set order_ids which are list of int to [1001, 1002, 1003, 1004, 1005]
+<pre><code class="language-droe">set order_ids which are list of int to [1001, 1002, 1003, 1004, 1005]
 set order_amounts which are list of decimal to [150.00, 75.50, 300.25, 45.00, 200.75]
 
 set processed_orders which is int to 0
@@ -403,7 +403,7 @@ display &quot;Order Processing Complete:&quot;
 display &quot;Processed: [processed_orders] orders&quot;
 </code></pre>
 <h3>Inventory Management</h3>
-<pre><code class="language-roe">set item_codes which are list of text to [&quot;SKU001&quot;, &quot;SKU002&quot;, &quot;SKU003&quot;, &quot;SKU004&quot;]
+<pre><code class="language-droe">set item_codes which are list of text to [&quot;SKU001&quot;, &quot;SKU002&quot;, &quot;SKU003&quot;, &quot;SKU004&quot;]
 set stock_levels which are list of int to [25, 3, 15, 0]
 set reorder_points which are list of int to [10, 5, 12, 8]
 
@@ -441,7 +441,7 @@ display &quot;Need reorder: [reorder_needed] items&quot;
 display &quot;Adequate stock: [adequate_stock] items&quot;
 </code></pre>
 <h3>Grade Processing</h3>
-<pre><code class="language-roe">set student_names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;, &quot;David&quot;, &quot;Eve&quot;]
+<pre><code class="language-droe">set student_names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;, &quot;David&quot;, &quot;Eve&quot;]
 set assignment_scores which are list of int to [85, 92, 78, 95, 88]
 
 set total_points which is int to 0
@@ -492,7 +492,7 @@ display &quot;Class Average: [class_average]%&quot;
 </code></pre>
 <h2>Loop Best Practices</h2>
 <h3>1. Use Descriptive Variable Names</h3>
-<pre><code class="language-roe">// Good: Clear iteration variable names
+<pre><code class="language-droe">// Good: Clear iteration variable names
 set customer_emails which are list of text to [&quot;user1@example.com&quot;, &quot;user2@example.com&quot;]
 
 for each email in customer_emails
@@ -505,7 +505,7 @@ for each item in customer_emails
 end for
 </code></pre>
 <h3>2. Initialize Accumulator Variables</h3>
-<pre><code class="language-roe">// Good: Initialize accumulators before loop
+<pre><code class="language-droe">// Good: Initialize accumulators before loop
 set total_amount which is decimal to 0.0
 set item_count which is int to 0
 
@@ -517,7 +517,7 @@ for each price in prices
 end for
 </code></pre>
 <h3>3. Use Conditionals for Complex Logic</h3>
-<pre><code class="language-roe">set order_amounts which are list of decimal to [25.00, 150.00, 75.50, 300.00]
+<pre><code class="language-droe">set order_amounts which are list of decimal to [25.00, 150.00, 75.50, 300.00]
 set small_orders which is int to 0
 set medium_orders which is int to 0
 set large_orders which is int to 0
@@ -537,7 +537,7 @@ for each amount in order_amounts
 end for
 </code></pre>
 <h3>4. Provide Progress Feedback</h3>
-<pre><code class="language-roe">set large_dataset which are list of int to [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+<pre><code class="language-droe">set large_dataset which are list of int to [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 set processed_count which is int to 0
 set total_items which is int to 10
 
@@ -558,7 +558,7 @@ display &quot;✅ All items processed successfully!&quot;
 </code></pre>
 <h2>Common Loop Patterns</h2>
 <h3>Counter Pattern</h3>
-<pre><code class="language-roe">set items which are list of text to [&quot;item1&quot;, &quot;item2&quot;, &quot;item3&quot;]
+<pre><code class="language-droe">set items which are list of text to [&quot;item1&quot;, &quot;item2&quot;, &quot;item3&quot;]
 set counter which is int to 0
 
 for each item in items
@@ -567,7 +567,7 @@ for each item in items
 end for
 </code></pre>
 <h3>Accumulator Pattern</h3>
-<pre><code class="language-roe">set values which are list of int to [10, 20, 30, 40]
+<pre><code class="language-droe">set values which are list of int to [10, 20, 30, 40]
 set sum which is int to 0
 
 for each value in values
@@ -577,7 +577,7 @@ end for
 display &quot;Total: [sum]&quot;
 </code></pre>
 <h3>Search Pattern</h3>
-<pre><code class="language-roe">set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;, &quot;David&quot;]
+<pre><code class="language-droe">set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;, &quot;David&quot;]
 set target_name which is text to &quot;Carol&quot;
 set found which is flag to false
 
@@ -593,7 +593,7 @@ when not found then
 end when
 </code></pre>
 <h3>Validation Pattern</h3>
-<pre><code class="language-roe">set inputs which are list of text to [&quot;valid&quot;, &quot;&quot;, &quot;also_valid&quot;, &quot;test&quot;]
+<pre><code class="language-droe">set inputs which are list of text to [&quot;valid&quot;, &quot;&quot;, &quot;also_valid&quot;, &quot;test&quot;]
 set valid_count which is int to 0
 set invalid_count which is int to 0
 
@@ -608,7 +608,7 @@ end for
 display &quot;Valid: [valid_count], Invalid: [invalid_count]&quot;
 </code></pre>
 <h2>Next Steps</h2>
-<p>Now that you understand loops in Roe:</p>
+<p>Now that you understand loops in Droe:</p>
 <ul>
 <li><strong><a href="/guide/modules/">Modules</a></strong> - Organize loop logic in reusable modules</li>
 <li><strong><a href="/guide/actions/">Actions</a></strong> - Create functions that process collections</li>
@@ -626,8 +626,8 @@ display &quot;Valid: [valid_count], Invalid: [invalid_count]&quot;
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="md:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Droe</span>
         </div>
         <p class="text-gray-600 max-w-md">
           A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
@@ -638,21 +638,21 @@ display &quot;Valid: [valid_count], Invalid: [invalid_count]&quot;
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
         <ul class="mt-4 space-y-4">
           <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/roe-lang/roe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
         </ul>
       </div>
       
       <div>
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
         <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
         </ul>
       </div>
     </div>
     <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
     </div>
   </div>
 </footer>
@@ -694,6 +694,81 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
       });
     }
+
+    // Add copy buttons to all code blocks
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach((codeBlock) => {
+      const pre = codeBlock.parentElement;
+      pre.style.position = 'relative';
+      
+      const button = document.createElement('button');
+      button.className = 'copy-btn';
+      button.innerHTML = `
+        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg class="check-icon" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      `;
+      button.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s, background-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #6b7280;
+      `;
+      
+      pre.appendChild(button);
+      
+      // Show button on hover
+      pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+      });
+      
+      pre.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('copied')) {
+          button.style.opacity = '0';
+        }
+      });
+      
+      button.addEventListener('click', async () => {
+        const code = codeBlock.textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          // Show success state
+          button.classList.add('copied');
+          button.style.background = '#10b981';
+          button.style.borderColor = '#10b981';
+          button.style.color = 'white';
+          button.querySelector('.copy-icon').style.display = 'none';
+          button.querySelector('.check-icon').style.display = 'block';
+          
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.style.background = 'rgba(255, 255, 255, 0.9)';
+            button.style.borderColor = '#e5e7eb';
+            button.style.color = '#6b7280';
+            button.querySelector('.copy-icon').style.display = 'block';
+            button.querySelector('.check-icon').style.display = 'none';
+            button.style.opacity = '0';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
   });
 </script>
 </body>

@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Database DSL
-description: Define data models and perform database operations with Roelang's built-in database DSL.
+description: Define data models and perform database operations with Ddroelang's built-in database DSL.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/api-endpoints/
 ---
 
-Roelang provides a native Database DSL for defining data models and performing database operations with automatic ORM generation for target frameworks.
+Ddroelang provides a native Database DSL for defining data models and performing database operations with automatic ORM generation for target frameworks.
 
 ## Data Definitions with Annotations
 
 Define data structures with field annotations for database schema generation:
 
-```roe
+```droe
 data User
     id is text key auto                    // Primary key with auto-generation
     name is text required                   // Required field
@@ -55,7 +55,7 @@ end data
 
 ### Create (INSERT)
 
-```roe
+```droe
 // Create new record
 db create User with name is "Alice", email is "alice@example.com", age is 25
 
@@ -68,7 +68,7 @@ db create User from new_user
 
 ### Read (SELECT)
 
-```roe
+```droe
 // Find single record
 set user from db find User where id equals "user123"
 
@@ -84,7 +84,7 @@ set adult_users from db find all User where age is greater than 18
 
 ### Update
 
-```roe
+```droe
 // Update single record
 db update User where id equals "user123" set name is "Alice Smith", age is 26
 
@@ -96,7 +96,7 @@ db update User where id equals user_id set name is new_name
 
 ### Delete
 
-```roe
+```droe
 // Delete single record
 db delete User where id equals "user123"
 
@@ -106,17 +106,17 @@ db delete User where active equals false and age is less than 18
 
 ## Complete Database Example
 
-**roeconfig.json:**
+**droeconfig.json:**
 ```json
 {
-    "target": "roe",
+    "target": "droe",
     "framework": "axum",
     "database": {"type": "postgres"}
 }
 ```
 
-**src/user_management.roe:**
-```roe
+**src/user_management.droe:**
+```droe
 module user_management
 
     // Define User entity
@@ -165,11 +165,11 @@ end module
 
 ## Database Configuration
 
-Configure database connection in `roeconfig.json`:
+Configure database connection in `droeconfig.json`:
 
 ```json
 {
-    "target": "roe",
+    "target": "droe",
     "framework": "axum",
     "database": {
         "type": "postgres",
@@ -188,7 +188,7 @@ Configure database connection in `roeconfig.json`:
 
 ## Database Type Mapping
 
-| Roelang Type | PostgreSQL | MySQL | SQLite | Notes |
+| Ddroelang Type | PostgreSQL | MySQL | SQLite | Notes |
 |--------------|------------|--------|---------|-------|
 | `text` | `TEXT` | `TEXT` | `TEXT` | Variable length string |
 | `int` | `INTEGER` | `INT` | `INTEGER` | 32-bit signed integer |
@@ -235,7 +235,7 @@ pub async fn create_user(
 
 ### Relationships
 
-```roe
+```droe
 data User
     id is text key auto
     name is text required
@@ -254,7 +254,7 @@ set posts_with_authors from db find all Post join User on Post.author_id equals 
 
 ### Indexes
 
-```roe
+```droe
 data User
     id is text key auto
     email is text required unique index
@@ -265,7 +265,7 @@ end data
 
 ### Transactions
 
-```roe
+```droe
 action transfer_funds with from_user which is text, to_user which is text, amount which is decimal
     db begin transaction
     
@@ -280,7 +280,7 @@ end action
 
 ### 1. Use Appropriate Field Annotations
 
-```roe
+```droe
 // Good: Clear field constraints
 data User
     id is text key auto
@@ -300,7 +300,7 @@ end data
 
 ### 2. Handle Empty Results
 
-```roe
+```droe
 // Good: Check for empty results
 set user from db find User where id equals user_id
 when user is empty then
@@ -317,7 +317,7 @@ end when
 
 ### 3. Use Parameterized Queries
 
-```roe
+```droe
 // Good: Use variables for conditions
 action find_user_by_email with email which is text gives User
     set user from db find User where email equals email
@@ -335,7 +335,7 @@ end action
 
 Database schema changes are handled automatically when using framework targets:
 
-```roe
+```droe
 // Adding new field
 data User
     id is text key auto
@@ -354,4 +354,4 @@ The framework adapter generates appropriate migration files for schema updates.
 - **[Framework Support](/guide/frameworks/)** - Understanding framework-specific database generation
 - **[Deployment](/guide/deployment/)** - Production database configuration
 
-Database operations in Roelang provide a clean, type-safe way to work with data while generating efficient framework-specific code.
+Database operations in Ddroelang provide a clean, type-safe way to work with data while generating efficient framework-specific code.

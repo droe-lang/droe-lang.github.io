@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Installation
-description: Install Roe on your system and set up your development environment.
+description: Install Droe on your system and set up your development environment.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -18,16 +18,16 @@ next:
 
 ### GUI Installer (Recommended)
 
-The easiest way to install Roe on macOS is using our graphical installer:
+The easiest way to install Droe on macOS is using our graphical installer:
 
-1. **Download** the latest DMG from [GitHub Releases](https://github.com/roe-lang/roe/releases)
+1. **Download** the latest DMG from [GitHub Releases](https://github.com/droe-lang/droe/releases)
 2. **Mount** the DMG file by double-clicking it
-3. **Drag** the Roe Installer to your Applications folder
+3. **Drag** the Droe Installer to your Applications folder
 4. **Run** the installer and follow the prompts
 
 The installer will:
-- Install Roe tools to `~/.roelang/`
-- Add Roe to your PATH
+- Install Droe tools to `~/.ddroelang/`
+- Add Droe to your PATH
 - Configure your shell (bash, zsh, fish)
 
 ### Command Line Installation
@@ -35,10 +35,10 @@ The installer will:
 Alternatively, install via the command line:
 
 ```bash
-curl -sSL https://roe-lang.dev/install | sh
+curl -sSL https://droe-lang.dev/install | sh
 ```
 
-This script will download and install the latest version of Roe.
+This script will download and install the latest version of Droe.
 
 ## Manual Installation
 
@@ -55,13 +55,13 @@ Ensure you have the following installed:
   brew install wabt
   ```
 
-### Install Roe
+### Install Droe
 
 1. **Download** the latest release
 2. **Extract** to your preferred location
 3. **Add to PATH** by adding this to your shell profile:
    ```bash
-   export PATH="$HOME/.roelang:$PATH"
+   export PATH="$HOME/.ddroelang:$PATH"
    ```
 4. **Reload** your shell or run `source ~/.bashrc` (or `~/.zshrc`)
 
@@ -70,68 +70,68 @@ Ensure you have the following installed:
 Test your installation:
 
 ```bash
-# Check Roe version
-roe --version
+# Check Droe version
+droe --version
 
 # Create a test file
-echo 'display "Hello, Roe!"' > test.roe
+echo 'display "Hello, Droe!"' > test.droe
 
 # Run the test
-roe run test.roe
+droe run test.droe
 ```
 
 You should see:
 ```
-Hello, Roe!
+Hello, Droe!
 ```
 
 ## Development Environment Setup
 
 ### IDE Support
 
-While Roe works with any text editor, here are some recommendations:
+While Droe works with any text editor, here are some recommendations:
 
 #### Visual Studio Code
-- **Syntax highlighting**: Install the Roe extension (coming soon)
-- **File associations**: Add `.roe` files to your settings
+- **Syntax highlighting**: Install the Droe extension (coming soon)
+- **File associations**: Add `.droe` files to your settings
 
 #### Vim/Neovim
-- **Syntax highlighting**: Available in our [GitHub repository](https://github.com/roe-lang/roe/tree/main/editor-support/vim)
+- **Syntax highlighting**: Available in our [GitHub repository](https://github.com/droe-lang/droe/tree/main/editor-support/vim)
 
 #### Emacs
-- **Major mode**: Available in our [GitHub repository](https://github.com/roe-lang/roe/tree/main/editor-support/emacs)
+- **Major mode**: Available in our [GitHub repository](https://github.com/droe-lang/droe/tree/main/editor-support/emacs)
 
 ### Shell Completion
 
-Enable tab completion for the `roe` command:
+Enable tab completion for the `droe` command:
 
 ::: code-group
 ```bash [Bash]
 # Add to ~/.bashrc
-eval "$(roe completion bash)"
+eval "$(droe completion bash)"
 ```
 
 ```zsh [Zsh]
 # Add to ~/.zshrc
-eval "$(roe completion zsh)"
+eval "$(droe completion zsh)"
 ```
 
 ```fish [Fish]
 # Add to ~/.config/fish/config.fish
-roe completion fish | source
+droe completion fish | source
 ```
 :::
 
 ## Project Structure
 
-Roe projects follow a simple structure:
+Droe projects follow a simple structure:
 
 ```
 my-project/
-├── roeconfig.json     # Project configuration
-├── src/              # Source files (.roe)
-│   ├── main.roe
-│   └── utils.roe
+├── droeconfig.json     # Project configuration
+├── src/              # Source files (.droe)
+│   ├── main.droe
+│   └── utils.droe
 └── build/            # Compiled output
     ├── main.wat      # WebAssembly text
     ├── main.wasm     # WebAssembly binary
@@ -143,10 +143,10 @@ Initialize a new project:
 ```bash
 mkdir my-project
 cd my-project
-roe init
+droe init
 ```
 
-This creates the basic structure and `roeconfig.json`:
+This creates the basic structure and `droeconfig.json`:
 
 ```json
 {
@@ -154,7 +154,7 @@ This creates the basic structure and `roeconfig.json`:
   "version": "1.0.0",
   "srcDir": "src",
   "buildDir": "build",
-  "main": "main.roe"
+  "main": "main.droe"
 }
 ```
 
@@ -162,10 +162,10 @@ This creates the basic structure and `roeconfig.json`:
 
 ### Common Issues
 
-#### `roe: command not found`
-- **Solution**: Ensure `~/.roelang` is in your PATH
+#### `droe: command not found`
+- **Solution**: Ensure `~/.ddroelang` is in your PATH
 - **Check**: Run `echo $PATH` and verify the directory is listed
-- **Fix**: Add `export PATH="$HOME/.roelang:$PATH"` to your shell profile
+- **Fix**: Add `export PATH="$HOME/.ddroelang:$PATH"` to your shell profile
 
 #### `wat2wasm: command not found`
 - **Solution**: Install the WebAssembly Binary Toolkit
@@ -174,28 +174,28 @@ This creates the basic structure and `roeconfig.json`:
 
 #### `node: command not found`
 - **Solution**: Install Node.js from [nodejs.org](https://nodejs.org/)
-- **Version**: Roe requires Node.js v16 or later
+- **Version**: Droe requires Node.js v16 or later
 
 #### Permission denied errors
 - **Solution**: The installer might need to modify shell configuration files
-- **Fix**: Run `chmod +x ~/.roelang/roe` to ensure the executable has correct permissions
+- **Fix**: Run `chmod +x ~/.ddroelang/droe` to ensure the executable has correct permissions
 
 ### Getting Help
 
 Still having issues? Here's how to get help:
 
-1. **Check logs**: Installation logs are saved to `~/.roelang/install.log`
+1. **Check logs**: Installation logs are saved to `~/.ddroelang/install.log`
 2. **GitHub Issues**: Search existing issues or create a new one
 3. **Discussions**: Ask questions in our GitHub Discussions
-4. **Debug info**: Run `roe doctor` for system diagnostic information
+4. **Debug info**: Run `droe doctor` for system diagnostic information
 
 ## Next Steps
 
-Now that Roe is installed, let's create your first project:
+Now that Droe is installed, let's create your first project:
 
-👉 **[Quick Start Guide](/guide/quick-start/)** - Build your first Roe program
+👉 **[Quick Start Guide](/guide/quick-start/)** - Build your first Droe program
 
 Or explore other topics:
-- [Project Structure](/guide/project-structure/) - Understanding Roe projects
+- [Project Structure](/guide/project-structure/) - Understanding Droe projects
 - [Basic Syntax](/guide/basics/) - Learn the language fundamentals
 - [CLI Reference](/guide/cli/) - Complete command-line reference

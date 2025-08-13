@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Modules
-description: Organize and structure your Roe code with modules for better maintainability.
+description: Organize and structure your Droe code with modules for better maintainability.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/actions/
 ---
 
-Modules in Roe provide a way to organize related functionality into logical groups, making your code more maintainable, reusable, and easier to understand. Roe also supports an include system that allows you to split your code across multiple files and organize modules in subdirectories.
+Modules in Droe provide a way to organize related functionality into logical groups, making your code more maintainable, reusable, and easier to understand. Droe also supports an include system that allows you to split your code across multiple files and organize modules in subdirectories.
 
 ## Basic Module Syntax
 
 ### Simple Module Declaration
 
-```roe
+```droe
 module utilities
   // Module content goes here
 end module
@@ -28,7 +28,7 @@ end module
 
 ### Module with Actions
 
-```roe
+```droe
 module math_helpers
   action add with a which is int, b which is int gives int
     give a + b
@@ -51,7 +51,7 @@ display "Product: [product]"
 
 ### Utility Modules
 
-```roe
+```droe
 module string_utils
   action capitalize with text which is text gives text
     // Simplified capitalization - first letter uppercase
@@ -86,7 +86,7 @@ display "Email valid: [email_valid]"
 
 ### Business Logic Modules
 
-```roe
+```droe
 module order_processing
   action calculate_tax with amount which is decimal, rate which is decimal gives decimal
     give amount * rate
@@ -129,7 +129,7 @@ display "Total: $[final_total]"
 
 ### Collection Processing
 
-```roe
+```droe
 module data_analysis
   action sum_list with numbers which are list of int gives int
     set total which is int to 0
@@ -183,7 +183,7 @@ display "Highest Score: [highest_score]%"
 
 ### Validation Module
 
-```roe
+```droe
 module input_validation
   action validate_age with age which is int gives flag
     when age is less than 0 or age is greater than 150 then
@@ -256,7 +256,7 @@ end when
 
 ### Date and Time Module
 
-```roe
+```droe
 module date_utils
   action format_date with year which is int, month which is int, day which is int gives text
     give "[year]-[month]-[day]"
@@ -301,7 +301,7 @@ display "Days in February 2024: [feb_days]"
 
 ### File Processing Module
 
-```roe
+```droe
 module file_utils
   action get_file_extension with filename which is text gives text
     // Simplified - in real implementation would parse file extension
@@ -363,7 +363,7 @@ end for
 
 ### 1. Single Responsibility
 
-```roe
+```droe
 // Good: Focused module
 module email_service
   action send_welcome_email with user_email which is text gives flag
@@ -393,7 +393,7 @@ end module
 
 ### 2. Clear Action Names
 
-```roe
+```droe
 module user_management
   // Good: Clear, descriptive names
   action create_new_user with name which is text, email which is text gives flag
@@ -415,7 +415,7 @@ end module
 
 ### 3. Consistent Return Types
 
-```roe
+```droe
 module status_checker
   // Consistent: All actions return flags for status
   action is_server_online with server_name which is text gives flag
@@ -437,7 +437,7 @@ end module
 
 ### 4. Error Handling
 
-```roe
+```droe
 module safe_operations
   action divide_safely with numerator which is decimal, denominator which is decimal gives decimal
     when denominator is equal to 0.0 then
@@ -464,7 +464,7 @@ end module
 
 ### Configuration Module
 
-```roe
+```droe
 module app_config
   action get_database_url gives text
     give "postgresql://localhost:5432/myapp"
@@ -495,7 +495,7 @@ display "Debug mode: [debug_enabled]"
 
 ### Logging Module
 
-```roe
+```droe
 module logger
   action log_info with message which is text
     display "[INFO] [message]"
@@ -526,33 +526,33 @@ run logger.log_with_timestamp with "DEBUG", "Processing user request"
 
 ### Basic Include Syntax
 
-Roe supports including modules from other files using the `include` statement:
+Droe supports including modules from other files using the `include` statement:
 
-```roe
+```droe
 // Include a module from the same directory
-include MathUtils.roe
+include MathUtils.droe
 
 // Include modules from subdirectories using quoted paths
-include "utils/StringUtils.roe"
-include "common/Helpers.roe"
-include "includes/UserManager.roe"
+include "utils/StringUtils.droe"
+include "common/Helpers.droe"
+include "includes/UserManager.droe"
 ```
 
 ### Module Naming Convention
 
-When including modules from subdirectories, Roe automatically derives the module name by:
-1. Removing the `.roe` extension
+When including modules from subdirectories, Droe automatically derives the module name by:
+1. Removing the `.droe` extension
 2. Replacing forward slashes (`/`) with underscores (`_`)
 
 For example:
-- `utils/MathUtils.roe` → module name: `utils_MathUtils`
-- `common/StringHelpers.roe` → module name: `common_StringHelpers`
-- `includes/UserManager.roe` → module name: `includes_UserManager`
+- `utils/MathUtils.droe` → module name: `utils_MathUtils`
+- `common/StringHelpers.droe` → module name: `common_StringHelpers`
+- `includes/UserManager.droe` → module name: `includes_UserManager`
 
 The module declaration in the file must match this derived name:
 
-```roe
-// File: utils/MathUtils.roe
+```droe
+// File: utils/MathUtils.droe
 module utils_MathUtils
   action add with a which is int, b which is int gives int
     give a + b
@@ -564,10 +564,10 @@ end module
 
 Once a module is included, you can call its actions using the module name:
 
-```roe
-// main.roe
-include "utils/MathUtils.roe"
-include "utils/StringUtils.roe"
+```droe
+// main.droe
+include "utils/MathUtils.droe"
+include "utils/StringUtils.droe"
 
 // Call actions from included modules
 set sum which is int from run utils_MathUtils.add with 10, 20
@@ -584,18 +584,18 @@ Here's a complete example showing how to organize a project with includes:
 **Project Structure:**
 ```
 src/
-├── main.roe
+├── main.droe
 ├── utils/
-│   ├── MathUtils.roe
-│   └── StringUtils.roe
+│   ├── MathUtils.droe
+│   └── StringUtils.droe
 ├── common/
-│   └── StringHelpers.roe
+│   └── StringHelpers.droe
 └── includes/
-    └── UserManager.roe
+    └── UserManager.droe
 ```
 
-**utils/MathUtils.roe:**
-```roe
+**utils/MathUtils.droe:**
+```droe
 module utils_MathUtils
   action add with a which is int, b which is int gives int
     give a + b
@@ -612,8 +612,8 @@ module utils_MathUtils
 end module
 ```
 
-**utils/StringUtils.roe:**
-```roe
+**utils/StringUtils.droe:**
+```droe
 module utils_StringUtils
   action greet with name which is text gives text
     give "Hello, " + name + "!"
@@ -630,8 +630,8 @@ module utils_StringUtils
 end module
 ```
 
-**common/StringHelpers.roe:**
-```roe
+**common/StringHelpers.droe:**
+```droe
 module common_StringHelpers
   action format_name with first which is text, last which is text gives text
     give first + " " + last
@@ -643,10 +643,10 @@ module common_StringHelpers
 end module
 ```
 
-**includes/UserManager.roe:**
-```roe
+**includes/UserManager.droe:**
+```droe
 // UserManager can include other modules
-include "utils/StringUtils.roe"
+include "utils/StringUtils.droe"
 
 module includes_UserManager
   action create_user_email with name which is text, domain which is text gives text
@@ -662,13 +662,13 @@ module includes_UserManager
 end module
 ```
 
-**main.roe:**
-```roe
+**main.droe:**
+```droe
 // Include all necessary modules
-include "utils/MathUtils.roe"
-include "utils/StringUtils.roe"
-include "common/StringHelpers.roe"
-include "includes/UserManager.roe"
+include "utils/MathUtils.droe"
+include "utils/StringUtils.droe"
+include "common/StringHelpers.droe"
+include "includes/UserManager.droe"
 
 // Use Math utilities
 display "=== Math Operations ==="
@@ -689,7 +689,7 @@ set user_name which is text to "Alice"
 set greeting which is text from run utils_StringUtils.greet with user_name
 display greeting
 
-set page_title which is text to "Welcome to Roe"
+set page_title which is text to "Welcome to Droe"
 set formatted_title which is text from run utils_StringUtils.format_title with page_title
 display formatted_title
 
@@ -730,12 +730,12 @@ display user_info
 
 5. **Document Dependencies**: Comment which external modules are required
 
-```roe
+```droe
 // This module requires:
-// - utils/StringUtils.roe for string operations
-// - common/Validators.roe for input validation
-include "utils/StringUtils.roe"
-include "common/Validators.roe"
+// - utils/StringUtils.droe for string operations
+// - common/Validators.droe for input validation
+include "utils/StringUtils.droe"
+include "common/Validators.droe"
 
 module my_module
   // Module implementation
@@ -744,11 +744,11 @@ end module
 
 ## Next Steps
 
-Now that you understand modules in Roe:
+Now that you understand modules in Droe:
 
 - **[Actions](/guide/actions/)** - Deep dive into creating module actions
 - **[Data Structures](/guide/data-structures/)** - Use modules with custom data types
 - **[Task Actions](/guide/task-actions/)** - Combine modules with task automation
 - **[CLI Reference](/guide/cli/)** - Learn about module compilation and organization
 
-Modules are essential for organizing complex Roe applications. Use them to create clean, maintainable code with clear separation of concerns and reusable functionality.
+Modules are essential for organizing complex Droe applications. Use them to create clean, maintainable code with clear separation of concerns and reusable functionality.

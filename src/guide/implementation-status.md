@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Implementation Status
-description: Current status of Roelang features and compilation targets.
+description: Current status of Ddroelang features and compilation targets.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,11 +14,11 @@ next:
   url: /guide/debugging/
 ---
 
-This page provides a transparent overview of what's currently implemented in Roelang and what's planned for future development.
+This page provides a transparent overview of what's currently implemented in Ddroelang and what's planned for future development.
 
 ## 🎯 Current Status (January 2025)
 
-Roelang is actively developed with a focus on WebAssembly compilation and emerging native bytecode execution.
+Ddroelang is actively developed with a focus on WebAssembly compilation and emerging native bytecode execution.
 
 ## ✅ Fully Implemented Features
 
@@ -42,20 +42,20 @@ Roelang is actively developed with a focus on WebAssembly compilation and emergi
 - ⚠️ **Database Operations** - Basic parsing implemented, runtime execution in progress
 
 ### Compilation Targets
-- ✅ **WebAssembly** - Primary target, fully functional (`.roe` → `.wat` → `.wasm`)
-- ✅ **Native Bytecode** - `@target roe` compiles to `.roebc` format
+- ✅ **WebAssembly** - Primary target, fully functional (`.droe` → `.wat` → `.wasm`)
+- ✅ **Native Bytecode** - `@target droe` compiles to `.droebc` format
 - ⚠️ **Rust Code Generation** - `@target rust` with Axum framework (experimental)
 
 ### CLI Tools
-- ✅ **Project Initialization** - `roe init` creates project structure
-- ✅ **Compilation** - `roe compile file.roe` to WebAssembly/bytecode
-- ⚠️ **Runtime Execution** - `roe run` works for basic programs
+- ✅ **Project Initialization** - `droe init` creates project structure
+- ✅ **Compilation** - `droe compile file.droe` to WebAssembly/bytecode
+- ⚠️ **Runtime Execution** - `droe run` works for basic programs
 
 ## 🚧 Partially Implemented Features
 
 ### Database and HTTP Features
 - ⚠️ **Database Runtime** - Parsing works, runtime execution in development
-- ⚠️ **HTTP Server** - `serve` endpoints parse, RoeVM runtime needed
+- ⚠️ **HTTP Server** - `serve` endpoints parse, DroeVM runtime needed
 - ⚠️ **Multi-Database Support** - Architecture exists, drivers in progress
 
 ### Advanced Language Features
@@ -64,8 +64,8 @@ Roelang is actively developed with a focus on WebAssembly compilation and emergi
 - ⚠️ **Error Handling** - Basic type checking, advanced error handling planned
 
 ### Build System
-- ⚠️ **RoeVM Runtime** - Native bytecode interpreter under development
-- ⚠️ **Release Builds** - `roe build --release` planned for single-binary output
+- ⚠️ **DroeVM Runtime** - Native bytecode interpreter under development
+- ⚠️ **Release Builds** - `droe build --release` planned for single-binary output
 
 ## ❌ Not Yet Implemented
 
@@ -89,7 +89,7 @@ Roelang is actively developed with a focus on WebAssembly compilation and emergi
 ## 🗺️ Development Roadmap
 
 ### Priority 1: Core Stability (Q1 2025)
-- Complete RoeVM bytecode runtime
+- Complete DroeVM bytecode runtime
 - Stable database operations
 - HTTP endpoint handling
 - Production-ready WebAssembly compilation
@@ -117,7 +117,7 @@ The following features were documented but are not currently in active developme
 ## 🚀 How You Can Help
 
 ### Community Contributions
-- **Testing** - Try Roelang with your use cases and report issues
+- **Testing** - Try Ddroelang with your use cases and report issues
 - **Documentation** - Help improve examples and guides
 - **Features** - Contribute implementations for partially completed features
 
@@ -139,7 +139,7 @@ We're particularly interested in feedback on:
 ## 📈 Version History
 
 ### Version 3.0 (Current)
-- Native RoeVM bytecode target
+- Native DroeVM bytecode target
 - Database DSL with HTTP endpoints
 - Rust code generation (experimental)
 - Cleaned up language specification
@@ -159,4 +159,4 @@ We're particularly interested in feedback on:
 **Last Updated:** January 8, 2025  
 **Next Review:** February 2025
 
-This status page is updated regularly. For the most current information, check the [project repository](https://github.com/roe-lang/roelang-installer) and recent commits.
+This status page is updated regularly. For the most current information, check the [project repository](https://github.com/droe-lang/ddroelang-installer) and recent commits.

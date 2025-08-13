@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Project Structure
-description: Understanding how Roe projects are organized and configured.
+description: Understanding how Droe projects are organized and configured.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,18 +14,18 @@ next:
   url: /guide/basics/
 ---
 
-Roe projects follow a simple, predictable structure that promotes organization and maintainability. Understanding this structure is key to working effectively with Roe.
+Droe projects follow a simple, predictable structure that promotes organization and maintainability. Understanding this structure is key to working effectively with Droe.
 
 ## Standard Project Layout
 
-Every Roe project has this basic structure:
+Every Droe project has this basic structure:
 
 ```
 my-project/
-├── roeconfig.json     # Project configuration
-├── src/              # Source files (.roe)
-│   ├── main.roe      # Entry point
-│   ├── utils.roe     # Utility modules
+├── droeconfig.json     # Project configuration
+├── src/              # Source files (.droe)
+│   ├── main.droe      # Entry point
+│   ├── utils.droe     # Utility modules
 │   └── ...           # Other source files
 ├── build/            # Compiled output (auto-generated)
 │   ├── main.wat      # WebAssembly text format
@@ -36,18 +36,18 @@ my-project/
 
 ## Project Configuration
 
-### `roeconfig.json`
+### `droeconfig.json`
 
-The `roeconfig.json` file is the heart of every Roe project:
+The `droeconfig.json` file is the heart of every Droe project:
 
 ```json
 {
   "name": "my-project",
   "version": "1.0.0",
-  "description": "A sample Roe project",
+  "description": "A sample Droe project",
   "srcDir": "src",
   "buildDir": "build",
-  "main": "main.roe",
+  "main": "main.droe",
   "author": "Your Name",
   "license": "MIT"
 }
@@ -62,21 +62,21 @@ The `roeconfig.json` file is the heart of every Roe project:
 | `description` | string | ❌ | Brief project description |
 | `srcDir` | string | ❌ | Source directory (default: "src") |
 | `buildDir` | string | ❌ | Build output directory (default: "build") |
-| `main` | string | ❌ | Entry point file (default: "main.roe") |
+| `main` | string | ❌ | Entry point file (default: "main.droe") |
 | `author` | string | ❌ | Project author |
 | `license` | string | ❌ | License type |
 
 ## Source Directory (`src/`)
 
-The source directory contains all your `.roe` files:
+The source directory contains all your `.droe` files:
 
 ### Entry Point
 
-Every project has a main entry point, typically `src/main.roe`:
+Every project has a main entry point, typically `src/main.droe`:
 
-```roe
-// src/main.roe
-display "Hello from my Roe project!"
+```droe
+// src/main.droe
+display "Hello from my Droe project!"
 
 // Import functionality from other modules
 // (Module system coming in future versions)
@@ -88,16 +88,16 @@ Organize related functionality into separate files:
 
 ```
 src/
-├── main.roe          # Entry point
-├── calculator.roe    # Math operations
-├── strings.roe       # String utilities
-└── validation.roe    # Input validation
+├── main.droe          # Entry point
+├── calculator.droe    # Math operations
+├── strings.droe       # String utilities
+└── validation.droe    # Input validation
 ```
 
 Example module structure:
 
 ::: code-group
-```roe [src/calculator.roe]
+```droe [src/calculator.droe]
 module calculator
   action add with a which is int, b which is int gives int
     give a + b
@@ -109,7 +109,7 @@ module calculator
 end module
 ```
 
-```roe [src/main.roe]
+```droe [src/main.droe]
 // Use calculator module
 set result from run calculator.add with 10, 5
 display "10 + 5 = [result]"
@@ -147,16 +147,16 @@ Use the CLI to create a new project:
 
 ```bash
 # Create project directory
-mkdir my-roelang-project
-cd my-roelang-project
+mkdir my-ddroelang-project
+cd my-ddroelang-project
 
 # Initialize project structure
-roe init
+droe init
 ```
 
 This creates:
-- `roeconfig.json` with default configuration
-- `src/` directory with sample `main.roe`
+- `droeconfig.json` with default configuration
+- `src/` directory with sample `main.droe`
 - Empty `build/` directory
 
 ### Custom Initialization
@@ -164,13 +164,13 @@ This creates:
 Initialize with custom options:
 
 ```bash
-roe init --name "awesome-project" --author "Your Name"
+droe init --name "awesome-project" --author "Your Name"
 ```
 
 Or initialize in an existing directory:
 
 ```bash
-roe init .
+droe init .
 ```
 
 ## Working with Projects
@@ -181,33 +181,33 @@ Compile the entire project:
 
 ```bash
 # Build all files
-roe build
+droe build
 
 # Build specific file
-roe compile src/calculator.roe
+droe compile src/calculator.droe
 
 # Build and run main entry point
-roe run
+droe run
 ```
 
 ### Project Commands
 
 ```bash
 # Show project information
-roe info
+droe info
 
 # Clean build directory
-roe clean
+droe clean
 
 # Validate project structure
-roe validate
+droe validate
 ```
 
 ## File Naming Conventions
 
 ### Source Files
 
-- Use descriptive names: `user_management.roe`, `data_processing.roe`
+- Use descriptive names: `user_management.droe`, `data_processing.droe`
 - Use snake_case for multi-word names
 - Group related functionality in single files
 - Keep files focused and cohesive
@@ -216,11 +216,11 @@ roe validate
 
 ```
 src/
-├── main.roe              # Entry point
-├── user_authentication.roe   # Auth logic
-├── data_validation.roe       # Validation rules
-├── report_generation.roe     # Report creation
-└── email_notifications.roe   # Email handling
+├── main.droe              # Entry point
+├── user_authentication.droe   # Auth logic
+├── data_validation.droe       # Validation rules
+├── report_generation.droe     # Report creation
+└── email_notifications.droe   # Email handling
 ```
 
 ## Best Practices
@@ -231,24 +231,24 @@ Group related functionality:
 
 ```
 src/
-├── main.roe
+├── main.droe
 ├── models/
-│   ├── user.roe
-│   └── product.roe
+│   ├── user.droe
+│   └── product.droe
 ├── services/
-│   ├── email.roe
-│   └── payment.roe
+│   ├── email.droe
+│   └── payment.droe
 └── utils/
-    ├── validation.roe
-    └── formatting.roe
+    ├── validation.droe
+    └── formatting.droe
 ```
 
 ### 2. Clear Entry Points
 
-Make your `main.roe` file a clear starting point:
+Make your `main.droe` file a clear starting point:
 
-```roe
-// src/main.roe
+```droe
+// src/main.droe
 display "=== My Application ==="
 display "Starting application..."
 
@@ -263,7 +263,7 @@ display "Application completed successfully"
 
 Keep modules focused on single responsibilities:
 
-```roe
+```droe
 // Good: Focused module
 module string_utils
   action capitalize with text which is text gives text
@@ -285,7 +285,7 @@ end module
 
 ### 4. Configuration Management
 
-Use `roeconfig.json` effectively:
+Use `droeconfig.json` effectively:
 
 ```json
 {
@@ -294,7 +294,7 @@ Use `roeconfig.json` effectively:
   "description": "Warehouse inventory management system",
   "srcDir": "src",
   "buildDir": "dist",
-  "main": "inventory.roe",
+  "main": "inventory.droe",
   "author": "Development Team",
   "license": "MIT"
 }
@@ -307,15 +307,15 @@ Use `roeconfig.json` effectively:
 For reusable modules:
 
 ```
-roelang-math-lib/
-├── roeconfig.json
+ddroelang-math-lib/
+├── droeconfig.json
 ├── src/
-│   ├── trigonometry.roe
-│   ├── statistics.roe
-│   └── geometry.roe
+│   ├── trigonometry.droe
+│   ├── statistics.droe
+│   └── geometry.droe
 └── examples/
-    ├── basic_math.roe
-    └── advanced_calculations.roe
+    ├── basic_math.droe
+    └── advanced_calculations.droe
 ```
 
 ### Application Projects
@@ -324,12 +324,12 @@ For standalone applications:
 
 ```
 inventory-app/
-├── roeconfig.json
+├── droeconfig.json
 ├── src/
-│   ├── main.roe
-│   ├── inventory.roe
-│   ├── reports.roe
-│   └── config.roe
+│   ├── main.droe
+│   ├── inventory.droe
+│   ├── reports.droe
+│   └── config.droe
 ├── data/
 │   └── sample_inventory.json
 └── docs/
@@ -341,7 +341,7 @@ inventory-app/
 ### `.gitignore` Template
 
 ```gitignore
-# Roe build output
+# Droe build output
 build/
 dist/
 
@@ -360,11 +360,11 @@ Thumbs.db
 ### Repository Structure
 
 ```
-my-roelang-project/
+my-ddroelang-project/
 ├── .gitignore
 ├── README.md
 ├── LICENSE
-├── roeconfig.json
+├── droeconfig.json
 ├── src/
 └── docs/
 ```
@@ -377,48 +377,48 @@ my-roelang-project/
 
 Check these common issues:
 
-1. **Missing `roeconfig.json`**:
+1. **Missing `droeconfig.json`**:
    ```bash
-   roe init  # Create configuration
+   droe init  # Create configuration
    ```
 
 2. **Invalid configuration**:
    ```bash
-   roe validate  # Check project structure
+   droe validate  # Check project structure
    ```
 
 3. **Source file errors**:
    ```bash
-   roe compile src/main.roe  # Test individual files
+   droe compile src/main.droe  # Test individual files
    ```
 
 #### Build Directory Issues
 
 ```bash
 # Clean and rebuild
-roe clean
-roe build
+droe clean
+droe build
 ```
 
 #### Configuration Problems
 
-Validate your `roeconfig.json`:
+Validate your `droeconfig.json`:
 
 ```bash
 # Check configuration syntax
-cat roeconfig.json | jq .
+cat droeconfig.json | jq .
 
 # Validate project
-roe info
+droe info
 ```
 
 ## Next Steps
 
 Now that you understand project structure, explore these topics:
 
-- **[Basic Syntax](/guide/basics/)** - Learn Roe's syntax fundamentals
+- **[Basic Syntax](/guide/basics/)** - Learn Droe's syntax fundamentals
 - **[Type System](/guide/types/)** - Understanding data types
 - **[Modules](/guide/modules/)** - Creating reusable modules
 - **[CLI Reference](/guide/cli/)** - Complete command-line reference
 
-Understanding project structure is the foundation for building maintainable Roe applications. Keep your projects organized, use meaningful names, and follow the conventions outlined here for the best development experience.
+Understanding project structure is the foundation for building maintainable Droe applications. Keep your projects organized, use meaningful names, and follow the conventions outlined here for the best development experience.

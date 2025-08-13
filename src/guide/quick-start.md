@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Quick Start
-description: Create your first Roe project and learn the basics in minutes.
+description: Create your first Droe project and learn the basics in minutes.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,38 +14,38 @@ next:
   url: /guide/project-structure/
 ---
 
-Let's build your first Roe program! This guide will walk you through creating a simple project that demonstrates the key features of the language.
+Let's build your first Droe program! This guide will walk you through creating a simple project that demonstrates the key features of the language.
 
 ## Create Your First Project
 
-Start by creating a new Roe project:
+Start by creating a new Droe project:
 
 ```bash
 # Create and enter project directory
-mkdir hello-roelang
-cd hello-roelang
+mkdir hello-ddroelang
+cd hello-ddroelang
 
 # Initialize the project
-roe init
+droe init
 ```
 
 This creates the basic project structure:
 
 ```
-hello-roelang/
-├── roeconfig.json
+hello-ddroelang/
+├── droeconfig.json
 ├── src/
-│   └── main.roe
+│   └── main.droe
 └── build/
 ```
 
 ## Your First Program
 
-Open `src/main.roe` and replace the contents with:
+Open `src/main.droe` and replace the contents with:
 
-```roe
-// Welcome to Roe! 🦌
-display "=== Hello Roe Demo ==="
+```droe
+// Welcome to Droe! 🦌
+display "=== Hello Droe Demo ==="
 display ""
 
 // Variables with strong typing
@@ -64,7 +64,7 @@ display ""
 // String concatenation
 set greeting to "Hello, " + programmer_name + "!"
 display greeting
-display "Welcome to the world of Roe development! 🚀"
+display "Welcome to the world of Droe development! 🚀"
 ```
 
 ## Run Your Program
@@ -72,13 +72,13 @@ display "Welcome to the world of Roe development! 🚀"
 Execute your program with:
 
 ```bash
-roe run src/main.roe
+droe run src/main.droe
 ```
 
 You should see output like:
 
 ```
-=== Hello Roe Demo ===
+=== Hello Droe Demo ===
 
 Programmer: Alice
 Experience: 3 years
@@ -86,7 +86,7 @@ Loves coding: true
 Rate: $75.50 per hour
 
 Hello, Alice!
-Welcome to the world of Roe development! 🚀
+Welcome to the world of Droe development! 🚀
 ```
 
 ## Understanding the Code
@@ -94,54 +94,54 @@ Welcome to the world of Roe development! 🚀
 Let's break down what happened:
 
 ### 1. Comments
-```roe
+```droe
 // Single-line comments start with //
 /* Multi-line comments
    work like this */
 ```
 
 ### 2. Display Statements
-```roe
+```droe
 display "Hello, World!"
 ```
 The `display` command outputs text to the console.
 
 ### 3. Typed Variables
-```roe
+```droe
 set programmer_name which is text to "Alice"
 set years_experience which is int to 3
 set loves_coding which is flag to true
 set hourly_rate which is decimal to 75.50
 ```
 
-Roe uses strong typing with clear, readable syntax:
+Droe uses strong typing with clear, readable syntax:
 - `text` - strings
 - `int` - integers
 - `flag` - booleans
 - `decimal` - floating-point numbers
 
 ### 4. String Interpolation
-```roe
+```droe
 display "Programmer: [programmer_name]"
 ```
 Use square brackets `[variable]` to embed variables in strings.
 
 ### 5. String Concatenation
-```roe
+```droe
 set greeting to "Hello, " + programmer_name + "!"
 ```
 Join strings with the `+` operator.
 
 ## Working with Collections
 
-Let's expand our program to work with collections. Add this to your `main.roe`:
+Let's expand our program to work with collections. Add this to your `main.droe`:
 
-```roe
+```droe
 display ""
 display "=== Collections Demo ==="
 
 // Arrays (lists)
-set programming_languages which are list of text to ["Python", "JavaScript", "Roe"]
+set programming_languages which are list of text to ["Python", "JavaScript", "Droe"]
 set project_scores which are list of int to [85, 92, 78, 95]
 
 display "Languages I know:"
@@ -167,14 +167,14 @@ end for
 Run it again:
 
 ```bash
-roe run src/main.roe
+droe run src/main.droe
 ```
 
 ## Adding Logic with Conditionals
 
-Roe supports conditional logic with natural language syntax:
+Droe supports conditional logic with natural language syntax:
 
-```roe
+```droe
 display ""
 display "=== Conditional Logic ==="
 
@@ -210,7 +210,7 @@ end when
 
 Create reusable code with modules and actions. Add this to your file:
 
-```roe
+```droe
 display ""
 display "=== Modules and Actions ==="
 
@@ -244,39 +244,39 @@ You can also compile your program without running it:
 
 ```bash
 # Compile to WebAssembly
-roe compile src/main.roe
+droe compile src/main.droe
 
 # Check the build directory
 ls build/
 # main.wat  main.wasm
 
 # Run the compiled WebAssembly
-node ~/.roelang/run.js build/main.wasm
+node ~/.ddroelang/run.js build/main.wasm
 ```
 
 ## Project Configuration
 
-Your `roeconfig.json` controls project settings:
+Your `droeconfig.json` controls project settings:
 
 ```json
 {
-  "name": "hello-roelang",
+  "name": "hello-ddroelang",
   "version": "1.0.0",
   "srcDir": "src",
   "buildDir": "build",
-  "main": "main.roe",
-  "description": "My first Roe project"
+  "main": "main.droe",
+  "description": "My first Droe project"
 }
 ```
 
 ## Complete Example
 
-Here's the complete `main.roe` file with all examples:
+Here's the complete `main.droe` file with all examples:
 
 ::: details View complete example
-```roe
-// Welcome to Roe! 🦌
-display "=== Hello Roe Demo ==="
+```droe
+// Welcome to Droe! 🦌
+display "=== Hello Droe Demo ==="
 display ""
 
 // Variables with strong typing
@@ -295,13 +295,13 @@ display ""
 // String concatenation
 set greeting to "Hello, " + programmer_name + "!"
 display greeting
-display "Welcome to the world of Roe development! 🚀"
+display "Welcome to the world of Droe development! 🚀"
 
 display ""
 display "=== Collections Demo ==="
 
 // Arrays (lists)
-set programming_languages which are list of text to ["Python", "JavaScript", "Roe"]
+set programming_languages which are list of text to ["Python", "JavaScript", "Droe"]
 set project_scores which are list of int to [85, 92, 78, 95]
 
 display "Languages I know:"
@@ -380,7 +380,7 @@ display "6 × 7 = [product]"
 display "75 out of 100 = [percentage]%"
 
 display ""
-display "🎉 Demo complete! Welcome to Roe!"
+display "🎉 Demo complete! Welcome to Droe!"
 ```
 :::
 
@@ -388,7 +388,7 @@ display "🎉 Demo complete! Welcome to Roe!"
 
 In this quick start, you've learned:
 
-- ✅ **Project setup** with `roe init`
+- ✅ **Project setup** with `droe init`
 - ✅ **Variable declaration** with strong typing
 - ✅ **String interpolation** and concatenation
 - ✅ **Collections** (lists and arrays)
@@ -402,13 +402,13 @@ In this quick start, you've learned:
 Ready to dive deeper? Continue with:
 
 - **[Basic Syntax](/guide/basics/)** - Complete syntax reference
-- **[Type System](/guide/types/)** - Understanding Roe's types
+- **[Type System](/guide/types/)** - Understanding Droe's types
 - **[Variables](/guide/variables/)** - Variable declaration and scope
 - **[Collections](/guide/collections/)** - Working with arrays and lists
 - **[Modules](/guide/modules/)** - Organizing code with modules
 
 Or explore practical examples:
-- **[Examples](/examples/)** - Real-world Roe programs
+- **[Examples](/examples/)** - Real-world Droe programs
 - **[CLI Reference](/guide/cli/)** - Complete command reference
 
-Happy coding with Roe! 🦌✨
+Happy coding with Droe! 🦌✨

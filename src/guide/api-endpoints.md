@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: API Endpoints
-description: Create HTTP REST APIs and make API calls with Roelang's built-in HTTP DSL.
+description: Create HTTP REST APIs and make API calls with Ddroelang's built-in HTTP DSL.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/mobile/
 ---
 
-Roelang provides native support for creating HTTP REST APIs and making API calls with a clean, declarative syntax.
+Ddroelang provides native support for creating HTTP REST APIs and making API calls with a clean, declarative syntax.
 
 ## Defining HTTP Endpoints
 
 Use the `serve` statement to define REST HTTP endpoints:
 
-```roe
+```droe
 // GET endpoint
 serve get /users/:id
     set user from db find User where id equals id
@@ -51,7 +51,7 @@ end serve
 
 ## HTTP Methods
 
-Roelang supports all standard HTTP methods:
+Ddroelang supports all standard HTTP methods:
 
 | Method | Purpose | Example |
 |--------|---------|---------|
@@ -65,7 +65,7 @@ Roelang supports all standard HTTP methods:
 
 Extract parameters from URLs using the `:parameter` syntax:
 
-```roe
+```droe
 serve get /users/:user_id/posts/:post_id
     set user from db find User where id equals user_id
     set post from db find Post where id equals post_id and author_id equals user_id
@@ -86,7 +86,7 @@ end serve
 
 Access request data through the `request` object:
 
-```roe
+```droe
 serve post /users
     // Access request body
     set user_data from request.body
@@ -108,7 +108,7 @@ end serve
 
 ### Status Codes and Data
 
-```roe
+```droe
 serve get /users/:id
     set user from db find User where id equals id
     
@@ -147,13 +147,13 @@ end serve
 
 ### Basic API Call Syntax
 
-```roe
+```droe
 call <endpoint> method <HTTP_METHOD> [with <data>] [using headers <headers>] into <response_variable>
 ```
 
 ### GET Request
 
-```roe
+```droe
 // Simple GET request
 call "https://api.example.com/users" method GET into response
 display response
@@ -167,7 +167,7 @@ end headers into profile_data
 
 ### POST Request
 
-```roe
+```droe
 // POST with JSON data
 set user_data which is text to '{"name": "Alice", "email": "alice@example.com"}'
 call "https://api.example.com/users" method POST with user_data using headers
@@ -184,7 +184,7 @@ end headers into login_response
 
 ### PUT and DELETE Requests
 
-```roe
+```droe
 // PUT request
 set update_data which is text to '{"name": "Alice Smith"}'
 call "https://api.example.com/users/123" method PUT with update_data using headers
@@ -200,7 +200,7 @@ end headers into delete_response
 
 ## API Response Handling
 
-```roe
+```droe
 // Make API call
 call "https://api.example.com/data" method GET into response
 
@@ -222,8 +222,8 @@ display "User name: " + data.name
 
 Here's a complete blog API example:
 
-```roe
-@target roe
+```droe
+@target droe
 
 module blog_api
 
@@ -310,7 +310,7 @@ end module
 
 ### Middleware and Authentication
 
-```roe
+```droe
 serve get /admin/users
     // Check authorization
     when request.headers.Authorization is empty then
@@ -330,7 +330,7 @@ end serve
 
 ### Query Parameters
 
-```roe
+```droe
 serve get /users
     // Handle pagination
     set page from request.query.page or 1
@@ -351,7 +351,7 @@ end serve
 
 ### Request Validation
 
-```roe
+```droe
 serve post /users
     set email from request.body.email
     set name from request.body.name
@@ -406,7 +406,7 @@ let app = Router::new()
 
 ### 1. Use Proper HTTP Status Codes
 
-```roe
+```droe
 // Good: Appropriate status codes
 serve post /users
     when validation_failed then
@@ -424,7 +424,7 @@ end serve
 
 ### 2. Validate Input Data
 
-```roe
+```droe
 // Good: Comprehensive validation
 serve put /users/:id
     when request.body is empty then
@@ -445,7 +445,7 @@ end serve
 
 ### 3. Handle Errors Gracefully
 
-```roe
+```droe
 // Good: Consistent error handling
 serve get /users/:id
     set user from db find User where id equals id
@@ -464,7 +464,7 @@ end serve
 
 ## Testing APIs
 
-```roe
+```droe
 // Test API endpoints
 action test_user_api
     display "Testing User API..."
@@ -500,4 +500,4 @@ end action
 - **[Framework Support](/guide/frameworks/)** - Framework-specific API generation
 - **[Database DSL](/guide/database/)** - Database operations for APIs
 
-API endpoints in Roelang provide a clean, declarative way to build REST APIs while generating efficient framework-specific server code.
+API endpoints in Ddroelang provide a clean, declarative way to build REST APIs while generating efficient framework-specific server code.

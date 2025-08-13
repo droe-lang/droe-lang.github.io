@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Loops
-description: Master iteration and repetitive tasks with Roe's for-each loops.
+description: Master iteration and repetitive tasks with Droe's for-each loops.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/modules/
 ---
 
-Loops allow you to repeat operations over collections or perform repetitive tasks efficiently. Roe provides intuitive `for each` loops that work naturally with collections.
+Loops allow you to repeat operations over collections or perform repetitive tasks efficiently. Droe provides intuitive `for each` loops that work naturally with collections.
 
 ## For-Each Loop Syntax
 
 ### Basic Structure
 
-```roe
+```droe
 for each item in collection
   // Process each item
 end for
@@ -28,7 +28,7 @@ end for
 
 ### Simple Examples
 
-```roe
+```droe
 set numbers which are list of int to [1, 2, 3, 4, 5]
 
 display "Counting:"
@@ -41,7 +41,7 @@ end for
 
 ### Lists of Different Types
 
-```roe
+```droe
 // Text lists
 set fruits which are list of text to ["apple", "banana", "cherry"]
 for each fruit in fruits
@@ -63,7 +63,7 @@ end for
 
 ### Groups (Unique Collections)
 
-```roe
+```droe
 set unique_categories which are group of text to ["work", "personal", "work", "health"]
 
 display "Available categories:"
@@ -77,7 +77,7 @@ end for
 
 ### Accumulation Pattern
 
-```roe
+```droe
 set daily_sales which are list of decimal to [150.25, 200.50, 175.75, 300.00, 225.25]
 set total_sales which is decimal to 0.0
 set day_count which is int to 0
@@ -96,7 +96,7 @@ display "Average Daily Sales: $[average_daily_sales]"
 
 ### Finding Maximum and Minimum
 
-```roe
+```droe
 set test_scores which are list of int to [85, 92, 78, 95, 88, 76, 94]
 set highest_score which is int to 0
 set lowest_score which is int to 100
@@ -133,7 +133,7 @@ display "Class Average: [class_average]%"
 
 ### Filtering Data
 
-```roe
+```droe
 set all_temperatures which are list of decimal to [15.5, 25.2, 32.1, 18.7, 28.9, 35.4, 22.3]
 set hot_days which is int to 0
 set cold_days which is int to 0
@@ -163,7 +163,7 @@ display "Summary: [hot_days] hot, [pleasant_days] pleasant, [cold_days] cold day
 
 ### Validation and Error Handling
 
-```roe
+```droe
 set user_emails which are list of text to ["alice@example.com", "bob@invalid", "carol@test.org", "", "dave@company.com"]
 set valid_emails which is int to 0
 set invalid_emails which is int to 0
@@ -194,7 +194,7 @@ display "Valid: [valid_emails], Invalid: [invalid_emails]"
 
 ### Multi-Collection Processing
 
-```roe
+```droe
 set product_names which are list of text to ["Laptop", "Mouse", "Keyboard", "Monitor"]
 set product_prices which are list of decimal to [999.99, 25.50, 75.00, 299.99]
 set product_stock which are list of int to [5, 15, 8, 3]
@@ -227,7 +227,7 @@ display "Low stock items: [low_stock_items]"
 
 ### Nested Processing
 
-```roe
+```droe
 set departments which are list of text to ["Sales", "Engineering", "Marketing"]
 set department_scores which are list of int to [85, 92, 78]
 
@@ -266,7 +266,7 @@ display "Company Average: [company_average]%"
 
 ### Order Processing System
 
-```roe
+```droe
 set order_ids which are list of int to [1001, 1002, 1003, 1004, 1005]
 set order_amounts which are list of decimal to [150.00, 75.50, 300.25, 45.00, 200.75]
 
@@ -297,7 +297,7 @@ display "Processed: [processed_orders] orders"
 
 ### Inventory Management
 
-```roe
+```droe
 set item_codes which are list of text to ["SKU001", "SKU002", "SKU003", "SKU004"]
 set stock_levels which are list of int to [25, 3, 15, 0]
 set reorder_points which are list of int to [10, 5, 12, 8]
@@ -338,7 +338,7 @@ display "Adequate stock: [adequate_stock] items"
 
 ### Grade Processing
 
-```roe
+```droe
 set student_names which are list of text to ["Alice", "Bob", "Carol", "David", "Eve"]
 set assignment_scores which are list of int to [85, 92, 78, 95, 88]
 
@@ -393,7 +393,7 @@ display "Class Average: [class_average]%"
 
 ### 1. Use Descriptive Variable Names
 
-```roe
+```droe
 // Good: Clear iteration variable names
 set customer_emails which are list of text to ["user1@example.com", "user2@example.com"]
 
@@ -409,7 +409,7 @@ end for
 
 ### 2. Initialize Accumulator Variables
 
-```roe
+```droe
 // Good: Initialize accumulators before loop
 set total_amount which is decimal to 0.0
 set item_count which is int to 0
@@ -424,7 +424,7 @@ end for
 
 ### 3. Use Conditionals for Complex Logic
 
-```roe
+```droe
 set order_amounts which are list of decimal to [25.00, 150.00, 75.50, 300.00]
 set small_orders which is int to 0
 set medium_orders which is int to 0
@@ -447,7 +447,7 @@ end for
 
 ### 4. Provide Progress Feedback
 
-```roe
+```droe
 set large_dataset which are list of int to [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 set processed_count which is int to 0
 set total_items which is int to 10
@@ -472,7 +472,7 @@ display "✅ All items processed successfully!"
 
 ### Counter Pattern
 
-```roe
+```droe
 set items which are list of text to ["item1", "item2", "item3"]
 set counter which is int to 0
 
@@ -484,7 +484,7 @@ end for
 
 ### Accumulator Pattern
 
-```roe
+```droe
 set values which are list of int to [10, 20, 30, 40]
 set sum which is int to 0
 
@@ -497,7 +497,7 @@ display "Total: [sum]"
 
 ### Search Pattern
 
-```roe
+```droe
 set names which are list of text to ["Alice", "Bob", "Carol", "David"]
 set target_name which is text to "Carol"
 set found which is flag to false
@@ -516,7 +516,7 @@ end when
 
 ### Validation Pattern
 
-```roe
+```droe
 set inputs which are list of text to ["valid", "", "also_valid", "test"]
 set valid_count which is int to 0
 set invalid_count which is int to 0
@@ -534,7 +534,7 @@ display "Valid: [valid_count], Invalid: [invalid_count]"
 
 ## Next Steps
 
-Now that you understand loops in Roe:
+Now that you understand loops in Droe:
 
 - **[Modules](/guide/modules/)** - Organize loop logic in reusable modules
 - **[Actions](/guide/actions/)** - Create functions that process collections

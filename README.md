@@ -1,3 +1,3 @@
-# 🦌 Roelang
+# 🦌 Ddroelang
 
-**Roelang** is a lightweight DSL that compiles human-readable commands
+**Ddroelang** is a lightweight DSL that compiles human-readable commands

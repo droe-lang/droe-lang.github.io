@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debugging | Roe - Unified Programming System</title>
-  <meta name="description" content="Learn techniques and tools for debugging and troubleshooting Roe programs.">
+  <title>Debugging | Droe</title>
+  <meta name="description" content="Learn techniques and tools for debugging and troubleshooting Droe programs.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,16 +16,16 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Debugging | Roe">
-  <meta property="og:description" content="Learn techniques and tools for debugging and troubleshooting Roe programs.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/debugging/">
-  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  <meta property="og:title" content="Debugging | Droe">
+  <meta property="og:description" content="Learn techniques and tools for debugging and troubleshooting Droe programs.">
+  <meta property="og:url" content="https://droe-lang.dev/guide/debugging/">
+  <meta property="og:image" content="https://droe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Debugging | Roe">
-  <meta name="twitter:description" content="Learn techniques and tools for debugging and troubleshooting Roe programs.">
-  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+  <meta name="twitter:title" content="Debugging | Droe">
+  <meta name="twitter:description" content="Learn techniques and tools for debugging and troubleshooting Droe programs.">
+  <meta name="twitter:image" content="https://droe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
@@ -113,16 +113,16 @@
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span>Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span>Droe</span>
         </a>
       </div>
       
       <!-- Navigation Links -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
           <span class="sr-only">GitHub</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
@@ -150,8 +150,8 @@
     <div id="mobile-menu" class="md:hidden hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
       </div>
     </div>
   </div>
@@ -161,11 +161,11 @@
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
           <h1>Debugging</h1>
-          <p>Debugging is an essential skill for developing robust Roe applications. This guide covers debugging techniques, common issues, and troubleshooting strategies for Roe programs.</p>
+          <p>Debugging is an essential skill for developing robust Droe applications. This guide covers debugging techniques, common issues, and troubleshooting strategies for Droe programs.</p>
 <h2>Basic Debugging Techniques</h2>
 <h3>Using Display Statements</h3>
 <p>The simplest debugging technique is adding display statements to trace program execution:</p>
-<pre><code class="language-roe">set user_age which is int to 25
+<pre><code class="language-droe">set user_age which is int to 25
 display &quot;Debug: user_age = [user_age]&quot;
 
 when user_age is greater than or equal to 18 then
@@ -178,7 +178,7 @@ end when
 </code></pre>
 <h3>Variable State Tracking</h3>
 <p>Track variable changes throughout program execution:</p>
-<pre><code class="language-roe">set counter which is int to 0
+<pre><code class="language-droe">set counter which is int to 0
 display &quot;Debug: Initial counter = [counter]&quot;
 
 set numbers which are list of int to [1, 2, 3, 4, 5]
@@ -192,7 +192,7 @@ display &quot;Debug: Final counter = [counter]&quot;
 </code></pre>
 <h3>Conditional Debug Output</h3>
 <p>Use flags to control debug output:</p>
-<pre><code class="language-roe">set debug_mode which is flag to true
+<pre><code class="language-droe">set debug_mode which is flag to true
 
 module debug_utils
   action log_debug with message which is text
@@ -226,7 +226,7 @@ end when
 <h3>Verbose Compilation</h3>
 <p>Use verbose mode to see detailed compilation information:</p>
 <pre><code class="language-bash"># Compile with verbose output
-roe compile src/main.roe --verbose
+droe compile src/main.droe --verbose
 
 # This shows:
 # - Parsing steps
@@ -237,32 +237,32 @@ roe compile src/main.roe --verbose
 <h3>Debug Mode Execution</h3>
 <p>Run programs with debug information:</p>
 <pre><code class="language-bash"># Run with debug output
-roe run src/main.roe --debug
+droe run src/main.droe --debug
 
 # Run with execution trace
-roe run src/main.roe --trace
+droe run src/main.droe --trace
 
 # Combine debug and trace
-roe run src/main.roe --debug --trace
+droe run src/main.droe --debug --trace
 </code></pre>
 <h3>System Diagnostics</h3>
 <p>Check system setup and dependencies:</p>
 <pre><code class="language-bash"># Run system diagnostics
-roe doctor
+droe doctor
 
 # Check specific components
-roe doctor --component compiler
-roe doctor --component runtime
-roe doctor --component webassembly
+droe doctor --component compiler
+droe doctor --component runtime
+droe doctor --component webassembly
 
 # Verbose diagnostics
-roe doctor --verbose
+droe doctor --verbose
 </code></pre>
 <h2>Common Issues and Solutions</h2>
 <h3>Compilation Errors</h3>
 <h4>Type Mismatch Errors</h4>
 <p><strong>Problem:</strong></p>
-<pre><code class="language-roe">set age which is int to &quot;twenty-five&quot;  // Error: type mismatch
+<pre><code class="language-droe">set age which is int to &quot;twenty-five&quot;  // Error: type mismatch
 </code></pre>
 <p><strong>Error Message:</strong></p>
 <pre><code>Error: Type mismatch at line 1:25
@@ -270,39 +270,39 @@ Expected: int
 Got: text
 </code></pre>
 <p><strong>Solution:</strong></p>
-<pre><code class="language-roe">set age which is int to 25  // Correct: use integer literal
+<pre><code class="language-droe">set age which is int to 25  // Correct: use integer literal
 </code></pre>
 <h4>Variable Not Declared</h4>
 <p><strong>Problem:</strong></p>
-<pre><code class="language-roe">display username  // Error: username not declared
+<pre><code class="language-droe">display username  // Error: username not declared
 </code></pre>
 <p><strong>Error Message:</strong></p>
 <pre><code>Error: Undefined variable 'username' at line 1:9
 </code></pre>
 <p><strong>Solution:</strong></p>
-<pre><code class="language-roe">set username which is text to &quot;alice&quot;
+<pre><code class="language-droe">set username which is text to &quot;alice&quot;
 display username  // Correct: declare before use
 </code></pre>
 <h4>Missing Type Declaration</h4>
 <p><strong>Problem:</strong></p>
-<pre><code class="language-roe">set count to 5  // Error: missing type declaration
+<pre><code class="language-droe">set count to 5  // Error: missing type declaration
 </code></pre>
 <p><strong>Error Message:</strong></p>
 <pre><code>Error: Missing type declaration at line 1:5
 Expected: 'which is &lt;type&gt;'
 </code></pre>
 <p><strong>Solution:</strong></p>
-<pre><code class="language-roe">set count which is int to 5  // Correct: explicit type
+<pre><code class="language-droe">set count which is int to 5  // Correct: explicit type
 </code></pre>
 <h3>Runtime Errors</h3>
 <h4>Division by Zero</h4>
 <p><strong>Problem:</strong></p>
-<pre><code class="language-roe">set numerator which is int to 10
+<pre><code class="language-droe">set numerator which is int to 10
 set denominator which is int to 0
 set result to numerator / denominator  // Runtime error
 </code></pre>
 <p><strong>Debug with Protection:</strong></p>
-<pre><code class="language-roe">set numerator which is int to 10
+<pre><code class="language-droe">set numerator which is int to 10
 set denominator which is int to 0
 
 display &quot;Debug: numerator = [numerator], denominator = [denominator]&quot;
@@ -317,11 +317,11 @@ end when
 </code></pre>
 <h4>Array Index Errors (Future Feature)</h4>
 <p><strong>Problem:</strong></p>
-<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3]
+<pre><code class="language-droe">set numbers which are list of int to [1, 2, 3]
 // Accessing invalid index would cause error
 </code></pre>
 <p><strong>Debug Approach:</strong></p>
-<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3]
+<pre><code class="language-droe">set numbers which are list of int to [1, 2, 3]
 set count which is int to 0
 
 for each number in numbers
@@ -334,7 +334,7 @@ display &quot;Total items processed: [count]&quot;
 <h3>Logic Errors</h3>
 <h4>Incorrect Conditional Logic</h4>
 <p><strong>Problem:</strong></p>
-<pre><code class="language-roe">set score which is int to 85
+<pre><code class="language-droe">set score which is int to 85
 set passing_grade which is int to 80
 
 // Logic error: using 'or' instead of 'and'
@@ -343,7 +343,7 @@ when score is greater than passing_grade or score is equal to passing_grade then
 end when
 </code></pre>
 <p><strong>Debug with Explicit Checks:</strong></p>
-<pre><code class="language-roe">set score which is int to 85
+<pre><code class="language-droe">set score which is int to 85
 set passing_grade which is int to 80
 
 display &quot;Debug: score = [score], passing_grade = [passing_grade]&quot;
@@ -359,7 +359,7 @@ end when
 </code></pre>
 <h4>Loop Logic Issues</h4>
 <p><strong>Problem:</strong></p>
-<pre><code class="language-roe">set total which is int to 0
+<pre><code class="language-droe">set total which is int to 0
 set numbers which are list of int to [1, 2, 3, 4, 5]
 
 for each number in numbers
@@ -369,7 +369,7 @@ end for
 display &quot;Total: [total]&quot;  // Will only show last number
 </code></pre>
 <p><strong>Debug Version:</strong></p>
-<pre><code class="language-roe">set total which is int to 0
+<pre><code class="language-droe">set total which is int to 0
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set iteration which is int to 0
 
@@ -388,7 +388,7 @@ display &quot;Final total: [total]&quot;
 <h2>Debugging Complex Programs</h2>
 <h3>Module Debugging</h3>
 <p><strong>Debug Module Actions:</strong></p>
-<pre><code class="language-roe">module calculator
+<pre><code class="language-droe">module calculator
   action add with a which is int, b which is int gives int
     display &quot;Debug: calculator.add called with a=[a], b=[b]&quot;
     set result to a + b
@@ -412,7 +412,7 @@ display &quot;Product result: [product]&quot;
 </code></pre>
 <h3>Data Flow Debugging</h3>
 <p>Track data flow through complex operations:</p>
-<pre><code class="language-roe">module data_processor
+<pre><code class="language-droe">module data_processor
   action validate_input with input which is text gives flag
     display &quot;Debug: Validating input: '[input]'&quot;
     
@@ -451,7 +451,7 @@ display &quot;Final result: [final_result]&quot;
 <h2>Performance Debugging</h2>
 <h3>Timing and Performance</h3>
 <p>Add timing information to identify bottlenecks:</p>
-<pre><code class="language-roe">module performance_monitor
+<pre><code class="language-droe">module performance_monitor
   action log_start with operation which is text
     display &quot;[PERF] Starting: [operation]&quot;
   end action
@@ -487,7 +487,7 @@ run performance_monitor.log_end with &quot;Data processing&quot;
 </code></pre>
 <h3>Memory Usage Debugging</h3>
 <p>Track memory-intensive operations:</p>
-<pre><code class="language-roe">module memory_monitor
+<pre><code class="language-droe">module memory_monitor
   action log_allocation with operation which is text, size which is int
     display &quot;[MEM] Allocating for [operation]: ~[size] items&quot;
   end action
@@ -507,7 +507,7 @@ run memory_monitor.log_deallocation with &quot;Large number list&quot;
 <h2>WebAssembly Debugging</h2>
 <h3>Inspecting Generated WebAssembly</h3>
 <pre><code class="language-bash"># Compile to WebAssembly text format
-roe compile src/main.roe --format wat
+droe compile src/main.droe --format wat
 
 # View the generated .wat file
 cat build/main.wat
@@ -553,7 +553,7 @@ runWasmWithDebug(process.argv[2]);
 </code></pre>
 <h2>Debugging Best Practices</h2>
 <h3>1. Use Descriptive Debug Messages</h3>
-<pre><code class="language-roe">// Good: Descriptive debug messages
+<pre><code class="language-droe">// Good: Descriptive debug messages
 display &quot;Debug: User authentication - checking credentials for [username]&quot;
 display &quot;Debug: Database query returned [result_count] records&quot;
 display &quot;Debug: Validation failed at step 3: email format check&quot;
@@ -564,7 +564,7 @@ display &quot;Debug: value is [value]&quot;
 display &quot;Debug: error&quot;
 </code></pre>
 <h3>2. Create Debug Utilities</h3>
-<pre><code class="language-roe">module debug_helpers
+<pre><code class="language-droe">module debug_helpers
   action dump_variables with name which is text, age which is int, active which is flag
     display &quot;=== Variable Dump ===&quot;
     display &quot;Name: [name]&quot;
@@ -584,7 +584,7 @@ end module
 </code></pre>
 <h3>3. Progressive Debugging</h3>
 <p>Build complexity gradually:</p>
-<pre><code class="language-roe">// Step 1: Test basic functionality
+<pre><code class="language-droe">// Step 1: Test basic functionality
 display &quot;Step 1: Basic display working&quot;
 
 // Step 2: Test variables
@@ -616,7 +616,7 @@ display &quot;Step 5: Module result = [result]&quot;
 </code></pre>
 <h3>4. Error Boundaries</h3>
 <p>Implement error boundaries in your code:</p>
-<pre><code class="language-roe">module safe_operations
+<pre><code class="language-droe">module safe_operations
   action safe_divide with numerator which is decimal, denominator which is decimal gives decimal
     when denominator is equal to 0.0 then
       display &quot;Warning: Division by zero, returning 0&quot;
@@ -669,7 +669,7 @@ end module
 <h2>Advanced Debugging Techniques</h2>
 <h3>State Machine Debugging</h3>
 <p>For complex state-based programs:</p>
-<pre><code class="language-roe">set current_state which is text to &quot;idle&quot;
+<pre><code class="language-droe">set current_state which is text to &quot;idle&quot;
 set debug_enabled which is flag to true
 
 module state_machine
@@ -695,7 +695,7 @@ run state_machine.change_state with current_state, &quot;processing&quot;, &quot
 </code></pre>
 <h3>Integration Testing</h3>
 <p>Test interactions between modules:</p>
-<pre><code class="language-roe">module integration_tests
+<pre><code class="language-droe">module integration_tests
   action test_user_workflow
     display &quot;[TEST] Starting user workflow integration test&quot;
     
@@ -718,14 +718,14 @@ end module
 run integration_tests.test_user_workflow
 </code></pre>
 <h2>Next Steps</h2>
-<p>Now that you understand debugging in Roe:</p>
+<p>Now that you understand debugging in Droe:</p>
 <ul>
 <li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Learn debugging command-line options</li>
 <li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Debug WebAssembly output</li>
 <li><strong><a href="/guide/performance/">Performance</a></strong> - Optimize program performance</li>
 <li><strong><a href="/guide/best-practices/">Best Practices</a></strong> - Write maintainable code</li>
 </ul>
-<p>Effective debugging is crucial for developing reliable Roe applications. Use these techniques to identify and resolve issues quickly, and build robust, maintainable programs.</p>
+<p>Effective debugging is crucial for developing reliable Droe applications. Use these techniques to identify and resolve issues quickly, and build robust, maintainable programs.</p>
 
         </article>
       </div>
@@ -736,8 +736,8 @@ run integration_tests.test_user_workflow
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="md:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Droe</span>
         </div>
         <p class="text-gray-600 max-w-md">
           A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
@@ -748,21 +748,21 @@ run integration_tests.test_user_workflow
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
         <ul class="mt-4 space-y-4">
           <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/roe-lang/roe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
         </ul>
       </div>
       
       <div>
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
         <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
         </ul>
       </div>
     </div>
     <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
     </div>
   </div>
 </footer>
@@ -804,6 +804,81 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
       });
     }
+
+    // Add copy buttons to all code blocks
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach((codeBlock) => {
+      const pre = codeBlock.parentElement;
+      pre.style.position = 'relative';
+      
+      const button = document.createElement('button');
+      button.className = 'copy-btn';
+      button.innerHTML = `
+        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg class="check-icon" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      `;
+      button.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s, background-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #6b7280;
+      `;
+      
+      pre.appendChild(button);
+      
+      // Show button on hover
+      pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+      });
+      
+      pre.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('copied')) {
+          button.style.opacity = '0';
+        }
+      });
+      
+      button.addEventListener('click', async () => {
+        const code = codeBlock.textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          // Show success state
+          button.classList.add('copied');
+          button.style.background = '#10b981';
+          button.style.borderColor = '#10b981';
+          button.style.color = 'white';
+          button.querySelector('.copy-icon').style.display = 'none';
+          button.querySelector('.check-icon').style.display = 'block';
+          
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.style.background = 'rgba(255, 255, 255, 0.9)';
+            button.style.borderColor = '#e5e7eb';
+            button.style.color = '#6b7280';
+            button.querySelector('.copy-icon').style.display = 'block';
+            button.querySelector('.check-icon').style.display = 'none';
+            button.style.opacity = '0';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
   });
 </script>
 </body>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLI Reference | Roe - Unified Programming System</title>
-  <meta name="description" content="Complete reference for the Roe command-line interface and development tools.">
+  <title>CLI Reference | Droe</title>
+  <meta name="description" content="Complete reference for the Droe command-line interface and development tools.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,16 +16,16 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CLI Reference | Roe">
-  <meta property="og:description" content="Complete reference for the Roe command-line interface and development tools.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/cli/">
-  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  <meta property="og:title" content="CLI Reference | Droe">
+  <meta property="og:description" content="Complete reference for the Droe command-line interface and development tools.">
+  <meta property="og:url" content="https://droe-lang.dev/guide/cli/">
+  <meta property="og:image" content="https://droe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CLI Reference | Roe">
-  <meta name="twitter:description" content="Complete reference for the Roe command-line interface and development tools.">
-  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+  <meta name="twitter:title" content="CLI Reference | Droe">
+  <meta name="twitter:description" content="Complete reference for the Droe command-line interface and development tools.">
+  <meta name="twitter:image" content="https://droe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
@@ -113,16 +113,16 @@
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span>Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span>Droe</span>
         </a>
       </div>
       
       <!-- Navigation Links -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
           <span class="sr-only">GitHub</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
@@ -150,8 +150,8 @@
     <div id="mobile-menu" class="md:hidden hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
       </div>
     </div>
   </div>
@@ -161,29 +161,29 @@
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
           <h1>CLI Reference</h1>
-          <p>The Roe CLI (<code>roe</code>) is the primary tool for developing, compiling, and running Roe programs. This reference covers all available commands and options.</p>
+          <p>The Droe CLI (<code>droe</code>) is the primary tool for developing, compiling, and running Droe programs. This reference covers all available commands and options.</p>
 <h2>Installation and Setup</h2>
 <h3>Verify Installation</h3>
-<pre><code class="language-bash">roe --version
+<pre><code class="language-bash">droe --version
 </code></pre>
 <h3>Get Help</h3>
-<pre><code class="language-bash">roe --help
-roe -h
+<pre><code class="language-bash">droe --help
+droe -h
 </code></pre>
 <h2>Core Commands</h2>
-<h3><code>roe init</code> - Initialize Project</h3>
-<p>Create a new Roe project with the standard directory structure.</p>
+<h3><code>droe init</code> - Initialize Project</h3>
+<p>Create a new Droe project with the standard directory structure.</p>
 <pre><code class="language-bash"># Initialize in current directory
-roe init
+droe init
 
 # Initialize with custom name
-roe init --name &quot;my-project&quot;
+droe init --name &quot;my-project&quot;
 
 # Initialize with author
-roe init --author &quot;Your Name&quot;
+droe init --author &quot;Your Name&quot;
 
 # Initialize in specific directory
-roe init my-project-directory
+droe init my-project-directory
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -194,24 +194,24 @@ roe init my-project-directory
 <p><strong>Output:</strong>
 Creates the following structure:</p>
 <pre><code>project/
-├── roeconfig.json
+├── droeconfig.json
 ├── src/
-│   └── main.roe
+│   └── main.droe
 └── build/
 </code></pre>
-<h3><code>roe compile</code> - Compile Source Files</h3>
-<p>Compile <code>.roe</code> files to WebAssembly format.</p>
+<h3><code>droe compile</code> - Compile Source Files</h3>
+<p>Compile <code>.droe</code> files to WebAssembly format.</p>
 <pre><code class="language-bash"># Compile specific file
-roe compile src/main.roe
+droe compile src/main.droe
 
 # Compile to specific output
-roe compile src/main.roe --output build/main.wat
+droe compile src/main.droe --output build/main.wat
 
 # Compile multiple files
-roe compile src/*.roe
+droe compile src/*.droe
 
 # Compile with verbose output
-roe compile src/main.roe --verbose
+droe compile src/main.droe --verbose
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -222,24 +222,24 @@ roe compile src/main.roe --verbose
 </ul>
 <p><strong>Examples:</strong></p>
 <pre><code class="language-bash"># Basic compilation
-roe compile examples/src/01_display.roe
+droe compile examples/src/01_display.droe
 
 # Compile to WebAssembly binary
-roe compile src/main.roe --format wasm --output build/main.wasm
+droe compile src/main.droe --format wasm --output build/main.wasm
 
 # Watch mode for development
-roe compile src/main.roe --watch
+droe compile src/main.droe --watch
 </code></pre>
-<h3><code>roe run</code> - Compile and Execute</h3>
-<p>Compile and immediately execute a Roe program.</p>
+<h3><code>droe run</code> - Compile and Execute</h3>
+<p>Compile and immediately execute a Droe program.</p>
 <pre><code class="language-bash"># Run specific file
-roe run src/main.roe
+droe run src/main.droe
 
 # Run with arguments (future feature)
-roe run src/main.roe --args &quot;arg1 arg2&quot;
+droe run src/main.droe --args &quot;arg1 arg2&quot;
 
 # Run project main file
-roe run
+droe run
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -249,24 +249,24 @@ roe run
 </ul>
 <p><strong>Examples:</strong></p>
 <pre><code class="language-bash"># Run a simple program
-roe run examples/src/01_display.roe
+droe run examples/src/01_display.droe
 
 # Run with debug information
-roe run src/main.roe --debug
+droe run src/main.droe --debug
 
 # Run main project file
-roe run
+droe run
 </code></pre>
-<h3><code>roe build</code> - Build Entire Project</h3>
-<p>Build all source files in a project according to <code>roeconfig.json</code>.</p>
+<h3><code>droe build</code> - Build Entire Project</h3>
+<p>Build all source files in a project according to <code>droeconfig.json</code>.</p>
 <pre><code class="language-bash"># Build entire project
-roe build
+droe build
 
 # Build with clean first
-roe build --clean
+droe build --clean
 
 # Build for production
-roe build --release
+droe build --release
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -277,25 +277,25 @@ roe build --release
 </ul>
 <p><strong>Examples:</strong></p>
 <pre><code class="language-bash"># Standard build
-roe build
+droe build
 
 # Clean build
-roe build --clean
+droe build --clean
 
 # Production build
-roe build --release --clean
+droe build --release --clean
 </code></pre>
 <h2>Project Management Commands</h2>
-<h3><code>roe clean</code> - Clean Build Artifacts</h3>
+<h3><code>droe clean</code> - Clean Build Artifacts</h3>
 <p>Remove generated build files and artifacts.</p>
 <pre><code class="language-bash"># Clean build directory
-roe clean
+droe clean
 
 # Clean with confirmation
-roe clean --confirm
+droe clean --confirm
 
 # Clean specific patterns
-roe clean --pattern &quot;*.wat&quot;
+droe clean --pattern &quot;*.wat&quot;
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -303,35 +303,35 @@ roe clean --pattern &quot;*.wat&quot;
 <li><code>--pattern &lt;pattern&gt;</code> - Clean files matching pattern</li>
 <li><code>--dry-run</code> - Show what would be deleted without deleting</li>
 </ul>
-<h3><code>roe info</code> - Project Information</h3>
+<h3><code>droe info</code> - Project Information</h3>
 <p>Display information about the current project.</p>
 <pre><code class="language-bash"># Show project info
-roe info
+droe info
 
 # Show detailed info
-roe info --detailed
+droe info --detailed
 
 # Show configuration
-roe info --config
+droe info --config
 </code></pre>
 <p><strong>Example output:</strong></p>
-<pre><code>Project: hello-roelang
+<pre><code>Project: hello-ddroelang
 Version: 1.0.0
 Source Directory: src/
 Build Directory: build/
-Main File: main.roe
+Main File: main.droe
 Files: 3 source files, 2 build artifacts
 </code></pre>
-<h3><code>roe validate</code> - Validate Project</h3>
+<h3><code>droe validate</code> - Validate Project</h3>
 <p>Check project structure and configuration for issues.</p>
 <pre><code class="language-bash"># Validate current project
-roe validate
+droe validate
 
 # Validate specific directory
-roe validate /path/to/project
+droe validate /path/to/project
 
 # Validate with fixes
-roe validate --fix
+droe validate --fix
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -340,35 +340,35 @@ roe validate --fix
 <li><code>--report</code> - Generate validation report</li>
 </ul>
 <h2>Development Commands</h2>
-<h3><code>roe doctor</code> - System Diagnostics</h3>
+<h3><code>droe doctor</code> - System Diagnostics</h3>
 <p>Check system setup and dependencies.</p>
 <pre><code class="language-bash"># Run system diagnostics
-roe doctor
+droe doctor
 
 # Check specific component
-roe doctor --component compiler
+droe doctor --component compiler
 
 # Verbose diagnostics
-roe doctor --verbose
+droe doctor --verbose
 </code></pre>
 <p><strong>Checks:</strong></p>
 <ul>
-<li>Roe installation</li>
+<li>Droe installation</li>
 <li>Node.js availability</li>
 <li>WebAssembly tools (wat2wasm)</li>
 <li>Project configuration</li>
 <li>File permissions</li>
 </ul>
-<h3><code>roe test</code> - Run Tests</h3>
+<h3><code>droe test</code> - Run Tests</h3>
 <p>Execute test files and validate programs.</p>
 <pre><code class="language-bash"># Run all tests
-roe test
+droe test
 
 # Run specific test file
-roe test tests/test_variables.roe
+droe test tests/test_variables.droe
 
 # Run tests with coverage
-roe test --coverage
+droe test --coverage
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -377,16 +377,16 @@ roe test --coverage
 <li><code>--watch</code> - Watch for changes and re-run tests</li>
 <li><code>--pattern &lt;pattern&gt;</code> - Run tests matching pattern</li>
 </ul>
-<h3><code>roe format</code> - Format Source Code</h3>
-<p>Format Roe source files according to style guidelines.</p>
+<h3><code>droe format</code> - Format Source Code</h3>
+<p>Format Droe source files according to style guidelines.</p>
 <pre><code class="language-bash"># Format all files
-roe format
+droe format
 
 # Format specific file
-roe format src/main.roe
+droe format src/main.droe
 
 # Check formatting without changes
-roe format --check
+droe format --check
 </code></pre>
 <p><strong>Options:</strong></p>
 <ul>
@@ -395,19 +395,19 @@ roe format --check
 <li><code>--write</code> - Write changes to files (default)</li>
 </ul>
 <h2>Configuration Commands</h2>
-<h3><code>roe config</code> - Manage Configuration</h3>
-<p>View and modify Roe configuration.</p>
+<h3><code>droe config</code> - Manage Configuration</h3>
+<p>View and modify Droe configuration.</p>
 <pre><code class="language-bash"># Show all configuration
-roe config list
+droe config list
 
 # Get specific value
-roe config get editor.tabSize
+droe config get editor.tabSize
 
 # Set configuration value
-roe config set editor.tabSize 2
+droe config set editor.tabSize 2
 
 # Reset to defaults
-roe config reset
+droe config reset
 </code></pre>
 <p><strong>Common Configuration Options:</strong></p>
 <ul>
@@ -417,16 +417,16 @@ roe config reset
 <li><code>build.outputDir</code> - Default build directory</li>
 </ul>
 <h2>Advanced Commands</h2>
-<h3><code>roe analyze</code> - Code Analysis</h3>
+<h3><code>droe analyze</code> - Code Analysis</h3>
 <p>Analyze code for potential issues and improvements.</p>
 <pre><code class="language-bash"># Analyze current project
-roe analyze
+droe analyze
 
 # Analyze specific file
-roe analyze src/main.roe
+droe analyze src/main.droe
 
 # Generate analysis report
-roe analyze --report analysis_report.json
+droe analyze --report analysis_report.json
 </code></pre>
 <p><strong>Analysis Types:</strong></p>
 <ul>
@@ -435,50 +435,50 @@ roe analyze --report analysis_report.json
 <li>Performance suggestions</li>
 <li>Best practice violations</li>
 </ul>
-<h3><code>roe profile</code> - Performance Profiling</h3>
+<h3><code>droe profile</code> - Performance Profiling</h3>
 <p>Profile program execution for performance analysis.</p>
 <pre><code class="language-bash"># Profile program execution
-roe profile src/main.roe
+droe profile src/main.droe
 
 # Profile with detailed output
-roe profile src/main.roe --detailed
+droe profile src/main.droe --detailed
 
 # Generate profiling report
-roe profile src/main.roe --report profile.json
+droe profile src/main.droe --report profile.json
 </code></pre>
-<h3><code>roe debug</code> - Debug Programs</h3>
+<h3><code>droe debug</code> - Debug Programs</h3>
 <p>Launch programs in debug mode with debugging support.</p>
 <pre><code class="language-bash"># Debug program
-roe debug src/main.roe
+droe debug src/main.droe
 
 # Debug with breakpoint
-roe debug src/main.roe --break line:10
+droe debug src/main.droe --break line:10
 
 # Debug with step-through
-roe debug src/main.roe --step
+droe debug src/main.droe --step
 </code></pre>
 <h2>Environment Commands</h2>
-<h3><code>roe env</code> - Environment Information</h3>
+<h3><code>droe env</code> - Environment Information</h3>
 <p>Display environment and system information.</p>
 <pre><code class="language-bash"># Show environment info
-roe env
+droe env
 
 # Show PATH information
-roe env --path
+droe env --path
 
 # Show all environment variables
-roe env --all
+droe env --all
 </code></pre>
-<h3><code>roe install</code> - Install Dependencies</h3>
-<p>Install and manage Roe dependencies.</p>
+<h3><code>droe install</code> - Install Dependencies</h3>
+<p>Install and manage Droe dependencies.</p>
 <pre><code class="language-bash"># Install project dependencies
-roe install
+droe install
 
 # Install specific package
-roe install package-name
+droe install package-name
 
 # Install development dependencies
-roe install --dev
+droe install --dev
 </code></pre>
 <h2>Command-Line Options</h2>
 <h3>Global Options</h3>
@@ -494,26 +494,26 @@ roe install --dev
 <h3>Output Formats</h3>
 <p>Many commands support different output formats:</p>
 <pre><code class="language-bash"># JSON output
-roe info --format json
+droe info --format json
 
 # YAML output
-roe info --format yaml
+droe info --format yaml
 
 # Table output (default)
-roe info --format table
+droe info --format table
 </code></pre>
 <h2>Configuration File</h2>
-<h3><code>roeconfig.json</code></h3>
+<h3><code>droeconfig.json</code></h3>
 <p>Project configuration file format:</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;my-project&quot;,
   &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;My Roe project&quot;,
+  &quot;description&quot;: &quot;My Droe project&quot;,
   &quot;author&quot;: &quot;Your Name&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;srcDir&quot;: &quot;src&quot;,
   &quot;buildDir&quot;: &quot;build&quot;,
-  &quot;main&quot;: &quot;main.roe&quot;,
+  &quot;main&quot;: &quot;main.droe&quot;,
   &quot;compiler&quot;: {
     &quot;target&quot;: &quot;wasm&quot;,
     &quot;optimize&quot;: true,
@@ -524,13 +524,13 @@ roe info --format table
     &quot;maxMemory&quot;: &quot;128MB&quot;
   },
   &quot;dependencies&quot;: {
-    &quot;roelang-std&quot;: &quot;^1.0.0&quot;
+    &quot;ddroelang-std&quot;: &quot;^1.0.0&quot;
   },
   &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;roe run&quot;,
-    &quot;build&quot;: &quot;roe build --release&quot;,
-    &quot;test&quot;: &quot;roe test&quot;,
-    &quot;clean&quot;: &quot;roe clean&quot;
+    &quot;start&quot;: &quot;droe run&quot;,
+    &quot;build&quot;: &quot;droe build --release&quot;,
+    &quot;test&quot;: &quot;droe test&quot;,
+    &quot;clean&quot;: &quot;droe clean&quot;
   }
 }
 </code></pre>
@@ -607,7 +607,7 @@ roe info --format table
 </tbody>
 </table>
 <h2>Exit Codes</h2>
-<p>The <code>roe</code> command uses standard exit codes:</p>
+<p>The <code>droe</code> command uses standard exit codes:</p>
 <table>
 <thead>
 <tr>
@@ -649,100 +649,100 @@ roe info --format table
 <h2>Examples</h2>
 <h3>Complete Development Workflow</h3>
 <pre><code class="language-bash"># Create new project
-mkdir my-roelang-app
-cd my-roelang-app
-roe init --name &quot;my-roelang-app&quot; --author &quot;Your Name&quot;
+mkdir my-ddroelang-app
+cd my-ddroelang-app
+droe init --name &quot;my-ddroelang-app&quot; --author &quot;Your Name&quot;
 
 # Create source file
-cat &gt; src/main.roe &lt;&lt; 'EOF'
-display &quot;Hello, Roe!&quot;
+cat &gt; src/main.droe &lt;&lt; 'EOF'
+display &quot;Hello, Droe!&quot;
 set name which is text to &quot;World&quot;
 display &quot;Welcome to [name]!&quot;
 EOF
 
 # Run the program
-roe run src/main.roe
+droe run src/main.droe
 
 # Build the project
-roe build
+droe build
 
 # Run tests (if any)
-roe test
+droe test
 
 # Clean up
-roe clean
+droe clean
 </code></pre>
 <h3>Compilation Pipeline</h3>
 <pre><code class="language-bash"># Compile to WebAssembly text format
-roe compile src/main.roe --output build/main.wat
+droe compile src/main.droe --output build/main.wat
 
 # Compile to WebAssembly binary
-roe compile src/main.roe --format wasm --output build/main.wasm
+droe compile src/main.droe --format wasm --output build/main.wasm
 
 # Run compiled WebAssembly
-node ~/.roelang/run.js build/main.wasm
+node ~/.ddroelang/run.js build/main.wasm
 </code></pre>
 <h3>Development with Watch Mode</h3>
 <pre><code class="language-bash"># Terminal 1: Watch and compile
-roe compile src/main.roe --watch
+droe compile src/main.droe --watch
 
 # Terminal 2: Run tests continuously
-roe test --watch
+droe test --watch
 
 # Terminal 3: Format on save
-roe format --watch
+droe format --watch
 </code></pre>
 <h2>Troubleshooting</h2>
 <h3>Common Issues</h3>
 <h4>Command Not Found</h4>
-<pre><code class="language-bash"># Check if roe is in PATH
-which roe
+<pre><code class="language-bash"># Check if droe is in PATH
+which droe
 echo $PATH
 
 # Reinstall or add to PATH
-export PATH=&quot;$HOME/.roelang:$PATH&quot;
+export PATH=&quot;$HOME/.ddroelang:$PATH&quot;
 </code></pre>
 <h4>Compilation Errors</h4>
 <pre><code class="language-bash"># Check syntax with verbose output
-roe compile src/main.roe --verbose
+droe compile src/main.droe --verbose
 
 # Validate project structure
-roe validate
+droe validate
 
 # Run system diagnostics
-roe doctor
+droe doctor
 </code></pre>
 <h4>Runtime Errors</h4>
 <pre><code class="language-bash"># Run with debug information
-roe run src/main.roe --debug --trace
+droe run src/main.droe --debug --trace
 
 # Check for system requirements
-roe doctor --component runtime
+droe doctor --component runtime
 </code></pre>
 <h3>Getting Help</h3>
 <pre><code class="language-bash"># General help
-roe --help
+droe --help
 
 # Command-specific help
-roe compile --help
-roe run --help
-roe build --help
+droe compile --help
+droe run --help
+droe build --help
 
 # Show examples
-roe --examples
+droe --examples
 
 # Show troubleshooting guide
-roe doctor --help
+droe doctor --help
 </code></pre>
 <h2>Next Steps</h2>
-<p>Now that you understand the Roe CLI:</p>
+<p>Now that you understand the Droe CLI:</p>
 <ul>
 <li><strong><a href="/guide/webassembly/">WebAssembly</a></strong> - Understanding compilation targets</li>
 <li><strong><a href="/guide/debugging/">Debugging</a></strong> - Troubleshooting and debugging techniques</li>
-<li><strong><a href="/guide/project-structure/">Project Structure</a></strong> - Organizing Roe projects</li>
+<li><strong><a href="/guide/project-structure/">Project Structure</a></strong> - Organizing Droe projects</li>
 <li><strong><a href="/guide/installation/">Installation</a></strong> - Setting up your development environment</li>
 </ul>
-<p>The Roe CLI provides powerful tools for developing, building, and managing Roe applications. Use these commands to streamline your development workflow and build robust applications.</p>
+<p>The Droe CLI provides powerful tools for developing, building, and managing Droe applications. Use these commands to streamline your development workflow and build robust applications.</p>
 
         </article>
       </div>
@@ -753,8 +753,8 @@ roe doctor --help
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="md:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Droe</span>
         </div>
         <p class="text-gray-600 max-w-md">
           A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
@@ -765,21 +765,21 @@ roe doctor --help
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
         <ul class="mt-4 space-y-4">
           <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/roe-lang/roe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
         </ul>
       </div>
       
       <div>
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
         <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
         </ul>
       </div>
     </div>
     <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
     </div>
   </div>
 </footer>
@@ -821,6 +821,81 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
       });
     }
+
+    // Add copy buttons to all code blocks
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach((codeBlock) => {
+      const pre = codeBlock.parentElement;
+      pre.style.position = 'relative';
+      
+      const button = document.createElement('button');
+      button.className = 'copy-btn';
+      button.innerHTML = `
+        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg class="check-icon" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      `;
+      button.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s, background-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #6b7280;
+      `;
+      
+      pre.appendChild(button);
+      
+      // Show button on hover
+      pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+      });
+      
+      pre.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('copied')) {
+          button.style.opacity = '0';
+        }
+      });
+      
+      button.addEventListener('click', async () => {
+        const code = codeBlock.textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          // Show success state
+          button.classList.add('copied');
+          button.style.background = '#10b981';
+          button.style.borderColor = '#10b981';
+          button.style.color = 'white';
+          button.querySelector('.copy-icon').style.display = 'none';
+          button.querySelector('.check-icon').style.display = 'block';
+          
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.style.background = 'rgba(255, 255, 255, 0.9)';
+            button.style.borderColor = '#e5e7eb';
+            button.style.color = '#6b7280';
+            button.querySelector('.copy-icon').style.display = 'block';
+            button.querySelector('.check-icon').style.display = 'none';
+            button.style.opacity = '0';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
   });
 </script>
 </body>

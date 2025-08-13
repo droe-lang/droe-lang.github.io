@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Type System | Roe - Unified Programming System</title>
-  <meta name="description" content="Understanding Roe&#39;s strong static type system and built-in data types.">
+  <title>Type System | Droe</title>
+  <meta name="description" content="Understanding Droe&#39;s strong static type system and built-in data types.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,16 +16,16 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Type System | Roe">
-  <meta property="og:description" content="Understanding Roe&#39;s strong static type system and built-in data types.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/types/">
-  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  <meta property="og:title" content="Type System | Droe">
+  <meta property="og:description" content="Understanding Droe&#39;s strong static type system and built-in data types.">
+  <meta property="og:url" content="https://droe-lang.dev/guide/types/">
+  <meta property="og:image" content="https://droe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Type System | Roe">
-  <meta name="twitter:description" content="Understanding Roe&#39;s strong static type system and built-in data types.">
-  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+  <meta name="twitter:title" content="Type System | Droe">
+  <meta name="twitter:description" content="Understanding Droe&#39;s strong static type system and built-in data types.">
+  <meta name="twitter:image" content="https://droe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
@@ -113,16 +113,16 @@
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span>Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span>Droe</span>
         </a>
       </div>
       
       <!-- Navigation Links -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
           <span class="sr-only">GitHub</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
@@ -150,8 +150,8 @@
     <div id="mobile-menu" class="md:hidden hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
       </div>
     </div>
   </div>
@@ -161,17 +161,17 @@
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
           <h1>Type System</h1>
-          <p>Roe features a <strong>strong static type system</strong> that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Roe has a specific type that determines what operations can be performed on it.</p>
+          <p>Droe features a <strong>strong static type system</strong> that catches errors at compile time, making your programs more reliable and easier to debug. Every value in Droe has a specific type that determines what operations can be performed on it.</p>
 <h2>Core Principles</h2>
 <h3>Static Typing</h3>
 <p>Types are checked at compile time, not runtime:</p>
-<pre><code class="language-roe">set name which is text to &quot;Alice&quot;      // ✅ Valid: text assigned to text
+<pre><code class="language-droe">set name which is text to &quot;Alice&quot;      // ✅ Valid: text assigned to text
 set age which is int to 25             // ✅ Valid: int assigned to int
 set age which is int to &quot;twenty-five&quot;  // ❌ Error: text cannot be assigned to int
 </code></pre>
 <h3>Type Safety</h3>
 <p>Operations are only allowed between compatible types:</p>
-<pre><code class="language-roe">set count which is int to 10
+<pre><code class="language-droe">set count which is int to 10
 set message which is text to &quot;items&quot;
 
 display count + 5        // ✅ Valid: int + int
@@ -180,21 +180,21 @@ display count + message  // ❌ Error: cannot add int and text
 </code></pre>
 <h3>Explicit Typing</h3>
 <p>Types must be declared explicitly:</p>
-<pre><code class="language-roe">set value which is int to 42       // ✅ Explicit type declaration
+<pre><code class="language-droe">set value which is int to 42       // ✅ Explicit type declaration
 set value to 42                    // ❌ Error: type must be specified
 </code></pre>
 <h2>Built-in Types</h2>
 <h3>Primitive Types</h3>
 <h4><code>int</code> - Integers</h4>
 <p>Whole numbers without decimal points:</p>
-<pre><code class="language-roe">set count which is int to 42
+<pre><code class="language-droe">set count which is int to 42
 set negative which is int to -10
 set zero which is int to 0
 set large which is int to 1000000
 </code></pre>
 <p><strong>Range</strong>: -2³¹ to 2³¹-1 (32-bit signed integers)</p>
 <p><strong>Operations</strong>:</p>
-<pre><code class="language-roe">set a which is int to 10
+<pre><code class="language-droe">set a which is int to 10
 set b which is int to 3
 
 set sum to a + b           // Addition: 13
@@ -205,14 +205,14 @@ set remainder to a % b     // Modulo: 1
 </code></pre>
 <h4><code>decimal</code> - Floating Point Numbers</h4>
 <p>Numbers with decimal places:</p>
-<pre><code class="language-roe">set price which is decimal to 19.99
+<pre><code class="language-droe">set price which is decimal to 19.99
 set pi which is decimal to 3.14159
 set negative which is decimal to -5.5
 set scientific which is decimal to 1.23e10
 </code></pre>
 <p><strong>Precision</strong>: 64-bit floating point (IEEE 754)</p>
 <p><strong>Operations</strong>:</p>
-<pre><code class="language-roe">set x which is decimal to 10.5
+<pre><code class="language-droe">set x which is decimal to 10.5
 set y which is decimal to 2.5
 
 set sum to x + y           // 13.0
@@ -222,33 +222,33 @@ set quotient to x / y      // 4.2
 </code></pre>
 <h4><code>text</code> - Strings</h4>
 <p>Sequences of characters:</p>
-<pre><code class="language-roe">set name which is text to &quot;Alice&quot;
+<pre><code class="language-droe">set name which is text to &quot;Alice&quot;
 set empty which is text to &quot;&quot;
 set multiline which is text to &quot;Hello
 World&quot;
 set with_quotes which is text to &quot;She said \&quot;Hello\&quot;&quot;
 </code></pre>
 <p><strong>Operations</strong>:</p>
-<pre><code class="language-roe">set first which is text to &quot;Hello&quot;
+<pre><code class="language-droe">set first which is text to &quot;Hello&quot;
 set second which is text to &quot;World&quot;
 
 set greeting to first + &quot; &quot; + second    // Concatenation
 set length from run text.length with greeting
 </code></pre>
 <p><strong>Escape Sequences</strong>:</p>
-<pre><code class="language-roe">set newline which is text to &quot;Line 1\nLine 2&quot;
+<pre><code class="language-droe">set newline which is text to &quot;Line 1\nLine 2&quot;
 set tab which is text to &quot;Name:\tValue&quot;
 set backslash which is text to &quot;Path: C:\\Users&quot;
 set quote which is text to &quot;He said \&quot;Hi\&quot;&quot;
 </code></pre>
 <h4><code>flag</code> - Booleans</h4>
 <p>True or false values:</p>
-<pre><code class="language-roe">set is_active which is flag to true
+<pre><code class="language-droe">set is_active which is flag to true
 set is_hidden which is flag to false
 set is_ready which is flag to false
 </code></pre>
 <p><strong>Operations</strong>:</p>
-<pre><code class="language-roe">set a which is flag to true
+<pre><code class="language-droe">set a which is flag to true
 set b which is flag to false
 
 set and_result to a and b        // false
@@ -258,7 +258,7 @@ set not_result to not a          // false
 <h3>Collection Types</h3>
 <h4><code>list of T</code> - Arrays</h4>
 <p>Ordered collections of the same type:</p>
-<pre><code class="language-roe">// Lists of different types
+<pre><code class="language-droe">// Lists of different types
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
 set flags which are list of flag to [true, false, true]
@@ -269,7 +269,7 @@ set empty_numbers which are list of int to []
 set empty_names which are list of text to []
 </code></pre>
 <p><strong>Operations</strong>:</p>
-<pre><code class="language-roe">set scores which are list of int to [85, 92, 78, 95]
+<pre><code class="language-droe">set scores which are list of int to [85, 92, 78, 95]
 
 // Iteration
 for each score in scores
@@ -281,18 +281,18 @@ set first_score from run list.get with scores, 0
 </code></pre>
 <h4><code>group of T</code> - Sets</h4>
 <p>Unordered collections with unique values:</p>
-<pre><code class="language-roe">set unique_numbers which are group of int to [1, 2, 3, 2, 1]  // {1, 2, 3}
+<pre><code class="language-droe">set unique_numbers which are group of int to [1, 2, 3, 2, 1]  // {1, 2, 3}
 set languages which are group of text to [&quot;Python&quot;, &quot;Java&quot;, &quot;Python&quot;]  // {&quot;Python&quot;, &quot;Java&quot;}
 </code></pre>
 <h2>Type Conversion</h2>
 <h3>Implicit Conversion</h3>
 <p>Some conversions happen automatically:</p>
-<pre><code class="language-roe">set whole which is int to 42
+<pre><code class="language-droe">set whole which is int to 42
 set fractional which is decimal to whole    // int → decimal (safe)
 </code></pre>
 <h3>Explicit Conversion</h3>
 <p>Use built-in conversion functions:</p>
-<pre><code class="language-roe">set number which is int to 42
+<pre><code class="language-droe">set number which is int to 42
 set text_number from run int.to_text with number          // &quot;42&quot;
 set decimal_number from run int.to_decimal with number    // 42.0
 
@@ -306,7 +306,7 @@ set flag_text from run flag.to_text with flag_value      // &quot;true&quot;
 <h2>Type Checking and Validation</h2>
 <h3>Compile-Time Checks</h3>
 <p>Types are validated when you compile:</p>
-<pre><code class="language-roe">set age which is int to 25
+<pre><code class="language-droe">set age which is int to 25
 set name which is text to &quot;Alice&quot;
 
 when age is greater than 18 then     // ✅ Valid: int comparison
@@ -319,7 +319,7 @@ end when
 </code></pre>
 <h3>Type Compatibility</h3>
 <p>Operations require compatible types:</p>
-<pre><code class="language-roe">// Arithmetic - requires numeric types
+<pre><code class="language-droe">// Arithmetic - requires numeric types
 set a which is int to 10
 set b which is int to 5
 set sum to a + b                     // ✅ Valid: int + int
@@ -343,7 +343,7 @@ set both to is_ready and is_active   // ✅ Valid: flag and flag
 <h2>Advanced Type Features</h2>
 <h3>Custom Data Types</h3>
 <p>Define your own structured types:</p>
-<pre><code class="language-roe">data Person
+<pre><code class="language-droe">data Person
   name is text
   age is int
   active is flag
@@ -357,7 +357,7 @@ end data
 </code></pre>
 <h3>Type Parameters in Actions</h3>
 <p>Actions can specify parameter and return types:</p>
-<pre><code class="language-roe">module math_utils
+<pre><code class="language-droe">module math_utils
   action add with a which is int, b which is int gives int
     give a + b
   end action
@@ -373,15 +373,15 @@ end module
 </code></pre>
 <h3>Collection Type Safety</h3>
 <p>Collections are strongly typed:</p>
-<pre><code class="language-roe">set numbers which are list of int to [1, 2, 3]
+<pre><code class="language-droe">set numbers which are list of int to [1, 2, 3]
 set texts which are list of text to [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
 
 // This would be an error:
 // set mixed which are list of int to [1, &quot;two&quot;, 3]  // ❌ Mixed types not allowed
 </code></pre>
 <h2>Type Inference Context</h2>
-<p>While types must be explicitly declared for variables, Roe can infer types in expressions:</p>
-<pre><code class="language-roe">set base_price which is decimal to 100.0
+<p>While types must be explicitly declared for variables, Droe can infer types in expressions:</p>
+<pre><code class="language-droe">set base_price which is decimal to 100.0
 set tax_rate which is decimal to 0.08
 
 // Type inferred from expression
@@ -389,7 +389,7 @@ set total_price to base_price + (base_price * tax_rate)  // decimal inferred
 </code></pre>
 <h2>Common Type Patterns</h2>
 <h3>Input Validation</h3>
-<pre><code class="language-roe">module validation
+<pre><code class="language-droe">module validation
   action is_valid_email with email which is text gives flag
     // Email validation logic
     give true  // Simplified
@@ -410,7 +410,7 @@ otherwise
 end when
 </code></pre>
 <h3>Type-Safe Calculations</h3>
-<pre><code class="language-roe">module finance
+<pre><code class="language-droe">module finance
   action calculate_tax with amount which is decimal, rate which is decimal gives decimal
     give amount * rate
   end action
@@ -430,7 +430,7 @@ display &quot;Tax: &quot; + finance.format_money with tax_amount
 display &quot;Total: &quot; + finance.format_money with total
 </code></pre>
 <h3>Collection Processing</h3>
-<pre><code class="language-roe">set scores which are list of int to [85, 92, 78, 95, 88]
+<pre><code class="language-droe">set scores which are list of int to [85, 92, 78, 95, 88]
 set total which is int to 0
 set count which is int to 0
 
@@ -444,7 +444,7 @@ display &quot;Average score: [average]&quot;
 </code></pre>
 <h2>Best Practices</h2>
 <h3>1. Choose Appropriate Types</h3>
-<pre><code class="language-roe">// Good: Use specific types
+<pre><code class="language-droe">// Good: Use specific types
 set user_id which is int to 12345
 set username which is text to &quot;alice_smith&quot;
 set is_admin which is flag to false
@@ -455,7 +455,7 @@ set user_id which is text to &quot;12345&quot;          // Loses numeric operati
 set account_balance which is text to &quot;1250.75&quot; // Loses arithmetic operations
 </code></pre>
 <h3>2. Use Collections Appropriately</h3>
-<pre><code class="language-roe">// Good: Homogeneous collections
+<pre><code class="language-droe">// Good: Homogeneous collections
 set student_grades which are list of int to [85, 92, 78, 95]
 set employee_names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Carol&quot;]
 
@@ -463,7 +463,7 @@ set employee_names which are list of text to [&quot;Alice&quot;, &quot;Bob&quot;
 set programming_languages which are group of text to [&quot;Python&quot;, &quot;Java&quot;, &quot;JavaScript&quot;]
 </code></pre>
 <h3>3. Validate Input Types</h3>
-<pre><code class="language-roe">module input_validation
+<pre><code class="language-droe">module input_validation
   action validate_age with age which is int gives flag
     give age &gt;= 0 and age &lt;= 150
   end action
@@ -475,7 +475,7 @@ set programming_languages which are group of text to [&quot;Python&quot;, &quot;
 end module
 </code></pre>
 <h3>4. Use Type-Safe APIs</h3>
-<pre><code class="language-roe">module user_service
+<pre><code class="language-droe">module user_service
   action create_user with name which is text, age which is int, email which is text gives flag
     when age is less than 0 or age is greater than 150 then
       give false
@@ -487,8 +487,8 @@ end module
 end module
 </code></pre>
 <h2>Error Messages</h2>
-<p>Roe provides clear error messages for type mismatches:</p>
-<pre><code class="language-roe">set count which is int to &quot;five&quot;
+<p>Droe provides clear error messages for type mismatches:</p>
+<pre><code class="language-droe">set count which is int to &quot;five&quot;
 // Error: Type mismatch: expected 'int', got 'text'
 
 set result to count + &quot;items&quot;
@@ -500,14 +500,14 @@ action calculate with value which is decimal gives int
 end action
 </code></pre>
 <h2>Next Steps</h2>
-<p>Now that you understand Roe's type system:</p>
+<p>Now that you understand Droe's type system:</p>
 <ul>
 <li><strong><a href="/guide/variables/">Variables</a></strong> - Learn about variable declaration and scope</li>
 <li><strong><a href="/guide/strings/">Strings</a></strong> - Deep dive into string operations and interpolation</li>
 <li><strong><a href="/guide/collections/">Collections</a></strong> - Working with lists and groups</li>
 <li><strong><a href="/guide/data-structures/">Data Structures</a></strong> - Creating custom data types</li>
 </ul>
-<p>Roe's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.</p>
+<p>Droe's strong type system helps you write more reliable code by catching errors early and making your intentions clear. Use types effectively to build robust, maintainable programs.</p>
 
         </article>
       </div>
@@ -518,8 +518,8 @@ end action
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="md:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Droe</span>
         </div>
         <p class="text-gray-600 max-w-md">
           A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
@@ -530,21 +530,21 @@ end action
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
         <ul class="mt-4 space-y-4">
           <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/roe-lang/roe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
         </ul>
       </div>
       
       <div>
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
         <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
         </ul>
       </div>
     </div>
     <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
     </div>
   </div>
 </footer>
@@ -586,6 +586,81 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
       });
     }
+
+    // Add copy buttons to all code blocks
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach((codeBlock) => {
+      const pre = codeBlock.parentElement;
+      pre.style.position = 'relative';
+      
+      const button = document.createElement('button');
+      button.className = 'copy-btn';
+      button.innerHTML = `
+        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg class="check-icon" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      `;
+      button.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s, background-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #6b7280;
+      `;
+      
+      pre.appendChild(button);
+      
+      // Show button on hover
+      pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+      });
+      
+      pre.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('copied')) {
+          button.style.opacity = '0';
+        }
+      });
+      
+      button.addEventListener('click', async () => {
+        const code = codeBlock.textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          // Show success state
+          button.classList.add('copied');
+          button.style.background = '#10b981';
+          button.style.borderColor = '#10b981';
+          button.style.color = 'white';
+          button.querySelector('.copy-icon').style.display = 'none';
+          button.querySelector('.check-icon').style.display = 'block';
+          
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.style.background = 'rgba(255, 255, 255, 0.9)';
+            button.style.borderColor = '#e5e7eb';
+            button.style.color = '#6b7280';
+            button.querySelector('.copy-icon').style.display = 'block';
+            button.querySelector('.check-icon').style.display = 'none';
+            button.style.opacity = '0';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
   });
 </script>
 </body>

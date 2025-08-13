@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: UI Components
-description: Build user interfaces with Roelang's cross-platform UI component system for web, Android, and iOS.
+description: Build user interfaces with Ddroelang's cross-platform UI component system for web, Android, and iOS.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/frameworks/
 ---
 
-Roelang provides a comprehensive UI component system that generates native interfaces for web (HTML/JavaScript), Android (Kotlin), and iOS (Swift) from a single, consistent syntax.
+Ddroelang provides a comprehensive UI component system that generates native interfaces for web (HTML/JavaScript), Android (Kotlin), and iOS (Swift) from a single, consistent syntax.
 
 ## Layout System
 
@@ -22,7 +22,7 @@ Roelang provides a comprehensive UI component system that generates native inter
 
 Layouts define the structure and organization of UI components:
 
-```roe
+```droe
 layout MainScreen
     column class "main-container"
         title "My Application" class "app-title"
@@ -37,7 +37,7 @@ end layout
 
 ### Layout Types
 
-```roe
+```droe
 // Vertical column layout
 layout VerticalLayout
     column class "container"
@@ -67,7 +67,7 @@ end layout
 
 ### Static Text
 
-```roe
+```droe
 // Basic text display
 text "Hello World" class "greeting"
 
@@ -80,7 +80,7 @@ text "This is a longer paragraph of text that will wrap appropriately on differe
 
 ### Dynamic Text with Data Binding
 
-```roe
+```droe
 // Bind to variables
 text bind UserProfile.displayName class "user-name"
 
@@ -99,7 +99,7 @@ end when
 
 ### Text Input
 
-```roe
+```droe
 // Basic text input
 input id username_field text placeholder "Enter username" bind UserProfile.userName validate required class "form-input"
 
@@ -115,7 +115,7 @@ input id phone_field phone placeholder "Phone Number" bind UserProfile.phone val
 
 ### Input Validation
 
-```roe
+```droe
 // Required field validation
 input id name_field text placeholder "Name" bind UserProfile.name validate required class "form-input"
 
@@ -145,7 +145,7 @@ input id description_field text placeholder "Description" bind ProductForm.descr
 
 ### Basic Buttons
 
-```roe
+```droe
 // Action button
 button "Submit" action submitForm class "submit-btn primary"
 
@@ -158,7 +158,7 @@ button "Delete" action deleteItem confirm "Are you sure?" class "delete-btn dang
 
 ### Mobile-Specific Buttons
 
-```roe
+```droe
 // Camera button (mobile only)
 button "Take Photo" type camera action capturePhoto permissions "camera, storage" class "camera-btn"
 
@@ -171,7 +171,7 @@ button "Share" type share action shareContent class "share-btn"
 
 ### Button States
 
-```roe
+```droe
 // Conditional button states
 button "Process" action processData 
     enabled when data is valid
@@ -190,7 +190,7 @@ button "Download" action downloadFile
 
 ### Toggle Switches
 
-```roe
+```droe
 // Basic toggle
 toggle id notifications_toggle "Enable Notifications" bind UserSettings.notificationsEnabled default off class "toggle-field"
 
@@ -205,7 +205,7 @@ toggle id auto_save_toggle "Auto Save" bind AppSettings.autoSave default on clas
 
 ### Dropdown Selection
 
-```roe
+```droe
 dropdown id quality_dropdown bind UserSettings.photoQuality default "Medium Quality" class "dropdown-field"
     option "High Quality"
     option "Medium Quality" 
@@ -235,7 +235,7 @@ end dropdown
 
 ### Radio Button Groups
 
-```roe
+```droe
 radio id theme_radio group "appTheme" bind UserSettings.appTheme default "System Default" class "radio-group"
     option "Light Theme"
     option "Dark Theme" 
@@ -254,7 +254,7 @@ end radio
 
 ### Static Images
 
-```roe
+```droe
 // Basic image
 image source "logo.png" alt "Company Logo" class "logo-image"
 
@@ -267,7 +267,7 @@ image source "placeholder.png" alt "No Image Available" class "placeholder-image
 
 ### Dynamic Images
 
-```roe
+```droe
 // Data-bound image
 image source bind UserProfile.profilePicture alt "Profile Picture" class "profile-pic"
 
@@ -285,7 +285,7 @@ end for
 
 ### Complete Forms
 
-```roe
+```droe
 form RegistrationForm
     column class "form-container"
         title "Create Account" class "form-title"
@@ -312,7 +312,7 @@ end form
 
 ### Form Validation
 
-```roe
+```droe
 form ContactForm
     column class "contact-form"
         input id name_field text placeholder "Your Name" bind ContactInfo.name validate required class "form-input"
@@ -336,7 +336,7 @@ end form
 
 ### Variable Binding
 
-```roe
+```droe
 // Bind to simple variables
 text bind userName
 input text bind userEmail
@@ -349,7 +349,7 @@ image source bind UserProfile.avatar
 
 ### Two-Way Data Binding
 
-```roe
+```droe
 // Input automatically updates bound variable
 input id name_field text bind UserProfile.name
 
@@ -362,7 +362,7 @@ end action
 
 ### Conditional Binding
 
-```roe
+```droe
 // Show different content based on state
 when UserProfile.isLoggedIn then
     text "Welcome back, [UserProfile.name]!"
@@ -381,7 +381,7 @@ button "Submit" action submitForm
 
 ### Click Events
 
-```roe
+```droe
 // Button click
 button "Click Me" action handleClick class "btn"
 
@@ -396,7 +396,7 @@ text "Click here for more info" class "link-text"
 
 ### Input Events
 
-```roe
+```droe
 // Input change events
 input id search_field text placeholder "Search..." bind searchTerm class "search-input"
     on change action performSearch
@@ -410,7 +410,7 @@ toggle id notifications_toggle "Notifications" bind notificationsEnabled class "
 
 ### Form Events
 
-```roe
+```droe
 form UserForm
     // Form submission
     on submit action submitForm
@@ -429,7 +429,7 @@ end form
 
 ### CSS Classes
 
-```roe
+```droe
 // Component styling
 text "Styled Text" class "large-text bold red-color"
 button "Styled Button" action doSomething class "primary-btn rounded shadow"
@@ -442,7 +442,7 @@ end column
 
 ### Platform-Specific Styling
 
-```roe
+```droe
 // Different styles per platform
 button "Platform Button" action handleClick
     class when platform equals "web" then "web-btn"
@@ -452,7 +452,7 @@ button "Platform Button" action handleClick
 
 ### Theme Support
 
-```roe
+```droe
 // Theme-aware components
 text "Themed Text" class "text-primary"
 button "Themed Button" action doSomething class "btn-primary"
@@ -583,7 +583,7 @@ struct RegistrationForm: View {
 
 ### Lists and Collections
 
-```roe
+```droe
 // Dynamic list
 layout UserList
     column class "list-container"
@@ -610,7 +610,7 @@ end when
 
 ### Modal Dialogs
 
-```roe
+```droe
 // Modal dialog
 when showConfirmDialog is true then
     dialog class "confirm-dialog"
@@ -627,7 +627,7 @@ end when
 
 ### Loading States
 
-```roe
+```droe
 // Loading indicator
 when isLoading is true then
     column class "loading-container"
@@ -650,7 +650,7 @@ button "Submit" action submitForm class "submit-btn"
 
 ### 1. Use Semantic Components
 
-```roe
+```droe
 // Good: Semantic structure
 form LoginForm
     title "Login" class "form-title"
@@ -670,7 +670,7 @@ end column
 
 ### 2. Handle All States
 
-```roe
+```droe
 // Good: Handle loading, error, and success states
 when dataState equals "loading" then
     spinner class "loading"
@@ -686,7 +686,7 @@ end when
 
 ### 3. Validate User Input
 
-```roe
+```droe
 // Good: Comprehensive validation
 input id email_field email bind userEmail validate required email class "form-input"
     on invalid show message "Please enter a valid email address"
@@ -701,4 +701,4 @@ input id password_field password bind userPassword validate required minlength 8
 - **[Mobile Development](/guide/mobile/)** - Mobile-specific UI features
 - **[Styling Guide](/guide/styling/)** - Advanced styling and theming
 
-UI Components in Roelang provide a declarative way to build user interfaces that work consistently across web, Android, and iOS platforms while maintaining platform-appropriate look and behavior.
+UI Components in Ddroelang provide a declarative way to build user interfaces that work consistently across web, Android, and iOS platforms while maintaining platform-appropriate look and behavior.

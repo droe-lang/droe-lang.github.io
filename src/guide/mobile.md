@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Mobile Development
-description: Build cross-platform mobile applications for Android and iOS with Roelang's mobile DSL.
+description: Build cross-platform mobile applications for Android and iOS with Ddroelang's mobile DSL.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/ui-components/
 ---
 
-Roelang provides comprehensive mobile development capabilities, allowing you to create native Android and iOS applications from a single codebase using mobile-specific UI components and device features.
+Ddroelang provides comprehensive mobile development capabilities, allowing you to create native Android and iOS applications from a single codebase using mobile-specific UI components and device features.
 
 ## Mobile Project Setup
 
 ### Configuration
 
-Configure mobile targets in `roeconfig.json`:
+Configure mobile targets in `droeconfig.json`:
 
 ```json
 {
@@ -50,14 +50,14 @@ Configure mobile targets in `roeconfig.json`:
 
 ```
 my-mobile-app/
-├── roeconfig.json
+├── droeconfig.json
 ├── src/
-│   ├── main.roe
+│   ├── main.droe
 │   ├── screens/
-│   │   ├── login.roe
-│   │   └── profile.roe
+│   │   ├── login.droe
+│   │   └── profile.droe
 │   └── components/
-│       └── user_card.roe
+│       └── user_card.droe
 ├── assets/
 │   ├── images/
 │   └── icons/
@@ -68,9 +68,9 @@ my-mobile-app/
 
 ## Mobile-Specific Metadata
 
-Use file-level metadata annotations for app information (mobile target is configured in `roeconfig.json`):
+Use file-level metadata annotations for app information (mobile target is configured in `droeconfig.json`):
 
-```roe
+```droe
 @name "PhotoShare"
 @description "Cross-platform photo sharing application"
 @package "com.example.photoapp"
@@ -80,13 +80,13 @@ module photo_app
 end module
 ```
 
-**Note:** The `@targets` annotation is not implemented. Use `roeconfig.json` configuration instead.
+**Note:** The `@targets` annotation is not implemented. Use `droeconfig.json` configuration instead.
 
 ## Device Capabilities
 
 ### Camera Integration
 
-```roe
+```droe
 // Camera button component
 button "Take Photo" type camera action capturePhoto permissions "camera, storage" class "camera-btn"
 
@@ -109,7 +109,7 @@ end action
 
 ### Location Services
 
-```roe
+```droe
 // Location button component
 button "Get Location" type location action getLocation permissions "location" accuracy high class "location-btn"
 
@@ -137,7 +137,7 @@ end action
 
 ### Push Notifications
 
-```roe
+```droe
 // Show notifications
 action sendNotification with title which is text, message which is text
     show notification message with title title sound default
@@ -161,7 +161,7 @@ end action
 
 ### Device Sensors
 
-```roe
+```droe
 // Motion detection
 action setupMotionDetection
     when device has motion sensor then
@@ -185,7 +185,7 @@ end action
 
 ### Hardware Features
 
-```roe
+```droe
 // Vibration
 action vibrate with pattern which is text
     when pattern equals "short" then
@@ -218,7 +218,7 @@ end action
 
 ### Local Storage
 
-```roe
+```droe
 // Save user data locally
 action saveUserData
     store UserProfile in local database with key "user_profile"
@@ -251,7 +251,7 @@ end action
 
 ### Cloud Synchronization
 
-```roe
+```droe
 action syncWithCloud
     when online then
         // Upload local changes
@@ -279,7 +279,7 @@ end action
 
 ### Mobile Layouts
 
-```roe
+```droe
 layout MainScreen
     column class "main-container"
         title "My Mobile App" class "app-title"
@@ -300,7 +300,7 @@ end layout
 
 ### Forms for Mobile
 
-```roe
+```droe
 form UserRegistration
     column class "form-container"
         title "Create Account" class "form-title"
@@ -320,7 +320,7 @@ end form
 
 ### Navigation
 
-```roe
+```droe
 layout TabNavigation
     tabs class "bottom-navigation"
         tab "Home" screen HomeScreen icon "home" selected
@@ -335,7 +335,7 @@ end layout
 
 ### Android-Specific
 
-```roe
+```droe
 // Android-specific features
 when platform equals "android" then
     // Use Android-specific components
@@ -352,7 +352,7 @@ end action
 
 ### iOS-Specific
 
-```roe
+```droe
 // iOS-specific features  
 when platform equals "ios" then
     // Use iOS-specific components
@@ -371,7 +371,7 @@ end action
 
 ### Requesting Permissions
 
-```roe
+```droe
 // Request multiple permissions
 action requestPermissions
     request permissions "camera, location, notifications, storage"
@@ -398,7 +398,7 @@ end action
 
 ### Permission Handling by Component
 
-```roe
+```droe
 // Components automatically handle permissions
 button "Take Photo" type camera permissions "camera, storage" 
     on permission_denied show alert "Camera access required for photos"
@@ -411,12 +411,12 @@ button "Get Location" type location permissions "location" accuracy high
 
 ## Complete Mobile App Example
 
-```roe
+```droe
 @name "PhotoShare"
 @description "Cross-platform photo sharing application" 
 @package "com.example.photoshare"
 
-// roeconfig.json should contain:
+// droeconfig.json should contain:
 // {
 //   "target": "mobile",
 //   "mobile": {
@@ -638,7 +638,7 @@ struct ContentView: View {
 
 ### 1. Handle Permissions Gracefully
 
-```roe
+```droe
 // Good: Always check permissions before using features
 action useCamera
     when device has camera permission then
@@ -652,7 +652,7 @@ end action
 
 ### 2. Provide Offline Functionality
 
-```roe
+```droe
 // Good: Handle offline scenarios
 action saveData
     store data in local database
@@ -668,7 +668,7 @@ end action
 
 ### 3. Use Platform-Appropriate UI
 
-```roe
+```droe
 // Good: Platform-specific styling
 button "Share" action shareContent class "primary-btn"
     when platform equals "android" then
@@ -684,4 +684,4 @@ button "Share" action shareContent class "primary-btn"
 - **[Framework Support](/guide/frameworks/)** - Mobile framework generation
 - **[Deployment](/guide/deployment/)** - Publishing mobile apps
 
-Mobile development in Roelang provides a unified way to create native applications for both Android and iOS platforms while leveraging device-specific features and maintaining platform-appropriate user experiences.
+Mobile development in Ddroelang provides a unified way to create native applications for both Android and iOS platforms while leveraging device-specific features and maintaining platform-appropriate user experiences.

@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Framework Support
-description: Understand how Roelang generates code for different target frameworks and platforms.
+description: Understand how Ddroelang generates code for different target frameworks and platforms.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/implementation-status/
 ---
 
-Roelang provides framework adapters that automatically generate idiomatic code for popular web, mobile, and backend frameworks from your Roelang source code.
+Ddroelang provides framework adapters that automatically generate idiomatic code for popular web, mobile, and backend frameworks from your Ddroelang source code.
 
 ## Compilation Targets Overview
 
 | Target | Framework | Generated Output | Status |
 |--------|-----------|------------------|---------|
-| `roe` | RoeVM Bytecode | `.roebc` files for native runtime | ✅ **Default & Recommended** |
+| `droe` | DroeVM Bytecode | `.droebc` files for native runtime | ✅ **Default & Recommended** |
 | `rust` | Axum | Complete Rust web server project | 🧪 **Implemented** - Testing Pending |
 | `wasm` | WebAssembly | `.wasm` binary for cross-platform execution | ✅ **Stable** |
 | `java` | Spring Boot | Full Java web application | 🧪 **Implemented** - Testing Pending |
@@ -31,13 +31,13 @@ Roelang provides framework adapters that automatically generate idiomatic code f
 | `android` | Native Android | Kotlin Android project | 🧪 **Implemented** - Testing Pending |
 | `ios` | Native iOS | Swift iOS project | 🧪 **Implemented** - Testing Pending |
 
-## Primary Target: RoeVM Bytecode
+## Primary Target: DroeVM Bytecode
 
 ### Configuration
 
 ```json
 {
-    "target": "roe",
+    "target": "droe",
     "framework": "axum",
     "database": {
         "type": "postgres",
@@ -48,11 +48,11 @@ Roelang provides framework adapters that automatically generate idiomatic code f
 
 ### Generated Output
 
-Roelang code compiles to JSON bytecode that runs on the RoeVM runtime:
+Ddroelang code compiles to JSON bytecode that runs on the DroeVM runtime:
 
-**Input (`api.roe`):**
-```roe
-@target roe
+**Input (`api.droe`):**
+```droe
+@target droe
 
 module UserAPI
 
@@ -74,7 +74,7 @@ end serve
 end module
 ```
 
-**Output (`api.roebc`):**
+**Output (`api.droebc`):**
 ```json
 {
     "version": 1,
@@ -127,7 +127,7 @@ end module
 
 ### Runtime Execution
 
-The RoeVM runtime interprets bytecode and provides:
+The DroeVM runtime interprets bytecode and provides:
 - Embedded HTTP server (Axum-based)
 - Database connectivity (PostgreSQL, MySQL, SQLite, Oracle, MongoDB)
 - Request/response handling
@@ -330,7 +330,7 @@ sqlx = { version = "0.7", features = ["sqlite", "chrono", "uuid"] }
 
 **Compilation Pipeline:**
 ```
-.roe → compiler → .wat → wat2wasm → .wasm
+.droe → compiler → .wat → wat2wasm → .wasm
 ```
 
 **Example `.wat` output:**
@@ -338,7 +338,7 @@ sqlx = { version = "0.7", features = ["sqlite", "chrono", "uuid"] }
 (module
   (import "env" "display" (func $display (param i32 i32)))
   (memory (export "memory") 1)
-  (data (i32.const 0) "Hello from Roelang!")
+  (data (i32.const 0) "Hello from Ddroelang!")
   
   (func $main (export "main")
     i32.const 0    ; string offset
@@ -353,7 +353,7 @@ sqlx = { version = "0.7", features = ["sqlite", "chrono", "uuid"] }
 // Node.js runtime
 const fs = require('fs');
 
-async function runRoelang(wasmFile) {
+async function runDdroelang(wasmFile) {
     const wasmBuffer = fs.readFileSync(wasmFile);
     
     const imports = {
@@ -591,11 +591,11 @@ struct MyApp: App {
 
 ### Target Configuration
 
-Choose compilation target in `roeconfig.json`:
+Choose compilation target in `droeconfig.json`:
 
 ```json
 {
-    "target": "roe",           // Primary: RoeVM bytecode  
+    "target": "droe",           // Primary: DroeVM bytecode  
     "framework": "axum",       // HTTP framework
     "database": {
         "type": "postgres"     // Database driver
@@ -609,7 +609,7 @@ Choose compilation target in `roeconfig.json`:
 
 ```json
 {
-    "target": "roe",
+    "target": "droe",
     "framework": "axum"
 }
 ```
@@ -628,23 +628,23 @@ For mobile development:
 
 ```bash
 # Compile to primary target
-roe compile src/api.roe
+droe compile src/api.droe
 
 # Override target
-roe compile src/api.roe --target rust
+droe compile src/api.droe --target rust
 
 # Specify framework
-roe compile src/api.roe --target rust --framework axum
+droe compile src/api.droe --target rust --framework axum
 
 # Multi-target build (not implemented)
-# roe build --all-targets
+# droe build --all-targets
 ```
 
 ## Database Framework Integration
 
 ### Supported Database Types
 
-| Database | RoeVM | Rust | Java | Python | Status |
+| Database | DroeVM | Rust | Java | Python | Status |
 |----------|-------|------|------|---------|---------|
 | PostgreSQL | ✅ | ✅ | 🧪 | 🧪 | Primary |
 | MySQL | ✅ | ✅ | 🧪 | 🧪 | Supported |
@@ -695,32 +695,32 @@ public class UserService {
 
 ```bash
 # Initialize project with target
-roe init my-project --target rust --framework axum
+droe init my-project --target rust --framework axum
 
 # Compile to target
-roe compile src/main.roe --target rust
+droe compile src/main.droe --target rust
 
 # Run development server
-roe dev                    # Hot reload for development
+droe dev                    # Hot reload for development
 
 # Build production
-roe build --release        # Optimized production build
+droe build --release        # Optimized production build
 ```
 
 ### Framework-Specific Commands
 
 ```bash
 # Rust target commands
-roe compile --target rust  # Generate Rust project
+droe compile --target rust  # Generate Rust project
 cd build/rust && cargo run # Run Rust server
 
-# RoeVM target commands  
-roe compile --target roe   # Generate bytecode
-roe run build/main.roebc   # Run with RoeVM
+# DroeVM target commands  
+droe compile --target droe   # Generate bytecode
+droe run build/main.droebc   # Run with DroeVM
 
 # WebAssembly target commands
-roe compile --target wasm  # Generate WASM
-node ~/.roelang/run.js build/main.wasm  # Run WASM
+droe compile --target wasm  # Generate WASM
+node ~/.ddroelang/run.js build/main.wasm  # Run WASM
 ```
 
 ## Best Practices
@@ -730,7 +730,7 @@ node ~/.roelang/run.js build/main.wasm  # Run WASM
 ```json
 // For APIs and web servers
 {
-    "target": "roe",           // Fast deployment
+    "target": "droe",           // Fast deployment
     "framework": "axum"
 }
 
@@ -770,7 +770,7 @@ node ~/.roelang/run.js build/main.wasm  # Run WASM
 
 ### 3. Framework Features
 
-```roe
+```droe
 // Use framework-appropriate patterns
 serve get /users/:id
     // Framework generates appropriate routing
@@ -790,4 +790,4 @@ end serve
 - **[Deployment](/guide/deployment/)** - Deploy framework applications
 - **[Database DSL](/guide/database/)** - Database integration details
 
-Framework support in Roelang provides flexible compilation options while maintaining consistent source code across different target platforms and frameworks.
+Framework support in Ddroelang provides flexible compilation options while maintaining consistent source code across different target platforms and frameworks.

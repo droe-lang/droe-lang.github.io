@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebAssembly | Roe - Unified Programming System</title>
-  <meta name="description" content="Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.">
+  <title>WebAssembly | Droe</title>
+  <meta name="description" content="Understanding how Droe compiles to WebAssembly and leveraging WASM capabilities.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,16 +16,16 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WebAssembly | Roe">
-  <meta property="og:description" content="Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/webassembly/">
-  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  <meta property="og:title" content="WebAssembly | Droe">
+  <meta property="og:description" content="Understanding how Droe compiles to WebAssembly and leveraging WASM capabilities.">
+  <meta property="og:url" content="https://droe-lang.dev/guide/webassembly/">
+  <meta property="og:image" content="https://droe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WebAssembly | Roe">
-  <meta name="twitter:description" content="Understanding how Roe compiles to WebAssembly and leveraging WASM capabilities.">
-  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+  <meta name="twitter:title" content="WebAssembly | Droe">
+  <meta name="twitter:description" content="Understanding how Droe compiles to WebAssembly and leveraging WASM capabilities.">
+  <meta name="twitter:image" content="https://droe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
@@ -113,16 +113,16 @@
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span>Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span>Droe</span>
         </a>
       </div>
       
       <!-- Navigation Links -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
           <span class="sr-only">GitHub</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
@@ -150,8 +150,8 @@
     <div id="mobile-menu" class="md:hidden hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
       </div>
     </div>
   </div>
@@ -161,10 +161,10 @@
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
           <h1>WebAssembly</h1>
-          <p>WebAssembly (WASM) is Roe's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Roe leverages WebAssembly and how to work with the compiled output.</p>
+          <p>WebAssembly (WASM) is Droe's primary compilation target, providing near-native performance and cross-platform compatibility. This guide explains how Droe leverages WebAssembly and how to work with the compiled output.</p>
 <h2>What is WebAssembly?</h2>
 <p>WebAssembly is a binary instruction format for a stack-based virtual machine. It's designed as a portable compilation target for programming languages, enabling deployment on the web, server, and embedded environments.</p>
-<h3>Key Benefits for Roe</h3>
+<h3>Key Benefits for Droe</h3>
 <ul>
 <li><strong>Performance</strong>: Near-native execution speed</li>
 <li><strong>Portability</strong>: Runs on any platform with a WASM runtime</li>
@@ -172,18 +172,18 @@
 <li><strong>Interoperability</strong>: Can interface with other languages</li>
 <li><strong>Compact</strong>: Small binary size for efficient distribution</li>
 </ul>
-<h2>Roe to WebAssembly Compilation</h2>
+<h2>Droe to WebAssembly Compilation</h2>
 <h3>Compilation Pipeline</h3>
-<pre><code>.roe → Roe Compiler → .wat → wat2wasm → .wasm
+<pre><code>.droe → Droe Compiler → .wat → wat2wasm → .wasm
 </code></pre>
 <ol>
-<li><strong>Roe Source</strong> (<code>.roe</code>) - Your source code</li>
+<li><strong>Droe Source</strong> (<code>.droe</code>) - Your source code</li>
 <li><strong>WebAssembly Text</strong> (<code>.wat</code>) - Human-readable WASM format</li>
 <li><strong>WebAssembly Binary</strong> (<code>.wasm</code>) - Binary executable format</li>
 </ol>
 <h3>Example Compilation</h3>
-<pre><code class="language-bash"># Compile Roe to WebAssembly text format
-roe compile src/main.roe
+<pre><code class="language-bash"># Compile Droe to WebAssembly text format
+droe compile src/main.droe
 
 # This generates: build/main.wat
 
@@ -191,13 +191,13 @@ roe compile src/main.roe
 wat2wasm build/main.wat -o build/main.wasm
 
 # Run the WebAssembly module
-node ~/.roelang/run.js build/main.wasm
+node ~/.ddroelang/run.js build/main.wasm
 </code></pre>
 <h2>WebAssembly Text Format (.wat)</h2>
-<p>When you compile Roe code, you first get a <code>.wat</code> file. Here's what a simple Roe program looks like in WebAssembly text format:</p>
+<p>When you compile Droe code, you first get a <code>.wat</code> file. Here's what a simple Droe program looks like in WebAssembly text format:</p>
 <h3>Simple Display Example</h3>
-<p><strong>Roe source:</strong></p>
-<pre><code class="language-roe">display &quot;Hello, WebAssembly!&quot;
+<p><strong>Droe source:</strong></p>
+<pre><code class="language-droe">display &quot;Hello, WebAssembly!&quot;
 </code></pre>
 <p><strong>Generated WebAssembly text (.wat):</strong></p>
 <pre><code class="language-wat">(module
@@ -213,8 +213,8 @@ node ~/.roelang/run.js build/main.wasm
 )
 </code></pre>
 <h3>Variables and Operations</h3>
-<p><strong>Roe source:</strong></p>
-<pre><code class="language-roe">set count which is int to 42
+<p><strong>Droe source:</strong></p>
+<pre><code class="language-droe">set count which is int to 42
 set name which is text to &quot;Alice&quot;
 display &quot;Count: [count], Name: [name]&quot;
 </code></pre>
@@ -226,7 +226,7 @@ display &quot;Count: [count], Name: [name]&quot;
 </ul>
 <h2>WebAssembly Module Structure</h2>
 <h3>Memory Management</h3>
-<p>Roe uses WebAssembly's linear memory model:</p>
+<p>Droe uses WebAssembly's linear memory model:</p>
 <pre><code class="language-wat">(module
   (memory (export &quot;memory&quot;) 2)  ; 2 pages = 128KB
   
@@ -241,7 +241,7 @@ display &quot;Count: [count], Name: [name]&quot;
 )
 </code></pre>
 <h3>Function Exports</h3>
-<p>Roe programs export a <code>main</code> function and any module actions:</p>
+<p>Droe programs export a <code>main</code> function and any module actions:</p>
 <pre><code class="language-wat">(module
   ;; Main program entry point
   (func $main (export &quot;main&quot;)
@@ -257,11 +257,11 @@ display &quot;Count: [count], Name: [name]&quot;
 )
 </code></pre>
 <h3>Type System Mapping</h3>
-<p>Roe types map to WebAssembly as follows:</p>
+<p>Droe types map to WebAssembly as follows:</p>
 <table>
 <thead>
 <tr>
-<th>Roe Type</th>
+<th>Droe Type</th>
 <th>WebAssembly Type</th>
 <th>Storage</th>
 </tr>
@@ -296,7 +296,7 @@ display &quot;Count: [count], Name: [name]&quot;
 </table>
 <h2>Runtime Environment</h2>
 <h3>Node.js Runtime</h3>
-<p>Roe includes a Node.js runtime (<code>run.js</code>) that provides the execution environment:</p>
+<p>Droe includes a Node.js runtime (<code>run.js</code>) that provides the execution environment:</p>
 <pre><code class="language-javascript">// Simplified version of run.js
 const fs = require('fs');
 
@@ -322,7 +322,7 @@ async function runWasm(wasmFile) {
 }
 </code></pre>
 <h3>Host Functions</h3>
-<p>The runtime provides host functions that Roe programs can import:</p>
+<p>The runtime provides host functions that Droe programs can import:</p>
 <pre><code class="language-wat">(module
   ;; Import host functions
   (import &quot;env&quot; &quot;display&quot; (func $display (param i32 i32)))
@@ -335,7 +335,7 @@ async function runWasm(wasmFile) {
 <h2>Performance Characteristics</h2>
 <h3>Optimization Benefits</h3>
 <p>WebAssembly provides several performance advantages:</p>
-<pre><code class="language-roe">// This Roe code...
+<pre><code class="language-droe">// This Droe code...
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set total which is int to 0
 
@@ -371,15 +371,15 @@ display &quot;Total: [total]&quot;
 </code></pre>
 <h2>Cross-Platform Deployment</h2>
 <h3>Web Browsers</h3>
-<p>Deploy Roe programs in web browsers:</p>
+<p>Deploy Droe programs in web browsers:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;Roe in Browser&lt;/title&gt;
+    &lt;title&gt;Droe in Browser&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;script&gt;
-        async function loadRoe() {
+        async function loadDroe() {
             const response = await fetch('program.wasm');
             const bytes = await response.arrayBuffer();
             
@@ -399,20 +399,20 @@ display &quot;Total: [total]&quot;
             wasmModule.instance.exports.main();
         }
         
-        loadRoe();
+        loadDroe();
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
 <h3>Server Environments</h3>
-<p>Run Roe programs on servers:</p>
+<p>Run Droe programs on servers:</p>
 <pre><code class="language-javascript">// server.js
 const express = require('express');
 const fs = require('fs');
 
 const app = express();
 
-app.get('/run-roelang', async (req, res) =&gt; {
+app.get('/run-ddroelang', async (req, res) =&gt; {
     const wasmBuffer = fs.readFileSync('program.wasm');
     
     let output = '';
@@ -436,7 +436,7 @@ app.get('/run-roelang', async (req, res) =&gt; {
 });
 
 app.listen(3000, () =&gt; {
-    console.log('Roe server running on port 3000');
+    console.log('Droe server running on port 3000');
 });
 </code></pre>
 <h3>Edge Computing</h3>
@@ -457,7 +457,7 @@ export default {
         
         wasmModule.instance.exports.main();
         
-        return new Response('Roe program executed');
+        return new Response('Droe program executed');
     },
 };
 </code></pre>
@@ -496,7 +496,7 @@ export default {
 )
 </code></pre>
 <h3>SIMD Operations (Future)</h3>
-<p>Future Roe versions may leverage WASM SIMD:</p>
+<p>Future Droe versions may leverage WASM SIMD:</p>
 <pre><code class="language-wat">(module
   ;; SIMD operations for array processing
   (func $process_array (param $arr i32) (param $len i32)
@@ -508,10 +508,10 @@ export default {
 </code></pre>
 <h2>Debugging WebAssembly</h2>
 <h3>Source Maps</h3>
-<p>Future Roe versions will generate source maps:</p>
+<p>Future Droe versions will generate source maps:</p>
 <pre><code class="language-json">{
   &quot;version&quot;: 3,
-  &quot;sources&quot;: [&quot;main.roe&quot;],
+  &quot;sources&quot;: [&quot;main.droe&quot;],
   &quot;names&quot;: [&quot;main&quot;, &quot;display&quot;, &quot;count&quot;],
   &quot;mappings&quot;: &quot;AAAA,aAAA,OAAO,CAAC,...&quot;
 }
@@ -539,20 +539,20 @@ wasm-objdump -h program.wasm
 <h2>Performance Optimization</h2>
 <h3>Compilation Flags</h3>
 <pre><code class="language-bash"># Optimize for size
-roe compile src/main.roe --optimize-size
+droe compile src/main.droe --optimize-size
 
 # Optimize for speed
-roe compile src/main.roe --optimize-speed
+droe compile src/main.droe --optimize-speed
 
 # Debug build with symbols
-roe compile src/main.roe --debug
+droe compile src/main.droe --debug
 </code></pre>
 <h3>Profile-Guided Optimization</h3>
 <pre><code class="language-bash"># Generate profile data
-roe run src/main.roe --profile
+droe run src/main.droe --profile
 
 # Use profile for optimization
-roe compile src/main.roe --use-profile profile.data
+droe compile src/main.droe --use-profile profile.data
 </code></pre>
 <h3>Manual Optimization Tips</h3>
 <ol>
@@ -563,12 +563,12 @@ roe compile src/main.roe --use-profile profile.data
 </ol>
 <h2>WebAssembly Ecosystem Integration</h2>
 <h3>Interfacing with JavaScript</h3>
-<pre><code class="language-javascript">// Load and interact with Roe WASM module
-async function createRoeModule() {
-    const wasmModule = await loadRoeWasm();
+<pre><code class="language-javascript">// Load and interact with Droe WASM module
+async function createDroeModule() {
+    const wasmModule = await loadDroeWasm();
     
     return {
-        // Call exported Roe functions
+        // Call exported Droe functions
         calculateTotal: wasmModule.instance.exports.calculate_total,
         processData: wasmModule.instance.exports.process_data,
         
@@ -585,21 +585,21 @@ async function createRoeModule() {
 }
 </code></pre>
 <h3>Language Interoperability</h3>
-<p>WebAssembly enables Roe to work with other WASM-compiled languages:</p>
-<pre><code class="language-javascript">// Combine Roe with Rust, C++, etc.
-const roelangModule = await loadRoeWasm();
+<p>WebAssembly enables Droe to work with other WASM-compiled languages:</p>
+<pre><code class="language-javascript">// Combine Droe with Rust, C++, etc.
+const ddroelangModule = await loadDroeWasm();
 const rustModule = await loadRustWasm();
 
 // Share memory between modules
 const sharedMemory = new WebAssembly.Memory({ initial: 10 });
 
 // Use results from one in another
-const roelangResult = roelangModule.calculate(data);
-const finalResult = rustModule.process(roelangResult);
+const ddroelangResult = ddroelangModule.calculate(data);
+const finalResult = rustModule.process(ddroelangResult);
 </code></pre>
 <h2>Best Practices</h2>
 <h3>1. Memory Management</h3>
-<pre><code class="language-roe">// Good: Reuse variables
+<pre><code class="language-droe">// Good: Reuse variables
 set temp which is int to 0
 for each value in large_dataset
   set temp to process_value(value)
@@ -614,7 +614,7 @@ for each value in large_dataset
 end for
 </code></pre>
 <h3>2. Efficient Data Structures</h3>
-<pre><code class="language-roe">// Good: Use appropriate collection types
+<pre><code class="language-droe">// Good: Use appropriate collection types
 set lookup which are group of text to unique_values  // O(1) lookup
 set ordered which are list of text to sorted_values  // Maintain order
 
@@ -623,7 +623,7 @@ set batch_size which is int to 100
 // Process data in batches to manage memory
 </code></pre>
 <h3>3. Type Optimization</h3>
-<pre><code class="language-roe">// Good: Use appropriate numeric types
+<pre><code class="language-droe">// Good: Use appropriate numeric types
 set counter which is int to 0           // Integer for counting
 set percentage which is decimal to 0.0  // Decimal for precision
 
@@ -631,7 +631,7 @@ set percentage which is decimal to 0.0  // Decimal for precision
 set is_ready which is flag to false     // Clear boolean logic
 </code></pre>
 <h2>Future WebAssembly Features</h2>
-<p>Roe will evolve to support new WebAssembly features:</p>
+<p>Droe will evolve to support new WebAssembly features:</p>
 <ul>
 <li><strong>Garbage Collection</strong>: Automatic memory management</li>
 <li><strong>Exception Handling</strong>: Structured exception support</li>
@@ -640,14 +640,14 @@ set is_ready which is flag to false     // Clear boolean logic
 <li><strong>Component Model</strong>: Module composition and linking</li>
 </ul>
 <h2>Next Steps</h2>
-<p>Now that you understand WebAssembly in Roe:</p>
+<p>Now that you understand WebAssembly in Droe:</p>
 <ul>
 <li><strong><a href="/guide/debugging/">Debugging</a></strong> - Debug WebAssembly modules</li>
 <li><strong><a href="/guide/cli/">CLI Reference</a></strong> - Compilation and build commands</li>
 <li><strong><a href="/guide/performance/">Performance Tips</a></strong> - Optimize WASM output</li>
 <li><strong><a href="/guide/deployment/">Deployment</a></strong> - Deploy WASM applications</li>
 </ul>
-<p>WebAssembly provides Roe with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.</p>
+<p>WebAssembly provides Droe with powerful capabilities for building high-performance, portable applications. Leverage these features to create efficient, cross-platform solutions.</p>
 
         </article>
       </div>
@@ -658,8 +658,8 @@ set is_ready which is flag to false     // Clear boolean logic
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="md:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Droe</span>
         </div>
         <p class="text-gray-600 max-w-md">
           A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
@@ -670,21 +670,21 @@ set is_ready which is flag to false     // Clear boolean logic
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
         <ul class="mt-4 space-y-4">
           <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/roe-lang/roe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
         </ul>
       </div>
       
       <div>
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
         <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
         </ul>
       </div>
     </div>
     <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
     </div>
   </div>
 </footer>
@@ -726,6 +726,81 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
       });
     }
+
+    // Add copy buttons to all code blocks
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach((codeBlock) => {
+      const pre = codeBlock.parentElement;
+      pre.style.position = 'relative';
+      
+      const button = document.createElement('button');
+      button.className = 'copy-btn';
+      button.innerHTML = `
+        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg class="check-icon" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      `;
+      button.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s, background-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #6b7280;
+      `;
+      
+      pre.appendChild(button);
+      
+      // Show button on hover
+      pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+      });
+      
+      pre.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('copied')) {
+          button.style.opacity = '0';
+        }
+      });
+      
+      button.addEventListener('click', async () => {
+        const code = codeBlock.textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          // Show success state
+          button.classList.add('copied');
+          button.style.background = '#10b981';
+          button.style.borderColor = '#10b981';
+          button.style.color = 'white';
+          button.querySelector('.copy-icon').style.display = 'none';
+          button.querySelector('.check-icon').style.display = 'block';
+          
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.style.background = 'rgba(255, 255, 255, 0.9)';
+            button.style.borderColor = '#e5e7eb';
+            button.style.color = '#6b7280';
+            button.querySelector('.copy-icon').style.display = 'block';
+            button.querySelector('.check-icon').style.display = 'none';
+            button.style.opacity = '0';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
   });
 </script>
 </body>

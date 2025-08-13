@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Roe Language Installer
-# Usage: curl -sSL https://roe-lang.dev/install | sh
+# Ddroe Language Installer
+# Usage: curl -sSL https://droe-lang.dev/install | sh
 
 set -e
 
@@ -13,10 +13,10 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-ROE_HOME="$HOME/.roelang"
+ROE_HOME="$HOME/.ddroelang"
 ROE_BIN="$ROE_HOME/bin"
 ROE_VERSION="latest"
-GITHUB_REPO="roe-lang/roe"
+GITHUB_REPO="droe-lang/droe"
 
 # Platform detection
 detect_platform() {
@@ -54,7 +54,7 @@ print_banner() {
     echo " |  _ < (_) |  __/"
     echo " |_| \_\___/ \___|"
     echo -e "${NC}"
-    echo -e "${GREEN}Roe Language Installer${NC}"
+    echo -e "${GREEN}Ddroe Language Installer${NC}"
     echo "======================"
     echo
 }
@@ -77,7 +77,7 @@ check_dependencies() {
     
     # Check for Node.js (required for WebAssembly runtime)
     if ! command -v node >/dev/null 2>&1; then
-        echo -e "${YELLOW}Warning: Node.js not found. Installing Node.js is recommended for running .roe files.${NC}"
+        echo -e "${YELLOW}Warning: Node.js not found. Installing Node.js is recommended for running .droe files.${NC}"
         echo -e "${YELLOW}Visit https://nodejs.org/ to install Node.js${NC}"
         echo
     fi
@@ -122,8 +122,8 @@ get_latest_version() {
     echo "$version"
 }
 
-# Install Roe
-install_roe() {
+# Install Ddroe
+install_droe() {
     local platform=$(detect_platform)
     local version="$(get_latest_version)"
 
@@ -132,25 +132,25 @@ install_roe() {
         echo -e "${BLUE}Please follow these manual installation steps:${NC}"
         echo
         echo "1. Open PowerShell and create the installation directory:"
-        echo -e "   ${GREEN}New-Item -ItemType Directory -Force -Path \"$HOME\.roelang\"${NC}"
+        echo -e "   ${GREEN}New-Item -ItemType Directory -Force -Path \"$HOME\.ddroelang\"${NC}"
         echo
         echo "2. Download the required files:"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/roe-lang/roe/main/roe' -OutFile \"$HOME\.roelang\roe\"${NC}"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/roe-lang/roe/main/run.js' -OutFile \"$HOME\.roelang\run.js\"${NC}"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/roe-lang/roe/main/compiler.tar.gz' -OutFile \"$HOME\.roelang\compiler.tar.gz\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/droe' -OutFile \"$HOME\.ddroelang\droe\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/run.js' -OutFile \"$HOME\.ddroelang\run.js\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/compiler.tar.gz' -OutFile \"$HOME\.ddroelang\compiler.tar.gz\"${NC}"
         echo
         echo "3. Extract the compiler archive:"
-        echo -e "   ${GREEN}tar -xzf \"$HOME\.roelang\compiler.tar.gz\" -C \"$HOME\.roelang\"${NC}"
+        echo -e "   ${GREEN}tar -xzf \"$HOME\.ddroelang\compiler.tar.gz\" -C \"$HOME\.ddroelang\"${NC}"
         echo
-        echo "4. Add Roe to your PATH (run in PowerShell):"
-        echo -e "   ${GREEN}\"[System.Environment]::SetEnvironmentVariable('Path', \"$([System.Environment]::GetEnvironmentVariable('Path', 'User'));$HOME\.roelang\", 'User')\"${NC}"
+        echo "4. Add Ddroe to your PATH (run in PowerShell):"
+        echo -e "   ${GREEN}\"[System.Environment]::SetEnvironmentVariable('Path', \"$([System.Environment]::GetEnvironmentVariable('Path', 'User'));$HOME\.ddroelang\", 'User')\"${NC}"
         echo
         echo "5. Close and reopen your terminal to apply changes."
         echo
         exit 0
     fi
 
-    echo -e "${BLUE}Installing Roe $version for $platform...${NC}"
+    echo -e "${BLUE}Installing Ddroe $version for $platform...${NC}"
     
     # Create directories
     mkdir -p "$ROE_HOME"
@@ -167,7 +167,7 @@ install_roe() {
     fi
 
     # Download and extract the compiler directory
-    echo -e "${BLUE}Downloading Roe compiler module...${NC}"
+    echo -e "${BLUE}Downloading Ddroe compiler module...${NC}"
     download_file "$BASE_URL/compiler.tar.gz" "$ROE_HOME/compiler.tar.gz"
     if [ $? -ne 0 ]; then
         echo -e "${RED}Error: Failed to download compiler module.${NC}"
@@ -183,33 +183,33 @@ install_roe() {
     rm "$ROE_HOME/compiler.tar.gz"
     echo -e "${GREEN}✓ Compiler module installed successfully.${NC}"
 
-    # Download the main roe CLI script
-    echo -e "${BLUE}Downloading Roe CLI...${NC}"
-    download_file "$BASE_URL/roe" "$ROE_HOME/roe"
-    if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/roe" ]; then
-        echo -e "${RED}Error: Failed to download roe CLI. Aborting installation.${NC}" >&2
+    # Download the main droe CLI script
+    echo -e "${BLUE}Downloading Ddroe CLI...${NC}"
+    download_file "$BASE_URL/droe" "$ROE_HOME/droe"
+    if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/droe" ]; then
+        echo -e "${RED}Error: Failed to download droe CLI. Aborting installation.${NC}" >&2
         exit 1
     fi
-    chmod +x "$ROE_HOME/roe"
+    chmod +x "$ROE_HOME/droe"
     
     # Create symlink in bin directory
-    ln -sf "$ROE_HOME/roe" "$ROE_BIN/roe"
-    echo -e "${GREEN}✓ Roe CLI installed successfully.${NC}"
+    ln -sf "$ROE_HOME/droe" "$ROE_BIN/droe"
+    echo -e "${GREEN}✓ Ddroe CLI installed successfully.${NC}"
 
     # Download the Node.js runtime for WebAssembly execution
-    echo -e "${BLUE}Downloading Roe runtime...${NC}"
+    echo -e "${BLUE}Downloading Ddroe runtime...${NC}"
     if [ "$version" = "main" ]; then
         download_file "$BASE_URL/run.js" "$ROE_HOME/run.js"
     else
         download_file "$BASE_URL/run.js" "$ROE_HOME/run.js"
     fi
     if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/run.js" ]; then
-        echo -e "${YELLOW}Warning: Failed to download Node.js runtime. You may not be able to run .roe files directly.${NC}"
+        echo -e "${YELLOW}Warning: Failed to download Node.js runtime. You may not be able to run .droe files directly.${NC}"
     else
-        echo -e "${GREEN}✓ Roe runtime installed successfully.${NC}"
+        echo -e "${GREEN}✓ Ddroe runtime installed successfully.${NC}"
     fi
     
-    echo -e "${GREEN}✓ Roe installed to $ROE_HOME${NC}"
+    echo -e "${GREEN}✓ Ddroe installed to $ROE_HOME${NC}"
     echo
 }
 
@@ -243,7 +243,7 @@ update_shell_profile() {
         # Check if PATH is already updated
         if ! grep -q "$ROE_BIN" "$shell_profile" 2>/dev/null; then
             echo "" >> "$shell_profile"
-            echo "# Roe Language" >> "$shell_profile"
+            echo "# Ddroe Language" >> "$shell_profile"
             echo "export PATH=\"$ROE_BIN:\$PATH\"" >> "$shell_profile"
             echo -e "${GREEN}✓ Updated $shell_profile${NC}"
         else
@@ -259,27 +259,27 @@ update_shell_profile() {
 
 # Print completion message
 print_completion() {
-    echo -e "${GREEN}🎉 Roe installation completed!${NC}"
+    echo -e "${GREEN}🎉 Ddroe installation completed!${NC}"
     echo
     echo -e "${BLUE}Next steps:${NC}"
     echo "1. Restart your terminal or run: source ~/.bashrc (or your shell profile)"
-    echo "2. Verify installation: roe version"
-    echo "3. Create your first project: roe init my-project"
-    echo "4. Visit https://roe-lang.dev/guide/ for documentation"
+    echo "2. Verify installation: droe version"
+    echo "3. Create your first project: droe init my-project"
+    echo "4. Visit https://droe-lang.dev/guide/ for documentation"
     echo
     echo -e "${BLUE}Quick start:${NC}"
-    echo "  mkdir hello-roe && cd hello-roe"
-    echo "  echo 'display \"Hello, Roe! 🦌\"' > hello.roe"
-    echo "  roe run hello.roe"
+    echo "  mkdir hello-droe && cd hello-droe"
+    echo "  echo 'display \"Hello, Ddroe! 🦌\"' > hello.droe"
+    echo "  droe run hello.droe"
     echo
-    echo -e "${GREEN}Happy coding with Roe! 🦌${NC}"
+    echo -e "${GREEN}Happy coding with Ddroe! 🦌${NC}"
 }
 
 # Main installation function
 main() {
     print_banner
     check_dependencies
-    install_roe
+    install_droe
     update_shell_profile
     print_completion
 }

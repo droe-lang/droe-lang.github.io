@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conditionals | Roe - Unified Programming System</title>
-  <meta name="description" content="Control program flow with Roe&#39;s natural language conditional statements.">
+  <title>Conditionals | Droe</title>
+  <meta name="description" content="Control program flow with Droe&#39;s natural language conditional statements.">
   
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
@@ -16,16 +16,16 @@
   
   <!-- Meta tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Conditionals | Roe">
-  <meta property="og:description" content="Control program flow with Roe&#39;s natural language conditional statements.">
-  <meta property="og:url" content="https://roe-lang.dev/guide/conditionals/">
-  <meta property="og:image" content="https://roe-lang.dev/logo.png">
+  <meta property="og:title" content="Conditionals | Droe">
+  <meta property="og:description" content="Control program flow with Droe&#39;s natural language conditional statements.">
+  <meta property="og:url" content="https://droe-lang.dev/guide/conditionals/">
+  <meta property="og:image" content="https://droe-lang.dev/logo.png">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Conditionals | Roe">
-  <meta name="twitter:description" content="Control program flow with Roe&#39;s natural language conditional statements.">
-  <meta name="twitter:image" content="https://roe-lang.dev/logo.png">
+  <meta name="twitter:title" content="Conditionals | Droe">
+  <meta name="twitter:description" content="Control program flow with Droe&#39;s natural language conditional statements.">
+  <meta name="twitter:image" content="https://droe-lang.dev/logo.png">
 </head>
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
@@ -113,16 +113,16 @@
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span>Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span>Droe</span>
         </a>
       </div>
       
       <!-- Navigation Links -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="nav-link">
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
           <span class="sr-only">GitHub</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
@@ -150,8 +150,8 @@
     <div id="mobile-menu" class="md:hidden hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/roe-lang/roe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/roe-lang/roe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
       </div>
     </div>
   </div>
@@ -161,17 +161,17 @@
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
           <h1>Conditionals</h1>
-          <p>Conditionals allow your programs to make decisions and execute different code paths based on conditions. Roe uses natural language syntax that makes conditional logic clear and readable.</p>
+          <p>Conditionals allow your programs to make decisions and execute different code paths based on conditions. Droe uses natural language syntax that makes conditional logic clear and readable.</p>
 <h2>Basic Conditional Syntax</h2>
 <h3>Simple When-Then</h3>
-<pre><code class="language-roe">set age which is int to 25
+<pre><code class="language-droe">set age which is int to 25
 
 when age is greater than or equal to 18 then
   display &quot;You are an adult&quot;
 end when
 </code></pre>
 <h3>When-Then-Otherwise</h3>
-<pre><code class="language-roe">set temperature which is decimal to 28.5
+<pre><code class="language-droe">set temperature which is decimal to 28.5
 
 when temperature is greater than 30 then
   display &quot;It's hot outside! 🔥&quot;
@@ -180,9 +180,9 @@ otherwise
 end when
 </code></pre>
 <h2>Comparison Operators</h2>
-<p>Roe uses natural language for comparisons:</p>
+<p>Droe uses natural language for comparisons:</p>
 <h3>Equality Comparisons</h3>
-<pre><code class="language-roe">set username which is text to &quot;alice&quot;
+<pre><code class="language-droe">set username which is text to &quot;alice&quot;
 set expected_user which is text to &quot;alice&quot;
 
 when username is equal to expected_user then
@@ -194,7 +194,7 @@ when username is not equal to expected_user then
 end when
 </code></pre>
 <h3>Numeric Comparisons</h3>
-<pre><code class="language-roe">set score which is int to 85
+<pre><code class="language-droe">set score which is int to 85
 set passing_grade which is int to 80
 
 when score is greater than passing_grade then
@@ -215,7 +215,7 @@ end when
 </code></pre>
 <h2>Logical Operators</h2>
 <h3>AND Operations</h3>
-<pre><code class="language-roe">set age which is int to 25
+<pre><code class="language-droe">set age which is int to 25
 set has_license which is flag to true
 set has_insurance which is flag to true
 
@@ -228,7 +228,7 @@ when age is greater than or equal to 21 and has_license then
 end when
 </code></pre>
 <h3>OR Operations</h3>
-<pre><code class="language-roe">set day which is text to &quot;Saturday&quot;
+<pre><code class="language-droe">set day which is text to &quot;Saturday&quot;
 set is_holiday which is flag to false
 
 when day is equal to &quot;Saturday&quot; or day is equal to &quot;Sunday&quot; or is_holiday then
@@ -238,7 +238,7 @@ otherwise
 end when
 </code></pre>
 <h3>NOT Operations</h3>
-<pre><code class="language-roe">set is_logged_in which is flag to false
+<pre><code class="language-droe">set is_logged_in which is flag to false
 set account_locked which is flag to true
 
 when not is_logged_in then
@@ -253,7 +253,7 @@ end when
 </code></pre>
 <h2>Complex Conditional Logic</h2>
 <h3>Multiple Conditions</h3>
-<pre><code class="language-roe">set user_role which is text to &quot;admin&quot;
+<pre><code class="language-droe">set user_role which is text to &quot;admin&quot;
 set session_valid which is flag to true
 set feature_enabled which is flag to true
 
@@ -265,7 +265,7 @@ otherwise
 end when
 </code></pre>
 <h3>Nested Conditionals</h3>
-<pre><code class="language-roe">set weather which is text to &quot;sunny&quot;
+<pre><code class="language-droe">set weather which is text to &quot;sunny&quot;
 set temperature which is decimal to 25.0
 set has_umbrella which is flag to false
 
@@ -287,7 +287,7 @@ end when
 </code></pre>
 <h2>Practical Examples</h2>
 <h3>User Authentication</h3>
-<pre><code class="language-roe">set username which is text to &quot;alice&quot;
+<pre><code class="language-droe">set username which is text to &quot;alice&quot;
 set password which is text to &quot;secret123&quot;
 set account_active which is flag to true
 set login_attempts which is int to 2
@@ -312,7 +312,7 @@ otherwise
 end when
 </code></pre>
 <h3>Grade Calculation</h3>
-<pre><code class="language-roe">set student_score which is int to 87
+<pre><code class="language-droe">set student_score which is int to 87
 set attendance_rate which is decimal to 0.92
 set min_attendance which is decimal to 0.80
 
@@ -342,7 +342,7 @@ otherwise
 end when
 </code></pre>
 <h3>Order Processing</h3>
-<pre><code class="language-roe">set order_total which is decimal to 150.00
+<pre><code class="language-droe">set order_total which is decimal to 150.00
 set customer_tier which is text to &quot;premium&quot;
 set in_stock which is flag to true
 set payment_valid which is flag to true
@@ -376,7 +376,7 @@ otherwise
 end when
 </code></pre>
 <h3>Data Validation</h3>
-<pre><code class="language-roe">module validation
+<pre><code class="language-droe">module validation
   action validate_email with email which is text gives flag
     when email is equal to &quot;&quot; then
       give false
@@ -420,7 +420,7 @@ end when
 </code></pre>
 <h2>Working with Collections in Conditionals</h2>
 <h3>Processing Lists</h3>
-<pre><code class="language-roe">set scores which are list of int to [85, 92, 78, 95, 88]
+<pre><code class="language-droe">set scores which are list of int to [85, 92, 78, 95, 88]
 set passing_grade which is int to 80
 set passing_count which is int to 0
 set failing_count which is int to 0
@@ -442,7 +442,7 @@ otherwise
 end when
 </code></pre>
 <h3>Status Checking</h3>
-<pre><code class="language-roe">set server_statuses which are list of text to [&quot;online&quot;, &quot;offline&quot;, &quot;maintenance&quot;, &quot;online&quot;]
+<pre><code class="language-droe">set server_statuses which are list of text to [&quot;online&quot;, &quot;offline&quot;, &quot;maintenance&quot;, &quot;online&quot;]
 set critical_servers which are list of text to [&quot;database&quot;, &quot;api&quot;, &quot;cache&quot;, &quot;web&quot;]
 set offline_count which is int to 0
 set maintenance_count which is int to 0
@@ -476,7 +476,7 @@ end when
 </code></pre>
 <h2>Best Practices</h2>
 <h3>1. Use Clear, Readable Conditions</h3>
-<pre><code class="language-roe">// Good: Descriptive variable names and clear logic
+<pre><code class="language-droe">// Good: Descriptive variable names and clear logic
 set user_is_authenticated which is flag to true
 set user_has_permission which is flag to true
 set feature_is_enabled which is flag to true
@@ -495,7 +495,7 @@ when auth and perm and feat then
 end when
 </code></pre>
 <h3>2. Handle Edge Cases</h3>
-<pre><code class="language-roe">set user_input which is text to &quot;&quot;
+<pre><code class="language-droe">set user_input which is text to &quot;&quot;
 set min_length which is int to 3
 
 when user_input is equal to &quot;&quot; then
@@ -506,7 +506,7 @@ otherwise
 end when
 </code></pre>
 <h3>3. Use Consistent Comparison Patterns</h3>
-<pre><code class="language-roe">// Good: Consistent ordering (variable first, then constant)
+<pre><code class="language-droe">// Good: Consistent ordering (variable first, then constant)
 when age is greater than or equal to 18 then
   display &quot;Adult&quot;
 end when
@@ -521,7 +521,7 @@ when status is equal to &quot;active&quot; then
 end when
 </code></pre>
 <h3>4. Avoid Deep Nesting</h3>
-<pre><code class="language-roe">// Better: Early returns/exits with clear conditions
+<pre><code class="language-droe">// Better: Early returns/exits with clear conditions
 when user_input is equal to &quot;&quot; then
   display &quot;Error: Empty input&quot;
   // Would exit here in real implementation
@@ -544,7 +544,7 @@ when user_input is not equal to &quot;&quot; then
 end when
 </code></pre>
 <h3>5. Use Modules for Complex Logic</h3>
-<pre><code class="language-roe">module business_rules
+<pre><code class="language-droe">module business_rules
   action can_make_purchase with age which is int, balance which is decimal, item_cost which is decimal gives flag
     when age is less than 18 then
       give false
@@ -576,7 +576,7 @@ end module
 </code></pre>
 <h2>Common Conditional Patterns</h2>
 <h3>Guard Pattern</h3>
-<pre><code class="language-roe">set user_role which is text to &quot;guest&quot;
+<pre><code class="language-droe">set user_role which is text to &quot;guest&quot;
 
 // Guard against invalid roles
 when user_role is equal to &quot;&quot; then
@@ -588,7 +588,7 @@ end when
 display &quot;User role: [user_role]&quot;
 </code></pre>
 <h3>State Machine Pattern</h3>
-<pre><code class="language-roe">set current_state which is text to &quot;idle&quot;
+<pre><code class="language-droe">set current_state which is text to &quot;idle&quot;
 set next_state which is text to &quot;&quot;
 
 when current_state is equal to &quot;idle&quot; then
@@ -609,7 +609,7 @@ end when
 set current_state to next_state
 </code></pre>
 <h3>Validation Chain Pattern</h3>
-<pre><code class="language-roe">set is_valid which is flag to true
+<pre><code class="language-droe">set is_valid which is flag to true
 set error_message which is text to &quot;&quot;
 
 when user_name is equal to &quot;&quot; then
@@ -634,7 +634,7 @@ otherwise
 end when
 </code></pre>
 <h2>Next Steps</h2>
-<p>Now that you understand conditional logic in Roe:</p>
+<p>Now that you understand conditional logic in Droe:</p>
 <ul>
 <li><strong><a href="/guide/loops/">Loops</a></strong> - Combine conditionals with iteration</li>
 <li><strong><a href="/guide/modules/">Modules</a></strong> - Organize conditional logic in modules</li>
@@ -652,8 +652,8 @@ end when
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="md:col-span-2">
         <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Roe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Roe</span>
+          <img src="/logo.png" alt="Droe" class="w-6 h-6">
+          <span class="text-xl font-bold text-gray-900">Droe</span>
         </div>
         <p class="text-gray-600 max-w-md">
           A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
@@ -664,21 +664,21 @@ end when
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
         <ul class="mt-4 space-y-4">
           <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/roe-lang/roe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
         </ul>
       </div>
       
       <div>
         <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
         <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/roe-lang/roe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/roe-lang/roe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/roe-lang/roe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
         </ul>
       </div>
     </div>
     <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Roe. Open source under Apache 2.0 License.</p>
+      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
     </div>
   </div>
 </footer>
@@ -720,6 +720,81 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
       });
     }
+
+    // Add copy buttons to all code blocks
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach((codeBlock) => {
+      const pre = codeBlock.parentElement;
+      pre.style.position = 'relative';
+      
+      const button = document.createElement('button');
+      button.className = 'copy-btn';
+      button.innerHTML = `
+        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg class="check-icon" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      `;
+      button.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s, background-color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #6b7280;
+      `;
+      
+      pre.appendChild(button);
+      
+      // Show button on hover
+      pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+      });
+      
+      pre.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('copied')) {
+          button.style.opacity = '0';
+        }
+      });
+      
+      button.addEventListener('click', async () => {
+        const code = codeBlock.textContent;
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          // Show success state
+          button.classList.add('copied');
+          button.style.background = '#10b981';
+          button.style.borderColor = '#10b981';
+          button.style.color = 'white';
+          button.querySelector('.copy-icon').style.display = 'none';
+          button.querySelector('.check-icon').style.display = 'block';
+          
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.style.background = 'rgba(255, 255, 255, 0.9)';
+            button.style.borderColor = '#e5e7eb';
+            button.style.color = '#6b7280';
+            button.querySelector('.copy-icon').style.display = 'block';
+            button.querySelector('.check-icon').style.display = 'none';
+            button.style.opacity = '0';
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
   });
 </script>
 </body>

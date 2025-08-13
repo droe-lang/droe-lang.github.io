@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Actions
-description: Create reusable functions with parameters and return values in Roe modules.
+description: Create reusable functions with parameters and return values in Droe modules.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,11 +14,11 @@ next:
   url: /guide/data-structures/
 ---
 
-Actions are functions within modules that accept parameters and return values. They enable code reuse, encapsulation, and clean separation of concerns in Roe programs.
+Actions are functions within modules that accept parameters and return values. They enable code reuse, encapsulation, and clean separation of concerns in Droe programs.
 
 ## Actions vs Tasks
 
-Roe has two different constructs for executable code:
+Droe has two different constructs for executable code:
 
 | Feature | Actions | Tasks |
 |---------|---------|-------|
@@ -45,7 +45,7 @@ Roe has two different constructs for executable code:
 
 ### Basic Action Structure
 
-```roe
+```droe
 module module_name
   action action_name with parameter1 which is type1, parameter2 which is type2 gives return_type
     // Action body
@@ -56,7 +56,7 @@ end module
 
 ### Simple Example
 
-```roe
+```droe
 module calculator
   action add with a which is int, b which is int gives int
     give a + b
@@ -72,7 +72,7 @@ display "Result: [result]"  // Displays: Result: 15
 
 ### Single Parameter Actions
 
-```roe
+```droe
 module formatter
   action capitalize with text which is text gives text
     // Simplified capitalization
@@ -103,7 +103,7 @@ display "Is positive: [is_positive_price]"
 
 ### Multiple Parameter Actions
 
-```roe
+```droe
 module geometry
   action rectangle_area with width which is decimal, height which is decimal gives decimal
     give width * height
@@ -135,7 +135,7 @@ display "Distance: [point_distance] units"
 
 ### Returning Different Data Types
 
-```roe
+```droe
 module converters
   // Returns text
   action number_to_text with number which is int gives text
@@ -177,7 +177,7 @@ display "Range: [number_range]"
 
 ### Actions that Process Lists
 
-```roe
+```droe
 module list_operations
   action sum_integers with numbers which are list of int gives int
     set total which is int to 0
@@ -232,7 +232,7 @@ display "Contains Alice: [has_alice]"
 
 ### Actions that Return Collections
 
-```roe
+```droe
 module collection_builders
   action create_number_sequence with start which is int, count which is int gives list of int
     // Simplified - would create actual sequence
@@ -267,7 +267,7 @@ display "Text parts: [text_parts]"
 
 ### Validation Actions
 
-```roe
+```droe
 module validation_service
   action validate_email with email which is text gives flag
     when email is equal to "" then
@@ -322,7 +322,7 @@ display validation_report
 
 ### Calculation Actions
 
-```roe
+```droe
 module financial_calculator
   action calculate_simple_interest with principal which is decimal, rate which is decimal, time which is decimal gives decimal
     give principal * rate * time / 100
@@ -368,7 +368,7 @@ display "Monthly Payment: $[monthly_payment]"
 
 ### String Processing Actions
 
-```roe
+```droe
 module text_processor
   action format_name with first_name which is text, last_name which is text gives text
     give last_name + ", " + first_name
@@ -408,7 +408,7 @@ display "Salary: [formatted_salary]"
 
 ### Date and Time Actions
 
-```roe
+```droe
 module date_helper
   action format_date with year which is int, month which is int, day which is int gives text
     give "[year]-[month]-[day]"
@@ -455,7 +455,7 @@ display "Days until birthday: [days_to_birthday]"
 
 ### 1. Single Responsibility
 
-```roe
+```droe
 // Good: Each action has one clear purpose
 module user_service
   action create_user with name which is text, email which is text gives flag
@@ -486,7 +486,7 @@ end module
 
 ### 2. Clear Parameter Names
 
-```roe
+```droe
 module order_calculator
   // Good: Descriptive parameter names
   action calculate_total_with_tax with subtotal which is decimal, tax_rate which is decimal gives decimal
@@ -501,7 +501,7 @@ end module
 
 ### 3. Consistent Return Types
 
-```roe
+```droe
 module status_service
   // Good: All status checks return flags
   action is_user_active with user_id which is int gives flag
@@ -520,7 +520,7 @@ end module
 
 ### 4. Error Handling
 
-```roe
+```droe
 module safe_calculator
   action divide_safely with numerator which is decimal, denominator which is decimal gives decimal
     when denominator is equal to 0.0 then
@@ -546,7 +546,7 @@ end module
 
 ### Factory Actions
 
-```roe
+```droe
 module object_factory
   action create_user_profile with name which is text, age which is int, email which is text gives text
     give "User: [name], Age: [age], Email: [email]"
@@ -560,7 +560,7 @@ end module
 
 ### Transformer Actions
 
-```roe
+```droe
 module data_transformer
   action normalize_score with raw_score which is int, max_possible which is int gives decimal
     give (raw_score * 100) / max_possible
@@ -574,7 +574,7 @@ end module
 
 ### Aggregator Actions
 
-```roe
+```droe
 module report_generator
   action summarize_sales with sales_data which are list of decimal gives text
     set total which is decimal to 0.0
@@ -593,11 +593,11 @@ end module
 
 ## Next Steps
 
-Now that you understand actions in Roe:
+Now that you understand actions in Droe:
 
 - **[Data Structures](/guide/data-structures/)** - Use actions with custom data types
 - **[Task Actions](/guide/task-actions/)** - Learn about task procedures without parameters or return values
 - **[CLI Reference](/guide/cli/)** - Compile and test modules with actions
 - **[WebAssembly](/guide/webassembly/)** - Understand how actions compile to WASM
 
-Actions are the building blocks of reusable functionality in Roe. Use them to create clean, testable, and maintainable code that can be easily shared across your applications.
+Actions are the building blocks of reusable functionality in Droe. Use them to create clean, testable, and maintainable code that can be easily shared across your applications.

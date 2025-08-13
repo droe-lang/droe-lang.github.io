@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Basic Syntax
-description: Learn the fundamental syntax and structure of the Roe programming language.
+description: Learn the fundamental syntax and structure of the Droe programming language.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/types/
 ---
 
-Roe's syntax is designed to be readable and expressive, using natural language constructs that make code easy to understand and maintain.
+Droe's syntax is designed to be readable and expressive, using natural language constructs that make code easy to understand and maintain.
 
 ## Comments
 
-Roe supports both single-line and multi-line comments:
+Droe supports both single-line and multi-line comments:
 
-```roe
+```droe
 // This is a single-line comment
 
 /* This is a
@@ -34,17 +34,17 @@ Comments are ignored by the compiler and are used to document your code.
 
 ## Display Statements
 
-The most basic operation in Roe is displaying output:
+The most basic operation in Droe is displaying output:
 
-```roe
+```droe
 display "Hello, World!"
 display ""                    // Empty line
-display "Welcome to Roe"
+display "Welcome to Droe"
 ```
 
 You can display variables and expressions:
 
-```roe
+```droe
 set name which is text to "Alice"
 display name
 display "Hello, " + name      // String concatenation
@@ -55,9 +55,9 @@ display "Name: [name]"        // String interpolation
 
 ### Reserved Keywords
 
-Roe uses natural language keywords:
+Droe uses natural language keywords:
 
-```roe
+```droe
 // Variable declaration
 set name which is text to "value"
 
@@ -88,7 +88,7 @@ Variable and module names follow these rules:
 - Case-sensitive
 - Cannot be reserved keywords
 
-```roe
+```droe
 // Valid identifiers
 set user_name which is text to "Alice"
 set firstName which is text to "Bob"
@@ -107,7 +107,7 @@ set user-name which is text to "Error"  // Hyphens not allowed
 
 Statements perform actions and don't return values:
 
-```roe
+```droe
 // Display statement
 display "Hello"
 
@@ -124,7 +124,7 @@ end when
 
 Expressions evaluate to values:
 
-```roe
+```droe
 // Arithmetic expressions
 set sum to 10 + 5
 set product to width * height
@@ -143,7 +143,7 @@ set can_vote to age >= 18 and is_citizen
 
 ### Arithmetic Operators
 
-```roe
+```droe
 set a which is int to 10
 set b which is int to 3
 
@@ -156,9 +156,9 @@ set remainder to a % b    // Modulo: 1
 
 ### Comparison Operators
 
-Roe uses natural language for comparisons:
+Droe uses natural language for comparisons:
 
-```roe
+```droe
 set x which is int to 10
 set y which is int to 5
 
@@ -175,7 +175,7 @@ when x is less than or equal to y then display "x <= y" end when
 
 ### Logical Operators
 
-```roe
+```droe
 set is_adult which is flag to age >= 18
 set has_license which is flag to true
 
@@ -197,7 +197,7 @@ end when
 
 ### String Operators
 
-```roe
+```droe
 set first_name which is text to "John"
 set last_name which is text to "Doe"
 
@@ -211,9 +211,9 @@ set info to "Name: [full_name], Age: [age]"
 
 ## Block Structure
 
-Roe uses explicit `end` keywords to terminate blocks:
+Droe uses explicit `end` keywords to terminate blocks:
 
-```roe
+```droe
 // Conditional blocks
 when condition then
   // statements
@@ -238,9 +238,9 @@ end action
 
 ## Whitespace and Formatting
 
-Roe is flexible with whitespace:
+Droe is flexible with whitespace:
 
-```roe
+```droe
 // Compact style
 set name which is text to "Alice"
 when age is greater than 18 then display "Adult" end when
@@ -265,7 +265,7 @@ when age is greater than 18 then display "Adult" end when
 - No semicolons required
 - Long statements can be broken across lines
 
-```roe
+```droe
 // Single line (preferred)
 set total to price * quantity + tax
 
@@ -284,9 +284,9 @@ end when
 
 ## Case Sensitivity
 
-Roe is case-sensitive:
+Droe is case-sensitive:
 
-```roe
+```droe
 set userName which is text to "Alice"
 set username which is text to "Bob"    // Different variable
 set UserName which is text to "Carol"  // Also different
@@ -300,7 +300,7 @@ SET count WHICH IS int to 5    // Error
 
 ### Basic Strings
 
-```roe
+```droe
 set message which is text to "Hello, World!"
 set empty which is text to ""
 set with_quotes which is text to "She said \"Hello\""
@@ -308,7 +308,7 @@ set with_quotes which is text to "She said \"Hello\""
 
 ### Escape Sequences
 
-```roe
+```droe
 set with_newline which is text to "Line 1\nLine 2"
 set with_tab which is text to "Name:\tValue"
 set with_backslash which is text to "Path: C:\\Users\\Name"
@@ -316,7 +316,7 @@ set with_backslash which is text to "Path: C:\\Users\\Name"
 
 ### Multi-line Strings
 
-```roe
+```droe
 set long_text which is text to "This is a very long string 
 that spans multiple lines 
 for better readability"
@@ -324,7 +324,7 @@ for better readability"
 
 ## Numeric Literals
 
-```roe
+```droe
 // Integers
 set count which is int to 42
 set negative which is int to -10
@@ -338,14 +338,14 @@ set scientific which is decimal to 1.23e10
 
 ## Boolean Literals
 
-```roe
+```droe
 set is_active which is flag to true
 set is_hidden which is flag to false
 ```
 
 ## Collections
 
-```roe
+```droe
 // Lists (arrays)
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set names which are list of text to ["Alice", "Bob", "Carol"]
@@ -359,7 +359,7 @@ set empty_list which are list of text to []
 
 ### 1. Use Descriptive Names
 
-```roe
+```droe
 // Good
 set user_age which is int to 25
 set total_price which is decimal to 199.99
@@ -373,7 +373,7 @@ set flag1 which is flag to true
 
 ### 2. Consistent Formatting
 
-```roe
+```droe
 // Consistent spacing around operators
 set total to price + tax
 set is_valid to age >= 18 and has_license
@@ -387,7 +387,7 @@ end when
 
 ### 3. Group Related Code
 
-```roe
+```droe
 // User information
 set user_name which is text to "Alice"
 set user_age which is int to 28
@@ -401,7 +401,7 @@ set total to subtotal + tax_amount
 
 ### 4. Use Comments Wisely
 
-```roe
+```droe
 // Calculate monthly payment for loan
 set monthly_rate to annual_rate / 12
 set num_payments to years * 12
@@ -414,7 +414,7 @@ display "Monthly payment: $[payment]"
 
 ### Input Validation
 
-```roe
+```droe
 when age is less than 0 or age is greater than 150 then
   display "Invalid age"
 otherwise
@@ -424,7 +424,7 @@ end when
 
 ### Calculations with Formatting
 
-```roe
+```droe
 set price which is decimal to 29.99
 set quantity which is int to 3
 set total to price * quantity
@@ -436,7 +436,7 @@ display "Total: $[total]"
 
 ### Error Handling Patterns
 
-```roe
+```droe
 when file_exists then
   display "Processing file..."
   // Process file
@@ -447,9 +447,9 @@ end when
 
 ## Next Steps
 
-Now that you understand Roe's basic syntax, explore these topics:
+Now that you understand Droe's basic syntax, explore these topics:
 
-- **[Type System](/guide/types/)** - Learn about Roe's strong typing
+- **[Type System](/guide/types/)** - Learn about Droe's strong typing
 - **[Variables](/guide/variables/)** - Variable declaration and scope
 - **[Strings](/guide/strings/)** - String interpolation and manipulation
 - **[Collections](/guide/collections/)** - Working with lists and arrays

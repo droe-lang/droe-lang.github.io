@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Task Actions
-description: Learn about task-based automation and workflow management in Roe.
+description: Learn about task-based automation and workflow management in Droe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,11 +14,11 @@ next:
   url: /guide/cli/
 ---
 
-Task actions in Roe provide a specialized way to define and execute discrete units of work or automation tasks. They're designed for workflow automation, process management, and building executable task sequences.
+Task actions in Droe provide a specialized way to define and execute discrete units of work or automation tasks. They're designed for workflow automation, process management, and building executable task sequences.
 
 ## Tasks vs Actions
 
-Roe has two different constructs for executable code:
+Droe has two different constructs for executable code:
 
 | Feature           | Tasks                                              | Actions                                               |
 | ----------------- | -------------------------------------------------- | ----------------------------------------------------- |
@@ -47,7 +47,7 @@ Roe has two different constructs for executable code:
 
 ### Simple Task Declaration
 
-```roe
+```droe
 task task_name
   // Task implementation
 end task
@@ -59,10 +59,10 @@ end task
 
 Tasks now support parameters, making them more flexible and reusable:
 
-```roe
+```droe
 task greet_person with name which is text
   display "Hello, " + name + "!"
-  display "Welcome to the Roelang community!"
+  display "Welcome to the Ddroelang community!"
 end task
 
 // Execute the task with arguments
@@ -71,7 +71,7 @@ run greet_person with "Alice"
 
 ### Task with Multiple Parameters
 
-```roe
+```droe
 task process_order with order_id which is int, customer_name which is text, amount which is decimal
   display "Processing order #" + order_id
   display "Customer: " + customer_name
@@ -85,7 +85,7 @@ run process_order with 12345, "John Doe", 99.99
 
 ### Task with Implementation
 
-```roe
+```droe
 task send_notification
   display "Sending notification..."
   display "Notification sent successfully!"
@@ -95,19 +95,19 @@ end task
 run send_notification
 ```
 
-## Task Examples from Roe
+## Task Examples from Droe
 
-Based on the Roe examples, here are working task patterns:
+Based on the Droe examples, here are working task patterns:
 
 ### Basic Task Actions
 
-```roe
+```droe
 task send_reminder
   display "Don't forget to log in"
 end task
 
 task greet_user
-  display "Hello! Welcome to Roe"
+  display "Hello! Welcome to Droe"
   display "Hope you enjoy using task actions!"
 end task
 
@@ -137,7 +137,7 @@ display "Task actions demonstration complete!"
 
 ### System Maintenance Tasks
 
-```roe
+```droe
 task cleanup_temp_files
   display "🧹 Starting cleanup of temporary files..."
   display "Scanning temp directory..."
@@ -172,7 +172,7 @@ run check_system_health
 
 ### Data Processing Workflows
 
-```roe
+```droe
 task validate_input_data
   display "📋 Validating input data..."
   set validation_errors which is int to 0
@@ -215,7 +215,7 @@ run send_report_notification
 
 ### User Management Tasks
 
-```roe
+```droe
 task create_user_account
   display "👤 Creating new user account..."
   set new_user_id which is int to 12345
@@ -257,7 +257,7 @@ run generate_user_report
 
 ### Sequential Task Execution
 
-```roe
+```droe
 task initialize_system
   display "🚀 Initializing system..."
   display "Loading configuration..."
@@ -300,7 +300,7 @@ display "🎉 Deployment completed successfully!"
 
 ### Conditional Task Execution
 
-```roe
+```droe
 task check_prerequisites
   display "🔍 Checking prerequisites..."
   set dependencies_met which is flag to true
@@ -348,7 +348,7 @@ run cleanup_resources
 
 ### System Monitoring
 
-```roe
+```droe
 task monitor_cpu_usage
   display "📊 Monitoring CPU usage..."
   set cpu_usage which is decimal to 45.5
@@ -406,7 +406,7 @@ run generate_monitoring_report
 
 ### Log Processing Tasks
 
-```roe
+```droe
 task rotate_log_files
   display "🔄 Rotating log files..."
   set current_log_size which is decimal to 1024.5
@@ -452,7 +452,7 @@ run archive_old_logs
 
 ### Data Import/Export
 
-```roe
+```droe
 task import_customer_data
   display "📥 Importing customer data..."
   set import_file which is text to "customers_2024_01.csv"
@@ -505,7 +505,7 @@ run validate_data_integrity
 
 ### 1. Clear Task Names
 
-```roe
+```droe
 // Good: Descriptive task names
 task backup_user_database
   display "Backing up user database..."
@@ -527,7 +527,7 @@ end task
 
 ### 2. Informative Output
 
-```roe
+```droe
 task process_orders
   display "📦 Processing orders..."
   set start_time which is text to "10:30:00"
@@ -549,7 +549,7 @@ end task
 
 ### 3. Error Handling
 
-```roe
+```droe
 task safe_file_operation
   display "📁 Performing file operation..."
   set file_exists which is flag to true
@@ -571,7 +571,7 @@ end task
 
 ### 4. Progress Reporting
 
-```roe
+```droe
 task bulk_data_processing
   display "🔄 Starting bulk data processing..."
   set total_items which is int to 100
@@ -595,7 +595,7 @@ end task
 
 ### Master Task with Subtasks
 
-```roe
+```droe
 task prepare_environment
   display "🛠️  Preparing environment..."
   display "Environment ready!"
@@ -632,7 +632,7 @@ run master_test_workflow
 
 ### Parallel Task Simulation
 
-```roe
+```droe
 task concurrent_task_a
   display "🔄 Task A: Starting..."
   display "🔄 Task A: Processing..."
@@ -661,11 +661,11 @@ run coordinate_parallel_tasks
 
 ## Next Steps
 
-Now that you understand task actions in Roe:
+Now that you understand task actions in Droe:
 
 - **[CLI Reference](/guide/cli/)** - Command-line tools for running tasks
 - **[WebAssembly](/guide/webassembly/)** - How tasks compile to WASM
 - **[Debugging](/guide/debugging/)** - Troubleshooting task execution
 - **[Modules](/guide/modules/)** - Organizing tasks in modules
 
-Task actions provide a powerful way to automate workflows and manage complex processes in Roe. Use them to build reliable, maintainable automation solutions.
+Task actions provide a powerful way to automate workflows and manage complex processes in Droe. Use them to build reliable, maintainable automation solutions.

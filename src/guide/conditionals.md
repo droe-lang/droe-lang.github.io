@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Conditionals
-description: Control program flow with Roe's natural language conditional statements.
+description: Control program flow with Droe's natural language conditional statements.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/loops/
 ---
 
-Conditionals allow your programs to make decisions and execute different code paths based on conditions. Roe uses natural language syntax that makes conditional logic clear and readable.
+Conditionals allow your programs to make decisions and execute different code paths based on conditions. Droe uses natural language syntax that makes conditional logic clear and readable.
 
 ## Basic Conditional Syntax
 
 ### Simple When-Then
 
-```roe
+```droe
 set age which is int to 25
 
 when age is greater than or equal to 18 then
@@ -30,7 +30,7 @@ end when
 
 ### When-Then-Otherwise
 
-```roe
+```droe
 set temperature which is decimal to 28.5
 
 when temperature is greater than 30 then
@@ -42,11 +42,11 @@ end when
 
 ## Comparison Operators
 
-Roe uses natural language for comparisons:
+Droe uses natural language for comparisons:
 
 ### Equality Comparisons
 
-```roe
+```droe
 set username which is text to "alice"
 set expected_user which is text to "alice"
 
@@ -61,7 +61,7 @@ end when
 
 ### Numeric Comparisons
 
-```roe
+```droe
 set score which is int to 85
 set passing_grade which is int to 80
 
@@ -86,7 +86,7 @@ end when
 
 ### AND Operations
 
-```roe
+```droe
 set age which is int to 25
 set has_license which is flag to true
 set has_insurance which is flag to true
@@ -102,7 +102,7 @@ end when
 
 ### OR Operations
 
-```roe
+```droe
 set day which is text to "Saturday"
 set is_holiday which is flag to false
 
@@ -115,7 +115,7 @@ end when
 
 ### NOT Operations
 
-```roe
+```droe
 set is_logged_in which is flag to false
 set account_locked which is flag to true
 
@@ -134,7 +134,7 @@ end when
 
 ### Multiple Conditions
 
-```roe
+```droe
 set user_role which is text to "admin"
 set session_valid which is flag to true
 set feature_enabled which is flag to true
@@ -149,7 +149,7 @@ end when
 
 ### Nested Conditionals
 
-```roe
+```droe
 set weather which is text to "sunny"
 set temperature which is decimal to 25.0
 set has_umbrella which is flag to false
@@ -175,7 +175,7 @@ end when
 
 ### User Authentication
 
-```roe
+```droe
 set username which is text to "alice"
 set password which is text to "secret123"
 set account_active which is flag to true
@@ -203,7 +203,7 @@ end when
 
 ### Grade Calculation
 
-```roe
+```droe
 set student_score which is int to 87
 set attendance_rate which is decimal to 0.92
 set min_attendance which is decimal to 0.80
@@ -236,7 +236,7 @@ end when
 
 ### Order Processing
 
-```roe
+```droe
 set order_total which is decimal to 150.00
 set customer_tier which is text to "premium"
 set in_stock which is flag to true
@@ -273,7 +273,7 @@ end when
 
 ### Data Validation
 
-```roe
+```droe
 module validation
   action validate_email with email which is text gives flag
     when email is equal to "" then
@@ -321,7 +321,7 @@ end when
 
 ### Processing Lists
 
-```roe
+```droe
 set scores which are list of int to [85, 92, 78, 95, 88]
 set passing_grade which is int to 80
 set passing_count which is int to 0
@@ -346,7 +346,7 @@ end when
 
 ### Status Checking
 
-```roe
+```droe
 set server_statuses which are list of text to ["online", "offline", "maintenance", "online"]
 set critical_servers which are list of text to ["database", "api", "cache", "web"]
 set offline_count which is int to 0
@@ -384,7 +384,7 @@ end when
 
 ### 1. Use Clear, Readable Conditions
 
-```roe
+```droe
 // Good: Descriptive variable names and clear logic
 set user_is_authenticated which is flag to true
 set user_has_permission which is flag to true
@@ -406,7 +406,7 @@ end when
 
 ### 2. Handle Edge Cases
 
-```roe
+```droe
 set user_input which is text to ""
 set min_length which is int to 3
 
@@ -420,7 +420,7 @@ end when
 
 ### 3. Use Consistent Comparison Patterns
 
-```roe
+```droe
 // Good: Consistent ordering (variable first, then constant)
 when age is greater than or equal to 18 then
   display "Adult"
@@ -438,7 +438,7 @@ end when
 
 ### 4. Avoid Deep Nesting
 
-```roe
+```droe
 // Better: Early returns/exits with clear conditions
 when user_input is equal to "" then
   display "Error: Empty input"
@@ -464,7 +464,7 @@ end when
 
 ### 5. Use Modules for Complex Logic
 
-```roe
+```droe
 module business_rules
   action can_make_purchase with age which is int, balance which is decimal, item_cost which is decimal gives flag
     when age is less than 18 then
@@ -500,7 +500,7 @@ end module
 
 ### Guard Pattern
 
-```roe
+```droe
 set user_role which is text to "guest"
 
 // Guard against invalid roles
@@ -515,7 +515,7 @@ display "User role: [user_role]"
 
 ### State Machine Pattern
 
-```roe
+```droe
 set current_state which is text to "idle"
 set next_state which is text to ""
 
@@ -539,7 +539,7 @@ set current_state to next_state
 
 ### Validation Chain Pattern
 
-```roe
+```droe
 set is_valid which is flag to true
 set error_message which is text to ""
 
@@ -567,7 +567,7 @@ end when
 
 ## Next Steps
 
-Now that you understand conditional logic in Roe:
+Now that you understand conditional logic in Droe:
 
 - **[Loops](/guide/loops/)** - Combine conditionals with iteration
 - **[Modules](/guide/modules/)** - Organize conditional logic in modules

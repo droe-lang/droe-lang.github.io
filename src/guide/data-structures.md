@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Data Structures
-description: Create custom data types and structures to organize complex data in Roe.
+description: Create custom data types and structures to organize complex data in Droe.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,13 +14,13 @@ next:
   url: /guide/task-actions/
 ---
 
-Data structures allow you to create custom types that group related data together, making your programs more organized and easier to understand. Roe provides a simple yet powerful `data` construct for defining custom data types.
+Data structures allow you to create custom types that group related data together, making your programs more organized and easier to understand. Droe provides a simple yet powerful `data` construct for defining custom data types.
 
 ## Basic Data Structure Syntax
 
 ### Simple Data Declaration
 
-```roe
+```droe
 data Person
   name is text
   age is int
@@ -30,7 +30,7 @@ end data
 
 ### Using Data Structures
 
-```roe
+```droe
 data User
   username is text
   email is text
@@ -38,7 +38,7 @@ data User
   is_admin is flag
 end data
 
-// Note: In current Roe implementation, data structures are primarily 
+// Note: In current Droe implementation, data structures are primarily 
 // used for documentation and future language features
 // For now, use individual variables to represent structured data
 
@@ -55,7 +55,7 @@ display "Age: [user_age], Admin: [user_is_admin]"
 
 ### User Management
 
-```roe
+```droe
 data UserProfile
   first_name is text
   last_name is text
@@ -99,7 +99,7 @@ display user_summary
 
 ### Product Catalog
 
-```roe
+```droe
 data Product
   id is int
   name is text
@@ -148,7 +148,7 @@ display "Inventory Value: $[inventory_value]"
 
 ### Order Processing
 
-```roe
+```droe
 data Order
   order_id is int
   customer_email is text
@@ -229,7 +229,7 @@ display "Total: $[total_amount]"
 
 ### Managing Multiple Records
 
-```roe
+```droe
 data Employee
   employee_id is int
   name is text
@@ -289,7 +289,7 @@ display "Engineering Employees: [engineering_count]"
 
 ### Inventory Management
 
-```roe
+```droe
 data InventoryItem
   sku is text
   name is text
@@ -366,7 +366,7 @@ run inventory_operations.generate_reorder_report with item_skus, current_stocks,
 
 ### Input Validation with Structured Data
 
-```roe
+```droe
 data UserRegistration
   username is text
   email is text
@@ -462,7 +462,7 @@ display validation_result
 
 ### 1. Clear Naming Conventions
 
-```roe
+```droe
 // Good: Descriptive data structure names
 data CustomerOrder
   customer_id is int
@@ -483,7 +483,7 @@ end data
 
 ### 2. Logical Grouping
 
-```roe
+```droe
 // Good: Related fields grouped together
 data ShippingAddress
   street_address is text
@@ -503,7 +503,7 @@ end data
 
 ### 3. Consistent Field Types
 
-```roe
+```droe
 // Good: Consistent use of appropriate types
 data EventLog
   event_id is int
@@ -517,7 +517,7 @@ end data
 
 ### 4. Documentation with Comments
 
-```roe
+```droe
 data Configuration
   // Database settings
   database_host is text
@@ -536,7 +536,7 @@ end data
 
 ## Future Data Structure Features
 
-While current Roe primarily uses data structures for documentation and planning, future versions may include:
+While current Droe primarily uses data structures for documentation and planning, future versions may include:
 
 - **Object instantiation**: Creating instances of data structures
 - **Property access**: Accessing fields with dot notation
@@ -550,7 +550,7 @@ Until full data structure support is implemented, use these patterns:
 
 ### Prefixed Variables
 
-```roe
+```droe
 // User data with consistent prefixes
 set user_id which is int to 12345
 set user_name which is text to "Alice Johnson"
@@ -566,7 +566,7 @@ set order_total which is decimal to 299.99
 
 ### Module-based Operations
 
-```roe
+```droe
 module user_data
   action create_user_summary with id which is int, name which is text, email which is text gives text
     give "User #[id]: [name] ([email])"
@@ -584,11 +584,11 @@ end module
 
 ## Next Steps
 
-Now that you understand data structures in Roe:
+Now that you understand data structures in Droe:
 
 - **[Task Actions](/guide/task-actions/)** - Learn about specialized task automation
 - **[CLI Reference](/guide/cli/)** - Command-line tools for development
 - **[WebAssembly](/guide/webassembly/)** - Understanding compilation to WASM
 - **[Modules](/guide/modules/)** - Review module organization patterns
 
-Data structures provide a foundation for organizing complex data in your Roe applications. Use them to plan your data architecture and create maintainable, well-structured code.
+Data structures provide a foundation for organizing complex data in your Droe applications. Use them to plan your data architecture and create maintainable, well-structured code.

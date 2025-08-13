@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Debugging
-description: Learn techniques and tools for debugging and troubleshooting Roe programs.
+description: Learn techniques and tools for debugging and troubleshooting Droe programs.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -11,7 +11,7 @@ prev:
   url: /guide/webassembly/
 ---
 
-Debugging is an essential skill for developing robust Roe applications. This guide covers debugging techniques, common issues, and troubleshooting strategies for Roe programs.
+Debugging is an essential skill for developing robust Droe applications. This guide covers debugging techniques, common issues, and troubleshooting strategies for Droe programs.
 
 ## Basic Debugging Techniques
 
@@ -19,7 +19,7 @@ Debugging is an essential skill for developing robust Roe applications. This gui
 
 The simplest debugging technique is adding display statements to trace program execution:
 
-```roe
+```droe
 set user_age which is int to 25
 display "Debug: user_age = [user_age]"
 
@@ -36,7 +36,7 @@ end when
 
 Track variable changes throughout program execution:
 
-```roe
+```droe
 set counter which is int to 0
 display "Debug: Initial counter = [counter]"
 
@@ -54,7 +54,7 @@ display "Debug: Final counter = [counter]"
 
 Use flags to control debug output:
 
-```roe
+```droe
 set debug_mode which is flag to true
 
 module debug_utils
@@ -94,7 +94,7 @@ Use verbose mode to see detailed compilation information:
 
 ```bash
 # Compile with verbose output
-roe compile src/main.roe --verbose
+droe compile src/main.droe --verbose
 
 # This shows:
 # - Parsing steps
@@ -109,13 +109,13 @@ Run programs with debug information:
 
 ```bash
 # Run with debug output
-roe run src/main.roe --debug
+droe run src/main.droe --debug
 
 # Run with execution trace
-roe run src/main.roe --trace
+droe run src/main.droe --trace
 
 # Combine debug and trace
-roe run src/main.roe --debug --trace
+droe run src/main.droe --debug --trace
 ```
 
 ### System Diagnostics
@@ -124,15 +124,15 @@ Check system setup and dependencies:
 
 ```bash
 # Run system diagnostics
-roe doctor
+droe doctor
 
 # Check specific components
-roe doctor --component compiler
-roe doctor --component runtime
-roe doctor --component webassembly
+droe doctor --component compiler
+droe doctor --component runtime
+droe doctor --component webassembly
 
 # Verbose diagnostics
-roe doctor --verbose
+droe doctor --verbose
 ```
 
 ## Common Issues and Solutions
@@ -142,7 +142,7 @@ roe doctor --verbose
 #### Type Mismatch Errors
 
 **Problem:**
-```roe
+```droe
 set age which is int to "twenty-five"  // Error: type mismatch
 ```
 
@@ -154,14 +154,14 @@ Got: text
 ```
 
 **Solution:**
-```roe
+```droe
 set age which is int to 25  // Correct: use integer literal
 ```
 
 #### Variable Not Declared
 
 **Problem:**
-```roe
+```droe
 display username  // Error: username not declared
 ```
 
@@ -171,7 +171,7 @@ Error: Undefined variable 'username' at line 1:9
 ```
 
 **Solution:**
-```roe
+```droe
 set username which is text to "alice"
 display username  // Correct: declare before use
 ```
@@ -179,7 +179,7 @@ display username  // Correct: declare before use
 #### Missing Type Declaration
 
 **Problem:**
-```roe
+```droe
 set count to 5  // Error: missing type declaration
 ```
 
@@ -190,7 +190,7 @@ Expected: 'which is <type>'
 ```
 
 **Solution:**
-```roe
+```droe
 set count which is int to 5  // Correct: explicit type
 ```
 
@@ -199,14 +199,14 @@ set count which is int to 5  // Correct: explicit type
 #### Division by Zero
 
 **Problem:**
-```roe
+```droe
 set numerator which is int to 10
 set denominator which is int to 0
 set result to numerator / denominator  // Runtime error
 ```
 
 **Debug with Protection:**
-```roe
+```droe
 set numerator which is int to 10
 set denominator which is int to 0
 
@@ -224,13 +224,13 @@ end when
 #### Array Index Errors (Future Feature)
 
 **Problem:**
-```roe
+```droe
 set numbers which are list of int to [1, 2, 3]
 // Accessing invalid index would cause error
 ```
 
 **Debug Approach:**
-```roe
+```droe
 set numbers which are list of int to [1, 2, 3]
 set count which is int to 0
 
@@ -247,7 +247,7 @@ display "Total items processed: [count]"
 #### Incorrect Conditional Logic
 
 **Problem:**
-```roe
+```droe
 set score which is int to 85
 set passing_grade which is int to 80
 
@@ -258,7 +258,7 @@ end when
 ```
 
 **Debug with Explicit Checks:**
-```roe
+```droe
 set score which is int to 85
 set passing_grade which is int to 80
 
@@ -277,7 +277,7 @@ end when
 #### Loop Logic Issues
 
 **Problem:**
-```roe
+```droe
 set total which is int to 0
 set numbers which are list of int to [1, 2, 3, 4, 5]
 
@@ -289,7 +289,7 @@ display "Total: [total]"  // Will only show last number
 ```
 
 **Debug Version:**
-```roe
+```droe
 set total which is int to 0
 set numbers which are list of int to [1, 2, 3, 4, 5]
 set iteration which is int to 0
@@ -312,7 +312,7 @@ display "Final total: [total]"
 ### Module Debugging
 
 **Debug Module Actions:**
-```roe
+```droe
 module calculator
   action add with a which is int, b which is int gives int
     display "Debug: calculator.add called with a=[a], b=[b]"
@@ -340,7 +340,7 @@ display "Product result: [product]"
 
 Track data flow through complex operations:
 
-```roe
+```droe
 module data_processor
   action validate_input with input which is text gives flag
     display "Debug: Validating input: '[input]'"
@@ -384,7 +384,7 @@ display "Final result: [final_result]"
 
 Add timing information to identify bottlenecks:
 
-```roe
+```droe
 module performance_monitor
   action log_start with operation which is text
     display "[PERF] Starting: [operation]"
@@ -424,7 +424,7 @@ run performance_monitor.log_end with "Data processing"
 
 Track memory-intensive operations:
 
-```roe
+```droe
 module memory_monitor
   action log_allocation with operation which is text, size which is int
     display "[MEM] Allocating for [operation]: ~[size] items"
@@ -449,7 +449,7 @@ run memory_monitor.log_deallocation with "Large number list"
 
 ```bash
 # Compile to WebAssembly text format
-roe compile src/main.roe --format wat
+droe compile src/main.droe --format wat
 
 # View the generated .wat file
 cat build/main.wat
@@ -502,7 +502,7 @@ runWasmWithDebug(process.argv[2]);
 
 ### 1. Use Descriptive Debug Messages
 
-```roe
+```droe
 // Good: Descriptive debug messages
 display "Debug: User authentication - checking credentials for [username]"
 display "Debug: Database query returned [result_count] records"
@@ -516,7 +516,7 @@ display "Debug: error"
 
 ### 2. Create Debug Utilities
 
-```roe
+```droe
 module debug_helpers
   action dump_variables with name which is text, age which is int, active which is flag
     display "=== Variable Dump ==="
@@ -540,7 +540,7 @@ end module
 
 Build complexity gradually:
 
-```roe
+```droe
 // Step 1: Test basic functionality
 display "Step 1: Basic display working"
 
@@ -576,7 +576,7 @@ display "Step 5: Module result = [result]"
 
 Implement error boundaries in your code:
 
-```roe
+```droe
 module safe_operations
   action safe_divide with numerator which is decimal, denominator which is decimal gives decimal
     when denominator is equal to 0.0 then
@@ -632,7 +632,7 @@ When encountering issues, follow this systematic approach:
 
 For complex state-based programs:
 
-```roe
+```droe
 set current_state which is text to "idle"
 set debug_enabled which is flag to true
 
@@ -662,7 +662,7 @@ run state_machine.change_state with current_state, "processing", "User initiated
 
 Test interactions between modules:
 
-```roe
+```droe
 module integration_tests
   action test_user_workflow
     display "[TEST] Starting user workflow integration test"
@@ -688,11 +688,11 @@ run integration_tests.test_user_workflow
 
 ## Next Steps
 
-Now that you understand debugging in Roe:
+Now that you understand debugging in Droe:
 
 - **[CLI Reference](/guide/cli/)** - Learn debugging command-line options
 - **[WebAssembly](/guide/webassembly/)** - Debug WebAssembly output
 - **[Performance](/guide/performance/)** - Optimize program performance
 - **[Best Practices](/guide/best-practices/)** - Write maintainable code
 
-Effective debugging is crucial for developing reliable Roe applications. Use these techniques to identify and resolve issues quickly, and build robust, maintainable programs.
+Effective debugging is crucial for developing reliable Droe applications. Use these techniques to identify and resolve issues quickly, and build robust, maintainable programs.
