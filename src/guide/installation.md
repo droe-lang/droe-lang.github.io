@@ -35,7 +35,7 @@ The installer will:
 Alternatively, install via the command line:
 
 ```bash
-curl -sSL https://droe-lang.dev/install | sh
+curl -sSL https://droe.dev/install | sh
 ```
 
 This script will download and install the latest version of Droe.

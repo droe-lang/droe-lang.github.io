@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://droe-lang.dev/sitemap.xml
+Sitemap: https://droe.dev/sitemap.xml

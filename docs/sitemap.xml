@@ -115,12 +115,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droe.dev/guide/installation/</loc>
-    <lastmod>2025-08-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://droe.dev/guide/variables/</loc>
     <lastmod>2025-08-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -149,5 +143,11 @@
     <lastmod>2025-08-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://droe.dev/guide/installation/</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
