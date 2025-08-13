@@ -31,9 +31,13 @@
   <!-- Main Content -->
   <main>
     
-<div>
+<!-- Mobile drawer overlay -->
+<div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden lg:hidden"></div>
+
+<!-- Main Layout Container -->
+<div class="flex flex-col lg:flex-row">
   <!-- Sidebar Navigation -->
-  <aside id="sidebar" class="lg:fixed lg:h-screen lg:overflow-y-auto bg-gray-50 pb-16 w-64">
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-[70] w-64 bg-gray-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out h-screen lg:sticky lg:top-0 lg:h-screen overflow-y-auto pb-4 lg:pb-16">
     <div class="p-6">
       <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
       
@@ -106,7 +110,7 @@
   </aside>
   
   <!-- Main Content -->
-  <div class="lg:ml-64 flex flex-col min-h-screen">
+  <div class="flex-1 flex flex-col min-h-screen w-full lg:w-auto" id="main-content">
     <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
@@ -157,6 +161,17 @@
   </div>
 </nav>
 
+    <!-- Mobile Menu Bar (only visible on mobile) -->
+    <div class="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+      <button id="menu-toggle-btn" class="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <span>Menu</span>
+      </button>
+      <div class="text-sm text-gray-500">Documentation</div>
+    </div>
+    
     <main class="flex-grow p-6 lg:p-12">
       <div class="overflow-x-auto">
         <article class="prose dark:prose-invert max-w-none">
@@ -355,14 +370,65 @@ droe init
   </div>
 </div>
 <script>
-// Highlight current page in sidebar
+// Highlight current page in sidebar and handle mobile drawer
 document.addEventListener('DOMContentLoaded', function() {
   const currentPath = window.location.pathname;
   const sidebarLinks = document.querySelectorAll('aside nav a');
   
+  // Highlight current page
   sidebarLinks.forEach(link => {
     if (link.getAttribute('href') === currentPath) {
       link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+    }
+  });
+
+  // Mobile drawer functionality
+  const menuToggleBtn = document.getElementById('menu-toggle-btn');
+  const sidebar = document.getElementById('sidebar');
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  
+  function openDrawer() {
+    sidebar.classList.remove('-translate-x-full');
+    drawerOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeDrawer() {
+    sidebar.classList.add('-translate-x-full');
+    drawerOverlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  
+  // Toggle drawer on mobile menu button click
+  if (menuToggleBtn) {
+    menuToggleBtn.addEventListener('click', openDrawer);
+  }
+  
+  // Close drawer on overlay click
+  drawerOverlay.addEventListener('click', closeDrawer);
+  
+  // Close drawer on link click (mobile navigation)
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 1024) {
+        closeDrawer();
+      }
+    });
+  });
+  
+  // Close drawer on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
+      closeDrawer();
+    }
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 1024) {
+      // Desktop: hide overlay and restore body scroll
+      drawerOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
     }
   });
 });
