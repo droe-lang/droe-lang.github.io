@@ -52,12 +52,14 @@ droe init my-project-directory
 ```
 
 **Options:**
+
 - `--name <name>` - Set project name
 - `--author <author>` - Set project author
 - `--description <desc>` - Set project description
 
 **Output:**
 Creates the following structure:
+
 ```
 project/
 ├── droeconfig.json
@@ -85,12 +87,14 @@ droe compile src/main.droe --verbose
 ```
 
 **Options:**
+
 - `--output <file>` - Specify output file location
 - `--format <format>` - Output format (`wat`, `wasm`) [default: `wat`]
 - `--verbose` - Show detailed compilation information
 - `--watch` - Watch for file changes and recompile automatically
 
 **Examples:**
+
 ```bash
 # Basic compilation
 droe compile examples/src/01_display.droe
@@ -118,11 +122,13 @@ droe run
 ```
 
 **Options:**
+
 - `--debug` - Enable debug output
 - `--trace` - Show execution trace
 - `--timeout <seconds>` - Set execution timeout
 
 **Examples:**
+
 ```bash
 # Run a simple program
 droe run examples/src/01_display.droe
@@ -150,12 +156,14 @@ droe build --release
 ```
 
 **Options:**
+
 - `--clean` - Clean build directory before building
 - `--release` - Build optimized release version
 - `--target <target>` - Specify build target platform
 - `--verbose` - Show detailed build information
 
 **Examples:**
+
 ```bash
 # Standard build
 droe build
@@ -185,6 +193,7 @@ droe clean --pattern "*.wat"
 ```
 
 **Options:**
+
 - `--confirm` - Ask for confirmation before cleaning
 - `--pattern <pattern>` - Clean files matching pattern
 - `--dry-run` - Show what would be deleted without deleting
@@ -205,8 +214,9 @@ droe info --config
 ```
 
 **Example output:**
+
 ```
-Project: hello-ddroelang
+Project: hello-droelang
 Version: 1.0.0
 Source Directory: src/
 Build Directory: build/
@@ -230,6 +240,7 @@ droe validate --fix
 ```
 
 **Options:**
+
 - `--fix` - Automatically fix common issues
 - `--strict` - Use strict validation rules
 - `--report` - Generate validation report
@@ -252,6 +263,7 @@ droe doctor --verbose
 ```
 
 **Checks:**
+
 - Droe installation
 - Node.js availability
 - WebAssembly tools (wat2wasm)
@@ -274,6 +286,7 @@ droe test --coverage
 ```
 
 **Options:**
+
 - `--coverage` - Generate coverage report
 - `--verbose` - Show detailed test output
 - `--watch` - Watch for changes and re-run tests
@@ -295,6 +308,7 @@ droe format --check
 ```
 
 **Options:**
+
 - `--check` - Check formatting without making changes
 - `--diff` - Show formatting differences
 - `--write` - Write changes to files (default)
@@ -320,6 +334,7 @@ droe config reset
 ```
 
 **Common Configuration Options:**
+
 - `editor.tabSize` - Tab size for formatting
 - `compiler.target` - Default compilation target
 - `runtime.timeout` - Default execution timeout
@@ -343,6 +358,7 @@ droe analyze --report analysis_report.json
 ```
 
 **Analysis Types:**
+
 - Unused variables
 - Type inconsistencies
 - Performance suggestions
@@ -464,7 +480,7 @@ Project configuration file format:
     "maxMemory": "128MB"
   },
   "dependencies": {
-    "ddroelang-std": "^1.0.0"
+    "droelang-std": "^1.0.0"
   },
   "scripts": {
     "start": "droe run",
@@ -477,34 +493,34 @@ Project configuration file format:
 
 ### Configuration Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `name` | string | Project name |
-| `version` | string | Project version (semver) |
-| `description` | string | Project description |
-| `author` | string | Project author |
-| `license` | string | License type |
-| `srcDir` | string | Source directory path |
-| `buildDir` | string | Build output directory |
-| `main` | string | Main entry file |
-| `compiler` | object | Compiler configuration |
-| `runtime` | object | Runtime configuration |
-| `dependencies` | object | Project dependencies |
-| `scripts` | object | Custom scripts |
+| Field          | Type   | Description              |
+| -------------- | ------ | ------------------------ |
+| `name`         | string | Project name             |
+| `version`      | string | Project version (semver) |
+| `description`  | string | Project description      |
+| `author`       | string | Project author           |
+| `license`      | string | License type             |
+| `srcDir`       | string | Source directory path    |
+| `buildDir`     | string | Build output directory   |
+| `main`         | string | Main entry file          |
+| `compiler`     | object | Compiler configuration   |
+| `runtime`      | object | Runtime configuration    |
+| `dependencies` | object | Project dependencies     |
+| `scripts`      | object | Custom scripts           |
 
 ## Exit Codes
 
 The `droe` command uses standard exit codes:
 
-| Code | Meaning |
-|------|---------|
-| 0 | Success |
-| 1 | General error |
-| 2 | Compilation error |
-| 3 | Runtime error |
-| 4 | Configuration error |
-| 5 | File not found |
-| 6 | Permission denied |
+| Code | Meaning             |
+| ---- | ------------------- |
+| 0    | Success             |
+| 1    | General error       |
+| 2    | Compilation error   |
+| 3    | Runtime error       |
+| 4    | Configuration error |
+| 5    | File not found      |
+| 6    | Permission denied   |
 
 ## Examples
 
@@ -512,9 +528,9 @@ The `droe` command uses standard exit codes:
 
 ```bash
 # Create new project
-mkdir my-ddroelang-app
-cd my-ddroelang-app
-droe init --name "my-ddroelang-app" --author "Your Name"
+mkdir my-droelang-app
+cd my-droelang-app
+droe init --name "my-droelang-app" --author "Your Name"
 
 # Create source file
 cat > src/main.droe << 'EOF'
@@ -546,7 +562,7 @@ droe compile src/main.droe --output build/main.wat
 droe compile src/main.droe --format wasm --output build/main.wasm
 
 # Run compiled WebAssembly
-node ~/.ddroelang/run.js build/main.wasm
+node ~/.droelang/run.js build/main.wasm
 ```
 
 ### Development with Watch Mode
@@ -567,16 +583,18 @@ droe format --watch
 ### Common Issues
 
 #### Command Not Found
+
 ```bash
 # Check if droe is in PATH
 which droe
 echo $PATH
 
 # Reinstall or add to PATH
-export PATH="$HOME/.ddroelang:$PATH"
+export PATH="$HOME/.droelang:$PATH"
 ```
 
 #### Compilation Errors
+
 ```bash
 # Check syntax with verbose output
 droe compile src/main.droe --verbose
@@ -589,6 +607,7 @@ droe doctor
 ```
 
 #### Runtime Errors
+
 ```bash
 # Run with debug information
 droe run src/main.droe --debug --trace

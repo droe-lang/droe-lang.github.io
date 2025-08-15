@@ -1,473 +1,559 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Implementation Status | Droe</title>
-  <meta name="description" content="Current status of Ddroelang features and compilation targets.">
-  
+  <meta name="description" content="Current status of Droelang features and compilation targets.">
+
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
-  
+
   <!-- Styles -->
   <link rel="stylesheet" href="/style.css">
-  
+
   <!-- Meta tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Implementation Status | Droe">
-  <meta property="og:description" content="Current status of Ddroelang features and compilation targets.">
+  <meta property="og:description" content="Current status of Droelang features and compilation targets.">
   <meta property="og:url" content="https://droe.dev/guide/implementation-status/">
   <meta property="og:image" content="https://droe.dev/logo.png">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Implementation Status | Droe">
-  <meta name="twitter:description" content="Current status of Ddroelang features and compilation targets.">
+  <meta name="twitter:description" content="Current status of Droelang features and compilation targets.">
   <meta name="twitter:image" content="https://droe.dev/logo.png">
 </head>
+
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
   <main>
-    
-<!-- Mobile drawer overlay -->
-<div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden lg:hidden"></div>
 
-<!-- Main Layout Container -->
-<div class="flex flex-col lg:flex-row">
-  <!-- Sidebar Navigation -->
-  <aside id="sidebar" class="fixed inset-y-0 left-0 z-[70] w-64 bg-gray-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out h-screen lg:sticky lg:top-0 lg:h-screen overflow-y-auto pb-4 lg:pb-16">
-    <div class="p-6">
-      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
-      
-      <!-- Getting Started -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
-        <nav class="space-y-1">
-          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
-          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
-          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
-          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
-        </nav>
-      </div>
-      
-      <!-- Language Guide -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
-        <nav class="space-y-1">
-          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
-          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
-          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
-          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
-          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
-          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
-          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
-        </nav>
-      </div>
-      
-      <!-- Advanced -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
-        <nav class="space-y-1">
-          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
-          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
-          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
-          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
-        </nav>
-      </div>
-      
-      <!-- Backend Development -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
-        <nav class="space-y-1">
-          <a href="/guide/database/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database DSL</a>
-          <a href="/guide/api-endpoints/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API Endpoints</a>
-        </nav>
-      </div>
-      
-      <!-- Frontend & Mobile -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
-        <nav class="space-y-1">
-          <a href="/guide/ui-components/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI Components</a>
-          <a href="/guide/mobile/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile Development</a>
-        </nav>
-      </div>
-      
-      <!-- Tools -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
-        <nav class="space-y-1">
-          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
-          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
-          <a href="/guide/frameworks/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework Support</a>
-          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
-          <a href="/guide/implementation-status/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation Status</a>
-        </nav>
-      </div>
-    </div>
-  </aside>
-  
-  <!-- Main Content -->
-  <div class="flex-1 flex flex-col min-h-screen w-full lg:w-auto" id="main-content">
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
-      <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Droe" class="w-6 h-6">
-          <span>Droe</span>
-        </a>
-      </div>
-      
-      <!-- Navigation Links -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
-          <span class="sr-only">GitHub</span>
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </div>
+    <!-- Mobile drawer overlay -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden lg:hidden"></div>
 
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden">
-        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
-          <span class="sr-only">Open main menu</span>
-          <!-- Icon for menu (hamburger) -->
-          <svg class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h-8" />
-          </svg>
-          <!-- Icon for close (X) -->
-          <svg class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-    </div>
+    <!-- Main Layout Container -->
+    <div class="flex flex-col lg:flex-row">
+      <!-- Sidebar Navigation -->
+      <aside id="sidebar"
+        class="fixed inset-y-0 left-0 z-[70] w-64 bg-gray-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out h-screen lg:sticky lg:top-0 lg:h-screen overflow-y-auto pb-4 lg:pb-16">
+        <div class="p-6">
+          <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
-      </div>
-    </div>
-  </div>
-</nav>
+          <!-- Getting Started -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+            <nav class="space-y-1">
+              <a href="/guide/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+              <a href="/guide/installation/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+              <a href="/guide/quick-start/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick
+                Start</a>
+              <a href="/guide/project-structure/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project
+                Structure</a>
+            </nav>
+          </div>
 
-    <!-- Mobile Menu Bar (only visible on mobile) -->
-    <div class="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-      <button id="menu-toggle-btn" class="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <span>Menu</span>
-      </button>
-      <div class="text-sm text-gray-500">Documentation</div>
-    </div>
-    
-    <main class="flex-grow p-6 lg:p-12">
-      <div class="overflow-x-auto">
-        <article class="prose dark:prose-invert max-w-none">
-          <h1>Implementation Status</h1>
-          <p>This page provides a transparent overview of what's currently implemented in Ddroelang and what's planned for future development.</p>
-<h2>🎯 Current Status (January 2025)</h2>
-<p>Ddroelang is actively developed with a focus on WebAssembly compilation and emerging native bytecode execution.</p>
-<h2>✅ Fully Implemented Features</h2>
-<h3>Core Language</h3>
-<ul>
-<li>✅ <strong>Variables and Assignment</strong> - Strong typing with <code>set variable which is type to value</code></li>
-<li>✅ <strong>Data Types</strong> - <code>int</code>, <code>decimal</code>, <code>text</code>, <code>flag</code>, <code>date</code>, <code>list of T</code></li>
-<li>✅ <strong>Display Output</strong> - <code>display</code> and <code>show</code> statements</li>
-<li>✅ <strong>String Operations</strong> - Concatenation with <code>+</code> and interpolation with <code>[variable]</code></li>
-<li>✅ <strong>Conditionals</strong> - <code>when condition then ... end when</code> with <code>otherwise</code></li>
-<li>✅ <strong>Loops</strong> - <code>for each item in collection ... end for</code></li>
-<li>✅ <strong>Comments</strong> - Single-line <code>//</code> and multi-line <code>/* */</code></li>
-</ul>
-<h3>Modules and Actions</h3>
-<ul>
-<li>✅ <strong>Module System</strong> - <code>module name ... end module</code> with namespacing</li>
-<li>✅ <strong>Actions</strong> - Parameterized functions with <code>action name with params gives type</code></li>
-<li>✅ <strong>Return Values</strong> - <code>give result</code> and <code>set variable from run module.action</code></li>
-</ul>
-<h3>Database DSL</h3>
-<ul>
-<li>✅ <strong>Data Definitions</strong> - <code>data Entity</code> with field annotations (<code>key</code>, <code>auto</code>, <code>required</code>, etc.)</li>
-<li>✅ <strong>HTTP Endpoints</strong> - <code>serve get /path ... end serve</code> syntax</li>
-<li>⚠️ <strong>Database Operations</strong> - Basic parsing implemented, runtime execution in progress</li>
-</ul>
-<h3>Compilation Targets</h3>
-<ul>
-<li>✅ <strong>WebAssembly</strong> - Primary target, fully functional (<code>.droe</code> → <code>.wat</code> → <code>.wasm</code>)</li>
-<li>✅ <strong>Native Bytecode</strong> - <code>@target droe</code> compiles to <code>.droebc</code> format</li>
-<li>⚠️ <strong>Rust Code Generation</strong> - <code>@target rust</code> with Axum framework (experimental)</li>
-</ul>
-<h3>CLI Tools</h3>
-<ul>
-<li>✅ <strong>Project Initialization</strong> - <code>droe init</code> creates project structure</li>
-<li>✅ <strong>Compilation</strong> - <code>droe compile file.droe</code> to WebAssembly/bytecode</li>
-<li>⚠️ <strong>Runtime Execution</strong> - <code>droe run</code> works for basic programs</li>
-</ul>
-<h2>🚧 Partially Implemented Features</h2>
-<h3>Database and HTTP Features</h3>
-<ul>
-<li>⚠️ <strong>Database Runtime</strong> - Parsing works, runtime execution in development</li>
-<li>⚠️ <strong>HTTP Server</strong> - <code>serve</code> endpoints parse, DroeVM runtime needed</li>
-<li>⚠️ <strong>Multi-Database Support</strong> - Architecture exists, drivers in progress</li>
-</ul>
-<h3>Advanced Language Features</h3>
-<ul>
-<li>⚠️ <strong>Complex Collections</strong> - Basic list operations work, advanced manipulation pending</li>
-<li>⚠️ <strong>Include System</strong> - File imports designed but needs testing</li>
-<li>⚠️ <strong>Error Handling</strong> - Basic type checking, advanced error handling planned</li>
-</ul>
-<h3>Build System</h3>
-<ul>
-<li>⚠️ <strong>DroeVM Runtime</strong> - Native bytecode interpreter under development</li>
-<li>⚠️ <strong>Release Builds</strong> - <code>droe build --release</code> planned for single-binary output</li>
-</ul>
-<h2>❌ Not Yet Implemented</h2>
-<h3>Multi-Target Compilation</h3>
-<ul>
-<li>❌ <strong>Python Target</strong> - Not implemented (was documented but removed)</li>
-<li>❌ <strong>Java/Spring Boot</strong> - Not implemented (was documented but removed)</li>
-<li>❌ <strong>JavaScript/Node.js</strong> - Not implemented (was documented but removed)</li>
-<li>❌ <strong>Go/Fiber</strong> - Not implemented (was documented but removed)</li>
-</ul>
-<h3>UI and Mobile Features</h3>
-<ul>
-<li>❌ <strong>UI Components</strong> - <code>layout</code>, <code>form</code>, <code>input</code>, <code>button</code> etc. (parsing exists, no compilation)</li>
-<li>❌ <strong>Mobile Development</strong> - No Android or iOS support</li>
-<li>❌ <strong>Cross-Platform UI</strong> - Not implemented</li>
-</ul>
-<h3>Advanced Features</h3>
-<ul>
-<li>❌ <strong>Format Expressions</strong> - <code>format date as &quot;MM/dd/yyyy&quot;</code> not implemented</li>
-<li>❌ <strong>Advanced HTTP Client</strong> - <code>call &quot;url&quot; method GET</code> not implemented</li>
-<li>❌ <strong>Complex Database Queries</strong> - Advanced query syntax not implemented</li>
-<li>❌ <strong>Package Management</strong> - No module sharing system yet</li>
-</ul>
-<h2>🗺️ Development Roadmap</h2>
-<h3>Priority 1: Core Stability (Q1 2025)</h3>
-<ul>
-<li>Complete DroeVM bytecode runtime</li>
-<li>Stable database operations</li>
-<li>HTTP endpoint handling</li>
-<li>Production-ready WebAssembly compilation</li>
-</ul>
-<h3>Priority 2: Developer Experience (Q2 2025)</h3>
-<ul>
-<li>Enhanced CLI tooling</li>
-<li>Better error messages</li>
-<li>Debugging support</li>
-<li>Performance optimization</li>
-</ul>
-<h3>Priority 3: Language Expansion (Q3+ 2025)</h3>
-<ul>
-<li>Format expressions</li>
-<li>HTTP client operations</li>
-<li>Advanced database features</li>
-<li>Package management system</li>
-</ul>
-<h2>💭 Future Considerations</h2>
-<p>The following features were documented but are not currently in active development:</p>
-<ul>
-<li><strong>Multi-Target Compilation</strong> - May be reconsidered based on community demand</li>
-<li><strong>UI Framework</strong> - Significant effort required, priority unclear</li>
-<li><strong>Mobile Development</strong> - Would require substantial mobile expertise</li>
-</ul>
-<h2>🚀 How You Can Help</h2>
-<h3>Community Contributions</h3>
-<ul>
-<li><strong>Testing</strong> - Try Ddroelang with your use cases and report issues</li>
-<li><strong>Documentation</strong> - Help improve examples and guides</li>
-<li><strong>Features</strong> - Contribute implementations for partially completed features</li>
-</ul>
-<h3>Feedback Priorities</h3>
-<p>We're particularly interested in feedback on:</p>
-<ol>
-<li>WebAssembly compilation experience</li>
-<li>Database DSL usability</li>
-<li>Developer tool ergonomics</li>
-<li>Performance characteristics</li>
-</ol>
-<h2>📋 Feature Status Legend</h2>
-<ul>
-<li>✅ <strong>Fully Implemented</strong> - Feature works as documented with tests</li>
-<li>⚠️ <strong>Partially Implemented</strong> - Core functionality exists, edge cases or polish needed</li>
-<li>🚧 <strong>In Progress</strong> - Active development, basic functionality may work</li>
-<li>❌ <strong>Not Implemented</strong> - Feature not started or removed from scope</li>
-<li>💭 <strong>Planned</strong> - Design phase, implementation timeline unclear</li>
-</ul>
-<h2>📈 Version History</h2>
-<h3>Version 3.0 (Current)</h3>
-<ul>
-<li>Native DroeVM bytecode target</li>
-<li>Database DSL with HTTP endpoints</li>
-<li>Rust code generation (experimental)</li>
-<li>Cleaned up language specification</li>
-</ul>
-<h3>Version 2.0 (Previous)</h3>
-<ul>
-<li>WebAssembly compilation</li>
-<li>Module system</li>
-<li>Basic database parsing</li>
-</ul>
-<h3>Version 1.0 (Original)</h3>
-<ul>
-<li>Core language features</li>
-<li>WebAssembly compilation</li>
-<li>CLI tools</li>
-</ul>
-<hr>
-<p><strong>Last Updated:</strong> January 8, 2025<br>
-<strong>Next Review:</strong> February 2025</p>
-<p>This status page is updated regularly. For the most current information, check the <a href="https://github.com/droe-lang/ddroelang-installer">project repository</a> and recent commits.</p>
+          <!-- Language Guide -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+            <nav class="space-y-1">
+              <a href="/guide/basics/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic
+                Syntax</a>
+              <a href="/guide/types/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type
+                System</a>
+              <a href="/guide/variables/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+              <a href="/guide/strings/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings
+                & Interpolation</a>
+              <a href="/guide/collections/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+              <a href="/guide/conditionals/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+              <a href="/guide/loops/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+            </nav>
+          </div>
 
-        </article>
-      </div>
-    </main>
+          <!-- Advanced -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+            <nav class="space-y-1">
+              <a href="/guide/modules/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+              <a href="/guide/actions/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+              <a href="/guide/data-structures/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data
+                Structures</a>
+              <a href="/guide/task-actions/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task
+                Actions</a>
+            </nav>
+          </div>
 
-    <footer class="bg-gray-50 border-t border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div class="md:col-span-2">
-        <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Droe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Droe</span>
+          <!-- Backend Development -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
+            <nav class="space-y-1">
+              <a href="/guide/database/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database
+                DSL</a>
+              <a href="/guide/api-endpoints/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API
+                Endpoints</a>
+            </nav>
+          </div>
+
+          <!-- Frontend & Mobile -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
+            <nav class="space-y-1">
+              <a href="/guide/ui-components/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI
+                Components</a>
+              <a href="/guide/mobile/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile
+                Development</a>
+            </nav>
+          </div>
+
+          <!-- Tools -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+            <nav class="space-y-1">
+              <a href="/guide/cli/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI
+                Reference</a>
+              <a href="/guide/webassembly/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+              <a href="/guide/frameworks/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework
+                Support</a>
+              <a href="/guide/debugging/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+              <a href="/guide/implementation-status/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation
+                Status</a>
+            </nav>
+          </div>
         </div>
-        <p class="text-gray-600 max-w-md">
-          A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
-        </p>
-      </div>
-      
-      <div>
-        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
-        <ul class="mt-4 space-y-4">
-          <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
-        <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
-        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col min-h-screen w-full lg:w-auto" id="main-content">
+        <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+              <!-- Logo -->
+              <div class="flex items-center">
+                <a href="/"
+                  class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+                  <img src="/logo.png" alt="Droe" class="w-6 h-6">
+                  <span>Droe</span>
+                </a>
+              </div>
+
+              <!-- Navigation Links -->
+              <div class="hidden md:flex items-center space-x-8">
+                <a href="/guide/" class="nav-link">Guide</a>
+                <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener"
+                  class="nav-link">Examples</a>
+                <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
+                  <span class="sr-only">GitHub</span>
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                      d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Mobile Menu Button -->
+              <div class="md:hidden">
+                <button id="mobile-menu-button"
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                  <span class="sr-only">Open main menu</span>
+                  <!-- Icon for menu (hamburger) -->
+                  <svg class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h-8" />
+                  </svg>
+                  <!-- Icon for close (X) -->
+                  <svg class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+              <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/guide/"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
+                <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+                <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Bar (only visible on mobile) -->
+        <div class="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+          <button id="menu-toggle-btn"
+            class="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <span>Menu</span>
+          </button>
+          <div class="text-sm text-gray-500">Documentation</div>
+        </div>
+
+        <main class="flex-grow p-6 lg:p-12">
+          <div class="overflow-x-auto">
+            <article class="prose dark:prose-invert max-w-none">
+              <h1>Implementation Status</h1>
+              <p>This page provides a transparent overview of what's currently implemented in Droelang and what's
+                planned for future development.</p>
+              <h2>🎯 Current Status (January 2025)</h2>
+              <p>Droelang is actively developed with a focus on WebAssembly compilation and emerging native bytecode
+                execution.</p>
+              <h2>✅ Fully Implemented Features</h2>
+              <h3>Core Language</h3>
+              <ul>
+                <li>✅ <strong>Variables and Assignment</strong> - Strong typing with
+                  <code>set variable which is type to value</code>
+                </li>
+                <li>✅ <strong>Data Types</strong> - <code>int</code>, <code>decimal</code>, <code>text</code>,
+                  <code>flag</code>, <code>date</code>, <code>list of T</code>
+                </li>
+                <li>✅ <strong>Display Output</strong> - <code>display</code> and <code>show</code> statements</li>
+                <li>✅ <strong>String Operations</strong> - Concatenation with <code>+</code> and interpolation with
+                  <code>[variable]</code>
+                </li>
+                <li>✅ <strong>Conditionals</strong> - <code>when condition then ... end when</code> with
+                  <code>otherwise</code>
+                </li>
+                <li>✅ <strong>Loops</strong> - <code>for each item in collection ... end for</code></li>
+                <li>✅ <strong>Comments</strong> - Single-line <code>//</code> and multi-line <code>/* */</code></li>
+              </ul>
+              <h3>Modules and Actions</h3>
+              <ul>
+                <li>✅ <strong>Module System</strong> - <code>module name ... end module</code> with namespacing</li>
+                <li>✅ <strong>Actions</strong> - Parameterized functions with
+                  <code>action name with params gives type</code>
+                </li>
+                <li>✅ <strong>Return Values</strong> - <code>give result</code> and
+                  <code>set variable from run module.action</code>
+                </li>
+              </ul>
+              <h3>Database DSL</h3>
+              <ul>
+                <li>✅ <strong>Data Definitions</strong> - <code>data Entity</code> with field annotations
+                  (<code>key</code>, <code>auto</code>, <code>required</code>, etc.)</li>
+                <li>✅ <strong>HTTP Endpoints</strong> - <code>serve get /path ... end serve</code> syntax</li>
+                <li>⚠️ <strong>Database Operations</strong> - Basic parsing implemented, runtime execution in progress
+                </li>
+              </ul>
+              <h3>Compilation Targets</h3>
+              <ul>
+                <li>✅ <strong>WebAssembly</strong> - Primary target, fully functional (<code>.droe</code> →
+                  <code>.wat</code> → <code>.wasm</code>)
+                </li>
+                <li>✅ <strong>Native Bytecode</strong> - <code>@target droe</code> compiles to <code>.droebc</code>
+                  format</li>
+                <li>⚠️ <strong>Rust Code Generation</strong> - <code>@target rust</code> with Axum framework
+                  (experimental)</li>
+              </ul>
+              <h3>CLI Tools</h3>
+              <ul>
+                <li>✅ <strong>Project Initialization</strong> - <code>droe init</code> creates project structure</li>
+                <li>✅ <strong>Compilation</strong> - <code>droe compile file.droe</code> to WebAssembly/bytecode</li>
+                <li>⚠️ <strong>Runtime Execution</strong> - <code>droe run</code> works for basic programs</li>
+              </ul>
+              <h2>🚧 Partially Implemented Features</h2>
+              <h3>Database and HTTP Features</h3>
+              <ul>
+                <li>⚠️ <strong>Database Runtime</strong> - Parsing works, runtime execution in development</li>
+                <li>⚠️ <strong>HTTP Server</strong> - <code>serve</code> endpoints parse, DroeVM runtime needed</li>
+                <li>⚠️ <strong>Multi-Database Support</strong> - Architecture exists, drivers in progress</li>
+              </ul>
+              <h3>Advanced Language Features</h3>
+              <ul>
+                <li>⚠️ <strong>Complex Collections</strong> - Basic list operations work, advanced manipulation pending
+                </li>
+                <li>⚠️ <strong>Include System</strong> - File imports designed but needs testing</li>
+                <li>⚠️ <strong>Error Handling</strong> - Basic type checking, advanced error handling planned</li>
+              </ul>
+              <h3>Build System</h3>
+              <ul>
+                <li>⚠️ <strong>DroeVM Runtime</strong> - Native bytecode interpreter under development</li>
+                <li>⚠️ <strong>Release Builds</strong> - <code>droe build --release</code> planned for single-binary
+                  output</li>
+              </ul>
+              <h2>❌ Not Yet Implemented</h2>
+              <h3>Multi-Target Compilation</h3>
+              <ul>
+                <li>❌ <strong>Python Target</strong> - Not implemented (was documented but removed)</li>
+                <li>❌ <strong>Java/Spring Boot</strong> - Not implemented (was documented but removed)</li>
+                <li>❌ <strong>JavaScript/Node.js</strong> - Not implemented (was documented but removed)</li>
+                <li>❌ <strong>Go/Fiber</strong> - Not implemented (was documented but removed)</li>
+              </ul>
+              <h3>UI and Mobile Features</h3>
+              <ul>
+                <li>❌ <strong>UI Components</strong> - <code>layout</code>, <code>form</code>, <code>input</code>,
+                  <code>button</code> etc. (parsing exists, no compilation)
+                </li>
+                <li>❌ <strong>Mobile Development</strong> - No Android or iOS support</li>
+                <li>❌ <strong>Cross-Platform UI</strong> - Not implemented</li>
+              </ul>
+              <h3>Advanced Features</h3>
+              <ul>
+                <li>❌ <strong>Format Expressions</strong> - <code>format date as &quot;MM/dd/yyyy&quot;</code> not
+                  implemented</li>
+                <li>❌ <strong>Advanced HTTP Client</strong> - <code>call &quot;url&quot; method GET</code> not
+                  implemented</li>
+                <li>❌ <strong>Complex Database Queries</strong> - Advanced query syntax not implemented</li>
+                <li>❌ <strong>Package Management</strong> - No module sharing system yet</li>
+              </ul>
+              <h2>🗺️ Development Roadmap</h2>
+              <h3>Priority 1: Core Stability (Q1 2025)</h3>
+              <ul>
+                <li>Complete DroeVM bytecode runtime</li>
+                <li>Stable database operations</li>
+                <li>HTTP endpoint handling</li>
+                <li>Production-ready WebAssembly compilation</li>
+              </ul>
+              <h3>Priority 2: Developer Experience (Q2 2025)</h3>
+              <ul>
+                <li>Enhanced CLI tooling</li>
+                <li>Better error messages</li>
+                <li>Debugging support</li>
+                <li>Performance optimization</li>
+              </ul>
+              <h3>Priority 3: Language Expansion (Q3+ 2025)</h3>
+              <ul>
+                <li>Format expressions</li>
+                <li>HTTP client operations</li>
+                <li>Advanced database features</li>
+                <li>Package management system</li>
+              </ul>
+              <h2>💭 Future Considerations</h2>
+              <p>The following features were documented but are not currently in active development:</p>
+              <ul>
+                <li><strong>Multi-Target Compilation</strong> - May be reconsidered based on community demand</li>
+                <li><strong>UI Framework</strong> - Significant effort required, priority unclear</li>
+                <li><strong>Mobile Development</strong> - Would require substantial mobile expertise</li>
+              </ul>
+              <h2>🚀 How You Can Help</h2>
+              <h3>Community Contributions</h3>
+              <ul>
+                <li><strong>Testing</strong> - Try Droelang with your use cases and report issues</li>
+                <li><strong>Documentation</strong> - Help improve examples and guides</li>
+                <li><strong>Features</strong> - Contribute implementations for partially completed features</li>
+              </ul>
+              <h3>Feedback Priorities</h3>
+              <p>We're particularly interested in feedback on:</p>
+              <ol>
+                <li>WebAssembly compilation experience</li>
+                <li>Database DSL usability</li>
+                <li>Developer tool ergonomics</li>
+                <li>Performance characteristics</li>
+              </ol>
+              <h2>📋 Feature Status Legend</h2>
+              <ul>
+                <li>✅ <strong>Fully Implemented</strong> - Feature works as documented with tests</li>
+                <li>⚠️ <strong>Partially Implemented</strong> - Core functionality exists, edge cases or polish needed
+                </li>
+                <li>🚧 <strong>In Progress</strong> - Active development, basic functionality may work</li>
+                <li>❌ <strong>Not Implemented</strong> - Feature not started or removed from scope</li>
+                <li>💭 <strong>Planned</strong> - Design phase, implementation timeline unclear</li>
+              </ul>
+              <h2>📈 Version History</h2>
+              <h3>Version 3.0 (Current)</h3>
+              <ul>
+                <li>Native DroeVM bytecode target</li>
+                <li>Database DSL with HTTP endpoints</li>
+                <li>Rust code generation (experimental)</li>
+                <li>Cleaned up language specification</li>
+              </ul>
+              <h3>Version 2.0 (Previous)</h3>
+              <ul>
+                <li>WebAssembly compilation</li>
+                <li>Module system</li>
+                <li>Basic database parsing</li>
+              </ul>
+              <h3>Version 1.0 (Original)</h3>
+              <ul>
+                <li>Core language features</li>
+                <li>WebAssembly compilation</li>
+                <li>CLI tools</li>
+              </ul>
+              <hr>
+              <p><strong>Last Updated:</strong> January 8, 2025<br>
+                <strong>Next Review:</strong> February 2025
+              </p>
+              <p>This status page is updated regularly. For the most current information, check the <a
+                  href="https://github.com/droe-lang/droelang-installer">project repository</a> and recent commits.</p>
+
+            </article>
+          </div>
+        </main>
+
+        <footer class="bg-gray-50 border-t border-gray-200">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div class="md:col-span-2">
+                <div class="flex items-center space-x-2 mb-4">
+                  <img src="/logo.png" alt="Droe" class="w-6 h-6">
+                  <span class="text-xl font-bold text-gray-900">Droe</span>
+                </div>
+                <p class="text-gray-600 max-w-md">
+                  A unified programming system that compiles high-level app definitions to native, web, mobile, and
+                  server runtimes.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
+                <ul class="mt-4 space-y-4">
+                  <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
+                  <li><a href="https://github.com/droe-lang/droe/tree/main/examples"
+                      class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
+                <ul class="mt-4 space-y-4">
+                  <li><a href="https://github.com/droe-lang/droe"
+                      class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+                  <li><a href="https://github.com/droe-lang/droe/issues"
+                      class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+                  <li><a href="https://github.com/droe-lang/droe/discussions"
+                      class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-8 text-center">
+              <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
+            </div>
+          </div>
+        </footer>
+
       </div>
     </div>
-    <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
-    </div>
-  </div>
-</footer>
+    <script>
+      // Highlight current page in sidebar and handle mobile drawer
+      document.addEventListener('DOMContentLoaded', function () {
+        const currentPath = window.location.pathname;
+        const sidebarLinks = document.querySelectorAll('aside nav a');
 
-  </div>
-</div>
-<script>
-// Highlight current page in sidebar and handle mobile drawer
-document.addEventListener('DOMContentLoaded', function() {
-  const currentPath = window.location.pathname;
-  const sidebarLinks = document.querySelectorAll('aside nav a');
-  
-  // Highlight current page
-  sidebarLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
-    }
-  });
+        // Highlight current page
+        sidebarLinks.forEach(link => {
+          if (link.getAttribute('href') === currentPath) {
+            link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+          }
+        });
 
-  // Mobile drawer functionality
-  const menuToggleBtn = document.getElementById('menu-toggle-btn');
-  const sidebar = document.getElementById('sidebar');
-  const drawerOverlay = document.getElementById('drawer-overlay');
-  
-  function openDrawer() {
-    sidebar.classList.remove('-translate-x-full');
-    drawerOverlay.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-  
-  function closeDrawer() {
-    sidebar.classList.add('-translate-x-full');
-    drawerOverlay.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-  
-  // Toggle drawer on mobile menu button click
-  if (menuToggleBtn) {
-    menuToggleBtn.addEventListener('click', openDrawer);
-  }
-  
-  // Close drawer on overlay click
-  drawerOverlay.addEventListener('click', closeDrawer);
-  
-  // Close drawer on link click (mobile navigation)
-  sidebarLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 1024) {
-        closeDrawer();
-      }
-    });
-  });
-  
-  // Close drawer on escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
-      closeDrawer();
-    }
-  });
-  
-  // Handle window resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 1024) {
-      // Desktop: hide overlay and restore body scroll
-      drawerOverlay.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  });
-});
-</script>
+        // Mobile drawer functionality
+        const menuToggleBtn = document.getElementById('menu-toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function openDrawer() {
+          sidebar.classList.remove('-translate-x-full');
+          drawerOverlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeDrawer() {
+          sidebar.classList.add('-translate-x-full');
+          drawerOverlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        // Toggle drawer on mobile menu button click
+        if (menuToggleBtn) {
+          menuToggleBtn.addEventListener('click', openDrawer);
+        }
+
+        // Close drawer on overlay click
+        drawerOverlay.addEventListener('click', closeDrawer);
+
+        // Close drawer on link click (mobile navigation)
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth < 1024) {
+              closeDrawer();
+            }
+          });
+        });
+
+        // Close drawer on escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
+            closeDrawer();
+          }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 1024) {
+            // Desktop: hide overlay and restore body scroll
+            drawerOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+    </script>
   </main>
 
   <!-- JavaScript for mobile menu -->
   <script>
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     });
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar) {
-      const scrollPos = sessionStorage.getItem('sidebarScroll');
-      if (scrollPos) {
-        sidebar.scrollTop = parseInt(scrollPos, 10);
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar) {
+        const scrollPos = sessionStorage.getItem('sidebarScroll');
+        if (scrollPos) {
+          sidebar.scrollTop = parseInt(scrollPos, 10);
+        }
+
+        window.addEventListener('beforeunload', () => {
+          sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
+        });
       }
 
-      window.addEventListener('beforeunload', () => {
-        sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
-      });
-    }
+      // Add copy buttons to all code blocks
+      const codeBlocks = document.querySelectorAll('pre code');
+      codeBlocks.forEach((codeBlock) => {
+        const pre = codeBlock.parentElement;
+        pre.style.position = 'relative';
 
-    // Add copy buttons to all code blocks
-    const codeBlocks = document.querySelectorAll('pre code');
-    codeBlocks.forEach((codeBlock) => {
-      const pre = codeBlock.parentElement;
-      pre.style.position = 'relative';
-      
-      const button = document.createElement('button');
-      button.className = 'copy-btn';
-      button.innerHTML = `
+        const button = document.createElement('button');
+        button.className = 'copy-btn';
+        button.innerHTML = `
         <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -476,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <path d="M20 6L9 17l-5-5"></path>
         </svg>
       `;
-      button.style.cssText = `
+        button.style.cssText = `
         position: absolute;
         top: 8px;
         right: 8px;
@@ -492,48 +578,49 @@ document.addEventListener('DOMContentLoaded', function() {
         gap: 4px;
         color: #6b7280;
       `;
-      
-      pre.appendChild(button);
-      
-      // Show button on hover
-      pre.addEventListener('mouseenter', () => {
-        button.style.opacity = '1';
-      });
-      
-      pre.addEventListener('mouseleave', () => {
-        if (!button.classList.contains('copied')) {
-          button.style.opacity = '0';
-        }
-      });
-      
-      button.addEventListener('click', async () => {
-        const code = codeBlock.textContent;
-        try {
-          await navigator.clipboard.writeText(code);
-          
-          // Show success state
-          button.classList.add('copied');
-          button.style.background = '#10b981';
-          button.style.borderColor = '#10b981';
-          button.style.color = 'white';
-          button.querySelector('.copy-icon').style.display = 'none';
-          button.querySelector('.check-icon').style.display = 'block';
-          
-          setTimeout(() => {
-            button.classList.remove('copied');
-            button.style.background = 'rgba(255, 255, 255, 0.9)';
-            button.style.borderColor = '#e5e7eb';
-            button.style.color = '#6b7280';
-            button.querySelector('.copy-icon').style.display = 'block';
-            button.querySelector('.check-icon').style.display = 'none';
+
+        pre.appendChild(button);
+
+        // Show button on hover
+        pre.addEventListener('mouseenter', () => {
+          button.style.opacity = '1';
+        });
+
+        pre.addEventListener('mouseleave', () => {
+          if (!button.classList.contains('copied')) {
             button.style.opacity = '0';
-          }, 2000);
-        } catch (err) {
-          console.error('Failed to copy:', err);
-        }
+          }
+        });
+
+        button.addEventListener('click', async () => {
+          const code = codeBlock.textContent;
+          try {
+            await navigator.clipboard.writeText(code);
+
+            // Show success state
+            button.classList.add('copied');
+            button.style.background = '#10b981';
+            button.style.borderColor = '#10b981';
+            button.style.color = 'white';
+            button.querySelector('.copy-icon').style.display = 'none';
+            button.querySelector('.check-icon').style.display = 'block';
+
+            setTimeout(() => {
+              button.classList.remove('copied');
+              button.style.background = 'rgba(255, 255, 255, 0.9)';
+              button.style.borderColor = '#e5e7eb';
+              button.style.color = '#6b7280';
+              button.querySelector('.copy-icon').style.display = 'block';
+              button.querySelector('.check-icon').style.display = 'none';
+              button.style.opacity = '0';
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>

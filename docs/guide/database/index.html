@@ -1,185 +1,241 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Database DSL | Droe</title>
-  <meta name="description" content="Define data models and perform database operations with Ddroelang&#39;s built-in database DSL.">
-  
+  <meta name="description"
+    content="Define data models and perform database operations with Droelang&#39;s built-in database DSL.">
+
   <!-- Favicon -->
   <link rel="icon" href="/logo.png">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="apple-touch-icon" href="/logo.png">
-  
+
   <!-- Styles -->
   <link rel="stylesheet" href="/style.css">
-  
+
   <!-- Meta tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Database DSL | Droe">
-  <meta property="og:description" content="Define data models and perform database operations with Ddroelang&#39;s built-in database DSL.">
+  <meta property="og:description"
+    content="Define data models and perform database operations with Droelang&#39;s built-in database DSL.">
   <meta property="og:url" content="https://droe.dev/guide/database/">
   <meta property="og:image" content="https://droe.dev/logo.png">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Database DSL | Droe">
-  <meta name="twitter:description" content="Define data models and perform database operations with Ddroelang&#39;s built-in database DSL.">
+  <meta name="twitter:description"
+    content="Define data models and perform database operations with Droelang&#39;s built-in database DSL.">
   <meta name="twitter:image" content="https://droe.dev/logo.png">
 </head>
+
 <body class="bg-white text-gray-900 antialiased">
   <!-- Main Content -->
   <main>
-    
-<!-- Mobile drawer overlay -->
-<div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden lg:hidden"></div>
 
-<!-- Main Layout Container -->
-<div class="flex flex-col lg:flex-row">
-  <!-- Sidebar Navigation -->
-  <aside id="sidebar" class="fixed inset-y-0 left-0 z-[70] w-64 bg-gray-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out h-screen lg:sticky lg:top-0 lg:h-screen overflow-y-auto pb-4 lg:pb-16">
-    <div class="p-6">
-      <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
-      
-      <!-- Getting Started -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
-        <nav class="space-y-1">
-          <a href="/guide/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
-          <a href="/guide/installation/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
-          <a href="/guide/quick-start/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick Start</a>
-          <a href="/guide/project-structure/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project Structure</a>
-        </nav>
-      </div>
-      
-      <!-- Language Guide -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
-        <nav class="space-y-1">
-          <a href="/guide/basics/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic Syntax</a>
-          <a href="/guide/types/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type System</a>
-          <a href="/guide/variables/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
-          <a href="/guide/strings/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings & Interpolation</a>
-          <a href="/guide/collections/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
-          <a href="/guide/conditionals/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
-          <a href="/guide/loops/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
-        </nav>
-      </div>
-      
-      <!-- Advanced -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
-        <nav class="space-y-1">
-          <a href="/guide/modules/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
-          <a href="/guide/actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
-          <a href="/guide/data-structures/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data Structures</a>
-          <a href="/guide/task-actions/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task Actions</a>
-        </nav>
-      </div>
-      
-      <!-- Backend Development -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
-        <nav class="space-y-1">
-          <a href="/guide/database/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database DSL</a>
-          <a href="/guide/api-endpoints/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API Endpoints</a>
-        </nav>
-      </div>
-      
-      <!-- Frontend & Mobile -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
-        <nav class="space-y-1">
-          <a href="/guide/ui-components/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI Components</a>
-          <a href="/guide/mobile/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile Development</a>
-        </nav>
-      </div>
-      
-      <!-- Tools -->
-      <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
-        <nav class="space-y-1">
-          <a href="/guide/cli/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI Reference</a>
-          <a href="/guide/webassembly/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
-          <a href="/guide/frameworks/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework Support</a>
-          <a href="/guide/debugging/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
-          <a href="/guide/implementation-status/" class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation Status</a>
-        </nav>
-      </div>
-    </div>
-  </aside>
-  
-  <!-- Main Content -->
-  <div class="flex-1 flex flex-col min-h-screen w-full lg:w-auto" id="main-content">
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
-      <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
-          <img src="/logo.png" alt="Droe" class="w-6 h-6">
-          <span>Droe</span>
-        </a>
-      </div>
-      
-      <!-- Navigation Links -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="/guide/" class="nav-link">Guide</a>
-        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="nav-link">Examples</a>
-        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
-          <span class="sr-only">GitHub</span>
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </div>
+    <!-- Mobile drawer overlay -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden lg:hidden"></div>
 
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden">
-        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
-          <span class="sr-only">Open main menu</span>
-          <!-- Icon for menu (hamburger) -->
-          <svg class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h-8" />
-          </svg>
-          <!-- Icon for close (X) -->
-          <svg class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-    </div>
+    <!-- Main Layout Container -->
+    <div class="flex flex-col lg:flex-row">
+      <!-- Sidebar Navigation -->
+      <aside id="sidebar"
+        class="fixed inset-y-0 left-0 z-[70] w-64 bg-gray-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out h-screen lg:sticky lg:top-0 lg:h-screen overflow-y-auto pb-4 lg:pb-16">
+        <div class="p-6">
+          <h2 class="font-semibold text-gray-900 mb-4">Documentation</h2>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="/guide/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
-        <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
-        <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
-      </div>
-    </div>
-  </div>
-</nav>
+          <!-- Getting Started -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Getting Started</h3>
+            <nav class="space-y-1">
+              <a href="/guide/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Introduction</a>
+              <a href="/guide/installation/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Installation</a>
+              <a href="/guide/quick-start/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Quick
+                Start</a>
+              <a href="/guide/project-structure/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Project
+                Structure</a>
+            </nav>
+          </div>
 
-    <!-- Mobile Menu Bar (only visible on mobile) -->
-    <div class="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-      <button id="menu-toggle-btn" class="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <span>Menu</span>
-      </button>
-      <div class="text-sm text-gray-500">Documentation</div>
-    </div>
-    
-    <main class="flex-grow p-6 lg:p-12">
-      <div class="overflow-x-auto">
-        <article class="prose dark:prose-invert max-w-none">
-          <h1>Database DSL</h1>
-          <p>Ddroelang provides a native Database DSL for defining data models and performing database operations with automatic ORM generation for target frameworks.</p>
-<h2>Data Definitions with Annotations</h2>
-<p>Define data structures with field annotations for database schema generation:</p>
-<pre><code class="language-droe">data User
+          <!-- Language Guide -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Language Guide</h3>
+            <nav class="space-y-1">
+              <a href="/guide/basics/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Basic
+                Syntax</a>
+              <a href="/guide/types/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Type
+                System</a>
+              <a href="/guide/variables/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Variables</a>
+              <a href="/guide/strings/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Strings
+                & Interpolation</a>
+              <a href="/guide/collections/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Collections</a>
+              <a href="/guide/conditionals/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Conditionals</a>
+              <a href="/guide/loops/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Loops</a>
+            </nav>
+          </div>
+
+          <!-- Advanced -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Advanced</h3>
+            <nav class="space-y-1">
+              <a href="/guide/modules/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Modules</a>
+              <a href="/guide/actions/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Actions</a>
+              <a href="/guide/data-structures/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Data
+                Structures</a>
+              <a href="/guide/task-actions/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Task
+                Actions</a>
+            </nav>
+          </div>
+
+          <!-- Backend Development -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Backend Development</h3>
+            <nav class="space-y-1">
+              <a href="/guide/database/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Database
+                DSL</a>
+              <a href="/guide/api-endpoints/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">API
+                Endpoints</a>
+            </nav>
+          </div>
+
+          <!-- Frontend & Mobile -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Frontend & Mobile</h3>
+            <nav class="space-y-1">
+              <a href="/guide/ui-components/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">UI
+                Components</a>
+              <a href="/guide/mobile/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Mobile
+                Development</a>
+            </nav>
+          </div>
+
+          <!-- Tools -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Tools</h3>
+            <nav class="space-y-1">
+              <a href="/guide/cli/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">CLI
+                Reference</a>
+              <a href="/guide/webassembly/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">WebAssembly</a>
+              <a href="/guide/frameworks/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Framework
+                Support</a>
+              <a href="/guide/debugging/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Debugging</a>
+              <a href="/guide/implementation-status/"
+                class="block px-3 py-2 text-sm text-gray-700 hover:text-primary-600 hover:bg-white rounded-md transition-colors">Implementation
+                Status</a>
+            </nav>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col min-h-screen w-full lg:w-auto" id="main-content">
+        <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+              <!-- Logo -->
+              <div class="flex items-center">
+                <a href="/"
+                  class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-primary-600 transition-colors">
+                  <img src="/logo.png" alt="Droe" class="w-6 h-6">
+                  <span>Droe</span>
+                </a>
+              </div>
+
+              <!-- Navigation Links -->
+              <div class="hidden md:flex items-center space-x-8">
+                <a href="/guide/" class="nav-link">Guide</a>
+                <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener"
+                  class="nav-link">Examples</a>
+                <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener" class="nav-link">
+                  <span class="sr-only">GitHub</span>
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                      d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Mobile Menu Button -->
+              <div class="md:hidden">
+                <button id="mobile-menu-button"
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                  <span class="sr-only">Open main menu</span>
+                  <!-- Icon for menu (hamburger) -->
+                  <svg class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h-8" />
+                  </svg>
+                  <!-- Icon for close (X) -->
+                  <svg class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+              <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/guide/"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Guide</a>
+                <a href="https://github.com/droe-lang/droe/tree/main/examples" target="_blank" rel="noopener"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Examples</a>
+                <a href="https://github.com/droe-lang/droe" target="_blank" rel="noopener"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu Bar (only visible on mobile) -->
+        <div class="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+          <button id="menu-toggle-btn"
+            class="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <span>Menu</span>
+          </button>
+          <div class="text-sm text-gray-500">Documentation</div>
+        </div>
+
+        <main class="flex-grow p-6 lg:p-12">
+          <div class="overflow-x-auto">
+            <article class="prose dark:prose-invert max-w-none">
+              <h1>Database DSL</h1>
+              <p>Droelang provides a native Database DSL for defining data models and performing database operations
+                with automatic ORM generation for target frameworks.</p>
+              <h2>Data Definitions with Annotations</h2>
+              <p>Define data structures with field annotations for database schema generation:</p>
+              <pre><code class="language-droe">data User
     id is text key auto                    // Primary key with auto-generation
     name is text required                   // Required field
     email is text required unique           // Unique constraint
@@ -197,51 +253,51 @@ data Post
     created_at is date auto
 end data
 </code></pre>
-<h2>Field Annotations</h2>
-<table>
-<thead>
-<tr>
-<th>Annotation</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>key</code></td>
-<td>Primary key field</td>
-<td><code>id is text key</code></td>
-</tr>
-<tr>
-<td><code>auto</code></td>
-<td>Auto-generated value</td>
-<td><code>id is text key auto</code></td>
-</tr>
-<tr>
-<td><code>required</code></td>
-<td>Non-nullable field</td>
-<td><code>name is text required</code></td>
-</tr>
-<tr>
-<td><code>optional</code></td>
-<td>Nullable field</td>
-<td><code>age is int optional</code></td>
-</tr>
-<tr>
-<td><code>unique</code></td>
-<td>Unique constraint</td>
-<td><code>email is text unique</code></td>
-</tr>
-<tr>
-<td><code>default &lt;value&gt;</code></td>
-<td>Default value</td>
-<td><code>active is flag default true</code></td>
-</tr>
-</tbody>
-</table>
-<h2>Database Operations</h2>
-<h3>Create (INSERT)</h3>
-<pre><code class="language-droe">// Create new record
+              <h2>Field Annotations</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Annotation</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>key</code></td>
+                    <td>Primary key field</td>
+                    <td><code>id is text key</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>auto</code></td>
+                    <td>Auto-generated value</td>
+                    <td><code>id is text key auto</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>required</code></td>
+                    <td>Non-nullable field</td>
+                    <td><code>name is text required</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>optional</code></td>
+                    <td>Nullable field</td>
+                    <td><code>age is int optional</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>unique</code></td>
+                    <td>Unique constraint</td>
+                    <td><code>email is text unique</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>default &lt;value&gt;</code></td>
+                    <td>Default value</td>
+                    <td><code>active is flag default true</code></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h2>Database Operations</h2>
+              <h3>Create (INSERT)</h3>
+              <pre><code class="language-droe">// Create new record
 db create User with name is &quot;Alice&quot;, email is &quot;alice@example.com&quot;, age is 25
 
 // Create with variable
@@ -250,8 +306,8 @@ set new_user.name to &quot;Bob&quot;
 set new_user.email to &quot;bob@example.com&quot;
 db create User from new_user
 </code></pre>
-<h3>Read (SELECT)</h3>
-<pre><code class="language-droe">// Find single record
+              <h3>Read (SELECT)</h3>
+              <pre><code class="language-droe">// Find single record
 set user from db find User where id equals &quot;user123&quot;
 
 // Find with multiple conditions
@@ -263,8 +319,8 @@ set all_users from db find all User
 // Find with conditions
 set adult_users from db find all User where age is greater than 18
 </code></pre>
-<h3>Update</h3>
-<pre><code class="language-droe">// Update single record
+              <h3>Update</h3>
+              <pre><code class="language-droe">// Update single record
 db update User where id equals &quot;user123&quot; set name is &quot;Alice Smith&quot;, age is 26
 
 // Update with variables
@@ -272,23 +328,23 @@ set user_id which is text to &quot;user123&quot;
 set new_name which is text to &quot;Alice Johnson&quot;
 db update User where id equals user_id set name is new_name
 </code></pre>
-<h3>Delete</h3>
-<pre><code class="language-droe">// Delete single record
+              <h3>Delete</h3>
+              <pre><code class="language-droe">// Delete single record
 db delete User where id equals &quot;user123&quot;
 
 // Delete with conditions
 db delete User where active equals false and age is less than 18
 </code></pre>
-<h2>Complete Database Example</h2>
-<p><strong>droeconfig.json:</strong></p>
-<pre><code class="language-json">{
+              <h2>Complete Database Example</h2>
+              <p><strong>droeconfig.json:</strong></p>
+              <pre><code class="language-json">{
     &quot;target&quot;: &quot;droe&quot;,
     &quot;framework&quot;: &quot;axum&quot;,
     &quot;database&quot;: {&quot;type&quot;: &quot;postgres&quot;}
 }
 </code></pre>
-<p><strong>src/user_management.droe:</strong></p>
-<pre><code class="language-droe">module user_management
+              <p><strong>src/user_management.droe:</strong></p>
+              <pre><code class="language-droe">module user_management
 
     // Define User entity
     data User
@@ -333,9 +389,9 @@ db delete User where active equals false and age is less than 18
 
 end module
 </code></pre>
-<h2>Database Configuration</h2>
-<p>Configure database connection in <code>droeconfig.json</code>:</p>
-<pre><code class="language-json">{
+              <h2>Database Configuration</h2>
+              <p>Configure database connection in <code>droeconfig.json</code>:</p>
+              <pre><code class="language-json">{
     &quot;target&quot;: &quot;droe&quot;,
     &quot;framework&quot;: &quot;axum&quot;,
     &quot;database&quot;: {
@@ -344,68 +400,68 @@ end module
     }
 }
 </code></pre>
-<p><strong>Supported Database Types:</strong></p>
-<ul>
-<li><code>postgres</code> - PostgreSQL</li>
-<li><code>mysql</code> - MySQL</li>
-<li><code>sqlite</code> - SQLite</li>
-<li><code>oracle</code> - Oracle Database</li>
-<li><code>mssql</code> - Microsoft SQL Server</li>
-<li><code>mongodb</code> - MongoDB</li>
-</ul>
-<h2>Database Type Mapping</h2>
-<table>
-<thead>
-<tr>
-<th>Ddroelang Type</th>
-<th>PostgreSQL</th>
-<th>MySQL</th>
-<th>SQLite</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text</code></td>
-<td><code>TEXT</code></td>
-<td><code>TEXT</code></td>
-<td><code>TEXT</code></td>
-<td>Variable length string</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td><code>INTEGER</code></td>
-<td><code>INT</code></td>
-<td><code>INTEGER</code></td>
-<td>32-bit signed integer</td>
-</tr>
-<tr>
-<td><code>decimal</code></td>
-<td><code>DECIMAL</code></td>
-<td><code>DECIMAL</code></td>
-<td><code>REAL</code></td>
-<td>Floating point number</td>
-</tr>
-<tr>
-<td><code>flag</code></td>
-<td><code>BOOLEAN</code></td>
-<td><code>BOOLEAN</code></td>
-<td><code>INTEGER</code></td>
-<td>True/false value</td>
-</tr>
-<tr>
-<td><code>date</code></td>
-<td><code>TIMESTAMP</code></td>
-<td><code>DATETIME</code></td>
-<td><code>TEXT</code></td>
-<td>ISO date format</td>
-</tr>
-</tbody>
-</table>
-<h2>Framework Integration</h2>
-<p>When using framework targets, database operations generate appropriate ORM code:</p>
-<p><strong>Rust + Axum:</strong></p>
-<pre><code class="language-rust">// Generated model
+              <p><strong>Supported Database Types:</strong></p>
+              <ul>
+                <li><code>postgres</code> - PostgreSQL</li>
+                <li><code>mysql</code> - MySQL</li>
+                <li><code>sqlite</code> - SQLite</li>
+                <li><code>oracle</code> - Oracle Database</li>
+                <li><code>mssql</code> - Microsoft SQL Server</li>
+                <li><code>mongodb</code> - MongoDB</li>
+              </ul>
+              <h2>Database Type Mapping</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Droelang Type</th>
+                    <th>PostgreSQL</th>
+                    <th>MySQL</th>
+                    <th>SQLite</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>text</code></td>
+                    <td><code>TEXT</code></td>
+                    <td><code>TEXT</code></td>
+                    <td><code>TEXT</code></td>
+                    <td>Variable length string</td>
+                  </tr>
+                  <tr>
+                    <td><code>int</code></td>
+                    <td><code>INTEGER</code></td>
+                    <td><code>INT</code></td>
+                    <td><code>INTEGER</code></td>
+                    <td>32-bit signed integer</td>
+                  </tr>
+                  <tr>
+                    <td><code>decimal</code></td>
+                    <td><code>DECIMAL</code></td>
+                    <td><code>DECIMAL</code></td>
+                    <td><code>REAL</code></td>
+                    <td>Floating point number</td>
+                  </tr>
+                  <tr>
+                    <td><code>flag</code></td>
+                    <td><code>BOOLEAN</code></td>
+                    <td><code>BOOLEAN</code></td>
+                    <td><code>INTEGER</code></td>
+                    <td>True/false value</td>
+                  </tr>
+                  <tr>
+                    <td><code>date</code></td>
+                    <td><code>TIMESTAMP</code></td>
+                    <td><code>DATETIME</code></td>
+                    <td><code>TEXT</code></td>
+                    <td>ISO date format</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h2>Framework Integration</h2>
+              <p>When using framework targets, database operations generate appropriate ORM code:</p>
+              <p><strong>Rust + Axum:</strong></p>
+              <pre><code class="language-rust">// Generated model
 #[derive(Serialize, Deserialize, sqlx::FromRow)]
 pub struct User {
     pub id: String,
@@ -433,9 +489,9 @@ pub async fn create_user(
     Ok(Json(result))
 }
 </code></pre>
-<h2>Advanced Database Features</h2>
-<h3>Relationships</h3>
-<pre><code class="language-droe">data User
+              <h2>Advanced Database Features</h2>
+              <h3>Relationships</h3>
+              <pre><code class="language-droe">data User
     id is text key auto
     name is text required
 end data
@@ -450,16 +506,16 @@ end data
 // Query with joins
 set posts_with_authors from db find all Post join User on Post.author_id equals User.id
 </code></pre>
-<h3>Indexes</h3>
-<pre><code class="language-droe">data User
+              <h3>Indexes</h3>
+              <pre><code class="language-droe">data User
     id is text key auto
     email is text required unique index
     name is text required index
     created_at is date auto index
 end data
 </code></pre>
-<h3>Transactions</h3>
-<pre><code class="language-droe">action transfer_funds with from_user which is text, to_user which is text, amount which is decimal
+              <h3>Transactions</h3>
+              <pre><code class="language-droe">action transfer_funds with from_user which is text, to_user which is text, amount which is decimal
     db begin transaction
     
     db update Account where user_id equals from_user set balance is balance - amount
@@ -468,9 +524,9 @@ end data
     db commit transaction
 end action
 </code></pre>
-<h2>Best Practices</h2>
-<h3>1. Use Appropriate Field Annotations</h3>
-<pre><code class="language-droe">// Good: Clear field constraints
+              <h2>Best Practices</h2>
+              <h3>1. Use Appropriate Field Annotations</h3>
+              <pre><code class="language-droe">// Good: Clear field constraints
 data User
     id is text key auto
     email is text required unique
@@ -486,8 +542,8 @@ data User
     name is text
 end data
 </code></pre>
-<h3>2. Handle Empty Results</h3>
-<pre><code class="language-droe">// Good: Check for empty results
+              <h3>2. Handle Empty Results</h3>
+              <pre><code class="language-droe">// Good: Check for empty results
 set user from db find User where id equals user_id
 when user is empty then
     display &quot;User not found&quot;
@@ -500,8 +556,8 @@ when users is empty then
     display &quot;No active users found&quot;
 end when
 </code></pre>
-<h3>3. Use Parameterized Queries</h3>
-<pre><code class="language-droe">// Good: Use variables for conditions
+              <h3>3. Use Parameterized Queries</h3>
+              <pre><code class="language-droe">// Good: Use variables for conditions
 action find_user_by_email with email which is text gives User
     set user from db find User where email equals email
     give user
@@ -513,9 +569,9 @@ action find_users_by_criteria with min_age which is int, active which is flag gi
     give users
 end action
 </code></pre>
-<h2>Database Migrations</h2>
-<p>Database schema changes are handled automatically when using framework targets:</p>
-<pre><code class="language-droe">// Adding new field
+              <h2>Database Migrations</h2>
+              <p>Database schema changes are handled automatically when using framework targets:</p>
+              <pre><code class="language-droe">// Adding new field
 data User
     id is text key auto
     name is text required
@@ -524,153 +580,162 @@ data User
     created_at is date auto
 end data
 </code></pre>
-<p>The framework adapter generates appropriate migration files for schema updates.</p>
-<h2>Next Steps</h2>
-<ul>
-<li><strong><a href="/guide/api-endpoints/">API Endpoints</a></strong> - Create HTTP endpoints that use database operations</li>
-<li><strong><a href="/guide/frameworks/">Framework Support</a></strong> - Understanding framework-specific database generation</li>
-<li><strong><a href="/guide/deployment/">Deployment</a></strong> - Production database configuration</li>
-</ul>
-<p>Database operations in Ddroelang provide a clean, type-safe way to work with data while generating efficient framework-specific code.</p>
+              <p>The framework adapter generates appropriate migration files for schema updates.</p>
+              <h2>Next Steps</h2>
+              <ul>
+                <li><strong><a href="/guide/api-endpoints/">API Endpoints</a></strong> - Create HTTP endpoints that use
+                  database operations</li>
+                <li><strong><a href="/guide/frameworks/">Framework Support</a></strong> - Understanding
+                  framework-specific database generation</li>
+                <li><strong><a href="/guide/deployment/">Deployment</a></strong> - Production database configuration
+                </li>
+              </ul>
+              <p>Database operations in Droelang provide a clean, type-safe way to work with data while generating
+                efficient framework-specific code.</p>
 
-        </article>
-      </div>
-    </main>
+            </article>
+          </div>
+        </main>
 
-    <footer class="bg-gray-50 border-t border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div class="md:col-span-2">
-        <div class="flex items-center space-x-2 mb-4">
-          <img src="/logo.png" alt="Droe" class="w-6 h-6">
-          <span class="text-xl font-bold text-gray-900">Droe</span>
-        </div>
-        <p class="text-gray-600 max-w-md">
-          A unified programming system that compiles high-level app definitions to native, web, mobile, and server runtimes.
-        </p>
-      </div>
-      
-      <div>
-        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
-        <ul class="mt-4 space-y-4">
-          <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
-          <li><a href="https://github.com/droe-lang/droe/tree/main/examples" class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
-        <ul class="mt-4 space-y-4">
-          <li><a href="https://github.com/droe-lang/droe" class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
-          <li><a href="https://github.com/droe-lang/droe/issues" class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
-          <li><a href="https://github.com/droe-lang/droe/discussions" class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
-        </ul>
+        <footer class="bg-gray-50 border-t border-gray-200">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div class="md:col-span-2">
+                <div class="flex items-center space-x-2 mb-4">
+                  <img src="/logo.png" alt="Droe" class="w-6 h-6">
+                  <span class="text-xl font-bold text-gray-900">Droe</span>
+                </div>
+                <p class="text-gray-600 max-w-md">
+                  A unified programming system that compiles high-level app definitions to native, web, mobile, and
+                  server runtimes.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Documentation</h3>
+                <ul class="mt-4 space-y-4">
+                  <li><a href="/guide/" class="text-base text-gray-500 hover:text-gray-900">Getting Started</a></li>
+                  <li><a href="https://github.com/droe-lang/droe/tree/main/examples"
+                      class="text-base text-gray-500 hover:text-gray-900">Examples</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Community</h3>
+                <ul class="mt-4 space-y-4">
+                  <li><a href="https://github.com/droe-lang/droe"
+                      class="text-base text-gray-500 hover:text-gray-900">GitHub</a></li>
+                  <li><a href="https://github.com/droe-lang/droe/issues"
+                      class="text-base text-gray-500 hover:text-gray-900">Issues</a></li>
+                  <li><a href="https://github.com/droe-lang/droe/discussions"
+                      class="text-base text-gray-500 hover:text-gray-900">Discussions</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-8 text-center">
+              <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
+            </div>
+          </div>
+        </footer>
+
       </div>
     </div>
-    <div class="mt-8 border-t border-gray-200 pt-8 text-center">
-      <p class="text-base text-gray-400">&copy; 2025 Droe. Open source under Apache 2.0 License.</p>
-    </div>
-  </div>
-</footer>
+    <script>
+      // Highlight current page in sidebar and handle mobile drawer
+      document.addEventListener('DOMContentLoaded', function () {
+        const currentPath = window.location.pathname;
+        const sidebarLinks = document.querySelectorAll('aside nav a');
 
-  </div>
-</div>
-<script>
-// Highlight current page in sidebar and handle mobile drawer
-document.addEventListener('DOMContentLoaded', function() {
-  const currentPath = window.location.pathname;
-  const sidebarLinks = document.querySelectorAll('aside nav a');
-  
-  // Highlight current page
-  sidebarLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-      link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
-    }
-  });
+        // Highlight current page
+        sidebarLinks.forEach(link => {
+          if (link.getAttribute('href') === currentPath) {
+            link.classList.add('bg-primary-50', 'text-primary-600', 'font-medium');
+          }
+        });
 
-  // Mobile drawer functionality
-  const menuToggleBtn = document.getElementById('menu-toggle-btn');
-  const sidebar = document.getElementById('sidebar');
-  const drawerOverlay = document.getElementById('drawer-overlay');
-  
-  function openDrawer() {
-    sidebar.classList.remove('-translate-x-full');
-    drawerOverlay.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-  
-  function closeDrawer() {
-    sidebar.classList.add('-translate-x-full');
-    drawerOverlay.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-  
-  // Toggle drawer on mobile menu button click
-  if (menuToggleBtn) {
-    menuToggleBtn.addEventListener('click', openDrawer);
-  }
-  
-  // Close drawer on overlay click
-  drawerOverlay.addEventListener('click', closeDrawer);
-  
-  // Close drawer on link click (mobile navigation)
-  sidebarLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 1024) {
-        closeDrawer();
-      }
-    });
-  });
-  
-  // Close drawer on escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
-      closeDrawer();
-    }
-  });
-  
-  // Handle window resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 1024) {
-      // Desktop: hide overlay and restore body scroll
-      drawerOverlay.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  });
-});
-</script>
+        // Mobile drawer functionality
+        const menuToggleBtn = document.getElementById('menu-toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function openDrawer() {
+          sidebar.classList.remove('-translate-x-full');
+          drawerOverlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeDrawer() {
+          sidebar.classList.add('-translate-x-full');
+          drawerOverlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        // Toggle drawer on mobile menu button click
+        if (menuToggleBtn) {
+          menuToggleBtn.addEventListener('click', openDrawer);
+        }
+
+        // Close drawer on overlay click
+        drawerOverlay.addEventListener('click', closeDrawer);
+
+        // Close drawer on link click (mobile navigation)
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth < 1024) {
+              closeDrawer();
+            }
+          });
+        });
+
+        // Close drawer on escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
+            closeDrawer();
+          }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 1024) {
+            // Desktop: hide overlay and restore body scroll
+            drawerOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+    </script>
   </main>
 
   <!-- JavaScript for mobile menu -->
   <script>
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     });
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar) {
-      const scrollPos = sessionStorage.getItem('sidebarScroll');
-      if (scrollPos) {
-        sidebar.scrollTop = parseInt(scrollPos, 10);
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar) {
+        const scrollPos = sessionStorage.getItem('sidebarScroll');
+        if (scrollPos) {
+          sidebar.scrollTop = parseInt(scrollPos, 10);
+        }
+
+        window.addEventListener('beforeunload', () => {
+          sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
+        });
       }
 
-      window.addEventListener('beforeunload', () => {
-        sessionStorage.setItem('sidebarScroll', sidebar.scrollTop);
-      });
-    }
+      // Add copy buttons to all code blocks
+      const codeBlocks = document.querySelectorAll('pre code');
+      codeBlocks.forEach((codeBlock) => {
+        const pre = codeBlock.parentElement;
+        pre.style.position = 'relative';
 
-    // Add copy buttons to all code blocks
-    const codeBlocks = document.querySelectorAll('pre code');
-    codeBlocks.forEach((codeBlock) => {
-      const pre = codeBlock.parentElement;
-      pre.style.position = 'relative';
-      
-      const button = document.createElement('button');
-      button.className = 'copy-btn';
-      button.innerHTML = `
+        const button = document.createElement('button');
+        button.className = 'copy-btn';
+        button.innerHTML = `
         <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -679,7 +744,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <path d="M20 6L9 17l-5-5"></path>
         </svg>
       `;
-      button.style.cssText = `
+        button.style.cssText = `
         position: absolute;
         top: 8px;
         right: 8px;
@@ -695,48 +760,49 @@ document.addEventListener('DOMContentLoaded', function() {
         gap: 4px;
         color: #6b7280;
       `;
-      
-      pre.appendChild(button);
-      
-      // Show button on hover
-      pre.addEventListener('mouseenter', () => {
-        button.style.opacity = '1';
-      });
-      
-      pre.addEventListener('mouseleave', () => {
-        if (!button.classList.contains('copied')) {
-          button.style.opacity = '0';
-        }
-      });
-      
-      button.addEventListener('click', async () => {
-        const code = codeBlock.textContent;
-        try {
-          await navigator.clipboard.writeText(code);
-          
-          // Show success state
-          button.classList.add('copied');
-          button.style.background = '#10b981';
-          button.style.borderColor = '#10b981';
-          button.style.color = 'white';
-          button.querySelector('.copy-icon').style.display = 'none';
-          button.querySelector('.check-icon').style.display = 'block';
-          
-          setTimeout(() => {
-            button.classList.remove('copied');
-            button.style.background = 'rgba(255, 255, 255, 0.9)';
-            button.style.borderColor = '#e5e7eb';
-            button.style.color = '#6b7280';
-            button.querySelector('.copy-icon').style.display = 'block';
-            button.querySelector('.check-icon').style.display = 'none';
+
+        pre.appendChild(button);
+
+        // Show button on hover
+        pre.addEventListener('mouseenter', () => {
+          button.style.opacity = '1';
+        });
+
+        pre.addEventListener('mouseleave', () => {
+          if (!button.classList.contains('copied')) {
             button.style.opacity = '0';
-          }, 2000);
-        } catch (err) {
-          console.error('Failed to copy:', err);
-        }
+          }
+        });
+
+        button.addEventListener('click', async () => {
+          const code = codeBlock.textContent;
+          try {
+            await navigator.clipboard.writeText(code);
+
+            // Show success state
+            button.classList.add('copied');
+            button.style.background = '#10b981';
+            button.style.borderColor = '#10b981';
+            button.style.color = 'white';
+            button.querySelector('.copy-icon').style.display = 'none';
+            button.querySelector('.check-icon').style.display = 'block';
+
+            setTimeout(() => {
+              button.classList.remove('copied');
+              button.style.background = 'rgba(255, 255, 255, 0.9)';
+              button.style.borderColor = '#e5e7eb';
+              button.style.color = '#6b7280';
+              button.querySelector('.copy-icon').style.display = 'block';
+              button.querySelector('.check-icon').style.display = 'none';
+              button.style.opacity = '0';
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>

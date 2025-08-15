@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: Database DSL
-description: Define data models and perform database operations with Ddroelang's built-in database DSL.
+description: Define data models and perform database operations with Droelang's built-in database DSL.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/api-endpoints/
 ---
 
-Ddroelang provides a native Database DSL for defining data models and performing database operations with automatic ORM generation for target frameworks.
+Droelang provides a native Database DSL for defining data models and performing database operations with automatic ORM generation for target frameworks.
 
 ## Data Definitions with Annotations
 
@@ -42,14 +42,14 @@ end data
 
 ## Field Annotations
 
-| Annotation | Description | Example |
-|------------|-------------|---------|
-| `key` | Primary key field | `id is text key` |
-| `auto` | Auto-generated value | `id is text key auto` |
-| `required` | Non-nullable field | `name is text required` |
-| `optional` | Nullable field | `age is int optional` |
-| `unique` | Unique constraint | `email is text unique` |
-| `default <value>` | Default value | `active is flag default true` |
+| Annotation        | Description          | Example                       |
+| ----------------- | -------------------- | ----------------------------- |
+| `key`             | Primary key field    | `id is text key`              |
+| `auto`            | Auto-generated value | `id is text key auto`         |
+| `required`        | Non-nullable field   | `name is text required`       |
+| `optional`        | Nullable field       | `age is int optional`         |
+| `unique`          | Unique constraint    | `email is text unique`        |
+| `default <value>` | Default value        | `active is flag default true` |
 
 ## Database Operations
 
@@ -107,15 +107,17 @@ db delete User where active equals false and age is less than 18
 ## Complete Database Example
 
 **droeconfig.json:**
+
 ```json
 {
-    "target": "droe",
-    "framework": "axum",
-    "database": {"type": "postgres"}
+  "target": "droe",
+  "framework": "axum",
+  "database": { "type": "postgres" }
 }
 ```
 
 **src/user_management.droe:**
+
 ```droe
 module user_management
 
@@ -128,7 +130,7 @@ module user_management
         active is flag default true
         created_at is date auto
     end data
-    
+
     // User registration
     action register_user with username which is text, email which is text, password which is text
         // Check if user exists
@@ -137,13 +139,13 @@ module user_management
             display "User already exists"
             give false
         end when
-        
+
         // Create new user
         db create User with username is username, email is email, password is password
         display "User registered successfully"
         give true
     end action
-    
+
     // User authentication
     action authenticate with email which is text, password which is text gives User
         set user from db find User where email equals email and password equals password
@@ -153,7 +155,7 @@ module user_management
         end when
         give user
     end action
-    
+
     // Update user profile
     action update_profile with user_id which is text, new_email which is text
         db update User where id equals user_id set email is new_email
@@ -169,16 +171,17 @@ Configure database connection in `droeconfig.json`:
 
 ```json
 {
-    "target": "droe",
-    "framework": "axum",
-    "database": {
-        "type": "postgres",
-        "url": "postgresql://localhost/mydb"
-    }
+  "target": "droe",
+  "framework": "axum",
+  "database": {
+    "type": "postgres",
+    "url": "postgresql://localhost/mydb"
+  }
 }
 ```
 
 **Supported Database Types:**
+
 - `postgres` - PostgreSQL
 - `mysql` - MySQL
 - `sqlite` - SQLite
@@ -188,19 +191,20 @@ Configure database connection in `droeconfig.json`:
 
 ## Database Type Mapping
 
-| Ddroelang Type | PostgreSQL | MySQL | SQLite | Notes |
-|--------------|------------|--------|---------|-------|
-| `text` | `TEXT` | `TEXT` | `TEXT` | Variable length string |
-| `int` | `INTEGER` | `INT` | `INTEGER` | 32-bit signed integer |
-| `decimal` | `DECIMAL` | `DECIMAL` | `REAL` | Floating point number |
-| `flag` | `BOOLEAN` | `BOOLEAN` | `INTEGER` | True/false value |
-| `date` | `TIMESTAMP` | `DATETIME` | `TEXT` | ISO date format |
+| Droelang Type | PostgreSQL  | MySQL      | SQLite    | Notes                  |
+| ------------- | ----------- | ---------- | --------- | ---------------------- |
+| `text`        | `TEXT`      | `TEXT`     | `TEXT`    | Variable length string |
+| `int`         | `INTEGER`   | `INT`      | `INTEGER` | 32-bit signed integer  |
+| `decimal`     | `DECIMAL`   | `DECIMAL`  | `REAL`    | Floating point number  |
+| `flag`        | `BOOLEAN`   | `BOOLEAN`  | `INTEGER` | True/false value       |
+| `date`        | `TIMESTAMP` | `DATETIME` | `TEXT`    | ISO date format        |
 
 ## Framework Integration
 
 When using framework targets, database operations generate appropriate ORM code:
 
 **Rust + Axum:**
+
 ```rust
 // Generated model
 #[derive(Serialize, Deserialize, sqlx::FromRow)]
@@ -226,7 +230,7 @@ pub async fn create_user(
     .fetch_one(&pool)
     .await
     .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
-    
+
     Ok(Json(result))
 }
 ```
@@ -268,10 +272,10 @@ end data
 ```droe
 action transfer_funds with from_user which is text, to_user which is text, amount which is decimal
     db begin transaction
-    
+
     db update Account where user_id equals from_user set balance is balance - amount
     db update Account where user_id equals to_user set balance is balance + amount
-    
+
     db commit transaction
 end action
 ```
@@ -354,4 +358,4 @@ The framework adapter generates appropriate migration files for schema updates.
 - **[Framework Support](/guide/frameworks/)** - Understanding framework-specific database generation
 - **[Deployment](/guide/deployment/)** - Production database configuration
 
-Database operations in Ddroelang provide a clean, type-safe way to work with data while generating efficient framework-specific code.
+Database operations in Droelang provide a clean, type-safe way to work with data while generating efficient framework-specific code.

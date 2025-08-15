@@ -55,16 +55,16 @@ The `droeconfig.json` file is the heart of every Droe project:
 
 #### Configuration Options
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | ✅ | Project name (used for output files) |
-| `version` | string | ✅ | Semantic version (e.g., "1.0.0") |
-| `description` | string | ❌ | Brief project description |
-| `srcDir` | string | ❌ | Source directory (default: "src") |
-| `buildDir` | string | ❌ | Build output directory (default: "build") |
-| `main` | string | ❌ | Entry point file (default: "main.droe") |
-| `author` | string | ❌ | Project author |
-| `license` | string | ❌ | License type |
+| Field         | Type   | Required | Description                               |
+| ------------- | ------ | -------- | ----------------------------------------- |
+| `name`        | string | ✅       | Project name (used for output files)      |
+| `version`     | string | ✅       | Semantic version (e.g., "1.0.0")          |
+| `description` | string | ❌       | Brief project description                 |
+| `srcDir`      | string | ❌       | Source directory (default: "src")         |
+| `buildDir`    | string | ❌       | Build output directory (default: "build") |
+| `main`        | string | ❌       | Entry point file (default: "main.droe")   |
+| `author`      | string | ❌       | Project author                            |
+| `license`     | string | ❌       | License type                              |
 
 ## Source Directory (`src/`)
 
@@ -97,12 +97,13 @@ src/
 Example module structure:
 
 ::: code-group
+
 ```droe [src/calculator.droe]
 module calculator
   action add with a which is int, b which is int gives int
     give a + b
   end action
-  
+
   action multiply with a which is int, b which is int gives int
     give a * b
   end action
@@ -114,6 +115,7 @@ end module
 set result from run calculator.add with 10, 5
 display "10 + 5 = [result]"
 ```
+
 :::
 
 ## Build Directory (`build/`)
@@ -147,14 +149,15 @@ Use the CLI to create a new project:
 
 ```bash
 # Create project directory
-mkdir my-ddroelang-project
-cd my-ddroelang-project
+mkdir my-droelang-project
+cd my-droelang-project
 
 # Initialize project structure
 droe init
 ```
 
 This creates:
+
 - `droeconfig.json` with default configuration
 - `src/` directory with sample `main.droe`
 - Empty `build/` directory
@@ -269,7 +272,7 @@ module string_utils
   action capitalize with text which is text gives text
     // Implementation
   end action
-  
+
   action trim with text which is text gives text
     // Implementation
   end action
@@ -307,7 +310,7 @@ Use `droeconfig.json` effectively:
 For reusable modules:
 
 ```
-ddroelang-math-lib/
+droelang-math-lib/
 ├── droeconfig.json
 ├── src/
 │   ├── trigonometry.droe
@@ -360,7 +363,7 @@ Thumbs.db
 ### Repository Structure
 
 ```
-my-ddroelang-project/
+my-droelang-project/
 ├── .gitignore
 ├── README.md
 ├── LICENSE
@@ -378,11 +381,13 @@ my-ddroelang-project/
 Check these common issues:
 
 1. **Missing `droeconfig.json`**:
+
    ```bash
    droe init  # Create configuration
    ```
 
 2. **Invalid configuration**:
+
    ```bash
    droe validate  # Check project structure
    ```

@@ -52,7 +52,7 @@ droe compile src/main.droe
 wat2wasm build/main.wat -o build/main.wasm
 
 # Run the WebAssembly module
-node ~/.ddroelang/run.js build/main.wasm
+node ~/.droelang/run.js build/main.wasm
 ```
 
 ## WebAssembly Text Format (.wat)
@@ -62,17 +62,19 @@ When you compile Droe code, you first get a `.wat` file. Here's what a simple Dr
 ### Simple Display Example
 
 **Droe source:**
+
 ```droe
 display "Hello, WebAssembly!"
 ```
 
 **Generated WebAssembly text (.wat):**
+
 ```wat
 (module
   (import "env" "display" (func $display (param i32 i32)))
   (memory (export "memory") 1)
   (data (i32.const 0) "Hello, WebAssembly!")
-  
+
   (func $main (export "main")
     i32.const 0    ; string offset
     i32.const 19   ; string length
@@ -84,6 +86,7 @@ display "Hello, WebAssembly!"
 ### Variables and Operations
 
 **Droe source:**
+
 ```droe
 set count which is int to 42
 set name which is text to "Alice"
@@ -91,6 +94,7 @@ display "Count: [count], Name: [name]"
 ```
 
 **Generated WebAssembly concepts:**
+
 - Variables become local variables or global variables
 - String interpolation becomes string concatenation operations
 - Type checking is enforced at compile time
@@ -104,11 +108,11 @@ Droe uses WebAssembly's linear memory model:
 ```wat
 (module
   (memory (export "memory") 2)  ; 2 pages = 128KB
-  
+
   ;; String data stored in memory
   (data (i32.const 0) "Hello")
   (data (i32.const 5) "World")
-  
+
   ;; Functions access memory using offsets
   (func $getString (param $offset i32) (param $length i32)
     ;; Memory access operations
@@ -126,7 +130,7 @@ Droe programs export a `main` function and any module actions:
   (func $main (export "main")
     ;; Program logic
   )
-  
+
   ;; Exported module actions
   (func $calculate_add (export "calculate_add") (param i32 i32) (result i32)
     local.get 0
@@ -140,13 +144,13 @@ Droe programs export a `main` function and any module actions:
 
 Droe types map to WebAssembly as follows:
 
-| Droe Type | WebAssembly Type | Storage |
-|--------------|------------------|---------|
-| `int` | `i32` | 32-bit integer |
-| `decimal` | `f64` | 64-bit float |
-| `flag` | `i32` | 0 = false, 1 = true |
-| `text` | `i32, i32` | offset + length |
-| `list of T` | `i32` | memory offset to array |
+| Droe Type   | WebAssembly Type | Storage                |
+| ----------- | ---------------- | ---------------------- |
+| `int`       | `i32`            | 32-bit integer         |
+| `decimal`   | `f64`            | 64-bit float           |
+| `flag`      | `i32`            | 0 = false, 1 = true    |
+| `text`      | `i32, i32`       | offset + length        |
+| `list of T` | `i32`            | memory offset to array |
 
 ## Runtime Environment
 
@@ -156,11 +160,11 @@ Droe includes a Node.js runtime (`run.js`) that provides the execution environme
 
 ```javascript
 // Simplified version of run.js
-const fs = require('fs');
+const fs = require("fs");
 
 async function runWasm(wasmFile) {
   const wasmBuffer = fs.readFileSync(wasmFile);
-  
+
   const imports = {
     env: {
       display: (offset, length) => {
@@ -168,13 +172,13 @@ async function runWasm(wasmFile) {
         const buffer = new Uint8Array(memory.buffer, offset, length);
         const text = new TextDecoder().decode(buffer);
         console.log(text);
-      }
-    }
+      },
+    },
   };
-  
+
   const wasmModule = await WebAssembly.instantiate(wasmBuffer, imports);
   const wasmInstance = wasmModule.instance;
-  
+
   // Call main function
   wasmInstance.exports.main();
 }
@@ -190,7 +194,7 @@ The runtime provides host functions that Droe programs can import:
   (import "env" "display" (func $display (param i32 i32)))
   (import "env" "input" (func $input (result i32)))
   (import "env" "file_read" (func $file_read (param i32 i32) (result i32)))
-  
+
   ;; Your program uses these imports
 )
 ```
@@ -214,6 +218,7 @@ display "Total: [total]"
 ```
 
 Compiles to efficient WebAssembly that:
+
 - Uses native integer arithmetic
 - Minimizes memory allocations
 - Leverages WASM's stack-based execution model
@@ -224,10 +229,10 @@ Compiles to efficient WebAssembly that:
 ```wat
 (module
   (memory (export "memory") 1)  ; Start with 64KB
-  
+
   ;; Efficient memory layout
   (global $heap_pointer (mut i32) (i32.const 1024))
-  
+
   (func $allocate (param $size i32) (result i32)
     ;; Simple bump allocator
     global.get $heap_pointer
@@ -248,34 +253,34 @@ Deploy Droe programs in web browsers:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Droe in Browser</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        async function loadDroe() {
-            const response = await fetch('program.wasm');
-            const bytes = await response.arrayBuffer();
-            
-            const imports = {
-                env: {
-                    display: (offset, length) => {
-                        // Display in DOM instead of console
-                        const memory = wasmModule.instance.exports.memory;
-                        const buffer = new Uint8Array(memory.buffer, offset, length);
-                        const text = new TextDecoder().decode(buffer);
-                        document.body.innerHTML += '<p>' + text + '</p>';
-                    }
-                }
-            };
-            
-            const wasmModule = await WebAssembly.instantiate(bytes, imports);
-            wasmModule.instance.exports.main();
-        }
-        
-        loadDroe();
+      async function loadDroe() {
+        const response = await fetch("program.wasm");
+        const bytes = await response.arrayBuffer();
+
+        const imports = {
+          env: {
+            display: (offset, length) => {
+              // Display in DOM instead of console
+              const memory = wasmModule.instance.exports.memory;
+              const buffer = new Uint8Array(memory.buffer, offset, length);
+              const text = new TextDecoder().decode(buffer);
+              document.body.innerHTML += "<p>" + text + "</p>";
+            },
+          },
+        };
+
+        const wasmModule = await WebAssembly.instantiate(bytes, imports);
+        wasmModule.instance.exports.main();
+      }
+
+      loadDroe();
     </script>
-</body>
+  </body>
 </html>
 ```
 
@@ -285,36 +290,36 @@ Run Droe programs on servers:
 
 ```javascript
 // server.js
-const express = require('express');
-const fs = require('fs');
+const express = require("express");
+const fs = require("fs");
 
 const app = express();
 
-app.get('/run-ddroelang', async (req, res) => {
-    const wasmBuffer = fs.readFileSync('program.wasm');
-    
-    let output = '';
-    const imports = {
-        env: {
-            display: (offset, length) => {
-                const memory = wasmInstance.exports.memory;
-                const buffer = new Uint8Array(memory.buffer, offset, length);
-                const text = new TextDecoder().decode(buffer);
-                output += text + '\n';
-            }
-        }
-    };
-    
-    const wasmModule = await WebAssembly.instantiate(wasmBuffer, imports);
-    const wasmInstance = wasmModule.instance;
-    
-    wasmInstance.exports.main();
-    
-    res.send(output);
+app.get("/run-droelang", async (req, res) => {
+  const wasmBuffer = fs.readFileSync("program.wasm");
+
+  let output = "";
+  const imports = {
+    env: {
+      display: (offset, length) => {
+        const memory = wasmInstance.exports.memory;
+        const buffer = new Uint8Array(memory.buffer, offset, length);
+        const text = new TextDecoder().decode(buffer);
+        output += text + "\n";
+      },
+    },
+  };
+
+  const wasmModule = await WebAssembly.instantiate(wasmBuffer, imports);
+  const wasmInstance = wasmModule.instance;
+
+  wasmInstance.exports.main();
+
+  res.send(output);
 });
 
 app.listen(3000, () => {
-    console.log('Droe server running on port 3000');
+  console.log("Droe server running on port 3000");
 });
 ```
 
@@ -325,22 +330,22 @@ Deploy on edge platforms like Cloudflare Workers:
 ```javascript
 // worker.js
 export default {
-    async fetch(request, env, ctx) {
-        const wasmModule = await WebAssembly.instantiate(
-            env.ROELANG_PROGRAM, // WASM binary stored as env variable
-            {
-                env: {
-                    display: (offset, length) => {
-                        // Handle display in edge environment
-                    }
-                }
-            }
-        );
-        
-        wasmModule.instance.exports.main();
-        
-        return new Response('Droe program executed');
-    },
+  async fetch(request, env, ctx) {
+    const wasmModule = await WebAssembly.instantiate(
+      env.ROELANG_PROGRAM, // WASM binary stored as env variable
+      {
+        env: {
+          display: (offset, length) => {
+            // Handle display in edge environment
+          },
+        },
+      }
+    );
+
+    wasmModule.instance.exports.main();
+
+    return new Response("Droe program executed");
+  },
 };
 ```
 
@@ -351,10 +356,10 @@ export default {
 ```wat
 (module
   (memory (export "memory") 1 10)  ; Min 1 page, max 10 pages
-  
+
   ;; Custom memory allocator
   (global $free_pointer (mut i32) (i32.const 1024))
-  
+
   (func $malloc (param $size i32) (result i32)
     ;; Allocation logic
     global.get $free_pointer
@@ -372,14 +377,14 @@ export default {
 (module
   ;; Function table for dynamic dispatch
   (table (export "table") 10 funcref)
-  
+
   ;; Function types
   (type $binary_op (func (param i32 i32) (result i32)))
-  
+
   ;; Functions
   (func $add (type $binary_op) ...)
   (func $multiply (type $binary_op) ...)
-  
+
   ;; Initialize table
   (elem (i32.const 0) $add $multiply)
 )
@@ -479,23 +484,23 @@ droe compile src/main.droe --use-profile profile.data
 ```javascript
 // Load and interact with Droe WASM module
 async function createDroeModule() {
-    const wasmModule = await loadDroeWasm();
-    
-    return {
-        // Call exported Droe functions
-        calculateTotal: wasmModule.instance.exports.calculate_total,
-        processData: wasmModule.instance.exports.process_data,
-        
-        // Access memory
-        getMemory: () => wasmModule.instance.exports.memory,
-        
-        // Utility functions
-        readString: (offset, length) => {
-            const memory = wasmModule.instance.exports.memory;
-            const buffer = new Uint8Array(memory.buffer, offset, length);
-            return new TextDecoder().decode(buffer);
-        }
-    };
+  const wasmModule = await loadDroeWasm();
+
+  return {
+    // Call exported Droe functions
+    calculateTotal: wasmModule.instance.exports.calculate_total,
+    processData: wasmModule.instance.exports.process_data,
+
+    // Access memory
+    getMemory: () => wasmModule.instance.exports.memory,
+
+    // Utility functions
+    readString: (offset, length) => {
+      const memory = wasmModule.instance.exports.memory;
+      const buffer = new Uint8Array(memory.buffer, offset, length);
+      return new TextDecoder().decode(buffer);
+    },
+  };
 }
 ```
 
@@ -505,15 +510,15 @@ WebAssembly enables Droe to work with other WASM-compiled languages:
 
 ```javascript
 // Combine Droe with Rust, C++, etc.
-const ddroelangModule = await loadDroeWasm();
+const droelangModule = await loadDroeWasm();
 const rustModule = await loadRustWasm();
 
 // Share memory between modules
 const sharedMemory = new WebAssembly.Memory({ initial: 10 });
 
 // Use results from one in another
-const ddroelangResult = ddroelangModule.calculate(data);
-const finalResult = rustModule.process(ddroelangResult);
+const droelangResult = droelangModule.calculate(data);
+const finalResult = rustModule.process(droelangResult);
 ```
 
 ## Best Practices

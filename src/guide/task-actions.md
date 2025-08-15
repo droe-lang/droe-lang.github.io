@@ -20,14 +20,14 @@ Task actions in Droe provide a specialized way to define and execute discrete un
 
 Droe has two different constructs for executable code:
 
-| Feature           | Tasks                                              | Actions                                               |
-| ----------------- | -------------------------------------------------- | ----------------------------------------------------- |
-| **Parameters**    | ✅ Support parameters (NEW!)                       | ✅ Support parameters                                 |
-| **Return Values** | ❌ No return values (void procedures)              | ✅ Return typed values                                |
-| **Syntax**        | `task name with params` ... `end task`            | `action name with params gives type` ... `end action` |
-| **Execution**     | `run task_name with args`                         | `run module.action with params`                       |
-| **Use Case**      | Automation workflows, parameterized void procedures| Reusable functions, data processing                   |
-| **Module Scope**  | Standalone or in modules                          | Must be in modules                                    |
+| Feature           | Tasks                                               | Actions                                               |
+| ----------------- | --------------------------------------------------- | ----------------------------------------------------- |
+| **Parameters**    | ✅ Support parameters (NEW!)                        | ✅ Support parameters                                 |
+| **Return Values** | ❌ No return values (void procedures)               | ✅ Return typed values                                |
+| **Syntax**        | `task name with params` ... `end task`              | `action name with params gives type` ... `end action` |
+| **Execution**     | `run task_name with args`                           | `run module.action with params`                       |
+| **Use Case**      | Automation workflows, parameterized void procedures | Reusable functions, data processing                   |
+| **Module Scope**  | Standalone or in modules                            | Must be in modules                                    |
 
 **When to use Tasks:**
 
@@ -62,7 +62,7 @@ Tasks now support parameters, making them more flexible and reusable:
 ```droe
 task greet_person with name which is text
   display "Hello, " + name + "!"
-  display "Welcome to the Ddroelang community!"
+  display "Welcome to the Droelang community!"
 end task
 
 // Execute the task with arguments

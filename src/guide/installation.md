@@ -26,7 +26,8 @@ The easiest way to install Droe on macOS is using our graphical installer:
 4. **Run** the installer and follow the prompts
 
 The installer will:
-- Install Droe tools to `~/.ddroelang/`
+
+- Install Droe tools to `~/.droelang/`
 - Add Droe to your PATH
 - Configure your shell (bash, zsh, fish)
 
@@ -61,7 +62,7 @@ Ensure you have the following installed:
 2. **Extract** to your preferred location
 3. **Add to PATH** by adding this to your shell profile:
    ```bash
-   export PATH="$HOME/.ddroelang:$PATH"
+   export PATH="$HOME/.droelang:$PATH"
    ```
 4. **Reload** your shell or run `source ~/.bashrc` (or `~/.zshrc`)
 
@@ -81,6 +82,7 @@ droe run test.droe
 ```
 
 You should see:
+
 ```
 Hello, Droe!
 ```
@@ -92,13 +94,16 @@ Hello, Droe!
 While Droe works with any text editor, here are some recommendations:
 
 #### Visual Studio Code
+
 - **Syntax highlighting**: Install the Droe extension (coming soon)
 - **File associations**: Add `.droe` files to your settings
 
 #### Vim/Neovim
+
 - **Syntax highlighting**: Available in our [GitHub repository](https://github.com/droe-lang/droe/tree/main/editor-support/vim)
 
 #### Emacs
+
 - **Major mode**: Available in our [GitHub repository](https://github.com/droe-lang/droe/tree/main/editor-support/emacs)
 
 ### Shell Completion
@@ -106,6 +111,7 @@ While Droe works with any text editor, here are some recommendations:
 Enable tab completion for the `droe` command:
 
 ::: code-group
+
 ```bash [Bash]
 # Add to ~/.bashrc
 eval "$(droe completion bash)"
@@ -120,6 +126,7 @@ eval "$(droe completion zsh)"
 # Add to ~/.config/fish/config.fish
 droe completion fish | source
 ```
+
 :::
 
 ## Project Structure
@@ -163,28 +170,32 @@ This creates the basic structure and `droeconfig.json`:
 ### Common Issues
 
 #### `droe: command not found`
-- **Solution**: Ensure `~/.ddroelang` is in your PATH
+
+- **Solution**: Ensure `~/.droelang` is in your PATH
 - **Check**: Run `echo $PATH` and verify the directory is listed
-- **Fix**: Add `export PATH="$HOME/.ddroelang:$PATH"` to your shell profile
+- **Fix**: Add `export PATH="$HOME/.droelang:$PATH"` to your shell profile
 
 #### `wat2wasm: command not found`
+
 - **Solution**: Install the WebAssembly Binary Toolkit
 - **macOS**: `brew install wabt`
 - **Linux**: Check your package manager for `wabt` or `webassembly-binary-toolkit`
 
 #### `node: command not found`
+
 - **Solution**: Install Node.js from [nodejs.org](https://nodejs.org/)
 - **Version**: Droe requires Node.js v16 or later
 
 #### Permission denied errors
+
 - **Solution**: The installer might need to modify shell configuration files
-- **Fix**: Run `chmod +x ~/.ddroelang/droe` to ensure the executable has correct permissions
+- **Fix**: Run `chmod +x ~/.droelang/droe` to ensure the executable has correct permissions
 
 ### Getting Help
 
 Still having issues? Here's how to get help:
 
-1. **Check logs**: Installation logs are saved to `~/.ddroelang/install.log`
+1. **Check logs**: Installation logs are saved to `~/.droelang/install.log`
 2. **GitHub Issues**: Search existing issues or create a new one
 3. **Discussions**: Ask questions in our GitHub Discussions
 4. **Debug info**: Run `droe doctor` for system diagnostic information
@@ -196,6 +207,7 @@ Now that Droe is installed, let's create your first project:
 👉 **[Quick Start Guide](/guide/quick-start/)** - Build your first Droe program
 
 Or explore other topics:
+
 - [Project Structure](/guide/project-structure/) - Understanding Droe projects
 - [Basic Syntax](/guide/basics/) - Learn the language fundamentals
 - [CLI Reference](/guide/cli/) - Complete command-line reference

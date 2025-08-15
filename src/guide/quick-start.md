@@ -22,8 +22,8 @@ Start by creating a new Droe project:
 
 ```bash
 # Create and enter project directory
-mkdir hello-ddroelang
-cd hello-ddroelang
+mkdir hello-droelang
+cd hello-droelang
 
 # Initialize the project
 droe init
@@ -32,7 +32,7 @@ droe init
 This creates the basic project structure:
 
 ```
-hello-ddroelang/
+hello-droelang/
 ├── droeconfig.json
 ├── src/
 │   └── main.droe
@@ -94,6 +94,7 @@ Welcome to the world of Droe development! 🚀
 Let's break down what happened:
 
 ### 1. Comments
+
 ```droe
 // Single-line comments start with //
 /* Multi-line comments
@@ -101,12 +102,15 @@ Let's break down what happened:
 ```
 
 ### 2. Display Statements
+
 ```droe
 display "Hello, World!"
 ```
+
 The `display` command outputs text to the console.
 
 ### 3. Typed Variables
+
 ```droe
 set programmer_name which is text to "Alice"
 set years_experience which is int to 3
@@ -115,21 +119,26 @@ set hourly_rate which is decimal to 75.50
 ```
 
 Droe uses strong typing with clear, readable syntax:
+
 - `text` - strings
 - `int` - integers
 - `flag` - booleans
 - `decimal` - floating-point numbers
 
 ### 4. String Interpolation
+
 ```droe
 display "Programmer: [programmer_name]"
 ```
+
 Use square brackets `[variable]` to embed variables in strings.
 
 ### 5. String Concatenation
+
 ```droe
 set greeting to "Hello, " + programmer_name + "!"
 ```
+
 Join strings with the `+` operator.
 
 ## Working with Collections
@@ -153,11 +162,11 @@ display ""
 display "Project scores:"
 for each score in project_scores
   display "Score: [score]"
-  
+
   when score is greater than or equal to 90 then
     display "  Excellent work! ⭐"
   end when
-  
+
   when score is less than 80 then
     display "  Needs improvement 📚"
   end when
@@ -218,11 +227,11 @@ module calculator
   action add with num1 which is int, num2 which is int gives int
     give num1 + num2
   end action
-  
+
   action multiply with num1 which is int, num2 which is int gives int
     give num1 * num2
   end action
-  
+
   action calculate_percentage with part which is int, total which is int gives decimal
     give (part * 100) / total
   end action
@@ -251,7 +260,7 @@ ls build/
 # main.wat  main.wasm
 
 # Run the compiled WebAssembly
-node ~/.ddroelang/run.js build/main.wasm
+node ~/.droelang/run.js build/main.wasm
 ```
 
 ## Project Configuration
@@ -260,7 +269,7 @@ Your `droeconfig.json` controls project settings:
 
 ```json
 {
-  "name": "hello-ddroelang",
+  "name": "hello-droelang",
   "version": "1.0.0",
   "srcDir": "src",
   "buildDir": "build",
@@ -274,6 +283,7 @@ Your `droeconfig.json` controls project settings:
 Here's the complete `main.droe` file with all examples:
 
 ::: details View complete example
+
 ```droe
 // Welcome to Droe! 🦌
 display "=== Hello Droe Demo ==="
@@ -313,11 +323,11 @@ display ""
 display "Project scores:"
 for each score in project_scores
   display "Score: [score]"
-  
+
   when score is greater than or equal to 90 then
     display "  Excellent work! ⭐"
   end when
-  
+
   when score is less than 80 then
     display "  Needs improvement 📚"
   end when
@@ -360,11 +370,11 @@ module calculator
   action add with num1 which is int, num2 which is int gives int
     give num1 + num2
   end action
-  
+
   action multiply with num1 which is int, num2 which is int gives int
     give num1 * num2
   end action
-  
+
   action calculate_percentage with part which is int, total which is int gives decimal
     give (part * 100) / total
   end action
@@ -382,6 +392,7 @@ display "75 out of 100 = [percentage]%"
 display ""
 display "🎉 Demo complete! Welcome to Droe!"
 ```
+
 :::
 
 ## What You've Learned
@@ -408,6 +419,7 @@ Ready to dive deeper? Continue with:
 - **[Modules](/guide/modules/)** - Organizing code with modules
 
 Or explore practical examples:
+
 - **[Examples](/examples/)** - Real-world Droe programs
 - **[CLI Reference](/guide/cli/)** - Complete command reference
 

@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
 title: UI Components
-description: Build user interfaces with Ddroelang's cross-platform UI component system for web, Android, and iOS.
+description: Build user interfaces with Droelang's cross-platform UI component system for web, Android, and iOS.
 breadcrumbs:
   - title: Guide
     url: /guide/
@@ -14,7 +14,7 @@ next:
   url: /guide/frameworks/
 ---
 
-Ddroelang provides a comprehensive UI component system that generates native interfaces for web (HTML/JavaScript), Android (Kotlin), and iOS (Swift) from a single, consistent syntax.
+Droelang provides a comprehensive UI component system that generates native interfaces for web (HTML/JavaScript), Android (Kotlin), and iOS (Swift) from a single, consistent syntax.
 
 ## Layout System
 
@@ -26,7 +26,7 @@ Layouts define the structure and organization of UI components:
 layout MainScreen
     column class "main-container"
         title "My Application" class "app-title"
-        
+
         column class "content-section"
             text "Welcome to the app!" class "welcome-text"
             button "Get Started" action startApp class "primary-btn"
@@ -51,7 +51,7 @@ end layout
 layout HorizontalLayout
     row class "container"
         button "Left" action leftAction
-        button "Center" action centerAction  
+        button "Center" action centerAction
         button "Right" action rightAction
     end row
 end layout
@@ -131,15 +131,15 @@ input id description_field text placeholder "Description" bind ProductForm.descr
 
 ### Input Types
 
-| Type | Purpose | Platform Support |
-|------|---------|------------------|
-| `text` | General text input | Web, Android, iOS |
-| `email` | Email address | Web, Android, iOS |
-| `password` | Password field | Web, Android, iOS |
-| `phone` | Phone number | Web, Android, iOS |
-| `number` | Numeric input | Web, Android, iOS |
-| `url` | URL input | Web, Android, iOS |
-| `search` | Search field | Web, Android, iOS |
+| Type       | Purpose            | Platform Support  |
+| ---------- | ------------------ | ----------------- |
+| `text`     | General text input | Web, Android, iOS |
+| `email`    | Email address      | Web, Android, iOS |
+| `password` | Password field     | Web, Android, iOS |
+| `phone`    | Phone number       | Web, Android, iOS |
+| `number`   | Numeric input      | Web, Android, iOS |
+| `url`      | URL input          | Web, Android, iOS |
+| `search`   | Search field       | Web, Android, iOS |
 
 ## Button Components
 
@@ -162,7 +162,7 @@ button "Delete" action deleteItem confirm "Are you sure?" class "delete-btn dang
 // Camera button (mobile only)
 button "Take Photo" type camera action capturePhoto permissions "camera, storage" class "camera-btn"
 
-// Location button (mobile only) 
+// Location button (mobile only)
 button "Get Location" type location action getLocation permissions "location" accuracy high class "location-btn"
 
 // Share button (mobile only)
@@ -173,7 +173,7 @@ button "Share" type share action shareContent class "share-btn"
 
 ```droe
 // Conditional button states
-button "Process" action processData 
+button "Process" action processData
     enabled when data is valid
     loading when processing is true
     class "process-btn"
@@ -181,7 +181,7 @@ button "Process" action processData
 // Button with multiple states
 button "Download" action downloadFile
     enabled when not downloading
-    loading when downloading is true  
+    loading when downloading is true
     text when downloading then "Downloading..." otherwise "Download"
     class "download-btn"
 ```
@@ -208,7 +208,7 @@ toggle id auto_save_toggle "Auto Save" bind AppSettings.autoSave default on clas
 ```droe
 dropdown id quality_dropdown bind UserSettings.photoQuality default "Medium Quality" class "dropdown-field"
     option "High Quality"
-    option "Medium Quality" 
+    option "Medium Quality"
     option "Low Quality"
 end dropdown
 
@@ -238,7 +238,7 @@ end dropdown
 ```droe
 radio id theme_radio group "appTheme" bind UserSettings.appTheme default "System Default" class "radio-group"
     option "Light Theme"
-    option "Dark Theme" 
+    option "Dark Theme"
     option "System Default"
 end radio
 
@@ -289,21 +289,21 @@ end for
 form RegistrationForm
     column class "form-container"
         title "Create Account" class "form-title"
-        
+
         column class "form-fields"
             input id name_field text placeholder "Full Name" bind UserProfile.fullName validate required class "form-input"
             input id email_field email placeholder "Email Address" bind UserProfile.email validate email class "form-input"
             input id password_field password placeholder "Password" bind UserProfile.password validate minlength 8 class "form-input"
-            
+
             toggle id terms_toggle "I accept the terms and conditions" bind UserProfile.acceptedTerms default off class "toggle-field"
-            
+
             dropdown id country_dropdown bind UserProfile.country default "United States" class "dropdown-field"
                 option "United States"
                 option "Canada"
                 option "United Kingdom"
                 option "Australia"
             end dropdown
-            
+
             button "Create Account" action createAccount enabled when form is valid class "submit-btn primary"
         end column
     end column
@@ -317,16 +317,16 @@ form ContactForm
     column class "contact-form"
         input id name_field text placeholder "Your Name" bind ContactInfo.name validate required class "form-input"
             on invalid show message "Name is required"
-        
+
         input id email_field email placeholder "Your Email" bind ContactInfo.email validate required email class "form-input"
             on invalid show message "Please enter a valid email address"
-        
+
         input id subject_field text placeholder "Subject" bind ContactInfo.subject validate required maxlength 100 class "form-input"
             on invalid show message "Subject is required (max 100 characters)"
-        
+
         input id message_field textarea placeholder "Your Message" bind ContactInfo.message validate required minlength 20 maxlength 1000 class "form-textarea"
             on invalid show message "Message must be between 20 and 1000 characters"
-        
+
         button "Send Message" action sendMessage enabled when form is valid class "submit-btn"
     end column
 end form
@@ -403,7 +403,7 @@ input id search_field text placeholder "Search..." bind searchTerm class "search
     on focus action highlightSearchArea
     on blur action hideSearchSuggestions
 
-// Toggle change events  
+// Toggle change events
 toggle id notifications_toggle "Notifications" bind notificationsEnabled class "toggle"
     on change action updateNotificationSettings
 ```
@@ -414,13 +414,13 @@ toggle id notifications_toggle "Notifications" bind notificationsEnabled class "
 form UserForm
     // Form submission
     on submit action submitForm
-    
+
     // Form validation
     on validate action validateForm
-    
+
     // Form change
     on change action autoSave
-    
+
     // Input fields...
 end form
 ```
@@ -446,7 +446,7 @@ end column
 // Different styles per platform
 button "Platform Button" action handleClick
     class when platform equals "web" then "web-btn"
-    class when platform equals "android" then "material-btn"  
+    class when platform equals "android" then "material-btn"
     class when platform equals "ios" then "ios-btn"
 ```
 
@@ -460,7 +460,7 @@ button "Themed Button" action doSomething class "btn-primary"
 // Dark/light theme switching
 when UserSettings.darkMode then
     layout class "dark-theme"
-otherwise  
+otherwise
     layout class "light-theme"
 end when
 ```
@@ -472,19 +472,27 @@ end when
 ```html
 <!-- Generated HTML -->
 <div class="main-container">
-    <h1 class="app-title">My Application</h1>
-    <div class="content-section">
-        <p class="welcome-text">Welcome to the app!</p>
-        <button class="primary-btn" onclick="startApp()">Get Started</button>
-    </div>
+  <h1 class="app-title">My Application</h1>
+  <div class="content-section">
+    <p class="welcome-text">Welcome to the app!</p>
+    <button class="primary-btn" onclick="startApp()">Get Started</button>
+  </div>
 </div>
 
 <form class="form-container">
-    <input type="email" placeholder="Email" class="form-input" 
-           onchange="updateUserEmail(this.value)" required>
-    <input type="checkbox" class="toggle-field" 
-           onchange="toggleNotifications(this.checked)">
-    <button type="submit" class="submit-btn">Submit</button>
+  <input
+    type="email"
+    placeholder="Email"
+    class="form-input"
+    onchange="updateUserEmail(this.value)"
+    required
+  />
+  <input
+    type="checkbox"
+    class="toggle-field"
+    onchange="toggleNotifications(this.checked)"
+  />
+  <button type="submit" class="submit-btn">Submit</button>
 </form>
 ```
 
@@ -495,7 +503,7 @@ end when
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         setContent {
             MyAppTheme {
                 MainScreen()
@@ -515,12 +523,12 @@ fun MainScreen() {
             text = "My Application",
             style = MaterialTheme.typography.h4
         )
-        
+
         Text(
             text = "Welcome to the app!",
             style = MaterialTheme.typography.body1
         )
-        
+
         Button(
             onClick = { startApp() }
         ) {
@@ -537,15 +545,15 @@ fun MainScreen() {
 struct ContentView: View {
     @State private var email = ""
     @State private var notificationsEnabled = false
-    
+
     var body: some View {
         VStack(spacing: 20) {
             Text("My Application")
                 .font(.largeTitle)
-            
+
             Text("Welcome to the app!")
                 .font(.body)
-            
+
             Button("Get Started") {
                 startApp()
             }
@@ -553,7 +561,7 @@ struct ContentView: View {
         }
         .padding()
     }
-    
+
     private func startApp() {
         // Handle button action
     }
@@ -562,14 +570,14 @@ struct ContentView: View {
 struct RegistrationForm: View {
     @State private var email = ""
     @State private var notificationsEnabled = false
-    
+
     var body: some View {
         Form {
             TextField("Email", text: $email)
                 .keyboardType(.emailAddress)
-            
+
             Toggle("Enable Notifications", isOn: $notificationsEnabled)
-            
+
             Button("Submit") {
                 submitForm()
             }
@@ -616,7 +624,7 @@ when showConfirmDialog is true then
     dialog class "confirm-dialog"
         title "Confirm Action" class "dialog-title"
         text "Are you sure you want to delete this item?" class "dialog-message"
-        
+
         row class "dialog-buttons"
             button "Cancel" action hideConfirmDialog class "cancel-btn"
             button "Delete" action confirmDelete class "delete-btn danger"
@@ -655,7 +663,7 @@ button "Submit" action submitForm class "submit-btn"
 form LoginForm
     title "Login" class "form-title"
     input email bind credentials.email validate required
-    input password bind credentials.password validate required  
+    input password bind credentials.password validate required
     button "Sign In" action authenticate class "primary-btn"
 end form
 
@@ -701,4 +709,4 @@ input id password_field password bind userPassword validate required minlength 8
 - **[Mobile Development](/guide/mobile/)** - Mobile-specific UI features
 - **[Styling Guide](/guide/styling/)** - Advanced styling and theming
 
-UI Components in Ddroelang provide a declarative way to build user interfaces that work consistently across web, Android, and iOS platforms while maintaining platform-appropriate look and behavior.
+UI Components in Droelang provide a declarative way to build user interfaces that work consistently across web, Android, and iOS platforms while maintaining platform-appropriate look and behavior.
