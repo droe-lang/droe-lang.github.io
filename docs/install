@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ddroe Language Installer
+# Droe Language Installer
 # Usage: curl -sSL https://droe.dev/install | sh
 
 set -e
@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-ROE_HOME="$HOME/.ddroelang"
+ROE_HOME="$HOME/.droelang"
 ROE_BIN="$ROE_HOME/bin"
 ROE_VERSION="latest"
 GITHUB_REPO="droe-lang/droe"
@@ -54,7 +54,7 @@ print_banner() {
     echo " |  _ < (_) |  __/"
     echo " |_| \_\___/ \___|"
     echo -e "${NC}"
-    echo -e "${GREEN}Ddroe Language Installer${NC}"
+    echo -e "${GREEN}Droe Language Installer${NC}"
     echo "======================"
     echo
 }
@@ -122,7 +122,7 @@ get_latest_version() {
     echo "$version"
 }
 
-# Install Ddroe
+# Install Droe
 install_droe() {
     local platform=$(detect_platform)
     local version="$(get_latest_version)"
@@ -132,25 +132,25 @@ install_droe() {
         echo -e "${BLUE}Please follow these manual installation steps:${NC}"
         echo
         echo "1. Open PowerShell and create the installation directory:"
-        echo -e "   ${GREEN}New-Item -ItemType Directory -Force -Path \"$HOME\.ddroelang\"${NC}"
+        echo -e "   ${GREEN}New-Item -ItemType Directory -Force -Path \"$HOME\.droelang\"${NC}"
         echo
         echo "2. Download the required files:"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/droe' -OutFile \"$HOME\.ddroelang\droe\"${NC}"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/run.js' -OutFile \"$HOME\.ddroelang\run.js\"${NC}"
-        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/compiler.tar.gz' -OutFile \"$HOME\.ddroelang\compiler.tar.gz\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/droe' -OutFile \"$HOME\.droelang\droe\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/run.js' -OutFile \"$HOME\.droelang\run.js\"${NC}"
+        echo -e "   ${GREEN}Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/droe-lang/droe/main/compiler.tar.gz' -OutFile \"$HOME\.droelang\compiler.tar.gz\"${NC}"
         echo
         echo "3. Extract the compiler archive:"
-        echo -e "   ${GREEN}tar -xzf \"$HOME\.ddroelang\compiler.tar.gz\" -C \"$HOME\.ddroelang\"${NC}"
+        echo -e "   ${GREEN}tar -xzf \"$HOME\.droelang\compiler.tar.gz\" -C \"$HOME\.droelang\"${NC}"
         echo
-        echo "4. Add Ddroe to your PATH (run in PowerShell):"
-        echo -e "   ${GREEN}\"[System.Environment]::SetEnvironmentVariable('Path', \"$([System.Environment]::GetEnvironmentVariable('Path', 'User'));$HOME\.ddroelang\", 'User')\"${NC}"
+        echo "4. Add Droe to your PATH (run in PowerShell):"
+        echo -e "   ${GREEN}\"[System.Environment]::SetEnvironmentVariable('Path', \"$([System.Environment]::GetEnvironmentVariable('Path', 'User'));$HOME\.droelang\", 'User')\"${NC}"
         echo
         echo "5. Close and reopen your terminal to apply changes."
         echo
         exit 0
     fi
 
-    echo -e "${BLUE}Installing Ddroe $version for $platform...${NC}"
+    echo -e "${BLUE}Installing Droe $version for $platform...${NC}"
     
     # Create directories
     mkdir -p "$ROE_HOME"
@@ -167,7 +167,7 @@ install_droe() {
     fi
 
     # Download and extract the compiler directory
-    echo -e "${BLUE}Downloading Ddroe compiler module...${NC}"
+    echo -e "${BLUE}Downloading Droe compiler module...${NC}"
     download_file "$BASE_URL/compiler.tar.gz" "$ROE_HOME/compiler.tar.gz"
     if [ $? -ne 0 ]; then
         echo -e "${RED}Error: Failed to download compiler module.${NC}"
@@ -184,7 +184,7 @@ install_droe() {
     echo -e "${GREEN}✓ Compiler module installed successfully.${NC}"
 
     # Download the main droe CLI script
-    echo -e "${BLUE}Downloading Ddroe CLI...${NC}"
+    echo -e "${BLUE}Downloading Droe CLI...${NC}"
     download_file "$BASE_URL/droe" "$ROE_HOME/droe"
     if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/droe" ]; then
         echo -e "${RED}Error: Failed to download droe CLI. Aborting installation.${NC}" >&2
@@ -194,10 +194,10 @@ install_droe() {
     
     # Create symlink in bin directory
     ln -sf "$ROE_HOME/droe" "$ROE_BIN/droe"
-    echo -e "${GREEN}✓ Ddroe CLI installed successfully.${NC}"
+    echo -e "${GREEN}✓ Droe CLI installed successfully.${NC}"
 
     # Download the Node.js runtime for WebAssembly execution
-    echo -e "${BLUE}Downloading Ddroe runtime...${NC}"
+    echo -e "${BLUE}Downloading Droe runtime...${NC}"
     if [ "$version" = "main" ]; then
         download_file "$BASE_URL/run.js" "$ROE_HOME/run.js"
     else
@@ -206,10 +206,10 @@ install_droe() {
     if [ $? -ne 0 ] || [ ! -f "$ROE_HOME/run.js" ]; then
         echo -e "${YELLOW}Warning: Failed to download Node.js runtime. You may not be able to run .droe files directly.${NC}"
     else
-        echo -e "${GREEN}✓ Ddroe runtime installed successfully.${NC}"
+        echo -e "${GREEN}✓ Droe runtime installed successfully.${NC}"
     fi
     
-    echo -e "${GREEN}✓ Ddroe installed to $ROE_HOME${NC}"
+    echo -e "${GREEN}✓ Droe installed to $ROE_HOME${NC}"
     echo
 }
 
@@ -243,7 +243,7 @@ update_shell_profile() {
         # Check if PATH is already updated
         if ! grep -q "$ROE_BIN" "$shell_profile" 2>/dev/null; then
             echo "" >> "$shell_profile"
-            echo "# Ddroe Language" >> "$shell_profile"
+            echo "# Droe Language" >> "$shell_profile"
             echo "export PATH=\"$ROE_BIN:\$PATH\"" >> "$shell_profile"
             echo -e "${GREEN}✓ Updated $shell_profile${NC}"
         else
@@ -259,7 +259,7 @@ update_shell_profile() {
 
 # Print completion message
 print_completion() {
-    echo -e "${GREEN}🎉 Ddroe installation completed!${NC}"
+    echo -e "${GREEN}🎉 Droe installation completed!${NC}"
     echo
     echo -e "${BLUE}Next steps:${NC}"
     echo "1. Restart your terminal or run: source ~/.bashrc (or your shell profile)"
@@ -269,10 +269,10 @@ print_completion() {
     echo
     echo -e "${BLUE}Quick start:${NC}"
     echo "  mkdir hello-droe && cd hello-droe"
-    echo "  echo 'display \"Hello, Ddroe! 🦌\"' > hello.droe"
+    echo "  echo 'display \"Hello, Droe! 🦌\"' > hello.droe"
     echo "  droe run hello.droe"
     echo
-    echo -e "${GREEN}Happy coding with Ddroe! 🦌${NC}"
+    echo -e "${GREEN}Happy coding with Droe! 🦌${NC}"
 }
 
 # Main installation function
